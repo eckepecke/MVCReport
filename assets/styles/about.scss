@@ -1,0 +1,14 @@
+.about-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        text-align: center;
+    }
+
+    img {
+        margin-top: 0.5em;
+    }
+}

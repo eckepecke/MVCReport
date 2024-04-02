@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Magic number{% endblock %}
+
+{% block body %}
+    <h1>Pokerhanden</h1>
+    <p>Pokerspelaren visar med sin reaktion hur han gillar starthanden.</p>
+    
+    <div class="card-wrapper">
+        {# <p>This is the current magic number: {{ number }}</p> #}
+        <img src="{{ asset('build/images/' ~ img_path1) }}" alt="card">
+        <img src="{{ asset('build/images/' ~ img_path2) }}" alt="card">
+        <img class="roos" src="{{ asset('build/images/' ~ img_path3) }}" alt="player">
+    </div>
+{% endblock %}

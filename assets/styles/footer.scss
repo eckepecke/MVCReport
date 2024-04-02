@@ -1,0 +1,43 @@
+footer {
+    grid-column: span 4;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: $background-alternative-color;
+
+    a, i, p {
+        color: $accent-color;
+    }
+
+    i {
+        font-size: xx-large;
+    }
+
+    p {
+        color: $font-color;
+        font-style: italic;
+    }
+
+    .social {
+        font-size: 2rem;
+        padding-left: 1em;
+    }
+
+    .social a {
+        text-decoration: none;
+    }
+
+    address {
+        margin-right: $margin-side;
+        color: $font-alternative-color;
+        @media (max-width: 378px) {
+            display: none;
+        }
+    }
+
+    @media (max-width: 378px) {
+        align-items: center;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,189 @@
+@import 'variables';
+
+body {
+    background-image: 
+    linear-gradient(to top right, rgb(18, 18, 18), rgba(146, 146, 146, 0)),
+    url("../../assets/images/varns2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+h2, p {
+    //margin-left: $padding;
+    //margin-right: $padding;
+}
+
+p {
+    text-align: left;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    //margin-right: $padding;
+    padding-right: 2em;
+    padding-bottom: 0.5em;
+    color: $font-color;
+}
+
+a {
+    color: $link-color;
+}
+
+* {
+    box-sizing: border-box;
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+}
+
+ol, ul {
+    padding-left: $padding;
+}
+
+.hidden {
+    display: none !important;
+}
+
+html, body {
+    height: 100%;
+}
+
+/* Placement */
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1 0 auto;
+    margin-top: $margin-top;
+    margin-right: $margin-side;
+    margin-bottom: $margin-bottom;
+    margin-left: $margin-side;
+    //background: $background-color;
+    //border: $border;
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 800px;
+    //box-shadow: $box-shadow;
+    @media (max-width: 600px) {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.color-table {
+    width: 100%;
+    border-spacing: 4px;
+    border-collapse: separate;
+
+    td {
+        height: 50px;
+        width: 50px;
+    }
+
+    @media (max-width: 600px) {
+        td {
+            width: 25%; /* Adjust the width as needed for your design */
+            box-sizing: border-box;
+        }
+    }
+}
+
+.header, .footer {
+    flex: 0 0 auto;
+}
+
+/* Header */
+
+
+
+
+
+/* Typografy */
+
+body {
+    font-family: $main-font;
+    line-height: 1.5rem;
+
+    min-height: 100vh;
+    margin: 0;
+
+
+}
+
+
+
+td, th, li, dd {
+    text-align: justify;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    margin-left: $padding;/* I added this */
+    margin-right: $padding;/* I added this */
+}
+
+h2, h3, h4, h5, h6 {
+    margin-bottom: 0.6em;
+    font-weight: bold;
+    //padding-left: 1em; /* I added this */
+    margin-top: 0.6em;
+    color: $font-color;
+
+}
+
+h1 {
+    margin-bottom: 0.6em;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0.6em;
+    color: $accent-color;
+    //padding-left: $padding;
+}
+
+/* BELOW ARE PREPARED STYLES FOR CODE/PRE/BLOCKQUOTE, FEEL FREE TO REMOVE IT  */
+
+/* Code */
+
+code {
+    margin: 0 0.1em;
+    padding: 0.1em 0.2em;
+    border: 1px solid #ccc;
+    border-radius: 0.3em;
+    background: $box-dark-color;
+    font-family: monospace;
+    font-size: 0.85rem;
+    line-height: 1.9824;
+}
+
+pre {
+    padding: 0 1em;
+    border: 1px solid #ccc;
+    border-radius: 0.3em;
+    background: $background-alternative-color;
+}
+
+pre code {
+    display: block;
+    margin: 0;
+    padding: 1.1111em 0;
+    border: 0 none;
+    background: $box-dark-color;
+    overflow-x: auto;
+    line-height: 1.4;
+}
+
+::selection {
+    background: $selection-color; /* WebKit/Blink Browsers */
+}
+
+.picture {
+    border: $border;
+    box-sizing: border-box;
+    max-width: 60%;
+    margin-bottom: 0.5em;
+    float: right; 
+    margin-right: 20px;
+    margin-right: $padding;
+    margin-left: $padding;
+}
