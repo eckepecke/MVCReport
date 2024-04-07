@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="{{ asset('img/glider.svg') }}">
+        <link rel="icon" href="{{ asset('img/clubs_ace.svg') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-Xz6OBuMTbft3s6BsR1x+7AjPrVeuTj3/J3j3ob9JFvRroerfuLkiPv8BlL4/Lu9p2M+qa03fIJee+qE6Lb6bGQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -36,8 +37,14 @@
         </main>
 
         <footer>
-        <p>Jag är i footern</p>
-        </footer>
 
+            <div class="footer-content">
+                <h2>Läs om Poker</h2>
+            <div class="social-icons">
+                <a href="https://en.wikipedia.org/wiki/Poker">Poker</a>
+                <a href="https://www.winamax.fr/en/poker-school_rules_pot-limit-omaha-4-card">Pot Limit Omaha</a>
+            </div>
+            </div>
+        </footer>
     </body>
 </html>

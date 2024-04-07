@@ -19,7 +19,9 @@ p {
     overflow-wrap: break-word;
     word-wrap: break-word;
     //margin-right: $padding;
-    padding-right: 2em;
+    padding-left: $padding;
+    padding-left: $padding;
+
     padding-bottom: 0.5em;
     color: $font-color;
 }

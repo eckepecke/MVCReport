@@ -9,39 +9,21 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LuckyController extends AbstractController
 {
-    #[Route('/lucky/number')]
-    public function number(): Response
-    {
-        $number = random_int(0, 100);
-
-        return new Response(
-            '<html><body>Lucky number: '.$number.'</body></html>'
-        );
-    }
-
-    #[Route("/lucky/hi")]
-    public function hi(): Response
-    {
-        return new Response(
-            '<html><body>Hi to you!</body></html>'
-        );
-    }
-
     #[Route('/lucky/card', name: 'lucky_card')]
     public function card(): Response
     {
         $cards = array(
-            'D' => array(
-                'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'
+            'diamonds_' => array(
+                'ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'jack', 'queen', 'king'
             ),
-            'H' => array(
-                'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'
+            'hearts_' => array(
+                'ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'jack', 'queen', 'king'
             ),
-            'C' => array(
-                'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'
+            'clubs_' => array(
+                'ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'jack', 'queen', 'king'
             ),
-            'S' => array(
-                'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'
+            'spades_' => array(
+                'ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'jack', 'queen', 'king'
             ),
         );
 
@@ -52,11 +34,11 @@ class LuckyController extends AbstractController
         $randomCardValue1 = $cards[$randomSuit1][array_rand($cards[$randomSuit1])];
         $randomCardValue2 = $cards[$randomSuit2][array_rand($cards[$randomSuit2])];
 
-        $imgpath1 = "$randomCardValue1$randomSuit1.jpg";
-        $imgpath2 = "$randomCardValue2$randomSuit2.jpg";
+        $imgpath1 = "$randomSuit1$randomCardValue1.svg";
+        $imgpath2 = "$randomSuit2$randomCardValue2.svg";
 
         $imgpath3 = null; // Initialize $imgpath3
-        if ($randomCardValue1 == $randomCardValue2 || $randomSuit1 == $randomSuit2 || $randomCardValue1 == 'A' || $randomCardValue2 == 'A') {
+        if ($randomCardValue1 == $randomCardValue2 || $randomSuit1 == $randomSuit2 || $randomCardValue1 == 'ace' || $randomCardValue2 == 'ace') {
             $imgpath3 = "good_hand.png";
         } else {
             $imgpath3 = "bad_hand.png";

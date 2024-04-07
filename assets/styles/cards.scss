@@ -6,13 +6,14 @@
     // background-image: url("../../assets/images/varns2.jpg");
 
     img {
-        margin-right: 10px;
         width: 150px;
+        padding-right: 5px;
         height: auto;
     }
 
     .roos {
-        width: 200px;
+        padding-left: $padding;
+        width: 300px;
         height: auto;
         margin-right: 10px;
     }
