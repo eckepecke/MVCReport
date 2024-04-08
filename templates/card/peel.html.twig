@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Test card{% endblock %}
+
+{% block body %}
+
+    <div class="card-wrapper">
+    <h2>Peel</h2>
+        {# <p>This is the current magic number: {{ number }}</p> #}
+        <img src="{{ asset('build/images/' ~ imgPath) }}" alt="card">
+        {# <img src="{{ asset('build/images/' ~ img_path2) }}" alt="card">
+        <img class="roos" src="{{ asset('build/images/' ~ img_path3) }}" alt="player"> #}
+    </div>
+{% endblock %}

@@ -25,3 +25,16 @@
         height: auto;
     }
 }
+
+.deck-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+
+        .full-deck-card {
+            width: 75px;
+            padding-right: 5px;
+            height: auto;
+        }
+}

@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Shuffled Deck{% endblock %}
+
+{% block body %}
+    <h2>Shuffled Deck</h2>
+    <div class="deck-wrapper">
+
+
+    {% for card in cards %}
+        <img class="full-deck-card" src="{{ asset('build/images/' ~ card) }}" alt="card">
+    {% endfor %}
+        {# <p>This is the current magic number: {{ number }}</p> #}
+        {# <img src="{{ asset('build/images/' ~ img_path2) }}" alt="card">
+        <img class="roos" src="{{ asset('build/images/' ~ img_path3) }}" alt="player"> #}
+    </div>
+{% endblock %}

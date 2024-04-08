@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Test card{% endblock %}
+
+{% block body %}
+
+    <div class="card-wrapper">
+    <h2>Test Hand</h2>
+
+    <p> {{numOfCards}}</p>
+    {% for imgPath in imgPaths %}
+        <img src="{{ asset('build/images/' ~ imgPath) }}" alt="card">
+    {% endfor %}
+
+    {% for card in cards %}
+        <p>{{card}}</p>
+    {% endfor %}
+        {# <p>This is the current magic number: {{ number }}</p> #}
+        {# <img src="{{ asset('build/images/' ~ img_path2) }}" alt="card">
+        <img class="roos" src="{{ asset('build/images/' ~ img_path3) }}" alt="player"> #}
+    </div>
+{% endblock %}
