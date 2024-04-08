@@ -44,7 +44,7 @@ class LuckyController extends AbstractController
             $imgpath3 = "bad_hand.png";
         }
 
-        return $this->render('card.html.twig', [
+        return $this->render('lucky/card.html.twig', [
             'img_path1' => $imgpath1,
             'img_path2' => $imgpath2,
             'img_path3' => $imgpath3

@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MeControllerJson
 {
-    #[Route("/api/quotes")]
+    #[Route("/api/quotes", name: "api_quotes")]
     public function jsonQuote(): Response
     {
         $quotes = [
