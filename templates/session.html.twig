@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Session{% endblock %}
+
+
+{% block body %}
+    {# <div class="about-div"> #}
+    <h1>Session-data</h1>
+    <p>{{ session.get("remaining") }}</p>
+{% endblock %}

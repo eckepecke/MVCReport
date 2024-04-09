@@ -61,4 +61,55 @@ class DeckOfCards
     {
         shuffle($this->cards);
     }
+
+    public function size(): int
+    {
+        return count($this->cards);
+    }
+
+    public function drawOne($index = null): object
+    {
+        if ($index !== null) {
+            $card = $this->cards[$index];
+            unset($this->cards[$index]);
+        } else {
+            $length = count($this->cards);
+            $randIndex = rand(0, $length-1);
+            $card = $this->cards[$randIndex];
+            unset($this->cards[$randIndex]);
+        }
+
+        $this->cards = array_values($this->cards);
+
+        return $card;
+    }
+
+    public function drawMany($amount) : array
+    {
+        $randIndexArray = [];
+        $deckSize = $this->size();
+        echo $deckSize;
+        
+        for ($i = 0; $i < $amount; $i++) {
+            $randIndex = rand(0, $deckSize - 1);
+            if (in_array($randIndex, $randIndexArray)) {
+                $i--;
+            } else {
+                $randIndexArray[] = $randIndex;
+            }
+            //$deckSize--;
+        }
+        
+        var_dump($randIndexArray);
+        $drawnCards = [];
+
+        foreach ($randIndexArray as $index) {
+            $drawnCards[] = $this->cards[$index];
+            unset($this->cards[$index]);
+        }
+
+        $this->cards = array_values($this->cards);
+
+        return $drawnCards;
+    }
 }

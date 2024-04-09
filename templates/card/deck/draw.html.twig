@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Draw 1{% endblock %}
+
+{% block body %}
+    <h1>Draw one card</h1>  
+    <p>{{value}}</p>
+    <div class="card-wrapper">
+        {# <p>This is the current magic number: {{ number }}</p> #}
+        <img src="{{ asset('build/images/' ~ imgPath) }}" alt="card">
+        <img src="{{ asset('build/images/' ~ reaction) }}" alt="player">
+
+    </div>
+    <h2>Remaining cards: {{ remaining }}</h2>
+{% endblock %}

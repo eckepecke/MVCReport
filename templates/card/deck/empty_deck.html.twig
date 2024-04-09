@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Draw 1{% endblock %}
+
+{% block body %}
+    <h1>Not enough cards in deck</h1>  
+    <p>Remaining cards: {{ remaining }}</p>
+
+    <button onclick="window.location='{{ path('shuffle') }}'">Re-shuffle</button>
+
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Draw 1{% endblock %}
+
+{% block body %}
+
+    <div class="deck-wrapper">
+    {% for img in imgPaths %}
+        <img class="full-deck-card" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
+    </div>
+    <p>Remaining cards: {{ session.get("remaining") }}</p>
+
+{% endblock %}

@@ -34,9 +34,9 @@ class Card
         return $this->value . ' of ' . $this->suit;
     }
 
-    public function getValue(): int
-    {
-        return $this->card;
+    public function getValue(): string
+    {    
+        return (string) $this->value;
     }
     public function getsuit(): string
     {
