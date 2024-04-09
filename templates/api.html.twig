@@ -5,10 +5,22 @@
 
 {% block body %}
     {# <div class="about-div"> #}
+<div class="api-wrapper">
     <h1>Mina API-Routes</h1>
 
 
+    <h2><a href="{{ path('api_quotes') }}">api/quotes</a></h2>
+    <p>Get a stoic quote</p>
+    <h2><a href="{{ path('api_deck') }}">api/deck</a></h2>
+    <p>Get a sorted deck</p>
+    <h2><a href="{{ path('api_shuffle') }}">api/deck/shuffle</a></h2>
+    <p>Get a shuffled deck</p>
+    <h2><a href="{{ path('api_draw') }}">api/deck/draw</a></h2>
+    <p>Draw on card from the shuffled deck</p>
+    <h2>api/deck/draw/:number</h2>
+    <p>Draw a number of cards from the shuffled deck</p>
+</div>
 
-    <ul><a href="{{ path('api_quotes') }}">api/quotes</a></ul>
+
 
 {% endblock %}

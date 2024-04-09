@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Cards;
 
 use App\Cards\CardGraphic;
@@ -12,12 +13,12 @@ class CardHand
         $this->hand[] = $card;
     }
 
-    public function pull(): void
-    {
-        foreach ($this->hand as $card) {
-            $card->getCard();
-        }
-    }
+    // public function pull(): void
+    // {
+    //     foreach ($this->hand as $card) {
+    //         $card->getCard();
+    //     }
+    // }
 
     public function getNumberCards(): int
     {

@@ -69,7 +69,6 @@ class MeControllerJson
         $number = random_int(0, 9);
 
         $data = [
-            'rand-index' => $number,
             'quote-of-day' => [
                 "quote" => $quotes[$number]["quote"],
                 "author" => $quotes[$number]["author"]

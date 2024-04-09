@@ -1,0 +1,35 @@
+.card-landing {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        text-align: center;
+    }
+    h2 {
+        color: $font-color;
+        text-decoration: underline;
+        text-align: center;
+    }
+
+    a {
+        color: $font-color;
+    }
+
+    a:hover {
+        color: $font-alternative-color;
+    }
+
+    p {
+        text-align: left;
+        padding-bottom: 0.5em;
+    }
+
+    h3 {
+        color: $font-alternative-color;
+        font-size: x-large;
+    }
+
+}

@@ -1,0 +1,19 @@
+.api-wrapper {
+    h1 {
+        text-align: center;
+    }
+    h2 {
+        color: $font-alternative-color;
+        text-decoration: underline;
+        text-align: center;
+    }
+
+    a {
+        color: $font-alternative-color;
+    }
+
+    p {
+        text-align: center;
+        padding: 0;
+    }
+}

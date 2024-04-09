@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Cards\Card;
 use App\Cards\CardGraphic;
 use App\Cards\CardHand;
@@ -15,20 +16,16 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CardGameController extends AbstractController
 {
-
     #[Route("/session", name: "session")]
     public function sessionCheck(
-        Request $request,
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
 
         if (!$session->has("deck")) {
             $deck = new DeckOfCards();
             $session->set("deck", $deck);
             $session->set("remaining", $deck->size());
         }
-
 
         $data = [
             "session" => $session,
@@ -41,9 +38,12 @@ class CardGameController extends AbstractController
         Request $request,
         SessionInterface $session
     ): Response {
-        $session->invalidate(); // This will destroy the session
-    
-        return $this->redirectToRoute('session');
+        $session->invalidate();
+        $this->addFlash(
+            'notice',
+            'Session data was deleted!'
+        );
+        return $this->render('session/delete.html.twig');
     }
 
     #[Route("/card/empty_deck", name: "empty_deck")]
@@ -55,47 +55,14 @@ class CardGameController extends AbstractController
         $data = [
             "remaining" => $deck->size()
         ];
+
         return $this->render('card/deck/empty_deck.html.twig', $data);
     }
 
-    #[Route("/card/test", name: "test")]
+    #[Route("/card", name: "card")]
     public function home(): Response
     {
-        return $this->render('cards/test.html.twig');
-    }
-
-    #[Route("/card/peel", name: "peel_card")]
-    public function testPeelCard(): Response
-    {
-        //$die = new Card();
-        $card = new CardGraphic();
-
-        $data = [
-            "card" => $card->getCard(),
-            "imgPath" => $card->getImgName()
-        ];
-
-        return $this->render('cards/peel.html.twig', $data);
-
-    }
-
-    #[Route("/card/testhand", name: "test_hand")]
-    public function testHand(): Response
-    {
-
-        $card = new CardGraphic();
-        $hand = new CardHand();
-        $hand->add($card);
-
-        $data = [
-            "cards" => $hand->getCardValues(),
-            "imgPaths" => $hand->getImgNames(),
-            // "card" => $hand->pull(),
-            "numOfCards" => $hand->getNumberCards()
-        ];
-
-        return $this->render('cards/testhand.html.twig', $data);
-
+        return $this->render('card/card.html.twig');
     }
 
     #[Route("/card/deck", name: "deck")]
@@ -135,33 +102,32 @@ class CardGameController extends AbstractController
 
         if ($session->has("deck")) {
             $deck = $session->get("deck");
-            $remains = $session->get("remaining");
-
         } else {
             $deck = new DeckOfCards();
             $session->set("deck", $deck);
             $session->set("remaining", $deck->size());
         }
+
+        $remains = $session->get("remaining");
+
         if ($remains <= 0) {
-            //throw new \Exception("Only {$remains} cards in deck!");
             $redirectRoute = $this->generateUrl('empty_deck');
             return new RedirectResponse($redirectRoute);
         }
 
-//        $deck->shuffleDeck();
         $card = $deck->drawOne();
         $session->set("remaining", $deck->size());
 
 
-        
-        $drawnCardValue = $card->getValue(); 
+
+        $drawnCardValue = $card->getValue();
 
         $goodCards = [
             "jack", "queen", "king"
         ];
-        
+
         $aces = "ace";
-        
+
         if (in_array($drawnCardValue, $goodCards) || $drawnCardValue == $aces) {
             $reaction = "good_hand.png";
         } else {
@@ -179,69 +145,27 @@ class CardGameController extends AbstractController
         return $this->render('card/deck/draw.html.twig', $data);
     }
 
-    #[Route("/card/deck/draw_more", name: "deck_draw_more")]
-    public function drawMore(        
-    SessionInterface $session
-    ): Response
-    {
-        if ($session->has("deck")) {
-            $deck = $session->get("deck");
-        } else {
-            $deck = new DeckOfCards();
-            $session->set("deck", $deck);
-            $session->set("remaining", $deck->size());
-        }
-
-        //$deck = new DeckOfCards();
-        $deck->shuffleDeck();
-        $cards = $deck->drawMany(3);
-
-        $imgPaths = [];
-        foreach ($cards as $card) {
-            $imgPaths[] = $card->getImgName();
-        }
-
-
-        $data = [
-        //     "imgPath" => $card->getImgName(),
-            "remaining" => $deck->size(),
-        //     "reaction" => $reaction,
-        //     "value" => $drawnCardValue,
-            "imgPaths" => $imgPaths
-        ];
-
-        return $this->render('card/deck/draw_more.html.twig', $data);
-    }
-
     #[Route("/card/deck/draw/{num<\d+>}", name: "draw_many")]
     public function drawMany(int $num, SessionInterface $session): Response
     {
 
         if ($session->has("deck")) {
             $deck = $session->get("deck");
-            // var_dump($deck);
-            // echo $session->get("remaining");
-            // echo "session is set";
 
         } else {
             $deck = new DeckOfCards();
-            //var_dump($deck);
 
             $session->set("deck", $deck);
             $session->set("remaining", $deck->size());
-            
         }
 
         $remains = $session->get("remaining");
-        // echo $remains;
 
         if ($num > $remains) {
-            //throw new \Exception("Only {$remains} cards in deck!");
             $redirectRoute = $this->generateUrl('empty_deck');
             return new RedirectResponse($redirectRoute);
         }
-        
-        //$deck = new DeckOfCards();
+
         $deck->shuffleDeck();
         $cards = $deck->drawMany($num);
         $session->set("remaining", $deck->size());
@@ -252,10 +176,7 @@ class CardGameController extends AbstractController
 
 
         $data = [
-        //     "imgPath" => $card->getImgName(),
             "session" => $session,
-        //     "reaction" => $reaction,
-        //     "value" => $drawnCardValue,
             "imgPaths" => $imgPaths
         ];
 

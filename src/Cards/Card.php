@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Cards;
 
 class Card
@@ -35,7 +36,7 @@ class Card
     }
 
     public function getValue(): string
-    {    
+    {
         return (string) $this->value;
     }
     public function getsuit(): string

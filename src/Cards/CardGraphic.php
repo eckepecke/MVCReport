@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Cards;
 
 class CardGraphic extends Card

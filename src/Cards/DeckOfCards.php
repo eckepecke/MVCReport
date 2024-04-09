@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Cards;
 
 use App\Cards\CardGraphic;
@@ -43,7 +44,7 @@ class DeckOfCards
         }
     }
 
-    public function getCards() : array
+    public function getCards(): array
     {
         return $this->cards;
     }
@@ -74,7 +75,7 @@ class DeckOfCards
             unset($this->cards[$index]);
         } else {
             $length = count($this->cards);
-            $randIndex = rand(0, $length-1);
+            $randIndex = rand(0, $length - 1);
             $card = $this->cards[$randIndex];
             unset($this->cards[$randIndex]);
         }
@@ -84,12 +85,11 @@ class DeckOfCards
         return $card;
     }
 
-    public function drawMany($amount) : array
+    public function drawMany($amount): array
     {
         $randIndexArray = [];
         $deckSize = $this->size();
-        echo $deckSize;
-        
+
         for ($i = 0; $i < $amount; $i++) {
             $randIndex = rand(0, $deckSize - 1);
             if (in_array($randIndex, $randIndexArray)) {
@@ -99,8 +99,7 @@ class DeckOfCards
             }
             //$deckSize--;
         }
-        
-        var_dump($randIndexArray);
+
         $drawnCards = [];
 
         foreach ($randIndexArray as $index) {

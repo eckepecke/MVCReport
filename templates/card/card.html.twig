@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card{% endblock %}
+
+{% block body %}
+<div class="card-landing">
+    <h1>Deck routes</h1>
+
+
+    <h2><a href="{{ path('deck') }}">card/deck</a></h2>
+    <h2><a href="{{ path('shuffle') }}">card/deck/shuffle</a></h2>
+    <h2><a href="{{ path('deck_draw') }}">card/deck/draw</a></h2>
+    <h2>api/deck/draw/:number</h2>
+    <h2><a href="{{ path('session') }}">session</a></h2>
+    <h2><a href="{{ path('session_delete') }}">session/delete</a></h2>
+
+    <h3>Class Description</h3>
+
+    <p>
+    Card is the base class. CardGraphic inherits from Card and has some
+    extra stuff to allow for image display.
+    </p>
+    <p>
+    DeckOfCards hols 52 CardGraphic objects when initialized. Will lose objects as you draw.
+    HandOfCards is not yet implemented on this website but will hold CardGraphic objects as well.
+    </p>
+
+    <img class="picture" src="{{ asset('build/images/uml.png') }}" alt="me">
+</div>
+
+{% endblock %}
