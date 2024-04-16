@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Poker Challenge{% endblock %}
+
+
+{% block body %}
+
+
+    <h1>hello</h1>
+
+    {% for img in teddy_hand %}
+        
+        <h2>Teddy Hand</h2>
+    <div class="card-wrapper">
+
+        <img class="full-deck-card" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
+    </div>
+
+    <h3>{{pot_size}} dollars is in the pot</h3>
+
+        {% for img in mos_hand %}
+        
+        <h2>Mos Hand</h2>
+    <div class="card-wrapper">
+
+        <img class="full-deck-card" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
+    </div>
+
+
+
+
+
+{% endblock %}

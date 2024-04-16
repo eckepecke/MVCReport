@@ -2,7 +2,7 @@
 .two-col-wrapper {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start; /* Align items to the start of the cross axis (top) */
 
     a {
         color: $font-color;

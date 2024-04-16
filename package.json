@@ -16,8 +16,8 @@
     "scripts": {
         "dev-server": "encore dev-server",
         "dev": "encore dev",
-        "watch": "encore dev --watch",
-        "build": "encore production --progress"
+        "style": "sass base.scss style.min.css --no-source-map",
+        "style-min": "sass base.scss style.min.css  --no-source-map --style compressed"
     },
     "dependencies": {
         "file-loader": "^6.2.0"

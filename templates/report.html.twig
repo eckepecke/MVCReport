@@ -21,7 +21,7 @@
 
         <aside class="aside-right">
         <section>
-             <h2 id="kmom01">Kmom01</h2>
+            <h2 id="kmom01">Kmom01</h2>
             <p>Den enda objektorienteradeprogrammering jag gjort innan denna kursen är oopythonkursen. Konceptet nämndes kort i js-kursen men jag förstod det inte alls då.</p>
 
 <p>Klasser är en samling av kod som hör ihop. Klasser används för att organisera och strukturera kod på ett logiskt sätt och möjliggör återanvändning av kod genom att skapa flera objekt med samma egenskaper och metoder. Objekt är alltså instanser av en klass. På så vis kan vi ha flera objekt med samma metoder men olika attribut (attributen kan också vara samma).</p>  <p>Oftast kommer klasserna ha en konstruktor. Man kan också ha en dekonstruktor om man vill. Har din klass attribut ska du skriva setter- och gettermetoder för att ändra eller hämta egneskapen/attributet.</p>
@@ -35,7 +35,15 @@
 
         <section>
             <h2 id="kmom02">Kmom02</h2>
-            <p></p>
+            <p>Komposition är en konstruktion där ett objekt består av ett eller flera andra objekt. En korthand har kort. En kortlek har kort. En bil har en motor, växelspak och backspegel. De är alla exempel på komposition.</p>
+
+<p>Interface används för att göra kod skalbar, modulär, förutsägbar. Interface tvingar alla klasser som implementerar det att innehålla vissa metoder, utan att beskriva hur de ska implementeras. På så vis kan utvecklare jobba på sin egen kod och veta att kollegan kommer skriva någon slags kod som returnerar det han behöver i sin del av koden.</p>  <p>Trait är ett alternativ till arv. Trait gör att man kan återanvända kod utan att behöva ärva. En klass kan implementera flera traits, passar inte ”single-inheritance” i koden så kan traits vara det du behöver</p>
+
+<p>Jag tycker detta kursmomentet var väldigt givande. När jag gjorde övningen för klasserna kändes det lite överväldigande men det var väldigt bra träning för uppgiften. Jag har löst uppgiften i princip som pig game löstes i övningen. Jag har inte implementerat Interface, förmodligen för att jag inte känner mig bekväm med det ännu. Jag vet inte om min lösning är den mest skalbara eller bästa lösningen men jag förstår den i alla fall. Känner jag att jag behöver implementera traits eller interface borde ju kunna åtgärda det i ett senare skede.</p>  <p>Jag har en CardGraphic-klass som ärver från basklassen Card. Jag vet inte vad som väntar i kommande kursmoment men i och med enkelheten kan den med fördel användas som basklass i andra implementationer. Kanska skapas fler klasser i framtiden som ärver av denna enkla Card-klass. CardGraphic har ett nytt attribut och nya metoder för att underlätta den grafiska representationen. CardGraphic initieras konstruktion för DeckOfCards, därför vill jag kalla den relationen komposition. Korten finns inte om DeckOfCards inte finns. Rätta mig om jag har fel men jag vill också kalla relationen mellan CardGraphic och CardHand komposition. Korten läggs till i handklassen och blir en del av handklassens attribut. Känns väldigt mänskligt att kalla det komposition.</p>
+
+<p>Förra veckan hyllade jag Symfony, det var innan jag publicerade till studentservern. Har man mer erfarenhet av ramverk är det kanske inga problem att lista ut varför något inte fungerar. För mig gick mycket tid till att få min kod att fungera på studentservern trots att den redan fungerade felfritt lokalt. Kanske är det en del av webbprogrammerarens vardag man helt enkelt får acceptera.</p>
+
+<p>Min TIL i detta kursmoment är att mycket av programmering handlar om att bygga rätt från grunden. Än så länge har jag bara skrapat ytan på objektorienterad-programmering. Interface verkar vara en stor grej i php. Jag förstår grunderna i varför man vill använda det och jag hoppas i framtiden kunna ha djupare tankar om varför jag vill implementera en viss lösning och inte en annan.</p>
         </section>
 
         <section>

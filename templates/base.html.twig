@@ -4,15 +4,16 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="{{ asset('img/clubs_ace.svg') }}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-Xz6OBuMTbft3s6BsR1x+7AjPrVeuTj3/J3j3ob9JFvRroerfuLkiPv8BlL4/Lu9p2M+qa03fIJee+qE6Lb6bGQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+        <link rel="stylesheet" href="{{ asset('app.css') }}">
 
-        {% block javascripts %}
+        {# {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %} #}
+
+        {# {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+        {% endblock %} #}
     </head>
     <body>
 
