@@ -4,25 +4,59 @@ namespace App\Poker;
 
 class ActionSequence
 {
-    private $sequence;
+    private $preflopSequence;
+    private $flopSequence;
+    private $turnSequence;
+    private $riverSequence;
+
 
     public function __construct()
     {
         $this->sequence = [];
     }
 
-    public function addAction(string $action) : void
+    public function addPreflopAction(string $action) : void
     {
-        $this->sequence[] = $action;
+        $this->preflopSequence[] = $action;
     }
 
-    public function resetSequence()
+    public function addFlopAction(string $action) : void
     {
-        $this->sequence = [];
+        $this->flopSequence[] = $action;
     }
 
-    public function getSequence()
+    public function addTurnAction(string $action) : void
     {
-        return $this->sequence;
+        $this->turnSequence[] = $action;
+    }
+
+    public function addRiverAction(string $action) : void
+    {
+        $this->riverSequence[] = $action;
+    }
+
+    public function resetALLSequences()
+    {
+        $this->preflopSequence = [];
+        $this->flopSequence = [];
+        $this->turnSequence = [];
+        $this->riverSequence = [];
+    }
+
+    public function getPreflopSequence()
+    {
+        return $this->preflopSequence;
+    }
+    public function getFlopSequence()
+    {
+        return $this->flopSequence;
+    }
+    public function getTurnSequence()
+    {
+        return $this->turnSequence;
+    }
+    public function getRiverSequence()
+    {
+        return $this->riverSequence;
     }
 }
