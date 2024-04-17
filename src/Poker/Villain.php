@@ -14,6 +14,7 @@ class Villain extends Player
         $this->name = "Teddy KGB";
         $this->result = 0;
         $this->position = $position;
+        
     }
 
     public function getName() : string {

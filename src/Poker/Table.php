@@ -9,6 +9,7 @@ class Table
     protected $turn;
     protected $river;
     protected $fullBoard;
+    protected $street;
 
 
     public function __construct() {
@@ -17,6 +18,8 @@ class Table
         $this->turn = "";
         $this->river = "";
         $this->fullBoard = [];
+        $this->street = 1;
+
     }
 
     public function addChipsToPot(array $bets) : void
@@ -49,5 +52,19 @@ class Table
     {
         $this->river = $river;
         $this->fullBoard[] = $river;
+    }
+
+    public function getStreet() : int
+    {
+        return $this->$street;
+    }
+
+    public function setNextStreet() : int
+    {
+        if ($this->$street === 4) {
+            $this->$street = 1;
+        } else {
+            $this->$street += 1;
+        }
     }
 }

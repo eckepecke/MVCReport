@@ -16,8 +16,8 @@
     "scripts": {
         "dev-server": "encore dev-server",
         "dev": "encore dev",
-        "style": "sass base.scss style.min.css --no-source-map",
-        "style-min": "sass base.scss style.min.css  --no-source-map --style compressed"
+        "style": "sass assets/styles/app.scss style.min.css --no-source-map",
+        "style-min": "sass assets/styles/app.scss public/test.css  --no-source-map --style compressed"
     },
     "dependencies": {
         "file-loader": "^6.2.0"

@@ -1,29 +1,65 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Poker Challenge{% endblock %}
 
 
 {% block body %}
 
 
-    <h1>hello</h1>
+    <div class="table">
 
-    {% for img in teddy_hand %}
-        
-        <h2>Teddy Hand</h2>
-    <div class="card-wrapper">
+        <h3>{{teddy_stack}} USD</h3>
+        <h4>{{teddy_pos}}</h4>
+        <div class="player-box">
+            <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me">
 
-        <img class="full-deck-card" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
-    </div>
+            <div class="card-box">
+            {% for img in teddy_hand %}
+                
 
-    <h3>{{pot_size}} dollars is in the pot</h3>
 
-        {% for img in mos_hand %}
-        
-        <h2>Mos Hand</h2>
-    <div class="card-wrapper">
+                <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
+            </div>
+        </div>
 
-        <img class="full-deck-card" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
+        <div class="pot-box">
+            <h3>{{pot_size}} dollars is in the pot</h3>
+        </div>
+
+        <div class="player-box">
+            <img class="player-img" src="{{ asset('build/images/good_hand.png') }}" alt="me">
+
+            <div class="card-box">
+            {% for img in mos_hand %}
+                <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
+            </div>
+        </div>
+        <h3>{{mos_stack}} USD</h3>
+        <h4>{{mos_pos}}</h4>
+        <div class="options-box">
+        {# <div class="fold-button">
+        Fold
+        </div>
+        <div class="call-button">
+        Call
+        </div>
+        <div class="raise-button">
+        Raise
+        </div> #}
+        <form method="post" action="">
+
+            <input type="submit" name="fold" value="Fold" class="fold-button"
+            onClick="this.form.action='{{ path('fold') }}';"
+            >
+            <input type="submit" name="call" value="Call" class="call-button"
+                onClick="this.form.action='{{ path('call') }}';"
+            >
+            <button type="submit" name="bet_button" class="raise-button" onClick="this.form.action='{{ path('bet') }}';">Bet/Raise</button>
+            <input type="number" name="bet" value="0" min="50" class="bet-input">
+
+        </form>
+        </div>
     </div>
 
 

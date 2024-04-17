@@ -33,12 +33,18 @@ class ChallengeDealer extends Dealer
     public function moveButton()
     {
         $currentPosition = $this->playerOne->getPosition();
-        if ($currentPosition === "BTN") {
+        echo "hej";
+        var_dump($currentPosition);
+        if ($currentPosition === "SB") {
             $this->playerOne->setPosition("BB");
-            $this->playerTwo->setPosition("BTN");
+            $this->playerTwo->setPosition("SB");
+        } else {
+            $this->playerOne->setPosition("SB");
+            $currentPosition = $this->playerOne->getPosition();
+            var_dump($currentPosition);
+            $this->playerTwo->setPosition("BB");
         }
-        $this->playerOne->setPosition("BTN");
-        $this->playerTwo->setPosition("BB");
+
     }
 
     public function incrementHandsPlayed(): void
@@ -82,5 +88,16 @@ class ChallengeDealer extends Dealer
 
         $blinds = [$smallBlind, $bigBlind];
         return $blinds;
+    }
+
+    public function randButton() {
+        $seats = ["SB", "BB"];
+        $position = $seats[rand(0, 1)];
+        $this->playerOne->setPosition($position);
+        if ($position === "SB") {
+            $this->playerTwo->setPosition("BB");
+        } else {
+            $this->playerTwo->setPosition("SB");
+        }
     }
 }

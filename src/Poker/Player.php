@@ -77,7 +77,12 @@ class Player
         return $imgPaths;
     }
 
-    public function payBlind($blind) {
+    public function payBlind(int $blind) : void {
         $this->stack -= $blind;
+    }
+
+    public function getStack() : int {
+        
+        return $this->stack;
     }
 }

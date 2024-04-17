@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Poker\ActionSequence;
 use App\Poker\Challenge;
 use App\Poker\Hero;
 use App\Poker\Table;
@@ -21,6 +22,37 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PokerChallengeController extends AbstractController
 {
+    #[Route("/poker/session", name: "session")]
+    public function sessionCheck(
+        SessionInterface $session
+    ): Response {
+        $challenge = $session->get("challenge");
+        $hero = $session->get("hero");
+        $villain = $session->get("villain");
+        $table = $session->get("table");
+        $dealer = $session->get("dealer");
+        $deck = $session->get("deck");
+        echo $deck->size();
+
+
+        $data = [
+            "cards_left" => $deck->size()
+        ];
+        return $this->render('poker/session.html.twig', $data);
+    }
+
+    #[Route("/poker/session/delete", name: "session_delete")]
+    public function sessionDelete(
+        Request $request,
+        SessionInterface $session
+    ): Response {
+        $session->invalidate();
+        $this->addFlash(
+            'notice',
+            'Session data was deleted!'
+        );
+        return $this->render('poker/delete.html.twig');
+    }
     // #[Route("/game", name: "game")]
     //     public function home(): Response
     //     {
@@ -75,9 +107,9 @@ class PokerChallengeController extends AbstractController
         var_dump($dealer);
         $dealer->addDeck($deck);
         $table->seatDealer($dealer);
+        $actionSequence = new actionSequence();
 
 
-        $dealer->dealHoleCards();
 
         $data = [
             "header" => "Welcome to the pokerchallenge",
@@ -96,6 +128,8 @@ class PokerChallengeController extends AbstractController
         $session->set("table", $table);
         $session->set("dealer", $dealer);
         $session->set("deck", $deck);
+        $session->set("action_sequence", $actionSequence);
+
 
         return $this->redirectToRoute('poker_play');
 
@@ -116,17 +150,144 @@ class PokerChallengeController extends AbstractController
         $table = $session->get("table");
         $dealer = $session->get("dealer");
         $deck = $session->get("deck");
-        // var_dump($dealer);
-        $dealer->moveButton();
+        $actionSequence = $session->get("action_sequence");
+
+        if ($challenge->challengeComplete()) {
+            return $this->render('poker/end_game.html.twig');
+        }
+        //make the the table look like a table
+        //render mos options with buttons that lead back to this route
+        //and trigger the correct funtions
+        //how do I know when to deal the flop?
+        //maybe an action sequence array?
+        //$table->getStreet()
+
+        // $currentStreet = $table->getStreet();
+        // if ($currentStreet === 1) {
+        //preflop flow
+        if ($challenge->getHandsPlayed() === 0) {
+            $dealer->randButton();
+        } else {
+            $dealer->moveButton();
+
+
+
+        }
         $blinds = $dealer->chargeAntes(25, 50);
+        $dealer->dealHoleCards();
+
         $table->addChipsToPot($blinds);
 
         $data = [
             "teddy_hand" => $villain->getImgPaths(),
+            "teddy_stack" =>$villain->getStack(),
+            "teddy_pos" => $villain->getPosition(),
+            "pot_size" => $table->getPotSize(),
             "mos_hand" => $hero->getImgPaths(),
-            "pot_size" => $table->getPotSize()
+            "mos_pos" => $hero->getPosition(),
+            "mos_stack" => $hero->getStack()
         ];
 
+        $challenge->incrementHandsPlayed();
         return $this->render('poker/play_test.html.twig', $data);
+    }
+
+    #[Route("/game/fold", name: "fold", methods: ['POST'])]
+    public function fold(
+        SessionInterface $session
+    ): Response
+    {
+
+        // $hand = $session->get("pig_dicehand");
+        // $hand->roll();
+
+        // $roundTotal = $session->get("pig_round");
+        // $round = 0;
+        // $values = $hand->getValues();
+        // foreach ($values as $value) {
+        //     if ($value === 1) {
+        //         $this->addFlash(
+        //             'warning',
+        //             'You got a 1 and you lost the round points!'
+        //         );
+        //         $round = 0;
+        //         $roundTotal = 0;
+        //         break;
+        //     }
+        //     $round += $value;
+        // }
+
+        // $session->set("pig_round", $roundTotal + $round);
+        
+        //return $this->redirectToRoute('pig_play');
+        return $this->render('poker/fold_test.html.twig');
+
+    }
+
+    #[Route("/game/call", name: "call", methods: ['POST'])]
+    public function call(
+        SessionInterface $session
+    ): Response
+    {
+        
+        // $hand = $session->get("pig_dicehand");
+        // $hand->roll();
+
+        // $roundTotal = $session->get("pig_round");
+        // $round = 0;
+        // $values = $hand->getValues();
+        // foreach ($values as $value) {
+        //     if ($value === 1) {
+        //         $this->addFlash(
+        //             'warning',
+        //             'You got a 1 and you lost the round points!'
+        //         );
+        //         $round = 0;
+        //         $roundTotal = 0;
+        //         break;
+        //     }
+        //     $round += $value;
+        // }
+
+        // $session->set("pig_round", $roundTotal + $round);
+        
+        //return $this->redirectToRoute('pig_play');
+        return $this->render('poker/call.html.twig');
+
+    }
+
+    #[Route("/game/bet", name: "bet", methods: ['POST'])]
+    public function bet(
+        Request $request,
+        SessionInterface $session
+    ): Response
+    {
+        $betSize = $request->request->get('bet');
+        var_dump($betSize);
+        
+        // $hand = $session->get("pig_dicehand");
+        // $hand->roll();
+
+        // $roundTotal = $session->get("pig_round");
+        // $round = 0;
+        // $values = $hand->getValues();
+        // foreach ($values as $value) {
+        //     if ($value === 1) {
+        //         $this->addFlash(
+        //             'warning',
+        //             'You got a 1 and you lost the round points!'
+        //         );
+        //         $round = 0;
+        //         $roundTotal = 0;
+        //         break;
+        //     }
+        //     $round += $value;
+        // }
+
+        // $session->set("pig_round", $roundTotal + $round);
+        
+        //return $this->redirectToRoute('pig_play');
+        return $this->render('poker/bet.html.twig');
+
     }
 }

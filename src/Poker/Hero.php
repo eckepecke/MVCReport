@@ -19,4 +19,5 @@ class Hero extends Player
     public function getName() : string {
         return $this->name;
     }
+
 }

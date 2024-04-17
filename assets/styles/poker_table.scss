@@ -1,0 +1,66 @@
+.table {
+    //background-image: none;
+    background-color: #0c8306;
+    width: 800px;
+    height: 800px;
+    display:flex;
+    flex-direction: column;
+
+    .pot-box {
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .player-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+
+        .card-box {
+            .card-img{
+                width: 100px;
+                padding-right: 5px;
+                height: auto;
+            }
+        }
+
+        .player-img {
+            width: 150px;
+            height: auto;
+        }
+    }
+
+    .options-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        .fold-button,
+        .call-button,
+        .raise-button {
+            color: #333;
+            background-color: #fff;
+            background-image: linear-gradient(#fff, #eee);
+            border: 1px solid #ccc;
+            text-decoration: none;
+            box-sizing: border-box;
+            display: inline-block;
+            font-family: "Source Sans Pro", sans-serif;
+            font-size: 1.4rem;
+            padding: 0.4rem 1rem;
+            text-align: center;
+            border-radius: 0.2rem;
+            line-height: 1.4;
+        }
+        
+        &:hover {
+            background-color: #ddd;
+            background-image: none;
+        }
+        
+    }
+}
