@@ -90,7 +90,7 @@ class ChallengeDealer extends Dealer
         return $blinds;
     }
 
-    public function randButton() {
+    public function randButton() : void {
         $seats = ["SB", "BB"];
         $position = $seats[rand(0, 1)];
         $this->playerOne->setPosition($position);
@@ -100,4 +100,5 @@ class ChallengeDealer extends Dealer
             $this->playerTwo->setPosition("SB");
         }
     }
+
 }

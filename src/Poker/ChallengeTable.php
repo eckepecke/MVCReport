@@ -35,5 +35,13 @@ class ChallengeTable extends Table
         $this->dealer = $dealer;
     }
 
+    public function getSmallBlind () : int
+    {
+        return $this->smallBlind;
+    }
 
+    public function getBigBlind () : int
+    {
+        return $this->smallBlind;
+    }
 }

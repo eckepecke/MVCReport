@@ -16,6 +16,7 @@ class Dealer
     protected $deck;
     protected $button;
     protected $playerList;
+    protected $priceToPlay;
 
     public function __construct()
     {
@@ -34,5 +35,19 @@ class Dealer
         foreach ($players as $player) {
             $this->playerList[] = $player;
         }
+    }
+
+    public function dealFlop() :array
+    {
+        $flop = $this->deck->drawMany(3);
+        return $flop;
+    }
+
+    public function getPriceToPlay($amountOne, $amountTwo) :int
+    {
+        $biggestAmount = max($amountOne, $amountTwo);
+        $smallestAmount = min($amountOne, $amountTwo);
+
+        return $biggestAmount - $smallestAmount;
     }
 }

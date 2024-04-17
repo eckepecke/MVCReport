@@ -2,8 +2,12 @@
 
 namespace App\Poker;
 
+use App\Poker\StrategyTrait;
+
 class Villain extends Player
 {
+    use StrategyTrait;
+
     private $name;
     private $result;
 

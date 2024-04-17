@@ -34,6 +34,11 @@ class Table
         return $this->potSize;
     }
 
+    public function resetPotSize() : void
+    {
+        $this->potSize = 0;
+    }
+
     public function registerFlop(array $cards) : void
     {
         $this->flop = $cards;
@@ -56,15 +61,15 @@ class Table
 
     public function getStreet() : int
     {
-        return $this->$street;
+        return $this->street;
     }
 
-    public function setNextStreet() : int
+    public function setNextStreet() : void
     {
-        if ($this->$street === 4) {
-            $this->$street = 1;
+        if ($this->street === 4) {
+            $this->street = 1;
         } else {
-            $this->$street += 1;
+            $this->street += 1;
         }
     }
 }

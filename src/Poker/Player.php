@@ -11,6 +11,8 @@ class Player
     protected $position;
     protected $holeCards;
     protected $cardHand;
+    protected $currentBet;
+
 
     public function __construct() {
         $this->stack = 5000;
@@ -25,11 +27,11 @@ class Player
         return $amount;
     }
 
-    public function call(int $villainBet): void {
-        if ($villainBet > $this->stack) {
+    public function call(int $amount): void {
+        if ($amount > $this->stack) {
             $this->stack = 0;
         } else {
-            $this->stack -= $villainBet;
+            $this->stack -= $amount;
         }
     }
 
@@ -84,5 +86,21 @@ class Player
     public function getStack() : int {
         
         return $this->stack;
+    }
+
+    public function takePot(int $chips) : void {
+        $this->stack += $chips;
+    }
+
+    public function setCurrentBet(int $amount) : void {
+        $this->currentBet += $amount;
+    }
+
+    public function resetCurrentBet() : void {
+        $this->currentBet = 0;
+    }
+
+    public function getCurrentBet() : int {
+        return $this->currentBet;
     }
 }
