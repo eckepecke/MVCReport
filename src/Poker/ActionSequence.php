@@ -12,7 +12,35 @@ class ActionSequence
 
     public function __construct()
     {
-        $this->sequence = [];
+        $this->preflopSequence = [];
+        $this->flopSequence = [];
+        $this->turnSequence = [];
+        $this->riverSequence = [];
+
+    }
+
+    public function addAction(int $streetNum, string $action) : void {
+        if ($streetNum === 1) {
+            $this->preflopSequence[] = $action;
+        } elseif ($streetNum === 2){
+            $this->flopSequence[] = $action;
+        }elseif ($streetNum === 3){
+            $this->turnSequence[] = $action;
+        }elseif ($streetNum === 2){
+            $this->riverSequence[] = $action;
+        }
+    }
+
+    public function getCurrentStreetAction(int $streetNum) : array {
+        if ($streetNum === 1) {
+            return $this->preflopSequence;
+        } elseif ($streetNum === 2) {
+            return $this->flopSequence;
+        } elseif ($streetNum === 3) {
+            return $this->turnSequence;
+        } elseif ($streetNum === 4) {
+            return $this->riverSequence;
+        }
     }
 
     public function addPreflopAction(string $action) : void

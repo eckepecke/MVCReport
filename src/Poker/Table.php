@@ -64,12 +64,8 @@ class Table
         return $this->street;
     }
 
-    public function setNextStreet() : void
+    public function setStreet(int $street) : void
     {
-        if ($this->street === 4) {
-            $this->street = 1;
-        } else {
-            $this->street += 1;
-        }
+        $this->street = $street;
     }
 }

@@ -14,6 +14,7 @@ class Hero extends Player
         $this->name = "Mos";
         $this->result = 0;
         $this->position = $position;
+        $this->currentBet = 0;
     }
 
     public function getName() : string {
