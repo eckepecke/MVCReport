@@ -42,12 +42,4 @@ class Dealer
         $flop = $this->deck->drawMany(3);
         return $flop;
     }
-
-    public function getPriceToPlay($amountOne, $amountTwo) :int
-    {
-        $biggestAmount = max($amountOne, $amountTwo);
-        $smallestAmount = min($amountOne, $amountTwo);
-
-        return $biggestAmount - $smallestAmount;
-    }
 }

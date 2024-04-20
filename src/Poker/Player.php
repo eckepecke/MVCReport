@@ -12,32 +12,56 @@ class Player
     protected $holeCards;
     protected $cardHand;
     protected $currentBet;
+    protected $lastAction;
 
 
     public function __construct() {
         $this->stack = 5000;
         $this->hand = [];
+        $this->currentBet = 0;
+
     }
 
-    public function bet(int $amount): int {
-        if ($amount > $this->stack) {
-            $amount = $this->stack;
-        }
-        $this->stack -= $amount;
-        return $amount;
+    public function preflopCall($price) : void
+    {
+        $this->stack -= $price;
+        $this->currentBet += $price;
     }
 
-    public function call(int $amount): void {
-        if ($amount > $this->stack) {
-            $this->stack = 0;
-        } else {
-            $this->stack -= $amount;
-        }
+    public function preflopRaise($smallBlind, $bigBlind) : int
+    {
+        $raiseSize = 3 * $bigBlind;
+        $this->stack -= ($raiseSize - $smallBlind) ;
+        $this->currentBet = $raiseSize;
+
+        return $raiseSize;
     }
 
-    public function raise(int $raiseSize): void {
-        $this->stack -= $raiseSize;
+    public function fold() {
+        $this->hand = [];
+        $this->currentBet = 0;
+
     }
+
+    // public function bet(int $amount): int {
+    //     if ($amount > $this->stack) {
+    //         $amount = $this->stack;
+    //     }
+    //     $this->stack -= $amount;
+    //     return $amount;
+    // }
+
+    // public function call(int $amount): void {
+    //     if ($amount > $this->stack) {
+    //         $this->stack = 0;
+    //     } else {
+    //         $this->stack -= $amount;
+    //     }
+    // }
+
+    // public function raise(int $raiseSize): void {
+    //     $this->stack -= $raiseSize;
+    // }
 
     // public function receiveHoleCards(array $holeCards) : void {
     //     var_dump($holeCards);
@@ -102,5 +126,8 @@ class Player
 
     public function getCurrentBet() : int {
         return $this->currentBet;
+    }
+    public function getLastAction() : int {
+        return $this->lastAction;
     }
 }

@@ -11,7 +11,6 @@ class Table
     protected $fullBoard;
     protected $street;
 
-
     public function __construct() {
         $this->potSize = 0;
         $this->flop = [];
@@ -19,14 +18,11 @@ class Table
         $this->river = "";
         $this->fullBoard = [];
         $this->street = 1;
-
     }
 
-    public function addChipsToPot(array $bets) : void
+    public function addChipsToPot(int $bet) : void
     {
-        foreach ($bets as $bet) {
-            $this->potSize += $bet;
-        }
+        $this->potSize += $bet;
     }
 
     public function getPotSize() : int

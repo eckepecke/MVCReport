@@ -22,6 +22,8 @@ class ChallengeTable extends Table
     private $bigBlind;
     private $smallBlind;
     private $dealer;
+    private $sbPlayer;
+    private $bbPlayer;
 
     public function __construct($small, $big)
     {
@@ -35,6 +37,12 @@ class ChallengeTable extends Table
         $this->dealer = $dealer;
     }
 
+    public function seatPlayers($p1, $p2): void
+    {
+        $this->sbPlayer = $p1;
+        $this->bbPlayer = $p2;
+    }
+
     public function getSmallBlind () : int
     {
         return $this->smallBlind;
@@ -42,6 +50,43 @@ class ChallengeTable extends Table
 
     public function getBigBlind () : int
     {
-        return $this->smallBlind;
+        return $this->bigBlind;
+    }
+
+    public function moveButton() : void
+    {
+        $temp = $this->sbPlayer;
+        $this->sbPlayer = $this->bbPlayer;
+        $this->bbPlayer -> $temp;
+    }
+
+    public function getSbPlayer() : object
+    {
+        return $this->sbPlayer;
+    }
+
+    public function getBbPlayer() : object
+    {
+        return $this->bbPlayer;
+    }
+
+    public function chargeAntes() : void {
+        $this->sbPlayer->payBlind($this->smallBlind);
+        $this->bbPlayer->payBlind($this->bigBlind);
+        $this->sbPlayer->setCurrentBet($this->smallBlind);
+        $this->bbPlayer->SetCurrentBet($this->bigBlind);
+        $this->addChipsToPot($this->smallBlind);
+        $this->addChipsToPot($this->bigBlind);
+    }
+
+    public function getPriceToPlay() :int
+    {
+        $amountOne = $this->bbPlayer->getCurrentBet();
+        $amountTwo = $this->sbPlayer->getCurrentBet();
+
+        $biggestAmount = max($amountOne, $amountTwo);
+        $smallestAmount = min($amountOne, $amountTwo);
+
+        return $biggestAmount - $smallestAmount;
     }
 }

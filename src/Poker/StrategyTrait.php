@@ -7,14 +7,16 @@ namespace App\Poker;
  */
 trait StrategyTrait
 {
-    public function decisionFacingLimp() : string
+    public function randActionRFI() : string
     {
         $options = [
-            "check",
-            "raise"
+            "preflopCall",
+            "preflopRaise",
+            "fold"
         ];
 
-        $decision = $options[rand(0, 1)];
+        $decision = $options[rand(0, 2)];
         return $decision;
     }
+
 }

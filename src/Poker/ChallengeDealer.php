@@ -30,22 +30,22 @@ class ChallengeDealer extends Dealer
         $this->handCount = 0;
     }
 
-    public function moveButton()
-    {
-        $currentPosition = $this->playerOne->getPosition();
-        echo "hej";
-        var_dump($currentPosition);
-        if ($currentPosition === "SB") {
-            $this->playerOne->setPosition("BB");
-            $this->playerTwo->setPosition("SB");
-        } else {
-            $this->playerOne->setPosition("SB");
-            $currentPosition = $this->playerOne->getPosition();
-            var_dump($currentPosition);
-            $this->playerTwo->setPosition("BB");
-        }
+    // public function moveButton()
+    // {
+    //     $currentPosition = $this->playerOne->getPosition();
+    //     echo "hej";
+    //     var_dump($currentPosition);
+    //     if ($currentPosition === "SB") {
+    //         $this->playerOne->setPosition("BB");
+    //         $this->playerTwo->setPosition("SB");
+    //     } else {
+    //         $this->playerOne->setPosition("SB");
+    //         $currentPosition = $this->playerOne->getPosition();
+    //         var_dump($currentPosition);
+    //         $this->playerTwo->setPosition("BB");
+    //     }
 
-    }
+    // }
 
     public function incrementHandsPlayed(): void
     {
@@ -75,20 +75,20 @@ class ChallengeDealer extends Dealer
         $this->playerTwo->receiveCard($fourthCard);
     }
 
-    public function chargeAntes(int $smallBlind, int $bigBlind) : array {
-        $playerOnePos = $this->playerOne->getPosition();
+    // public function chargeAntes(int $smallBlind, int $bigBlind) : array {
+    //     $playerOnePos = $this->playerOne->getPosition();
 
-        if ($playerOnePos === "SB") {
-            $this->playerOne->payBlind($smallBlind);
-            $this->playerTwo->payBlind($bigBlind);
-        } else {
-            $this->playerOne->payBlind($bigBlind);
-            $this->playerTwo->payBlind($smallBlind);
-        }
+    //     if ($playerOnePos === "SB") {
+    //         $this->playerOne->payBlind($smallBlind);
+    //         $this->playerTwo->payBlind($bigBlind);
+    //     } else {
+    //         $this->playerOne->payBlind($bigBlind);
+    //         $this->playerTwo->payBlind($smallBlind);
+    //     }
 
-        $blinds = [$smallBlind, $bigBlind];
-        return $blinds;
-    }
+    //     $blinds = [$smallBlind, $bigBlind];
+    //     return $blinds;
+    // }
 
     public function randButton() : void {
         $seats = ["SB", "BB"];
