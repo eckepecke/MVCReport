@@ -24,6 +24,7 @@ class ChallengeTable extends Table
     private $dealer;
     private $sbPlayer;
     private $bbPlayer;
+    private $minRaise;
 
     public function __construct($small, $big)
     {
@@ -57,7 +58,10 @@ class ChallengeTable extends Table
     {
         $temp = $this->sbPlayer;
         $this->sbPlayer = $this->bbPlayer;
-        $this->bbPlayer -> $temp;
+        $this->bbPlayer = $temp;
+
+        $this->bbPlayer->setPosition("BB");
+        $this->sbPlayer->setPosition("SB");
     }
 
     public function getSbPlayer() : object
@@ -88,5 +92,15 @@ class ChallengeTable extends Table
         $smallestAmount = min($amountOne, $amountTwo);
 
         return $biggestAmount - $smallestAmount;
+    }
+
+    public function getMinimumRaiseAllowed() : int
+    {
+        $amountOne = $this->bbPlayer->getCurrentBet();
+        $amountTwo = $this->sbPlayer->getCurrentBet();
+
+        $biggestAmount = max($amountOne, $amountTwo);
+
+        return 2 * $biggestAmount;
     }
 }

@@ -91,6 +91,7 @@ class Player
 
     public function muckCards() : void {
         $this->hand = [];
+        $this->currentBet = 0;
     }
 
     public function getImgPaths() : array {

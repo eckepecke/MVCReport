@@ -21,6 +21,7 @@
         </div>
         <h4>{{teddy_bet}}</h4>
 
+        <h1>Teddy folded his hand before the flop and you won the pot</h1>
 
         <div class="pot-box">
             <h3>{{pot_size}} dollars is in the pot</h3>
@@ -49,35 +50,12 @@
         <div class="raise-button">
         Raise
         </div> #}
-    <!-- Fold Button -->
-    <form method="post" action="">
-        <input type="submit" name="fold" value="Fold" class="fold-button"
-                onClick="this.form.action='{{ path('fold') }}';">
-    </form>
 
     {# Call Button #}
-    {% if price == 0 %}
-        <form method="post" action="">
-            <input type="submit" name="check" value="Check" class="call-button"
-                onClick="this.form.action='{{ path('check') }}';">
+        <form method="get" action="">
+            <input type="submit" name="next" value="Next Hand" class="call-button"
+                onClick="this.form.action='{{ path('preflop') }}';">
         </form>
-    {% else %}
-        <form method="post" action="">
-            <input type="submit" name="call" value="Call {{ price }}" class="call-button"
-                onClick="this.form.action='{{ path('call') }}';">
-        </form>
-    {% endif %}
-
-
-    <!-- Bet/Raise Button with Number Input -->
-    <form method="post" action="">
-        <button type="submit" name="bet_button" class="raise-button"
-                onClick="this.form.action='{{ path('bet') }}';">Bet/Raise</button>
-        <input type="number" name="bet" value="0" min={{min_raise}} class="bet-input">
-    </form>
-
-        <button type="submit" name="kill_session" class="raise-button"
-        onClick="this.form.action='{{ path('session_delete') }}';">Delete session</button>
 
 
         </div>

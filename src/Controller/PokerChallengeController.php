@@ -125,6 +125,8 @@ class PokerChallengeController extends AbstractController
 
         //preflop flow
         if ($challenge->getHandsPlayed() === 0) {
+            var_dump($table->getSbPlayer()->getName());
+            var_dump($table->getBbPlayer()->getName());
             $dealer->randButton();
         } else {
             $table->moveButton();
@@ -133,9 +135,10 @@ class PokerChallengeController extends AbstractController
         //need to turn these in to small blinds
         $blinds = $table->chargeAntes(25, 50);
         $dealer->dealHoleCards();
-
-        // var_dump($table->getSbPlayer());
-        // var_dump($table->getBbPlayer());
+        echo "SB Player";
+        var_dump($table->getSbPlayer()->getName());
+        echo "BB Player";
+        var_dump($table->getBbPlayer()->getName());
         var_dump($table->getBigBlind());
         if ($table->getSbPlayer() === $villain) {
             $action = $villain->randActionRFI();
@@ -155,19 +158,22 @@ class PokerChallengeController extends AbstractController
                 echo "Fold";
 
                 $villain->fold();
+                $hero->muckCards();
                 $hero->takePot($table->getPotSize());
-            }
-        }
 
-        $heroBet = $hero->getCurrentBet();
-        $villainBet = $villain->getCurrentBet();
+        
+                $data = $this->getSessionVariables($session);
+                return $this->render('poker/teddy_fold.html.twig', $data);
+
+
+            }
 
         $data = $this->getSessionVariables($session);
-
         return $this->render('poker/test.html.twig', $data);
     }
+}
 
-
+    
 
 
     #[Route("/game/hero_action", name: "hero_action", methods: ['POST'])]
@@ -355,6 +361,7 @@ class PokerChallengeController extends AbstractController
             "teddy_bet" => $villain->getCurrentBet(),
             "mos_bet" => $hero->getCurrentBet(),
             "price" => $table->getPriceToPlay(),
+            "min_raise" => $table->getMinimumRaiseAllowed(),
         ];
     }
     
