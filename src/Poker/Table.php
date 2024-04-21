@@ -55,6 +55,22 @@ class Table
         $this->fullBoard[] = $river;
     }
 
+    public function getFlop() : array
+    {
+        return $this->flop;
+    }
+
+    public function getTurn() : array
+    {
+        return $this->turn;
+    }
+
+    public function getRiver() : array
+    {
+        return $this->river;
+    }
+
+
     public function getBoard() : array
     {
         return $this->fullBoard;

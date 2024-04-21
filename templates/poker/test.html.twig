@@ -19,7 +19,9 @@
                 <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
             </div>
         </div>
-        <h4>{{teddy_bet}}</h4>
+        {% if teddy_bet != 0 %}
+            <h4> Bet: {{ teddy_bet }}</h4>
+        {% endif %}
 
         <div class="board-box">
             {% for img in board %}
@@ -30,10 +32,10 @@
 
         <div class="pot-box">
             <h3>{{pot_size}} dollars is in the pot</h3>
-        <h4>{{price}}</h4>
-            
         </div>
-        <h4>{{mos_bet}}</h4>
+        {% if mos_bet != 0 %}
+            <h4> Bet: {{ mos_bet }}</h4>
+        {% endif %}
 
         <div class="player-box">
             <img class="player-img" src="{{ asset('build/images/good_hand.png') }}" alt="me">

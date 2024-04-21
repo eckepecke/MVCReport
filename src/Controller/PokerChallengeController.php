@@ -40,14 +40,19 @@ class PokerChallengeController extends AbstractController
             return $this->render('poker/end_game.html.twig');
         }
         
-        $dealer->moveButton();
+        $table->moveButton();
+        $table->moveButton();
+
         $deck->shuffleDeck();
         //need to turn these in to small blinds
         $blinds = $table->chargeAntes(25, 50);
         $dealer->dealHoleCards();
 
 
+
+
         $action = "preflopCall";
+
 
 
         if ($table->getSbPlayer() === $villain) {
@@ -191,7 +196,7 @@ class PokerChallengeController extends AbstractController
             return $this->render('poker/end_game.html.twig');
         }
         
-        $dealer->moveButton();
+        $table->moveButton();
         $deck->shuffleDeck();
         //need to turn these in to small blinds
         $blinds = $table->chargeAntes(25, 50);
@@ -356,21 +361,30 @@ class PokerChallengeController extends AbstractController
         $villain = $session->get("villain");
         $hero = $session->get("hero");
 
+        $hero->resetCurrentBet();
+        $villain->resetCurrentBet();
+        var_dump($table->getStreet());
+
         $street = $table->getStreet();
         $heroPos = $hero->getPosition();
 
         if ($street === 4) {
             $table->incrementStreet();
+            echo "incrementing";
+
             return $this->render('poker/showdown.html.twig');
         }
 
         if ($heroPos === "SB" || ($heroPos === "BB" && $street === 1)) {
             $table->incrementStreet();
+            echo "incrementing";
         }
 
         $street = $table->getStreet();
+        echo "below";
+        var_dump($table->getFlop());
 
-        if ($street === 2) {
+        if ($street === 2 && ($table->getFlop() === [])) {
             echo "hello 2";
             $flop = $dealer->dealFlop();
             $table->registerFlop($flop);
@@ -388,7 +402,7 @@ class PokerChallengeController extends AbstractController
             $table->registerRiver($river);
         }
 
-        if ($villain->getPosition() === "BB"){
+        if ($villain->getPosition() === "SB"){
             // $action = $villain->actionVsCheck();
             $action = "bet";
             if ($action === "check") {

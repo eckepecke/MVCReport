@@ -48,6 +48,8 @@ class Player
             $amount = $this->stack;
         }
         $this->stack -= $amount;
+        $this->currentBet = $amount;
+
         return $amount;
     }
 
