@@ -37,9 +37,15 @@ class Dealer
         }
     }
 
-    public function dealFlop() :array
+    public function dealFlop() : array
     {
         $flop = $this->deck->drawMany(3);
         return $flop;
+    }
+
+    public function dealOne() : object
+    {
+        $card = $this->deck->drawOne();
+        return $card;
     }
 }

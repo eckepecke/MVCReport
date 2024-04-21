@@ -21,6 +21,12 @@
         </div>
         <h4>{{teddy_bet}}</h4>
 
+        <div class="board-box">
+            {% for img in board %}
+                <img class="community-card" src="{{ asset('build/images/' ~ img) }}" alt="card">
+            {% endfor %}
+        </div>
+
 
         <div class="pot-box">
             <h3>{{pot_size}} dollars is in the pot</h3>

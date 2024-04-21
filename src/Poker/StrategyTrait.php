@@ -19,4 +19,24 @@ trait StrategyTrait
         return $decision;
     }
 
+
+    public function actionVsCheck() : string
+    {
+
+        $options = [
+            "check",
+            "bet"
+        ];
+
+        //$decision = $options[rand(0, 1)];
+        $decision = $options[1];
+
+        return $decision;
+    }
+
+    public function betVsCheck($potSize) : int
+    {
+        return 0.75 * $potSize;
+    }
+
 }

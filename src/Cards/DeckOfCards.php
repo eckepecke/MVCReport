@@ -75,8 +75,6 @@ class DeckOfCards
             unset($this->cards[$index]);
         } else {
             $length = count($this->cards);
-            var_dump(rand(0, $length - 1));
-
             $randIndex = rand(0, $length - 1);
             $card = $this->cards[$randIndex];
             unset($this->cards[$randIndex]);

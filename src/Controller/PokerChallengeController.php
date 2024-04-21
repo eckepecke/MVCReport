@@ -22,6 +22,69 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PokerChallengeController extends AbstractController
 {
+
+    #[Route("/test", name: "test", methods: ['GET'])]
+    public function test(
+        SessionInterface $session
+    ): Response
+    {
+        $challenge = $session->get("challenge");
+        $hero = $session->get("hero");
+        $villain = $session->get("villain");
+        $table = $session->get("table");
+        $dealer = $session->get("dealer");
+        $deck = $session->get("deck");
+        $actionSequence = $session->get("action_sequence");
+
+        if ($challenge->challengeComplete()) {
+            return $this->render('poker/end_game.html.twig');
+        }
+        
+        $dealer->moveButton();
+        $deck->shuffleDeck();
+        //need to turn these in to small blinds
+        $blinds = $table->chargeAntes(25, 50);
+        $dealer->dealHoleCards();
+
+
+        $action = "preflopCall";
+
+
+        if ($table->getSbPlayer() === $villain) {
+            /////////////////////////////////////
+
+            ////////////////////////////////////
+            // $action = $villain->randActionRFI();
+            // var_dump($action);
+
+            if ($action === "preflopRaise"){
+                echo "raise";
+
+                $raise = $villain->$action($table->getSmallBlind(), $table->getBigBlind());
+                $table->addChipsToPot(($raise - $table->getSmallBlind()));
+
+            } elseif($action === "preflopCall") {
+                echo "Call";
+                $chipAmount = $table->getPriceToPlay();
+                $villain->$action($chipAmount);
+                $table->addChipsToPot($chipAmount);
+
+            } else {
+                echo "Fold";
+                $villain->fold();
+                $hero->muckCards();
+                $hero->takePot($table->getPotSize());
+                $table->resetPotSize();
+                $challenge->incrementHandsPlayed();
+                $data = $this->getSessionVariables($session);
+                return $this->render('poker/teddy_fold.html.twig', $data);
+            }
+    }
+    $data = $this->getSessionVariables($session);
+    //are players allin?
+    
+    return $this->render('poker/test.html.twig', $data);
+}
     #[Route("/poker/session", name: "session")]
     public function sessionCheck(
         SessionInterface $session
@@ -102,7 +165,7 @@ class PokerChallengeController extends AbstractController
         $session->set("deck", $deck);
         $session->set("action_sequence", $actionSequence);
 
-        return $this->redirectToRoute('preflop');
+        return $this->redirectToRoute('test');
     }
 
     #[Route("/preflop", name: "preflop", methods: ['GET'])]
@@ -110,7 +173,7 @@ class PokerChallengeController extends AbstractController
         SessionInterface $session
     ): Response
     {
-
+        $debug = true;
         $challenge = $session->get("challenge");
         $hero = $session->get("hero");
         $villain = $session->get("villain");
@@ -124,23 +187,20 @@ class PokerChallengeController extends AbstractController
         }
 
         //preflop flow
-        if ($challenge->getHandsPlayed() === 0) {
-            var_dump($table->getSbPlayer()->getName());
-            var_dump($table->getBbPlayer()->getName());
-            $dealer->randButton();
-        } else {
-            $table->moveButton();
+        if ($challenge->challengeComplete()) {
+            return $this->render('poker/end_game.html.twig');
         }
+        
+        $dealer->moveButton();
         $deck->shuffleDeck();
         //need to turn these in to small blinds
         $blinds = $table->chargeAntes(25, 50);
         $dealer->dealHoleCards();
-        echo "SB Player";
-        var_dump($table->getSbPlayer()->getName());
-        echo "BB Player";
-        var_dump($table->getBbPlayer()->getName());
-        var_dump($table->getBigBlind());
+
         if ($table->getSbPlayer() === $villain) {
+            /////////////////////////////////////
+
+            ////////////////////////////////////
             $action = $villain->randActionRFI();
             var_dump($action);
 
@@ -149,84 +209,70 @@ class PokerChallengeController extends AbstractController
 
                 $raise = $villain->$action($table->getSmallBlind(), $table->getBigBlind());
                 $table->addChipsToPot(($raise - $table->getSmallBlind()));
+
             } elseif($action === "preflopCall") {
                 echo "Call";
                 $chipAmount = $table->getPriceToPlay();
                 $villain->$action($chipAmount);
                 $table->addChipsToPot($chipAmount);
+
             } else {
                 echo "Fold";
-
                 $villain->fold();
                 $hero->muckCards();
                 $hero->takePot($table->getPotSize());
-
-        
+                $table->resetPotSize();
+                $challenge->incrementHandsPlayed();
                 $data = $this->getSessionVariables($session);
                 return $this->render('poker/teddy_fold.html.twig', $data);
-
-
             }
-
-        $data = $this->getSessionVariables($session);
-        return $this->render('poker/test.html.twig', $data);
     }
+    $data = $this->getSessionVariables($session);
+    //are players allin?
+    
+    return $this->render('poker/test.html.twig', $data);
 }
 
-    
+
+    // #[Route("/flop", name: "flop", methods: ['GET'])]
+    // public function flop(
+    //     SessionInterface $session
+    // ): Response
+    // {
+    //     var_dump($this->challenge);
+    //     $sessionVars = $this->getSessionVariables($session);
+
+    //     $street = 2;
+    //     $challenge = $session->get("challenge");
+    //     $hero = $session->get("hero");
+    //     $villain = $session->get("villain");
+    //     $table = $session->get("table");
+    //     $dealer = $session->get("dealer");
+    //     $deck = $session->get("deck");
+    //     $actionSequence = $session->get("action_sequence");
+
+    //     // if flopaction = []{
+    //     //     $flop = $dealer->dealFlop();
+
+    //     // }
 
 
-    #[Route("/game/hero_action", name: "hero_action", methods: ['POST'])]
-    public function heroAction(
-        Request $request,
-        SessionInterface $session
-    ): Response
-    {
-        $betSize = $request->request->get('bet');
-        var_dump($betSize);
+    //     $heroBet = $hero->getCurrentBet();
+    //     $villainBet = $villain->getCurrentBet();
 
-        return $this->render('poker/check.html.twig');
-    }
-
-    #[Route("/flop", name: "flop", methods: ['GET'])]
-    public function flop(
-        SessionInterface $session
-    ): Response
-    {
-        var_dump($this->challenge);
-        $sessionVars = $this->getSessionVariables($session);
-
-        $street = 2;
-        $challenge = $session->get("challenge");
-        $hero = $session->get("hero");
-        $villain = $session->get("villain");
-        $table = $session->get("table");
-        $dealer = $session->get("dealer");
-        $deck = $session->get("deck");
-        $actionSequence = $session->get("action_sequence");
-
-        // if flopaction = []{
-        //     $flop = $dealer->dealFlop();
-
-        // }
-
-
-        $heroBet = $hero->getCurrentBet();
-        $villainBet = $villain->getCurrentBet();
-
-        $data = [
-            "teddy_hand" => $villain->getImgPaths(),
-            "teddy_stack" =>$villain->getStack(),
-            "teddy_pos" => $villain->getPosition(),
-            "pot_size" => $table->getPotSize(),
-            "mos_hand" => $hero->getImgPaths(),
-            "mos_pos" => $hero->getPosition(),
-            "mos_stack" => $hero->getStack(),
-            "teddy_bet" => $villain->getCurrentBet(),
-            "mos_bet" => $hero->getCurrentBet(),
-            "price" => $dealer->getPriceToPlay($heroBet, $villainBet),
-        ];
-    }
+    //     $data = [
+    //         "teddy_hand" => $villain->getImgPaths(),
+    //         "teddy_stack" =>$villain->getStack(),
+    //         "teddy_pos" => $villain->getPosition(),
+    //         "pot_size" => $table->getPotSize(),
+    //         "mos_hand" => $hero->getImgPaths(),
+    //         "mos_pos" => $hero->getPosition(),
+    //         "mos_stack" => $hero->getStack(),
+    //         "teddy_bet" => $villain->getCurrentBet(),
+    //         "mos_bet" => $hero->getCurrentBet(),
+    //         "price" => $dealer->getPriceToPlay($heroBet, $villainBet),
+    //     ];
+    // }
 
     #[Route("/game/fold", name: "fold", methods: ['POST'])]
     public function fold(
@@ -280,37 +326,6 @@ class PokerChallengeController extends AbstractController
 
     }
 
-    #[Route("/game/call_limp", name: "limp", methods: ['GET'])]
-    public function buttonLimp(
-        Request $request,
-        SessionInterface $session
-    ): Response
-    {
-        $street = 1;
-        $table = $session->get("table");
-        $villain = $session->get("villain");
-        $hero = $session->get("hero");
-        $challenge = $session->get("challenge");
-        $actionSequence = $session->get("action_sequence");
-
-        $villain->resetCurrentBet();
-        $hero->resetCurrentBet();
-        $table->setStreet($street);
-
-        $hero->call($table->getSmallBlind());
-        $action = $villain->decisionFacingLimp();
-        $actionSequence->addAction($street, $action);
-
-        if ($action === "check") {
-            return $this->redirectToRoute('flop');
-        }
-
-        $betSize = 4 * ($table->getPotSize());
-        $villain->bet($betSize);
-        $villain->setCurrentBet($betSize);
-        $table->addChipsToPot($betSize);
-        return $this->redirectToRoute('preflop');
-    }
 
 
     #[Route("/game/bet", name: "bet", methods: ['POST'])]
@@ -332,10 +347,66 @@ class PokerChallengeController extends AbstractController
         SessionInterface $session
     ): Response
     {
-        $betSize = $request->request->get('bet');
-        var_dump($betSize);
 
-        return $this->render('poker/check.html.twig');
+
+
+
+        $table = $session->get("table");
+        $dealer = $session->get("dealer");
+        $villain = $session->get("villain");
+        $hero = $session->get("hero");
+
+        $street = $table->getStreet();
+        $heroPos = $hero->getPosition();
+
+        if ($street === 4) {
+            $table->incrementStreet();
+            return $this->render('poker/showdown.html.twig');
+        }
+
+        if ($heroPos === "SB" || ($heroPos === "BB" && $street === 1)) {
+            $table->incrementStreet();
+        }
+
+        $street = $table->getStreet();
+
+        if ($street === 2) {
+            echo "hello 2";
+            $flop = $dealer->dealFlop();
+            $table->registerFlop($flop);
+        }
+
+        if ($street === 3) {
+            echo "hello 3";
+            $turn = $dealer->dealOne();
+            $table->registerTurn($turn);
+        }
+
+        if ($street === 4) {
+            echo "hello 4";
+            $river = $dealer->dealOne();
+            $table->registerRiver($river);
+        }
+
+        if ($villain->getPosition() === "BB"){
+            // $action = $villain->actionVsCheck();
+            $action = "bet";
+            if ($action === "check") {
+                $table->incrementStreet();
+            } 
+            if ($action === "bet") {
+                echo "betting";
+                $betSize = $villain->betVsCheck($table->getPotSize());
+                $villain->bet($betSize);
+            } 
+        }
+
+        $data = $this->getSessionVariables($session);
+        // var_dump($table->getStreet());
+        // var_dump($table->getBoard());
+
+
+        return $this->render('poker/test.html.twig', $data);
     }
 
     private function getSessionVariables(SessionInterface $session): array
@@ -350,6 +421,8 @@ class PokerChallengeController extends AbstractController
         $deck = $session->get("deck");
         $actionSequence = $session->get("action_sequence");
 
+        $board = $table->getCardImages();
+
         return [
             "teddy_hand" => $villain->getImgPaths(),
             "teddy_stack" =>$villain->getStack(),
@@ -362,6 +435,7 @@ class PokerChallengeController extends AbstractController
             "mos_bet" => $hero->getCurrentBet(),
             "price" => $table->getPriceToPlay(),
             "min_raise" => $table->getMinimumRaiseAllowed(),
+            "board" => $board,
         ];
     }
     

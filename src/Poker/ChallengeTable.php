@@ -41,7 +41,11 @@ class ChallengeTable extends Table
     public function seatPlayers($p1, $p2): void
     {
         $this->sbPlayer = $p1;
+        $this->sbPlayer->setPosition("SB");
+
         $this->bbPlayer = $p2;
+        $this->bbPlayer->setPosition("BB");
+
     }
 
     public function getSmallBlind () : int
@@ -102,5 +106,15 @@ class ChallengeTable extends Table
         $biggestAmount = max($amountOne, $amountTwo);
 
         return 2 * $biggestAmount;
+    }
+
+    public function getCardImages() : array {
+        $imgPaths = [];
+        foreach ($this->fullBoard as $card) {
+            $imgPath = $card->getImgName();
+            $imgPaths[] = $imgPath;
+        }
+        
+        return $imgPaths;
     }
 }

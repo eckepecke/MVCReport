@@ -43,13 +43,13 @@ class Player
 
     }
 
-    // public function bet(int $amount): int {
-    //     if ($amount > $this->stack) {
-    //         $amount = $this->stack;
-    //     }
-    //     $this->stack -= $amount;
-    //     return $amount;
-    // }
+    public function bet(int $amount): int {
+        if ($amount > $this->stack) {
+            $amount = $this->stack;
+        }
+        $this->stack -= $amount;
+        return $amount;
+    }
 
     // public function call(int $amount): void {
     //     if ($amount > $this->stack) {

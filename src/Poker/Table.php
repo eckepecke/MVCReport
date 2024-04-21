@@ -43,16 +43,21 @@ class Table
         }
     }
 
-    public function registerTurn(string $turn) : void
+    public function registerTurn(object $turn) : void
     {
         $this->turn = $turn;
         $this->fullBoard[] = $turn;
     }
 
-    public function registerRiver(string $river) : void
+    public function registerRiver(object $river) : void
     {
         $this->river = $river;
         $this->fullBoard[] = $river;
+    }
+
+    public function getBoard() : array
+    {
+        return $this->fullBoard;
     }
 
     public function getStreet() : int
@@ -63,5 +68,15 @@ class Table
     public function setStreet(int $street) : void
     {
         $this->street = $street;
+    }
+
+    public function incrementStreet() : void
+    {
+        if ($this->street === 4) {
+            $this->street = 1;
+            return;
+        }
+
+        $this->street += 1;
     }
 }
