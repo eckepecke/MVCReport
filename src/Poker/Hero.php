@@ -20,4 +20,13 @@ class Hero extends Player
         return $this->name;
     }
 
+    public function preflopRaise($raiseSize, $smallBlind) : int
+    {
+        $raiseSize = $raiseSize - $smallBlind;
+        $this->stack -= $raiseSize ;
+        $this->currentBet = $raiseSize;
+
+        return $raiseSize;
+    }
+
 }

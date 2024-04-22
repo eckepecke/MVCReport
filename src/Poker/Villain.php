@@ -24,4 +24,13 @@ class Villain extends Player
     public function getName() : string {
         return $this->name;
     }
+
+    public function preflopRaise($heroBet) : int
+    {
+        $raiseSize = 3 * $heroBet;
+        $this->stack -= ($raiseSize - $this->currentBet) ;
+        $this->currentBet = $raiseSize;
+
+        return $raiseSize;
+    }
 }

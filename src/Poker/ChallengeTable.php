@@ -83,8 +83,6 @@ class ChallengeTable extends Table
         $this->bbPlayer->payBlind($this->bigBlind);
         $this->sbPlayer->setCurrentBet($this->smallBlind);
         $this->bbPlayer->SetCurrentBet($this->bigBlind);
-        $this->addChipsToPot($this->smallBlind);
-        $this->addChipsToPot($this->bigBlind);
     }
 
     public function getPriceToPlay() :int

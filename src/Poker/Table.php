@@ -14,8 +14,8 @@ class Table
     public function __construct() {
         $this->potSize = 0;
         $this->flop = [];
-        $this->turn = "";
-        $this->river = "";
+        $this->turn = [];
+        $this->river = [];
         $this->fullBoard = [];
         $this->street = 1;
     }
@@ -45,13 +45,13 @@ class Table
 
     public function registerTurn(object $turn) : void
     {
-        $this->turn = $turn;
+        $this->turn[] = $turn;
         $this->fullBoard[] = $turn;
     }
 
     public function registerRiver(object $river) : void
     {
-        $this->river = $river;
+        $this->river[] = $river;
         $this->fullBoard[] = $river;
     }
 
@@ -94,5 +94,14 @@ class Table
         }
 
         $this->street += 1;
+    }
+
+    public function cleanTable() {
+        $this->potSize = 0;
+        $this->flop = [];
+        $this->turn = [];
+        $this->river = [];
+        $this->fullBoard = [];
+        $this->street = 1;
     }
 }

@@ -22,7 +22,6 @@ trait StrategyTrait
 
     public function actionVsCheck() : string
     {
-
         $options = [
             "check",
             "bet"
@@ -37,6 +36,23 @@ trait StrategyTrait
     public function betVsCheck($potSize) : int
     {
         return 0.75 * $potSize;
+    }
+
+    public function actionFacingBet() : string
+    {
+        // if $this->hand === "AA"{
+        //     return "raise"
+        // }
+        $options = [
+            "fold",
+            "call",
+            "raise"
+        ];
+
+        //$decision = $options[rand(0, 1)];
+        $decision = $options[rand(0, 2)];
+
+        return $decision;
     }
 
 }

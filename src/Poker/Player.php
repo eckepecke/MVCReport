@@ -25,17 +25,17 @@ class Player
     public function preflopCall($price) : void
     {
         $this->stack -= $price;
-        $this->currentBet += $price;
+        $this->currentBet = 0;
     }
 
-    public function preflopRaise($smallBlind, $bigBlind) : int
-    {
-        $raiseSize = 3 * $bigBlind;
-        $this->stack -= ($raiseSize - $smallBlind) ;
-        $this->currentBet = $raiseSize;
+    // public function preflopRaise($smallBlind, $bigBlind) : int
+    // {
+    //     $raiseSize = (3 * $bigBlind) - $smallBlind;
+    //     $this->stack -= ($raiseSize - $smallBlind) ;
+    //     $this->currentBet = $raiseSize;
 
-        return $raiseSize;
-    }
+    //     return $raiseSize;
+    // }
 
     public function fold() {
         $this->hand = [];
@@ -53,13 +53,13 @@ class Player
         return $amount;
     }
 
-    // public function call(int $amount): void {
-    //     if ($amount > $this->stack) {
-    //         $this->stack = 0;
-    //     } else {
-    //         $this->stack -= $amount;
-    //     }
-    // }
+    public function call(int $amount): void {
+        if ($amount > $this->stack) {
+            $this->stack = 0;
+        } else {
+            $this->stack -= $amount;
+        }
+    }
 
     // public function raise(int $raiseSize): void {
     //     $this->stack -= $raiseSize;
