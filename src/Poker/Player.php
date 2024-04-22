@@ -28,13 +28,11 @@ class Player
         $this->currentBet = 0;
     }
 
-    // public function preflopRaise($smallBlind, $bigBlind) : int
+    // public function preflop3bet($amount, $bigBlind) : void
     // {
     //     $raiseSize = (3 * $bigBlind) - $smallBlind;
     //     $this->stack -= ($raiseSize - $smallBlind) ;
     //     $this->currentBet = $raiseSize;
-
-    //     return $raiseSize;
     // }
 
     public function fold() {
@@ -43,14 +41,25 @@ class Player
 
     }
 
-    public function bet(int $amount): int {
+    // public function bet(int $amount): int {
+    //     if ($amount > $this->stack) {
+    //         $amount = $this->stack;
+    //     }
+    //     $this->stack -= $amount;
+    //     $this->currentBet = $amount;
+
+    //     return $amount;
+    // }
+
+
+    public function bet(int $amount): void {
+        //Fixa to dlist note här imorgon
+
         if ($amount > $this->stack) {
             $amount = $this->stack;
         }
-        $this->stack -= $amount;
+        $this->stack -= $amount - $this->currentBet;
         $this->currentBet = $amount;
-
-        return $amount;
     }
 
     public function call(int $amount): void {

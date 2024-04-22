@@ -6,16 +6,16 @@ class Table
 {
     protected $potSize;
     protected $flop;
-    protected $turn;
-    protected $river;
+    // protected $turn;
+    // protected $river;
     protected $fullBoard;
     protected $street;
 
     public function __construct() {
         $this->potSize = 0;
         $this->flop = [];
-        $this->turn = [];
-        $this->river = [];
+        // $this->turn = [];
+        // $this->river = [];
         $this->fullBoard = [];
         $this->street = 1;
     }
@@ -43,17 +43,22 @@ class Table
         }
     }
 
-    public function registerTurn(object $turn) : void
+    // public function registerTurn(object $turn) : void
+    // {
+    //     $this->turn[] = $turn;
+    //     $this->fullBoard[] = $turn;
+    // }
+
+    public function registerOne(object $card) : void
     {
-        $this->turn[] = $turn;
-        $this->fullBoard[] = $turn;
+        $this->fullBoard[] = $card;
     }
 
-    public function registerRiver(object $river) : void
-    {
-        $this->river[] = $river;
-        $this->fullBoard[] = $river;
-    }
+    // public function registerRiver(object $river) : void
+    // {
+    //     $this->river[] = $river;
+    //     $this->fullBoard[] = $river;
+    // }
 
     public function getFlop() : array
     {
@@ -62,12 +67,12 @@ class Table
 
     public function getTurn() : array
     {
-        return $this->turn;
+        return $this->fullBoard[3] ?? [];
     }
 
     public function getRiver() : array
     {
-        return $this->river;
+        return $this->fullBoard[4] ?? [];
     }
 
 
@@ -88,12 +93,14 @@ class Table
 
     public function incrementStreet() : void
     {
+        echo $this->street;
         if ($this->street === 4) {
             $this->street = 1;
             return;
         }
 
         $this->street += 1;
+        echo $this->street;
     }
 
     public function cleanTable() {
