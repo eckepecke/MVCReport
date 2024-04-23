@@ -33,24 +33,28 @@ class Challenge
         $this->handsPlayed += 1;
     }
 
-    public function challengeComplete(): bool 
+    public function challengeComplete(): bool
     {
         return $this->handsPlayed === $this->duration;
     }
 
-    public function getDuration(): int {
+    public function getDuration(): int
+    {
         return $this->duration;
     }
 
-    public function getHandsPlayed(): int {
+    public function getHandsPlayed(): int
+    {
         return $this->handsPlayed;
     }
 
-    public function getHeroName(): string {
+    public function getHeroName(): string
+    {
         return $this->hero->getName();
     }
 
-    public function getVillainName(): string {
+    public function getVillainName(): string
+    {
         return $this->villain->getName();
     }
 }

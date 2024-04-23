@@ -13,7 +13,6 @@ use App\Cards\CardHand;
 
 use App\Cards\DeckOfCards;
 
-
 class ChallengeDealer extends Dealer
 {
     private $playerOne;
@@ -90,7 +89,8 @@ class ChallengeDealer extends Dealer
     //     return $blinds;
     // }
 
-    public function randButton() : void {
+    public function randButton(): void
+    {
         $seats = ["SB", "BB"];
         $position = $seats[rand(0, 1)];
         $this->playerOne->setPosition($position);
@@ -101,7 +101,8 @@ class ChallengeDealer extends Dealer
         }
     }
 
-    public function playersAllIn() {
+    public function playersAllIn()
+    {
         $playerOneStackIsEmpty = $this->playerOne->getStack() === 0;
         $playerTwoStackIsEmpty = $this->playerTwo->getStack() === 0;
 

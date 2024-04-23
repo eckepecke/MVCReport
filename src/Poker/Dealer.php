@@ -10,7 +10,6 @@ use App\Poker\Challenge;
 
 use App\Cards\DeckOfCards;
 
-
 class Dealer
 {
     protected $deck;
@@ -37,19 +36,19 @@ class Dealer
         }
     }
 
-    public function dealFlop() : array
+    public function dealFlop(): array
     {
         $flop = $this->deck->drawMany(3);
         return $flop;
     }
 
-    public function dealOne() : object
+    public function dealOne(): object
     {
         $card = $this->deck->drawOne();
         return $card;
     }
 
-    public function dealRemaining(array $board) : array
+    public function dealRemaining(array $board): array
     {
         $remaining = 5 - count($board);
         echo "remaining: $remaining";

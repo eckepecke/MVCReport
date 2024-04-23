@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Poker Challenge{% endblock %}
+
+
+{% block body %}
+
+
+    <div class="table">
+
+        <h3>{{teddy_stack}} USD</h3>
+        <h4>{{teddy_pos}}</h4>
+        <div class="player-box">
+            <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me">
+
+            <div class="card-box">
+            {% for img in teddy_hand %}
+                <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
+            </div>
+        </div>
+
+        <div class="board-box">
+            {% for img in board %}
+                <img class="community-card" src="{{ asset('build/images/' ~ img) }}" alt="card">
+            {% endfor %}
+        </div>
+        <h4>{{teddy_hand_strength}}</h4>
+
+        <div class="pot-box">
+            <h3>{{pot_size}} dollars is in the pot</h3>
+        </div>
+            <h3>{{ winner }} takes the{{pot_size}} pot </h3>
+
+
+
+        <h4>{{mos_hand_strength}}</h4>
+        <div class="player-box">
+            <img class="player-img" src="{{ asset('build/images/good_hand.png') }}" alt="me">
+
+            <div class="card-box">
+            {% for img in mos_hand %}
+                <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
+            </div>
+        </div>
+        <h3>{{mos_stack}} USD</h3>
+        <h4>{{mos_pos}}</h4>
+
+        <div class="options-box">
+        <form method="get" action="">
+            <input type="submit" name="next" value="Next Hand" class="call-button"
+                onClick="this.form.action='{{ path('preflop') }}';">
+        </form>
+
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

@@ -7,7 +7,7 @@ namespace App\Poker;
  */
 trait StrategyTrait
 {
-    public function randActionRFI() : string
+    public function randActionRFI(): string
     {
         $options = [
             "preflopCall",
@@ -20,7 +20,7 @@ trait StrategyTrait
     }
 
 
-    public function actionVsCheck() : string
+    public function actionVsCheck(): string
     {
         $options = [
             "check",
@@ -33,12 +33,12 @@ trait StrategyTrait
         return $decision;
     }
 
-    public function betVsCheck($potSize) : int
+    public function betVsCheck($potSize): float
     {
         return 0.75 * $potSize;
     }
 
-    public function actionFacingBet() : string
+    public function actionFacingBet(): string
     {
         // if $this->hand === "AA"{
         //     return "raise"

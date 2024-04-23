@@ -11,26 +11,24 @@ class Villain extends Player
     private $name;
     private $result;
 
-    public function __construct() {
+    public function __construct()
+    {
 
         parent::__construct();
 
         $this->name = "Teddy KGB";
         $this->result = 0;
         $this->currentBet = 0;
-        
+
     }
 
-    public function getName() : string {
+    public function getName(): string
+    {
         return $this->name;
     }
 
-    public function raise($heroBet) : int
+    public function raise($heroBet): int
     {
-
-        // if($heroBet > $this->stack) {
-        //     $this->call($heroBet)
-        // }
         $raiseSize = 3 * $heroBet;
         if ($raiseSize > $this->stack) {
             $raiseSize = $this->stack;

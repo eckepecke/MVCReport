@@ -7,7 +7,8 @@ class Hero extends Player
     private $name;
     private $result;
 
-    public function __construct() {
+    public function __construct()
+    {
 
         parent::__construct();
 
@@ -16,11 +17,12 @@ class Hero extends Player
         $this->currentBet = 0;
     }
 
-    public function getName() : string {
+    public function getName(): string
+    {
         return $this->name;
     }
 
-    public function preflopRaise($raiseSize, $smallBlind) : int
+    public function preflopRaise($raiseSize, $smallBlind): int
     {
         $raiseSize = $raiseSize - $smallBlind;
         $this->stack -= $raiseSize ;

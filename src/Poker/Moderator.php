@@ -16,7 +16,8 @@ class Moderator
         $this->handsPlayed += 1;
     }
 
-    public function getDuration(): int {
+    public function getDuration(): int
+    {
         return $this->duration;
     }
 

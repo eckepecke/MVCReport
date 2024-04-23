@@ -19,19 +19,21 @@ class ActionSequence
 
     }
 
-    public function addAction(int $streetNum, string $action) : void {
+    public function addAction(int $streetNum, string $action): void
+    {
         if ($streetNum === 1) {
             $this->preflopSequence[] = $action;
-        } elseif ($streetNum === 2){
+        } elseif ($streetNum === 2) {
             $this->flopSequence[] = $action;
-        }elseif ($streetNum === 3){
+        } elseif ($streetNum === 3) {
             $this->turnSequence[] = $action;
-        }elseif ($streetNum === 2){
+        } elseif ($streetNum === 2) {
             $this->riverSequence[] = $action;
         }
     }
 
-    public function getCurrentStreetAction(int $streetNum) : array {
+    public function getCurrentStreetAction(int $streetNum): array
+    {
         if ($streetNum === 1) {
             return $this->preflopSequence;
         } elseif ($streetNum === 2) {
@@ -43,22 +45,22 @@ class ActionSequence
         }
     }
 
-    public function addPreflopAction(string $action) : void
+    public function addPreflopAction(string $action): void
     {
         $this->preflopSequence[] = $action;
     }
 
-    public function addFlopAction(string $action) : void
+    public function addFlopAction(string $action): void
     {
         $this->flopSequence[] = $action;
     }
 
-    public function addTurnAction(string $action) : void
+    public function addTurnAction(string $action): void
     {
         $this->turnSequence[] = $action;
     }
 
-    public function addRiverAction(string $action) : void
+    public function addRiverAction(string $action): void
     {
         $this->riverSequence[] = $action;
     }

@@ -15,14 +15,15 @@ class Player
     protected $lastAction;
 
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->stack = 5000;
         $this->hand = [];
         $this->currentBet = 0;
 
     }
 
-    public function preflopCall($price) : void
+    public function preflopCall($price): void
     {
         $this->stack -= $price;
         $this->currentBet = 0;
@@ -35,7 +36,8 @@ class Player
     //     $this->currentBet = $raiseSize;
     // }
 
-    public function fold() {
+    public function fold()
+    {
         $this->hand = [];
         $this->currentBet = 0;
 
@@ -52,7 +54,8 @@ class Player
     // }
 
 
-    public function bet(int $amount): void {
+    public function bet(int $amount): void
+    {
         //Fixa to dlist note här imorgon
 
         if ($amount > $this->stack) {
@@ -60,12 +63,15 @@ class Player
             $this->stack = 0;
 
         } else {
+            //$this->stack -= $amount - $this->currentBet;
             $this->stack -= $amount - $this->currentBet;
+
         }
         $this->currentBet = $amount;
     }
 
-    public function call(int $amount): void {
+    public function call(int $amount): void
+    {
         if ($amount > $this->stack) {
             $amount = $this->stack;
             $this->stack -= $amount;
@@ -91,59 +97,71 @@ class Player
         $this->hand[] = $card;
     }
 
-    public function getPosition() : string {
+    public function getPosition(): string
+    {
         return $this->position;
     }
 
-    public function setPosition(string $position) : void {
+    public function setPosition(string $position): void
+    {
         $this->position = $position;
     }
 
-    public function getHoleCards() : array {
-        
+    public function getHoleCards(): array
+    {
+
         return $this->hand;
     }
 
-    public function muckCards() : void {
+    public function muckCards(): void
+    {
         $this->hand = [];
         $this->currentBet = 0;
     }
 
-    public function getImgPaths() : array {
+    public function getImgPaths(): array
+    {
         $imgPaths = [];
         foreach ($this->hand as $card) {
             $imgPath = $card->getImgName();
             $imgPaths[] = $imgPath;
         }
-        
+
         return $imgPaths;
     }
 
-    public function payBlind(int $blind) : void {
+    public function payBlind(int $blind): void
+    {
         $this->stack -= $blind;
     }
 
-    public function getStack() : int {
-        
+    public function getStack(): int
+    {
+
         return $this->stack;
     }
 
-    public function takePot(int $chips) : void {
+    public function takePot(int $chips): void
+    {
         $this->stack += $chips;
     }
 
-    public function setCurrentBet(int $amount) : void {
+    public function setCurrentBet(int $amount): void
+    {
         $this->currentBet += $amount;
     }
 
-    public function resetCurrentBet() : void {
+    public function resetCurrentBet(): void
+    {
         $this->currentBet = 0;
     }
 
-    public function getCurrentBet() : int {
+    public function getCurrentBet(): int
+    {
         return $this->currentBet;
     }
-    public function getLastAction() : int {
+    public function getLastAction(): int
+    {
         return $this->lastAction;
     }
 }
