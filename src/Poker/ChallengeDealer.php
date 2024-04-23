@@ -101,4 +101,15 @@ class ChallengeDealer extends Dealer
         }
     }
 
+    public function playersAllIn() {
+        $playerOneStackIsEmpty = $this->playerOne->getStack() === 0;
+        $playerTwoStackIsEmpty = $this->playerTwo->getStack() === 0;
+
+        if ($playerOneStackIsEmpty || $playerTwoStackIsEmpty) {
+            return true;
+        }
+
+        return false;
+    }
+
 }

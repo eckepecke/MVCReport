@@ -56,15 +56,19 @@ class Player
         //Fixa to dlist note här imorgon
 
         if ($amount > $this->stack) {
-            $amount = $this->stack;
+            $amount = $this->stack + $this->currentBet;
+            $this->stack = 0;
+
+        } else {
+            $this->stack -= $amount - $this->currentBet;
         }
-        $this->stack -= $amount - $this->currentBet;
         $this->currentBet = $amount;
     }
 
     public function call(int $amount): void {
         if ($amount > $this->stack) {
-            $this->stack = 0;
+            $amount = $this->stack;
+            $this->stack -= $amount;
         } else {
             $this->stack -= $amount;
         }

@@ -27,10 +27,14 @@ class Villain extends Player
 
     public function raise($heroBet) : int
     {
+
+        // if($heroBet > $this->stack) {
+        //     $this->call($heroBet)
+        // }
         $raiseSize = 3 * $heroBet;
         if ($raiseSize > $this->stack) {
             $raiseSize = $this->stack;
-            $this->currentBet = $raiseSize;
+            $this->currentBet = $this->stack + $this->currentBet;
             $this->stack -= $raiseSize;
 
             return $raiseSize;

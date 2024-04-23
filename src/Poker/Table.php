@@ -35,7 +35,7 @@ class Table
         $this->potSize = 0;
     }
 
-    public function registerFlop(array $cards) : void
+    public function registerMany(array $cards) : void
     {
         $this->flop = $cards;
         foreach ($cards as $card) {
@@ -65,12 +65,12 @@ class Table
         return $this->flop;
     }
 
-    public function getTurn() : array
+    public function getTurn() : object
     {
         return $this->fullBoard[3] ?? [];
     }
 
-    public function getRiver() : array
+    public function getRiver() : object
     {
         return $this->fullBoard[4] ?? [];
     }

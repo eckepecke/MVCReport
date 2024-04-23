@@ -286,6 +286,7 @@ class PokerChallengeController extends AbstractController
         $villain = $session->get("villain");
         $hero = $session->get("hero");
 
+
         $villainBet = $villain->getCurrentBet();
         $heroBet = $hero->getCurrentBet();
 
@@ -310,13 +311,26 @@ class PokerChallengeController extends AbstractController
         $villain->resetCurrentBet();
         $hero->resetCurrentBet();
 
+        if($dealer->playersAllIn()) {
+            $board = $table->getBoard();
+            $cards = $dealer->dealRemaining($board);
+            $table->registerMany($cards);
+
+            $data = $this->getSessionVariables($session);
+            //this should be showdoen route later
+            return $this->render('poker/test.html.twig', $data);
+        }
+
         $street = $table->getStreet();
+
+
+
 
         if ($street === 1) {
             echo "hero preflop call v r";
             
             $flop = $dealer->dealFlop();
-            $table->registerFlop($flop);
+            $table->registerMany($flop);
             $table->incrementStreet();
             var_dump($table->getStreet());
 
@@ -388,7 +402,14 @@ class PokerChallengeController extends AbstractController
             return $this->redirectToRoute('call');
         }
 
-        $villain->raise($heroBet);
+        if($heroBet > $villain->getStack()) {
+            echo "teddy calling";
+            //$villain->call($heroBet);
+            return $this->redirectToRoute('call');
+        } else {
+            echo "teddy raising";
+            $villain->raise($heroBet);
+        }
 
         $data = $this->getSessionVariables($session);
         return $this->render('poker/test.html.twig', $data);
