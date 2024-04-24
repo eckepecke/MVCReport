@@ -71,45 +71,10 @@ class HandChecker
             $suits[] = $cardSuit;
         }
 
-        // var_dump($ranks);
-        // var_dump($suits);
-        // echo "handovan";
-
-
-
         $rankCounts = array_count_values($ranks);
-        $maxRank = max(array_keys($rankCounts));
-        $minRank = min(array_keys($rankCounts));
-        $numRanks = count($rankCounts);
-        $maxFrequency = max($rankCounts);
-        $maxFrequencyRank = array_search($maxFrequency, $rankCounts);
-
-
-
-        // var_dump($rankCounts);
-        // var_dump($maxRank);
-        //var_dump($numRanks);
-        // var_dump($maxFrequency);
-        // var_dump($maxFrequencyRank);
-
-
-        // var_dump($minRank);
-        //var_dump($numRanks);
-
-
-        //echo "value ovan";
-
 
         $suitsCount = array_count_values($suits);
-        $numSuits = count($suitsCount);
         $maxSameSuitCount = max($suitsCount);
-        // var_dump($suitsCount);
-        // var_dump($numSuits);
-        // var_dump($maxSameSuitCount);
-        //$minRank = min(array_keys($rankCounts));
-
-        //echo "suit ovan";
-
         $isStraight = false;
         $isFlush = false;
 
@@ -117,7 +82,6 @@ class HandChecker
         if ($maxSameSuitCount >= 5) {
             $isFlush = true;
             $this->strengthArray['Flush'] = true;
-            //echo "hand has flush";
         }
 
         // Check for straight
@@ -126,51 +90,43 @@ class HandChecker
         if ($straight !== []) {
             $isStraight = true;
             $this->strengthArray['Straight'] = true;
-            //echo "true";
             $upperEndCard = max($straight);
         }
-        //var_dump($straight);
 
         // Check for straight flush and royal flush
         if ($isStraight && $isFlush) {
+
+            $this->strengthArray['Straight flush'] = true;
+
             if ($upperEndCard === 14) {
                 $this->strengthArray['Royal flush'] = true;
-                //echo "Royal Flush";
-            } else {
-                $this->strengthArray['Straight flush'] = true;
-                //echo "Straight Flush";
-            }
+            } 
         }
 
 
         // Check for four of a kind
         if (in_array(4, $rankCounts)) {
             $this->strengthArray['Four of a kind'] = true;
-            //echo "Four of a Kind";
         }
 
         // Check for full house
         if (in_array(3, $rankCounts) && in_array(2, $rankCounts)) {
             $this->strengthArray['Full House'] = true;
-            //echo "Full House";
         }
 
         // Check for flush
         if ($isFlush) {
             $this->strengthArray['Flush'] = true;
-            //echo "Flush";
         }
 
         // Check for straight
         if ($isStraight) {
             $this->strengthArray['Straight'] = true;
-            //echo "Straight";
         }
 
         // Check for three of a kind
         if (in_array(3, $rankCounts)) {
             $this->strengthArray['Three of a kind'] = true;
-            //echo "Three of a Kind";
         }
 
         // Check for two pair
@@ -184,19 +140,11 @@ class HandChecker
         if ($pairCount >= 2) {
             // Two pairs exist
             $this->strengthArray['Two pair'] = true;
-            //echo "Two pairs found!";
-        } else {
-            // Two pairs do not exist
-            //echo "No two pairs found!";
         }
         if ($pairCount > 0 && $pairCount < 2) {
             $this->strengthArray['One pair'] = true;
-            //echo "one pair";
-
         }
         $this->strengthArray['High card'] = true;
-        //echo "High Card";
-        //var_dump($this->strengthArray);
         return $this->strengthArray;
     }
 
@@ -249,17 +197,18 @@ class HandChecker
     {
         $heroStrength = $hero->getStrength();
         $villainStrength = $villain->getStrength();
+
+        $heroValue = 10;
+
         if (array_key_exists($heroStrength, $this->strengthMapping)) {
             $heroValue = $this->strengthMapping[$heroStrength];
-        } else {
-            $heroValue = 10;
-        }
+        } 
+
+        $villainValue = 10;
 
         if (array_key_exists($villainStrength, $this->strengthMapping)) {
             $villainValue = $this->strengthMapping[$villainStrength];
-        } else {
-            $villainValue = 10;
-        }
+        } 
         var_dump($heroValue);
         var_dump($villainValue);
 

@@ -103,10 +103,10 @@ class ChallengeDealer extends Dealer
 
     public function playersAllIn() :bool
     {
-        $playerOneStackIsEmpty = $this->playerOne->getStack() === 0;
-        $playerTwoStackIsEmpty = $this->playerTwo->getStack() === 0;
+        $playerOneBroke = $this->playerOne->getStack() === 0;
+        $playerTwoBroke = $this->playerTwo->getStack() === 0;
 
-        if ($playerOneStackIsEmpty || $playerTwoStackIsEmpty) {
+        if ($playerOneBroke || $playerTwoBroke) {
             return true;
         }
 

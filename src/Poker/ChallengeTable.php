@@ -36,12 +36,12 @@ class ChallengeTable extends Table
         $this->dealer = $dealer;
     }
 
-    public function seatPlayers(object $p1, object $p2): void
+    public function seatPlayers(object $player1, object $player2): void
     {
-        $this->sbPlayer = $p1;
+        $this->sbPlayer = $player1;
         $this->sbPlayer->setPosition("SB");
 
-        $this->bbPlayer = $p2;
+        $this->bbPlayer = $player2;
         $this->bbPlayer->setPosition("BB");
 
     }

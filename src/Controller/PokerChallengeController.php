@@ -246,9 +246,6 @@ class PokerChallengeController extends AbstractController
         SessionInterface $session
     ): Response {
         $heroBet = $request->request->get('bet');
-
-        $table = $session->get("table");
-        $dealer = $session->get("dealer");
         $villain = $session->get("villain");
         $hero = $session->get("hero");
 
@@ -275,7 +272,6 @@ class PokerChallengeController extends AbstractController
 
     #[Route("/game/check", name: "check", methods: ['POST'])]
     public function check(
-        Request $request,
         SessionInterface $session
     ): Response {
         $table = $session->get("table");
@@ -343,11 +339,10 @@ class PokerChallengeController extends AbstractController
 
     #[Route("/game/showdown", name: "showdown", methods: ['GET', 'POST'])]
     public function showdown(
-        Request $request,
         SessionInterface $session
     ): Response {
         $table = $session->get("table");
-        $dealer = $session->get("dealer");
+
         $villain = $session->get("villain");
         $hero = $session->get("hero");
         $challenge = $session->get("challenge");
@@ -381,14 +376,9 @@ class PokerChallengeController extends AbstractController
 
     private function getSessionVariables(SessionInterface $session): array
     {
-        $challenge = $session->get("challenge");
         $hero = $session->get("hero");
         $villain = $session->get("villain");
         $table = $session->get("table");
-        $dealer = $session->get("dealer");
-        $deck = $session->get("deck");
-        $actionSequence = $session->get("action_sequence");
-
         $board = $table->getCardImages();
 
         return [
