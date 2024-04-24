@@ -35,7 +35,14 @@ class Challenge
 
     public function challengeComplete(): bool
     {
-        return $this->handsPlayed === $this->duration;
+        $done = false;
+        $p1Stack = $this->hero->getStack();
+        $p2Stack = $this->villain->getStack();
+
+        if ($p1Stack <= 0 || $p2Stack <= 0 || $this->handsPlayed >= $this->duration) {
+            $done = true;
+        }
+        return $done;
     }
 
     public function getDuration(): int

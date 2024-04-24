@@ -43,7 +43,6 @@ class PokerChallengeController extends AbstractController
         }
 
         $table->moveButton();
-        $table->moveButton();
         $deck->shuffleDeck();
         //need to turn these in to small blinds
         $blinds = $table->chargeAntes(25, 50);
@@ -401,9 +400,15 @@ class PokerChallengeController extends AbstractController
             $river = $dealer->dealOne();
             $table->registerOne($river);
         }
+        echo "här smäller det";
+        var_dump($street);
+        var_dump($street);
+        var_dump(count($table->getBoard()));
 
-        if ($street === 4 && $heroPos === "SB") {
-            //$table->incrementStreet();
+        var_dump(count($table->getBoard()) >= 5);
+
+        if ($street === 1) {
+            // we reach this when river has already been dealt
             return $this->redirectToRoute('showdown');
         }
 
@@ -467,14 +472,55 @@ class PokerChallengeController extends AbstractController
         $dealer = $session->get("dealer");
         $villain = $session->get("villain");
         $hero = $session->get("hero");
+        $challenge = $session->get("challenge");
+
         $handChecker = new HandChecker();
 
-        $fullHand = array_merge($hero->getHoleCards(), $table->getBoard());
-        $data = $this->getSessionVariables($session);
-        $handStrength = $handChecker->evaluateHand($fullHand);
-        $hero->updateStrength($handStrength);
+        $board = $table->getBoard();
 
-        //var_dump($table->getStreet());
+        $fullHeroHand = array_merge($hero->getHoleCards(), $board);
+        $heroStrength = $handChecker->evaluateHand($fullHeroHand);
+        // echo "hero";
+        // var_dump($heroStrength);
+        // echo "hero";
+
+
+        $hero->updateStrength($heroStrength);
+
+        $handChecker->resetStrengthArray();
+
+        $fullVillainHand = array_merge($villain->getHoleCards(), $board);
+        $villainStrength = $handChecker->evaluateHand($fullVillainHand);
+        //echo "villain";
+
+        //var_dump($villainStrength);
+        //echo "villain";
+
+        $villain->updateStrength($villainStrength);
+
+        $winner = $handChecker->compareStrength($hero, $villain);
+        var_dump($winner->getName());
+        // $session->set("teddy_hand_strength", $villainStrength);
+        // $session->set("mos_hand_strength", $heroStrength);
+        // $session->set("winner", $winner);
+
+
+
+        var_dump($table->getStreet());
+        $winner->takePot($table->getPotsize());
+
+        $data = $this->getSessionVariables($session);
+        $data["teddy_hand_strength"] = $villain->getStrength();
+        $data["mos_hand_strength"] = $hero->getStrength();
+        $data["winner"] = $winner->getName();
+        $hero->fold();
+        $villain->fold();
+        $table->cleanTable();
+
+        //$table->incrementStreet();
+        $challenge->incrementHandsPlayed();
+
+
         return $this->render('poker/showdown.html.twig', $data);
     }
 

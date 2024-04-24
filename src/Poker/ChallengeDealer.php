@@ -112,5 +112,4 @@ class ChallengeDealer extends Dealer
 
         return false;
     }
-
 }

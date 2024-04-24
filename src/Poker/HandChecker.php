@@ -7,21 +7,23 @@ class HandChecker
 
     private $strengthArray;
     private $rankMapping;
+    private $strengthMapping;
+
 
 
     public function __construct()
     {
         $this->strengthArray = [
-            'royalFlush' => false,
-            'straightFlush' => false,
-            'fourOfAKind' => false,
-            'fullHouse' => false,
-            'flush' => false,
-            'straight' => false,
-            'threeOfAKind' => false,
-            'twoPair' => false,
-            'onePair' => false,
-            'highCard' => false
+            'Royal flush' => false,
+            'Straight flush' => false,
+            'Four of a kind' => false,
+            'Full House' => false,
+            'Flush' => false,
+            'Straight' => false,
+            'Three of a kind' => false,
+            'Two pair' => false,
+            'One pair' => false,
+            'High card' => false
         ];
 
         $this->rankMapping = [
@@ -38,6 +40,19 @@ class HandChecker
             'queen' => 12,
             'king' => 13,
             'ace' => 14
+        ];
+
+        $this->strengthMapping = [
+            'Royal flush' => 0,
+            'Straight flush' => 1,
+            'Four of a kind' => 2,
+            'Full House' => 3,
+            'Flush' => 4,
+            'Straight' => 5,
+            'Three of a kind' => 6,
+            'Two pair' => 7,
+            'One pair' => 8,
+            'High card' => 9
         ];
     }
 
@@ -73,7 +88,7 @@ class HandChecker
 
         // var_dump($rankCounts);
         // var_dump($maxRank);
-        var_dump($numRanks);
+        //var_dump($numRanks);
         // var_dump($maxFrequency);
         // var_dump($maxFrequencyRank);
 
@@ -82,7 +97,7 @@ class HandChecker
         //var_dump($numRanks);
 
 
-        echo "value ovan";
+        //echo "value ovan";
 
 
         $suitsCount = array_count_values($suits);
@@ -93,7 +108,7 @@ class HandChecker
         // var_dump($maxSameSuitCount);
         //$minRank = min(array_keys($rankCounts));
 
-        echo "suit ovan";
+        //echo "suit ovan";
 
         $isStraight = false;
         $isFlush = false;
@@ -102,7 +117,7 @@ class HandChecker
         if ($maxSameSuitCount >= 5) {
             $isFlush = true;
             $this->strengthArray['flush'] = true;
-            echo "hand has flush";
+            //echo "hand has flush";
         }
     
         // Check for straight
@@ -111,51 +126,51 @@ class HandChecker
         if ($straight !== []) {
             $isStraight = true;
             $this->strengthArray['straight'] = true;
-            echo "true";
+            //echo "true";
             $upperEndCard = max($straight);
         }
-        var_dump($straight);
+        //var_dump($straight);
 
         // Check for straight flush and royal flush
         if ($isStraight && $isFlush) {
             if ($upperEndCard === 14) {
-                $this->strengthArray['royalFlush'] = true;
-                echo "Royal Flush";
+                $this->strengthArray['Royal flush'] = true;
+                //echo "Royal Flush";
             } else {
-                $this->strengthArray['straightFlush'] = true;
-                echo "Straight Flush";
+                $this->strengthArray['Straight flush'] = true;
+                //echo "Straight Flush";
             }
         }
 
     
         // Check for four of a kind
         if (in_array(4, $rankCounts)) {
-            $this->strengthArray['fourOfAKind'] = true;
-            echo "Four of a Kind";
+            $this->strengthArray['Four of a kind'] = true;
+            //echo "Four of a Kind";
         }
     
         // Check for full house
         if (in_array(3, $rankCounts) && in_array(2, $rankCounts)) {
-            $this->strengthArray['fullHouse'] = true;
-            echo "Full House";
+            $this->strengthArray['Full House'] = true;
+            //echo "Full House";
         }
     
         // Check for flush
         if ($isFlush) {
-            $this->strengthArray['flush'] = true;
-            echo "Flush";
+            $this->strengthArray['Flush'] = true;
+            //echo "Flush";
         }
     
         // Check for straight
         if ($isStraight) {
-            $this->strengthArray['straight'] = true;
-            echo "Straight";
+            $this->strengthArray['Straight'] = true;
+            //echo "Straight";
         }
     
         // Check for three of a kind
         if (in_array(3, $rankCounts)) {
-            $this->strengthArray['threeOfAKind'] = true;
-            echo "Three of a Kind";
+            $this->strengthArray['Three of a kind'] = true;
+            //echo "Three of a Kind";
         }
     
         // Check for two pair
@@ -168,20 +183,20 @@ class HandChecker
         
         if ($pairCount >= 2) {
             // Two pairs exist
-            $this->strengthArray['twoPair'] = true;
-            echo "Two pairs found!";
+            $this->strengthArray['Two pair'] = true;
+            //echo "Two pairs found!";
         } else {
             // Two pairs do not exist
-            echo "No two pairs found!";
+            //echo "No two pairs found!";
         }
         if ($pairCount > 0 && $pairCount < 2) {
-            $this->strengthArray['onePair'] = true;
-            echo "one pair";
+            $this->strengthArray['One pair'] = true;
+            //echo "one pair";
 
         }
-        $this->strengthArray['highCard'] = true;
-        echo "High Card";
-        var_dump($this->strengthArray);
+        $this->strengthArray['High card'] = true;
+        //echo "High Card";
+        //var_dump($this->strengthArray);
         return $this->strengthArray;
     }
 
@@ -204,7 +219,7 @@ class HandChecker
             }
 
             if ($count == 5 || ($rank == 14 && $wheel)) {
-                echo "Yeah a striiaght, the highest card is: " . $previousRank;
+                //echo "Yeah a striiaght, the highest card is: " . $previousRank;
                 $straight = range($previousRank - 4, $previousRank);
                 return $straight;
             }
@@ -227,9 +242,33 @@ class HandChecker
         ];
     }
 
-    // public findStrongestHand($handOne, $handTwo){
-    //     if 
-    // }
+    public function compareStrength($hero, $villain) :object
+    {
+        $heroStrength = $hero->getStrength();
+        $villainStrength = $villain->getStrength();
+        if (array_key_exists($heroStrength, $this->strengthMapping)) {
+            $heroValue = $this->strengthMapping[$heroStrength];
+        } else {
+            $heroValue = 10;
+        }
+
+        if (array_key_exists($villainStrength, $this->strengthMapping)) {
+            $villainValue = $this->strengthMapping[$villainStrength];
+        } else {
+            $villainValue = 10;
+        }
+        var_dump($heroValue);
+        var_dump($villainValue);
+
+
+        $bestHand = min($heroValue, $villainValue);
+        var_dump($bestHand);
+        
+        if ($bestHand === $heroValue) {
+            return $hero;
+        }
+        return $villain;
+    }
 }
 
 
