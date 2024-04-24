@@ -52,7 +52,7 @@ class PokerChallengeController extends AbstractController
         $deck->initializeCards();
         $deck->shuffleDeck();
         //need to turn these in to small blinds
-        $blinds = $table->chargeAntes(25, 50);
+        $table->chargeAntes(25, 50);
         $dealer->dealHoleCards();
 
         if ($table->getSbPlayer() === $villain) {
@@ -61,17 +61,12 @@ class PokerChallengeController extends AbstractController
             if ($action === "preflopRaise") {
                 echo "raise";
                 $heroBet = $hero->getCurrentBet();
-                $raise = $villain->raise($heroBet);
+                $villain->raise($heroBet);
 
             } elseif($action === "preflopCall") {
                 echo "Call";
                 $chipAmount = $table->getPriceToPlay();
                 $villain->$action($chipAmount);
-                //$table->addChipsToPot($chipAmount);
-
-
-                // $villain->resetCurrentBet();
-                // $hero->resetCurrentBet();
 
             } else {
                 echo "Fold";
@@ -91,7 +86,6 @@ class PokerChallengeController extends AbstractController
 
     #[Route("/poker/session/delete", name: "session_delete")]
     public function sessionDelete(
-        Request $request,
         SessionInterface $session
     ): Response {
         $session->invalidate();

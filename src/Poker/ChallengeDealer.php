@@ -89,17 +89,17 @@ class ChallengeDealer extends Dealer
     //     return $blinds;
     // }
 
-    public function randButton(): void
-    {
-        $seats = ["SB", "BB"];
-        $position = $seats[rand(0, 1)];
-        $this->playerOne->setPosition($position);
-        if ($position === "SB") {
-            $this->playerTwo->setPosition("BB");
-        } else {
-            $this->playerTwo->setPosition("SB");
-        }
-    }
+    // public function randButton(): void
+    // {
+    //     $seats = ["SB", "BB"];
+    //     $position = $seats[rand(0, 1)];
+    //     $this->playerOne->setPosition($position);
+    //     if ($position === "SB") {
+    //         $this->playerTwo->setPosition("BB");
+    //     } else {
+    //         $this->playerTwo->setPosition("SB");
+    //     }
+    // }
 
     public function playersAllIn() :bool
     {
