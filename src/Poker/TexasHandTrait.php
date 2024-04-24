@@ -9,7 +9,7 @@ trait TexasHandTrait
 {
     protected $currentStrength;
 
-    public function updateStrength(array $boolValues) : void
+    public function updateStrength(array $boolValues): void
     {
         foreach ($boolValues as $key => $value) {
             if ($value !== false) {
@@ -21,7 +21,7 @@ trait TexasHandTrait
     }
 
 
-    public function getStrength() :string
+    public function getStrength(): string
     {
         return $this->currentStrength;
     }

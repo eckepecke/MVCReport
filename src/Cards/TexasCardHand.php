@@ -6,7 +6,7 @@ class TexasCardHand extends CardHand
 {
     private $currentStrength;
 
-    public function updateStrength(array $boolValues) : void
+    public function updateStrength(array $boolValues): void
     {
         echo "HÄÄÄR";
 
@@ -23,7 +23,8 @@ class TexasCardHand extends CardHand
         var_dump($this->currentStrength);
     }
 
-    public function getStrength() {
+    public function getStrength()
+    {
 
     }
 }

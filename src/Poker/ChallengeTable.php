@@ -83,6 +83,7 @@ class ChallengeTable extends Table
         $this->bbPlayer->payBlind($this->bigBlind);
         $this->sbPlayer->setCurrentBet($this->smallBlind);
         $this->bbPlayer->SetCurrentBet($this->bigBlind);
+
     }
 
     public function getPriceToPlay(): int
@@ -115,5 +116,10 @@ class ChallengeTable extends Table
         }
 
         return $imgPaths;
+    }
+
+    public function getBlinds() : int
+    {
+        return $this->smallBlind + $this->bigBlind; 
     }
 }

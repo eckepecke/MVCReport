@@ -64,4 +64,9 @@ class Challenge
     {
         return $this->villain->getName();
     }
+
+    public function getResult($startingStack): int
+    {
+        return ($this->hero->getStack() - $startingStack);
+    }
 }

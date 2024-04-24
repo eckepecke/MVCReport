@@ -19,13 +19,14 @@
                 <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
             </div>
         </div>
+        <h4>{{teddy_hand_strength}}</h4>
+
 
         <div class="board-box">
             {% for img in board %}
                 <img class="community-card" src="{{ asset('build/images/' ~ img) }}" alt="card">
             {% endfor %}
         </div>
-        <h4>{{teddy_hand_strength}}</h4>
 
         <div class="pot-box">
             <h3>{{ winner }} takes the{{pot_size}} pot </h3>

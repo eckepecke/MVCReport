@@ -4,7 +4,6 @@ namespace App\Poker;
 
 use App\Poker\TexasHandTrait;
 
-
 class Hero extends Player
 {
     use TexasHandTrait;

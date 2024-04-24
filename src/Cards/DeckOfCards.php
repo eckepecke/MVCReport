@@ -10,6 +10,12 @@ class DeckOfCards
 
     public function __construct()
     {
+        $this->initializeCards();
+    }
+
+    public function initializeCards()
+    {
+        $this->cards = [];
         $cards = array(
             'diamonds' => array(
                 'ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'jack', 'queen', 'king'

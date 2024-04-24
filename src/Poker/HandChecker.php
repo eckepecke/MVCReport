@@ -4,7 +4,6 @@ namespace App\Poker;
 
 class HandChecker
 {
-
     private $strengthArray;
     private $rankMapping;
     private $strengthMapping;
@@ -56,7 +55,8 @@ class HandChecker
         ];
     }
 
-    public function evaluateHand($cards) {
+    public function evaluateHand($cards)
+    {
         $ranks = [];
         $suits = [];
 
@@ -112,20 +112,20 @@ class HandChecker
 
         $isStraight = false;
         $isFlush = false;
-    
+
         // Check for flush
         if ($maxSameSuitCount >= 5) {
             $isFlush = true;
-            $this->strengthArray['flush'] = true;
+            $this->strengthArray['Flush'] = true;
             //echo "hand has flush";
         }
-    
+
         // Check for straight
         $isStraight = false;
         $straight = $this->checkForStraight($ranks);
         if ($straight !== []) {
             $isStraight = true;
-            $this->strengthArray['straight'] = true;
+            $this->strengthArray['Straight'] = true;
             //echo "true";
             $upperEndCard = max($straight);
         }
@@ -142,37 +142,37 @@ class HandChecker
             }
         }
 
-    
+
         // Check for four of a kind
         if (in_array(4, $rankCounts)) {
             $this->strengthArray['Four of a kind'] = true;
             //echo "Four of a Kind";
         }
-    
+
         // Check for full house
         if (in_array(3, $rankCounts) && in_array(2, $rankCounts)) {
             $this->strengthArray['Full House'] = true;
             //echo "Full House";
         }
-    
+
         // Check for flush
         if ($isFlush) {
             $this->strengthArray['Flush'] = true;
             //echo "Flush";
         }
-    
+
         // Check for straight
         if ($isStraight) {
             $this->strengthArray['Straight'] = true;
             //echo "Straight";
         }
-    
+
         // Check for three of a kind
         if (in_array(3, $rankCounts)) {
             $this->strengthArray['Three of a kind'] = true;
             //echo "Three of a Kind";
         }
-    
+
         // Check for two pair
         $pairCount = 0;
         foreach ($rankCounts as $count) {
@@ -180,7 +180,7 @@ class HandChecker
                 $pairCount++;
             }
         }
-        
+
         if ($pairCount >= 2) {
             // Two pairs exist
             $this->strengthArray['Two pair'] = true;
@@ -200,7 +200,7 @@ class HandChecker
         return $this->strengthArray;
     }
 
-    public function checkForStraight(array $ranks) : array 
+    public function checkForStraight(array $ranks): array
     {
         sort($ranks);
 
@@ -210,10 +210,12 @@ class HandChecker
         foreach ($ranks as $rank) {
             if ($rank == $previousRank) {
                 continue;
-            } else if ($rank == ++$previousRank) {
+            } elseif ($rank == ++$previousRank) {
                 $count++;
             } else {
-                if ($previousRank == 6) $wheel = true;
+                if ($previousRank == 6) {
+                    $wheel = true;
+                }
                 $count = 1;
                 $previousRank = $rank;
             }
@@ -227,7 +229,8 @@ class HandChecker
         return [];
     }
 
-    public function resetStrengthArray () : void {
+    public function resetStrengthArray(): void
+    {
         $this->strengthArray = [
             'royalFlush' => false,
             'straightFlush' => false,
@@ -242,7 +245,7 @@ class HandChecker
         ];
     }
 
-    public function compareStrength($hero, $villain) :object
+    public function compareStrength($hero, $villain): object
     {
         $heroStrength = $hero->getStrength();
         $villainStrength = $villain->getStrength();
@@ -263,7 +266,7 @@ class HandChecker
 
         $bestHand = min($heroValue, $villainValue);
         var_dump($bestHand);
-        
+
         if ($bestHand === $heroValue) {
             return $hero;
         }
@@ -281,5 +284,3 @@ class HandChecker
 //     array("rank" => 5, "suit" => "Hearts"),
 //     array("rank" => 6, "suit" => "Hearts")
 // );
-
-

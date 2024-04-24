@@ -17,8 +17,8 @@
             <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me">
 
             <div class="card-box">
-            {% for img in teddy_hand %}
-                <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
+                <img class="card-img" src="{{ asset('build/images/card_back.svg') }}" alt="card">
+                <img class="card-img" src="{{ asset('build/images/card_back.svg') }}" alt="card">
             </div>
         </div>
         {% if teddy_bet != 0 %}

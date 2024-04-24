@@ -43,7 +43,7 @@ class CardHand
         return $values;
     }
 
-    public function getHand() : array
+    public function getHand(): array
     {
         return $this->hand;
 

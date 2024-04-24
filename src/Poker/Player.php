@@ -26,7 +26,7 @@ class Player
     public function preflopCall($price): void
     {
         $this->stack -= $price;
-        $this->currentBet = 0;
+        $this->currentBet += $price;
     }
 
     // public function preflop3bet($amount, $bigBlind) : void
