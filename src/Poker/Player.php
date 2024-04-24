@@ -70,12 +70,7 @@ class Player
 
     public function call(int $amount): void
     {
-        if ($amount > $this->stack) {
-            $amount = $this->stack;
-            $this->stack -= $amount;
-        } else {
-            $this->stack -= $amount;
-        }
+        $this->stack -= min($amount, $this->stack);
     }
 
     // public function raise(int $raiseSize): void {

@@ -16,20 +16,6 @@ class DeckOfCards
     public function initializeCards(): void
     {
         $this->cards = [];
-        $cards = array(
-            'diamonds' => array(
-                'ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'jack', 'queen', 'king'
-            ),
-            'hearts' => array(
-                'ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'jack', 'queen', 'king'
-            ),
-            'clubs' => array(
-                'ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'jack', 'queen', 'king'
-            ),
-            'spades' => array(
-                'ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'jack', 'queen', 'king'
-            ),
-        );
 
         $suits = ['diamonds', 'hearts', 'clubs', 'spades'];
 
@@ -74,19 +60,30 @@ class DeckOfCards
         return count($this->cards);
     }
 
+    // public function drawOne(int $index = null): object
+    // {
+    //     if ($index !== null) {
+    //         $card = $this->cards[$index];
+    //         unset($this->cards[$index]);
+    //     } else {
+    //         $length = count($this->cards);
+    //         //$randIndex = rand(0, $length - 1);
+    //         $randIndex = 0;
+
+    //         $card = $this->cards[$randIndex];
+    //         unset($this->cards[$randIndex]);
+    //     }
+
+    //     $this->cards = array_values($this->cards);
+
+    //     return $card;
+    // }
+
     public function drawOne(int $index = null): object
     {
-        if ($index !== null) {
-            $card = $this->cards[$index];
-            unset($this->cards[$index]);
-        } else {
-            $length = count($this->cards);
-            //$randIndex = rand(0, $length - 1);
-            $randIndex = 0;
-
-            $card = $this->cards[$randIndex];
-            unset($this->cards[$randIndex]);
-        }
+        $index = ($index !== null) ? $index : 0;
+        $card = $this->cards[$index];
+        unset($this->cards[$index]);
 
         $this->cards = array_values($this->cards);
 
@@ -98,14 +95,22 @@ class DeckOfCards
         $randIndexArray = [];
         $deckSize = $this->size();
 
-        for ($i = 0; $i < $amount; $i++) {
+        // for ($i = 0; $i < $amount; $i++) {
+        //     $randIndex = rand(0, $deckSize - 1);
+        //     if (in_array($randIndex, $randIndexArray)) {
+        //         $i--;
+        //     } else {
+        //         $randIndexArray[] = $randIndex;
+        //     }
+        // }
+
+        $count = 0;
+        while ($count < $amount) {
             $randIndex = rand(0, $deckSize - 1);
-            if (in_array($randIndex, $randIndexArray)) {
-                $i--;
-            } else {
+            if (!in_array($randIndex, $randIndexArray)) {
                 $randIndexArray[] = $randIndex;
+                $count++;
             }
-            //$deckSize--;
         }
 
         $drawnCards = [];

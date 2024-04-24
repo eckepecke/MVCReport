@@ -35,7 +35,6 @@ class CardGameController extends AbstractController
 
     #[Route("/session/delete", name: "session_delete")]
     public function sessionDelete(
-        Request $request,
         SessionInterface $session
     ): Response {
         $session->invalidate();
@@ -100,13 +99,9 @@ class CardGameController extends AbstractController
     public function draw(SessionInterface $session): Response
     {
 
-        if ($session->has("deck")) {
-            $deck = $session->get("deck");
-        } else {
-            $deck = new DeckOfCards();
-            $session->set("deck", $deck);
-            $session->set("remaining", $deck->size());
-        }
+        $deck = $session->get("deck") ?? new DeckOfCards();
+        $session->set("deck", $deck);
+        $session->set("remaining", $deck->size());
 
         $remains = $session->get("remaining");
 
