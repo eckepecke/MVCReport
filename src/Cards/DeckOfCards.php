@@ -6,14 +6,14 @@ use App\Cards\CardGraphic;
 
 class DeckOfCards
 {
-    private $cards = [];
+    private array $cards = [];
 
     public function __construct()
     {
         $this->initializeCards();
     }
 
-    public function initializeCards()
+    public function initializeCards(): void
     {
         $this->cards = [];
         $cards = array(
@@ -74,7 +74,7 @@ class DeckOfCards
         return count($this->cards);
     }
 
-    public function drawOne($index = null): object
+    public function drawOne(int $index = null): object
     {
         if ($index !== null) {
             $card = $this->cards[$index];
@@ -93,7 +93,7 @@ class DeckOfCards
         return $card;
     }
 
-    public function drawMany($amount): array
+    public function drawMany(int $amount): array
     {
         $randIndexArray = [];
         $deckSize = $this->size();

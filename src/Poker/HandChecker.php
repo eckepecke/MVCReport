@@ -4,9 +4,9 @@ namespace App\Poker;
 
 class HandChecker
 {
-    private $strengthArray;
-    private $rankMapping;
-    private $strengthMapping;
+    private array $strengthArray;
+    private array $rankMapping;
+    private array $strengthMapping;
 
 
 

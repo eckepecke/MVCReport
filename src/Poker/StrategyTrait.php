@@ -33,7 +33,7 @@ trait StrategyTrait
         return $decision;
     }
 
-    public function betVsCheck($potSize): float
+    public function betVsCheck(int $potSize): float
     {
         return 0.75 * $potSize;
     }

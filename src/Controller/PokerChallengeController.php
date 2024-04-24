@@ -42,7 +42,7 @@ class PokerChallengeController extends AbstractController
         if ($challenge->challengeComplete()) {
             $startStack = $session->get("hero_start_stack");
             $data = $this->getSessionVariables($session);
-            $data["result"] = $challenge->getResult($startStack);
+            $data["result"] = $challenge->getResult($startStack, $hero->getStack());
             return $this->render('poker/end_game.html.twig', $data);
         }
 
@@ -51,14 +51,13 @@ class PokerChallengeController extends AbstractController
 
         $deck->initializeCards();
         $deck->shuffleDeck();
-        var_dump($deck->size());
         //need to turn these in to small blinds
         $blinds = $table->chargeAntes(25, 50);
         $dealer->dealHoleCards();
 
         if ($table->getSbPlayer() === $villain) {
             $action = $villain->randActionRFI();
-            $action = "fold";
+            $action = "preflopRaise";
             if ($action === "preflopRaise") {
                 echo "raise";
                 $heroBet = $hero->getCurrentBet();
@@ -67,8 +66,6 @@ class PokerChallengeController extends AbstractController
             } elseif($action === "preflopCall") {
                 echo "Call";
                 $chipAmount = $table->getPriceToPlay();
-
-
                 $villain->$action($chipAmount);
                 //$table->addChipsToPot($chipAmount);
 
@@ -257,8 +254,7 @@ class PokerChallengeController extends AbstractController
 
         $hero->bet($heroBet);
         $action = $villain->actionFacingBet();
-        $action = "call";
-        ///debug
+
         if($action === "fold") {
             return $this->redirectToRoute('fold');
         }
@@ -287,11 +283,17 @@ class PokerChallengeController extends AbstractController
         $villain = $session->get("villain");
         $hero = $session->get("hero");
 
+        $heroPos = $hero->getPosition();
+        $street = $table->getStreet();
+        if (($heroPos === "BB" && $street === 1 && $table->getFlop() === [] )) {
+            //Adding chips when hero checks back preflop
+        $table->addChipsToPot($table->getBigBlind());
+        $table->addChipsToPot($table->getBigBlind());
+        }
+
         $hero->resetCurrentBet();
         $villain->resetCurrentBet();
 
-        $street = $table->getStreet();
-        $heroPos = $hero->getPosition();
 
         if ($heroPos === "SB" || ($heroPos === "BB" && $street === 1)) {
             $table->incrementStreet();
@@ -301,7 +303,7 @@ class PokerChallengeController extends AbstractController
 
         if ($street === 2 && ($table->getFlop() === [])) {
             $flop = $dealer->dealFlop();
-            $table->registerFlop($flop);
+            $table->registerMany($flop);
         }
 
         if ($street === 3 && (count($table->getBoard()) < 4)) {

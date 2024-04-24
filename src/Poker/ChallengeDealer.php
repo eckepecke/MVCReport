@@ -15,9 +15,9 @@ use App\Cards\DeckOfCards;
 
 class ChallengeDealer extends Dealer
 {
-    private $playerOne;
-    private $playerTwo;
-    private $handCount;
+    private object $playerOne;
+    private object $playerTwo;
+    private int $handCount;
 
 
     public function __construct($playerList)
@@ -101,7 +101,7 @@ class ChallengeDealer extends Dealer
         }
     }
 
-    public function playersAllIn()
+    public function playersAllIn() :bool
     {
         $playerOneStackIsEmpty = $this->playerOne->getStack() === 0;
         $playerTwoStackIsEmpty = $this->playerTwo->getStack() === 0;

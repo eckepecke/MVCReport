@@ -6,7 +6,7 @@ use App\Cards\CardGraphic;
 
 class CardHand
 {
-    private $hand = [];
+    private array $hand = [];
 
     public function add(CardGraphic $card): void
     {

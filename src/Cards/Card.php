@@ -4,9 +4,9 @@ namespace App\Cards;
 
 class Card
 {
-    protected $value;
-    protected $suit;
-    protected $card;
+    protected mixed $value;
+    protected string $suit;
+    protected array $card;
 
 
     public function __construct()

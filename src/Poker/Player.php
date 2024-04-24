@@ -6,13 +6,11 @@ use App\Cards\CardGraphic;
 
 class Player
 {
-    protected $stack;
-    protected $hand;
-    protected $position;
-    protected $holeCards;
-    protected $cardHand;
-    protected $currentBet;
-    protected $lastAction;
+    protected int $stack;
+    protected array $hand;
+    protected string $position;
+    protected array $holeCards;
+    protected int $currentBet;
 
 
     public function __construct()
@@ -23,7 +21,7 @@ class Player
 
     }
 
-    public function preflopCall($price): void
+    public function preflopCall(int $price): void
     {
         $this->stack -= $price;
         $this->currentBet += $price;
@@ -36,7 +34,7 @@ class Player
     //     $this->currentBet = $raiseSize;
     // }
 
-    public function fold()
+    public function fold(): void
     {
         $this->hand = [];
         $this->currentBet = 0;
@@ -159,9 +157,5 @@ class Player
     public function getCurrentBet(): int
     {
         return $this->currentBet;
-    }
-    public function getLastAction(): int
-    {
-        return $this->lastAction;
     }
 }

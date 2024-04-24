@@ -10,8 +10,7 @@ class Villain extends Player
     use StrategyTrait;
     use TexasHandTrait;
 
-    private $name;
-    private $result;
+    private string $name;
 
     public function __construct()
     {
@@ -19,7 +18,6 @@ class Villain extends Player
         parent::__construct();
 
         $this->name = "Teddy KGB";
-        $this->result = 0;
         $this->currentBet = 0;
 
     }
@@ -29,7 +27,7 @@ class Villain extends Player
         return $this->name;
     }
 
-    public function raise($heroBet): int
+    public function raise(int $heroBet): int
     {
         $raiseSize = 3 * $heroBet;
         if ($raiseSize > $this->stack) {

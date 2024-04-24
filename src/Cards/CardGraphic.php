@@ -4,7 +4,7 @@ namespace App\Cards;
 
 class CardGraphic extends Card
 {
-    private $imgPath;
+    private string $imgPath;
 
     public function __construct()
     {
@@ -18,12 +18,12 @@ class CardGraphic extends Card
         return $this->suit . '_' . $this->value . '.svg';
     }
 
-    public function setSuit($suit): void
+    public function setSuit(string $suit): void
     {
         $this->suit = $suit;
     }
 
-    public function setValue($value): void
+    public function setValue(mixed $value): void
     {
         $this->value = $value;
     }

@@ -7,10 +7,10 @@ use App\Poker\Villain;
 
 class Challenge
 {
-    private $duration;
-    private $villain;
-    private $hero;
-    private $handsPlayed;
+    private int $duration;
+    private object $villain;
+    private object $hero;
+    private int $handsPlayed;
 
     public function __construct(int $hands)
     {
@@ -65,8 +65,8 @@ class Challenge
         return $this->villain->getName();
     }
 
-    public function getResult($startingStack): int
+    public function getResult(int $startingStack, int $currentStack): int
     {
-        return ($this->hero->getStack() - $startingStack);
+        return ($currentStack - $startingStack);
     }
 }

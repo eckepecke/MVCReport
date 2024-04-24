@@ -3,11 +3,11 @@
 namespace App\Poker;
 
 /**
- * A trait implementing histogram for integers.
+ * A trait that takes an array and returns the first Texas true item.
  */
 trait TexasHandTrait
 {
-    protected $currentStrength;
+    protected string $currentStrength;
 
     public function updateStrength(array $boolValues): void
     {

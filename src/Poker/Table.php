@@ -4,10 +4,10 @@ namespace App\Poker;
 
 class Table
 {
-    protected $potSize;
-    protected $flop;
-    protected $fullBoard;
-    protected $street;
+    protected int $potSize;
+    protected array $flop;
+    protected array $fullBoard;
+    protected int $street;
 
     public function __construct()
     {

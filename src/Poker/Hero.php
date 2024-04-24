@@ -8,8 +8,7 @@ class Hero extends Player
 {
     use TexasHandTrait;
 
-    private $name;
-    private $result;
+    private string $name;
 
     public function __construct()
     {
@@ -17,7 +16,6 @@ class Hero extends Player
         parent::__construct();
 
         $this->name = "Mos";
-        $this->result = 0;
         $this->currentBet = 0;
     }
 
@@ -26,7 +24,7 @@ class Hero extends Player
         return $this->name;
     }
 
-    public function preflopRaise($raiseSize, $smallBlind): int
+    public function preflopRaise(int $raiseSize, int $smallBlind): int
     {
         $raiseSize = $raiseSize - $smallBlind;
         $this->stack -= $raiseSize ;
@@ -34,5 +32,4 @@ class Hero extends Player
 
         return $raiseSize;
     }
-
 }

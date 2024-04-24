@@ -18,14 +18,13 @@ use App\Cards\DeckOfCards;
 
 class ChallengeTable extends Table
 {
-    private $bigBlind;
-    private $smallBlind;
-    private $dealer;
-    private $sbPlayer;
-    private $bbPlayer;
-    private $minRaise;
+    private int $bigBlind;
+    private int $smallBlind;
+    private object $dealer;
+    private object $sbPlayer;
+    private object $bbPlayer;
 
-    public function __construct($small, $big)
+    public function __construct(int $small, int $big)
     {
         parent::__construct();
         $this->smallBlind = $small;
@@ -37,7 +36,7 @@ class ChallengeTable extends Table
         $this->dealer = $dealer;
     }
 
-    public function seatPlayers($p1, $p2): void
+    public function seatPlayers(object $p1, object $p2): void
     {
         $this->sbPlayer = $p1;
         $this->sbPlayer->setPosition("SB");
