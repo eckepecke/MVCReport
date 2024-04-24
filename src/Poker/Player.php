@@ -55,22 +55,32 @@ class Player
     public function bet(int $amount): void
     {
         //Fixa to dlist note här imorgon
+        $amount = min($amount, $this->stack + $this->currentBet);
 
-        if ($amount > $this->stack) {
-            $amount = $this->stack + $this->currentBet;
-            $this->stack = 0;
 
-        } else {
-            //$this->stack -= $amount - $this->currentBet;
-            $this->stack -= $amount - $this->currentBet;
+        // if ($amount > $this->stack) {
+        //     $amount = $this->stack + $this->currentBet;
+        //     $this->stack = 0;
 
-        }
+        // } else {
+        //     //$this->stack -= $amount - $this->currentBet;
+        $this->stack -= $amount - $this->currentBet;
+
+        // }
         $this->currentBet = $amount;
     }
 
     public function call(int $amount): void
     {
-        $this->stack -= min($amount, $this->stack);
+        $amount = min($amount, $this->stack);
+        $this->stack -= $amount;
+
+        // if ($amount > $this->stack) {
+        //     $amount = $this->stack;
+        //     $this->stack -= $amount;
+        // } else {
+        //     $this->stack -= $amount;
+        // }
     }
 
     // public function raise(int $raiseSize): void {

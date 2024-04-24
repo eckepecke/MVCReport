@@ -32,4 +32,11 @@ class Hero extends Player
 
         return $raiseSize;
     }
+
+    public function fold(): void
+    {
+        $this->hand = [];
+        $this->currentBet = 0;
+        $this->currentStrength = "";
+    }
 }
