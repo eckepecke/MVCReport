@@ -3,10 +3,13 @@
 namespace App\Poker;
 
 use App\Poker\StrategyTrait;
+use App\Poker\TexasHandTrait;
+
 
 class Villain extends Player
 {
     use StrategyTrait;
+    use TexasHandTrait;
 
     private $name;
     private $result;

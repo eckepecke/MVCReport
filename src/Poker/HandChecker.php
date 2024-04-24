@@ -4,8 +4,27 @@ namespace App\Poker;
 
 class HandChecker
 {
-    public function evaluateHand($cards) {
-        $rankMapping = [
+
+    private $strengthArray;
+    private $rankMapping;
+
+
+    public function __construct()
+    {
+        $this->strengthArray = [
+            'royalFlush' => false,
+            'straightFlush' => false,
+            'fourOfAKind' => false,
+            'fullHouse' => false,
+            'flush' => false,
+            'straight' => false,
+            'threeOfAKind' => false,
+            'twoPair' => false,
+            'onePair' => false,
+            'highCard' => false
+        ];
+
+        $this->rankMapping = [
             '2' => 2,
             '3' => 3,
             '4' => 4,
@@ -20,15 +39,16 @@ class HandChecker
             'king' => 13,
             'ace' => 14
         ];
+    }
 
+    public function evaluateHand($cards) {
         $ranks = [];
         $suits = [];
 
-
         foreach ($cards as $card) {
             $cardValue = $card->getValue();
-            var_dump($rankMapping[$cardValue]);
-            $ranks[] = $rankMapping[$cardValue];
+            var_dump($this->rankMapping[$cardValue]);
+            $ranks[] = $this->rankMapping[$cardValue];
         }
 
         foreach ($cards as $card) {
@@ -53,8 +73,9 @@ class HandChecker
 
         // var_dump($rankCounts);
         // var_dump($maxRank);
-        var_dump($maxFrequency);
-        var_dump($maxFrequencyRank);
+        var_dump($numRanks);
+        // var_dump($maxFrequency);
+        // var_dump($maxFrequencyRank);
 
 
         // var_dump($minRank);
@@ -67,9 +88,9 @@ class HandChecker
         $suitsCount = array_count_values($suits);
         $numSuits = count($suitsCount);
         $maxSameSuitCount = max($suitsCount);
-        var_dump($suitsCount);
-        var_dump($numSuits);
-        var_dump($maxSameSuitCount);
+        // var_dump($suitsCount);
+        // var_dump($numSuits);
+        // var_dump($maxSameSuitCount);
         //$minRank = min(array_keys($rankCounts));
 
         echo "suit ovan";
@@ -80,6 +101,7 @@ class HandChecker
         // Check for flush
         if ($maxSameSuitCount >= 5) {
             $isFlush = true;
+            $this->strengthArray['flush'] = true;
             echo "hand has flush";
         }
     
@@ -88,65 +110,79 @@ class HandChecker
         $straight = $this->checkForStraight($ranks);
         if ($straight !== []) {
             $isStraight = true;
+            $this->strengthArray['straight'] = true;
             echo "true";
             $upperEndCard = max($straight);
-
         }
         var_dump($straight);
 
-        if ($isStraight) {
-            echo "The hand is a straight. The highest card is: " . $upperEndCard;
-        } else {
-            echo "The hand is not a straight.";
-        }
-        var_dump($krasch);
-
         // Check for straight flush and royal flush
         if ($isStraight && $isFlush) {
-            if ($maxRank === 14) {
-                return "Royal Flush";
+            if ($upperEndCard === 14) {
+                $this->strengthArray['royalFlush'] = true;
+                echo "Royal Flush";
             } else {
-                return "Straight Flush";
+                $this->strengthArray['straightFlush'] = true;
+                echo "Straight Flush";
             }
         }
+
     
         // Check for four of a kind
         if (in_array(4, $rankCounts)) {
-            return "Four of a Kind";
+            $this->strengthArray['fourOfAKind'] = true;
+            echo "Four of a Kind";
         }
     
         // Check for full house
         if (in_array(3, $rankCounts) && in_array(2, $rankCounts)) {
-            return "Full House";
+            $this->strengthArray['fullHouse'] = true;
+            echo "Full House";
         }
     
         // Check for flush
         if ($isFlush) {
-            return "Flush";
+            $this->strengthArray['flush'] = true;
+            echo "Flush";
         }
     
         // Check for straight
         if ($isStraight) {
-            return "Straight";
+            $this->strengthArray['straight'] = true;
+            echo "Straight";
         }
     
         // Check for three of a kind
         if (in_array(3, $rankCounts)) {
-            return "Three of a Kind";
+            $this->strengthArray['threeOfAKind'] = true;
+            echo "Three of a Kind";
         }
     
         // Check for two pair
-        if (array_count_values($rankCounts)[2] === 2) {
-            return "Two Pair";
+        $pairCount = 0;
+        foreach ($rankCounts as $count) {
+            if ($count === 2) {
+                $pairCount++;
+            }
         }
-    
-        // Check for one pair
-        if (in_array(2, $rankCounts)) {
-            return "One Pair";
+        
+        if ($pairCount >= 2) {
+            // Two pairs exist
+            $this->strengthArray['twoPair'] = true;
+            echo "Two pairs found!";
+        } else {
+            // Two pairs do not exist
+            echo "No two pairs found!";
         }
-    
-        // If no other hand, it's a high card
-        return "High Card";
+        if ($pairCount > 0 && $pairCount < 2) {
+            $this->strengthArray['onePair'] = true;
+            echo "one pair";
+
+        }
+        $this->strengthArray['highCard'] = true;
+        echo "High Card";
+        var_dump($this->strengthArray);
+        return $this->strengthArray;
     }
 
     public function checkForStraight(array $ranks) : array 
@@ -175,6 +211,25 @@ class HandChecker
         }
         return [];
     }
+
+    public function resetStrengthArray () : void {
+        $this->strengthArray = [
+            'royalFlush' => false,
+            'straightFlush' => false,
+            'fourOfAKind' => false,
+            'fullHouse' => false,
+            'flush' => false,
+            'straight' => false,
+            'threeOfAKind' => false,
+            'twoPair' => false,
+            'onePair' => false,
+            'highCard' => false
+        ];
+    }
+
+    // public findStrongestHand($handOne, $handTwo){
+    //     if 
+    // }
 }
 
 

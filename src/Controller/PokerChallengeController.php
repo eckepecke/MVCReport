@@ -10,6 +10,8 @@ use App\Poker\Villain;
 use App\Poker\ChallengeDealer;
 use App\Poker\ChallengeTable;
 use App\Cards\DeckOfCards;
+use App\Cards\TexasCardHand;
+
 use App\Poker\HandChecker;
 
 
@@ -469,7 +471,9 @@ class PokerChallengeController extends AbstractController
 
         $fullHand = array_merge($hero->getHoleCards(), $table->getBoard());
         $data = $this->getSessionVariables($session);
-        $handChecker->evaluateHand($fullHand);
+        $handStrength = $handChecker->evaluateHand($fullHand);
+        $hero->updateStrength($handStrength);
+
         //var_dump($table->getStreet());
         return $this->render('poker/showdown.html.twig', $data);
     }
