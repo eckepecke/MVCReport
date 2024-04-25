@@ -122,13 +122,11 @@ class CardGameController extends AbstractController
         ];
 
         $aces = "ace";
+        $reaction = "bad_hand.png";
 
         if (in_array($drawnCardValue, $goodCards) || $drawnCardValue == $aces) {
             $reaction = "good_hand.png";
-        } else {
-            $reaction = "bad_hand.png";
         }
-
 
         $data = [
             "imgPath" => $card->getImgName(),
@@ -144,15 +142,9 @@ class CardGameController extends AbstractController
     public function drawMany(int $num, SessionInterface $session): Response
     {
 
-        if ($session->has("deck")) {
-            $deck = $session->get("deck");
-
-        } else {
-            $deck = new DeckOfCards();
-
-            $session->set("deck", $deck);
-            $session->set("remaining", $deck->size());
-        }
+        $deck = $session->get("deck") ?? new DeckOfCards();
+        $session->set("deck", $deck);
+        $session->set("remaining", $deck->size());
 
         $remains = $session->get("remaining");
 

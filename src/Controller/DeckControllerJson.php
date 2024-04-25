@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\Exception;
 
 use App\Cards\DeckOfCards;
 
@@ -65,11 +66,7 @@ class DeckControllerJson
     public function apiDrawOne(
         SessionInterface $session
     ): Response {
-        if ($session->has("deck")) {
-            $deck = $session->get("deck");
-        } else {
-            throw new \Exception("No deck in session!");
-        }
+        $deck = $session->get("deck") ?? throw new \Exception("No deck in session!");
 
         $remains = $deck->size();
 
@@ -102,11 +99,7 @@ class DeckControllerJson
         int $num,
         SessionInterface $session
     ): Response {
-        if ($session->has("deck")) {
-            $deck = $session->get("deck");
-        } else {
-            throw new \Exception("No deck in session!");
-        }
+        $deck = $session->get("deck") ?? throw new \Exception("No deck in session!");
 
         $remains = $deck->size();
 
