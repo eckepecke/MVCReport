@@ -37,11 +37,10 @@ class LuckyController extends AbstractController
         $imgpath1 = "$randomSuit1$randomCardValue1.svg";
         $imgpath2 = "$randomSuit2$randomCardValue2.svg";
 
-        $imgpath3 = null; // Initialize $imgpath3
+        $imgpath3 = "bad_hand.png";
+
         if ($randomCardValue1 == $randomCardValue2 || $randomSuit1 == $randomSuit2 || $randomCardValue1 == 'ace' || $randomCardValue2 == 'ace') {
             $imgpath3 = "good_hand.png";
-        } else {
-            $imgpath3 = "bad_hand.png";
         }
 
         return $this->render('lucky/card.html.twig', [
