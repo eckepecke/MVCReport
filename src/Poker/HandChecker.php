@@ -244,14 +244,3 @@ class HandChecker
         return $this->strengthArray;
     }
 }
-
-
-
-// Example usage:
-// $hand = array(
-//     array("rank" => 2, "suit" => "Hearts"),
-//     array("rank" => 3, "suit" => "Hearts"),
-//     array("rank" => 4, "suit" => "Hearts"),
-//     array("rank" => 5, "suit" => "Hearts"),
-//     array("rank" => 6, "suit" => "Hearts")
-// );

@@ -125,6 +125,9 @@ class PokerChallengeController extends AbstractController
         $dealer->addDeck($deck);
         $table->seatDealer($dealer);
         $table->seatPlayers($villain, $hero);
+
+        $challenge->addDealer($dealer);
+        $challenge->addTable($table);
         $heroStartStack = $hero->getStack();
 
         $session->set("challenge", $challenge);
@@ -276,39 +279,17 @@ class PokerChallengeController extends AbstractController
         $dealer = $session->get("dealer");
         $villain = $session->get("villain");
         $hero = $session->get("hero");
+        $challenge = $session->get("challenge");
+
 
         $heroPos = $hero->getPosition();
         $street = $table->getStreet();
         if (($heroPos === "BB" && $street === 1 && $table->getFlop() === [] )) {
             //Adding chips when hero checks back preflop
-        $table->addChipsToPot($table->getBigBlind());
-        $table->addChipsToPot($table->getBigBlind());
+            $table->collectUnraisedPot();
         }
 
-        $hero->resetCurrentBet();
-        $villain->resetCurrentBet();
-
-
-        if ($heroPos === "SB" || ($heroPos === "BB" && $street === 1)) {
-            $table->incrementStreet();
-        }
-
-        $street = $table->getStreet();
-
-        if ($street === 2 && ($table->getFlop() === [])) {
-            $flop = $dealer->dealFlop();
-            $table->registerMany($flop);
-        }
-
-        if ($street === 3 && (count($table->getBoard()) < 4)) {
-            $turn = $dealer->dealOne();
-            $table->registerOne($turn);
-        }
-
-        if ($street === 4 && (count($table->getBoard()) < 5)) {
-            $river = $dealer->dealOne();
-            $table->registerOne($river);
-        }
+        $table->dealCorrectStreet($heroPos, $street);
 
         if ($street === 1) {
             // we reach this when river has already been dealt
@@ -412,5 +393,4 @@ class PokerChallengeController extends AbstractController
         );
         return $response;
     }
-
 }

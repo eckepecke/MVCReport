@@ -10,6 +10,10 @@ class Challenge
     private int $duration;
     private object $villain;
     private object $hero;
+    private object $table;
+    private object $dealer;
+
+
     private int $handsPlayed;
 
     public function __construct(int $hands)
@@ -26,6 +30,16 @@ class Challenge
     public function addHero(Hero $hero): void
     {
         $this->hero = $hero;
+    }
+
+    public function addTable(Table $table): void
+    {
+        $this->table = $table;
+    }
+
+    public function addDealer(Dealer $dealer): void
+    {
+        $this->dealer = $dealer;
     }
 
     public function incrementHandsPlayed(): void

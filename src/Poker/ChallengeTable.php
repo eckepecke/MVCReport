@@ -120,4 +120,32 @@ class ChallengeTable extends Table
     {
         return $this->smallBlind + $this->bigBlind; 
     }
+
+    public function collectUnraisedPot(): void
+    {
+        $this->addChipsToPot($this->getBigBlind());
+        $this->addChipsToPot($this->getBigBlind());
+        $this->sbPlayer->resetCurrentBet();
+        $this->bbPlayer->resetCurrentBet();
+    }
+
+    public function dealCorrectStreet(string $heroPos, int $street): void
+    {
+        if ($heroPos === "SB" || ($heroPos === "BB" && $street === 1)) {
+            $this->incrementStreet();
+        }
+
+        $street = $this->street;
+
+        if ($street === 2 && ($this->flop === [])) {
+            $this->flop = $this->dealer->dealFlop();
+            //$this->registerMany($flop);
+        }
+
+        if ($street >= 3 && (count($this->fullBoard) < 5)) {
+            $this->fullBoard[] = $this->dealer->dealOne();
+            //$table->registerOne($river);
+        }
+
+    }
 }
