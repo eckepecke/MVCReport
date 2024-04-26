@@ -59,35 +59,15 @@ class PokerChallengeController extends AbstractController
             $action = $villain->randActionRFI();
             $action = "preflopCall";
             var_dump($action);
-            switch ($action) {
-                case "preflopRaise":
-                    echo "raise";
-                    $heroBet = $hero->getCurrentBet();
-                    $villain->raise($heroBet);
-                    break;
-
-                case "preflopCall":
-                    echo "Call";
-                    $chipAmount = $table->getPriceToPlay();
-                    $villain->$action($chipAmount);
-                    break;
-
-                default:
-                    echo "Fold";
-                    $villain->fold();
-                    $hero->muckCards();
-                    var_dump($table->getPotSize());
-                    $hero->takePot($table->getBlinds());
-                    $table->cleanTable();
-                    $challenge->incrementHandsPlayed();
-                    $data = $this->getSessionVariables($session);
-                    return $this->render('poker/teddy_fold.html.twig', $data);
+            $challenge->villainUnOpenedPot($action);
+            if ($action === "fold") {
+                $data = $this->getSessionVariables($session);
+                return $this->render('poker/teddy_fold.html.twig', $data);
+            }
         }
         $data = $this->getSessionVariables($session);
         return $this->render('poker/test.html.twig', $data);
     }
-}
-
 
     #[Route("/poker/session/delete", name: "session_delete")]
     public function sessionDelete(

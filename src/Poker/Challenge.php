@@ -104,4 +104,30 @@ class Challenge
         $this->villain->resetCurrentBet();
         $this->hero->resetCurrentBet();
     }
+
+    public function villainUnOpenedPot($action)
+    {
+        switch ($action) {
+            case "preflopRaise":
+                echo "raise";
+                $heroBet = $this->hero->getCurrentBet();
+                $this->villain->raise($heroBet);
+                break;
+
+            case "preflopCall":
+                echo "Call";
+                $chipAmount = $this->table->getPriceToPlay();
+                $this->villain->$action($chipAmount);
+                break;
+
+            default:
+                echo "Fold";
+                $this->villain->fold();
+                $this->hero->muckCards();
+                var_dump($this->table->getPotSize());
+                $this->hero->takePot($table->getBlinds());
+                $this->table->cleanTable();
+                $this->incrementHandsPlayed();
+        } 
+    }
 }

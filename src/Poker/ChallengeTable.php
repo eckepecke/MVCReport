@@ -179,4 +179,5 @@ class ChallengeTable extends Table
             $this->incrementStreet();
         }
     }
+
 }
