@@ -95,15 +95,6 @@ class PokerChallengeController extends AbstractController
         $game = $session->get("game");
         $game->someoneFolded();
 
-        // $challenge = $session->get("challenge");
-        // $dealer = $session->get("dealer");
-        // $winner = $game->dealer->moveChipsAfterFold();
-        // $dealer->resetForNextHand();
-        // $challenge->incrementHandsPlayed();
-        // if ($winner === "Mos"){
-        //     $data = $this->getSessionVariables($session);
-        //     return $this->render('poker/teddy_fold.html.twig', $data);
-        // }
         return $this->redirectToRoute('preflop');
     }
 
@@ -150,6 +141,7 @@ class PokerChallengeController extends AbstractController
 
         $hero->bet($heroBet);
         $action = $villain->actionFacingBet();
+        $redirectRoute = $action;
 
         if($action === "fold") {
             return $this->redirectToRoute('fold');
@@ -172,50 +164,53 @@ class PokerChallengeController extends AbstractController
     public function check(
         SessionInterface $session
     ): Response {
-        $table = $session->get("table");
-        $dealer = $session->get("dealer");
-        $villain = $session->get("villain");
-        $hero = $session->get("hero");
+        $game = $session->get("game");
+        $game->heroChecked();
 
-        $heroPos = $hero->getPosition();
-        $street = $table->getStreet();
+        // $table = $session->get("table");
+        // $dealer = $session->get("dealer");
+        // $villain = $session->get("villain");
+        // $hero = $session->get("hero");
 
-        if (($heroPos === "BB" && $street === 1 && $table->getFlop() === [] )) {
-            //Adding chips when hero checks back preflop
-            $table->collectUnraisedPot();
-        }
+        // $heroPos = $game->hero->getPosition();
+        // $street = $game->table->getStreet();
 
-        $table->dealCorrectStreet($heroPos);
+        // if (($heroPos === "BB" && $street === 1 && $game->table->getFlop() === [] )) {
+        //     //Adding chips when hero checks back preflop
+        //     $table->collectUnraisedPot();
+        // }
 
-        if ($table->getStreet() === 1) {
-            // we reach this when street = 4 and river has already been dealt
-            return $this->redirectToRoute('showdown');
-        }
+        // $game->table->dealCorrectStreet($heroPos);
 
-        if ($villain->getPosition() === "SB") {
-            $action = $villain->actionVsCheck();
-            if ($action === "check") {
-                if ($table->getStreet() >= 4) {
-                    return $this->redirectToRoute('showdown');
-                }
-                if ($street >= 2 && ($table->getBoard() != [])){
-                    $card = $dealer->dealOne();
-                    $table->registerOne($card);
-                    $table->incrementStreet();
-                }
-            }
-            if ($action === "bet") {
-                $betSize = $villain->betVsCheck($table->getPotSize());
-                $villain->bet($betSize);
-            }
-        }
-        echo "AAAAAAAAAAAAA";
-        var_dump($street);
-        var_dump($table->getStreet());
-        echo "AAAAAAAAAAAAA";
+        // if ($table->getStreet() === 1) {
+        //     // we reach this when street = 4 and river has already been dealt
+        //     return $this->redirectToRoute('showdown');
+        // }
+
+        // if ($villain->getPosition() === "SB") {
+        //     $action = $villain->actionVsCheck();
+        //     if ($action === "check") {
+        //         if ($table->getStreet() >= 4) {
+        //             return $this->redirectToRoute('showdown');
+        //         }
+        //         if ($street >= 2 && ($table->getBoard() != [])){
+        //             $card = $dealer->dealOne();
+        //             $table->registerOne($card);
+        //             $table->incrementStreet();
+        //         }
+        //     }
+        //     if ($action === "bet") {
+        //         $betSize = $villain->betVsCheck($table->getPotSize());
+        //         $villain->bet($betSize);
+        //     }
+        // }
+        // echo "AAAAAAAAAAAAA";
+        // var_dump($street);
+        // var_dump($table->getStreet());
+        // echo "AAAAAAAAAAAAA";
 
 
-        $data = $this->getSessionVariables($session);
+        $data = $game->getSessionVariables($session);
         return $this->render('poker/test.html.twig', $data);
     }
 
@@ -223,6 +218,7 @@ class PokerChallengeController extends AbstractController
     public function showdown(
         SessionInterface $session
     ): Response {
+        $game = $se
         $table = $session->get("table");
         $dealer = $session->get("dealer");
         $villain = $session->get("villain");

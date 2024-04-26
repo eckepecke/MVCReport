@@ -150,4 +150,49 @@ class Game
         $this->dealer->resetForNextHand();
         $this->challenge->incrementHandsPlayed();
     }
+
+    public function heroChecked()
+    {
+        $heroPos = $this->hero->getPosition();
+        $street = $this->table->getStreet();
+
+        if (($heroPos === "BB" && $street === 1 && $this->table->getFlop() === [] )) {
+            //Adding chips when hero checks back preflop
+            $this->table->collectUnraisedPot();
+        }
+
+        $this->table->dealCorrectStreet($heroPos);
+
+        if ($this->table->getStreet() === 1) {
+            // we reach this when street = 4 and river has already been dealt
+            return $this->showdown();
+        }
+
+        if ($this->villain->getPosition() === "SB") {
+            $action = $this->villain->actionVsCheck();
+            if ($action === "check") {
+                if ($this->table->getStreet() >= 4) {
+                    $this->showdown();
+                }
+                if ($street >= 2 && ($table->getBoard() != [])){
+                    $card = $this->dealer->dealOne();
+                    $this->table->registerOne($card);
+                    $this->table->incrementStreet();
+                }
+            }
+            if ($action === "bet") {
+                $betSize = $this->villain->betVsCheck($table->getPotSize());
+                $this->villain->bet($betSize);
+            }
+        }
+
+
+        //$data = $this->getSessionVariables($session);
+        //return $this->render('poker/test.html.twig', $data);
+    }
+
+    public function showdown() {
+        
+        var_dump($dogball);
+    }
 }
