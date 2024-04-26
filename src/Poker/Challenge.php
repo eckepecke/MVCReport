@@ -12,6 +12,7 @@ class Challenge
     private object $hero;
     private object $table;
     private object $dealer;
+    private string $handWinner;
 
 
     private int $handsPlayed;
@@ -20,6 +21,7 @@ class Challenge
     {
         $this->duration = $hands;
         $this->handsPlayed = 0;
+        $this->handWinner = "";
     }
 
     public function addVillain(Villain $villain): void
@@ -67,16 +69,6 @@ class Challenge
     public function getHandsPlayed(): int
     {
         return $this->handsPlayed;
-    }
-
-    public function getHeroName(): string
-    {
-        return $this->hero->getName();
-    }
-
-    public function getVillainName(): string
-    {
-        return $this->villain->getName();
     }
 
     public function getResult(int $startingStack, int $currentStack): int
@@ -143,5 +135,13 @@ class Challenge
         $fullVillainHand = array_merge($this->villain->getHoleCards(), $board);
         $villainStrength = $handChecker->evaluateHand($fullVillainHand);
         $this->villain->updateStrength($villainStrength);
+    }
+
+    public function getHandWinner(): string {
+        return $this->handWinner;
+    }
+
+    public function setHandWinner($handWinner): void {
+        $this->handWinner = $handWinner;
     }
 }

@@ -111,7 +111,7 @@ class Game
 
     public function getSessionVariables(SessionInterface $session): array
     {
-        $hero = $session->get("hero");
+        $hero = $this->hero;
         $villain = $session->get("villain");
         $table = $session->get("table");
         $board = $table->getCardImages();
@@ -131,6 +131,9 @@ class Game
             "board" => $board,
             "street" => $table->getStreet(),
             "teddy_last_action" => $villain->getLastAction(),
+            "winner" => $this->challenge->getHandWinner(),
+            "teddy_hand_strength" => $villain->getStrength(),
+            "mos_hand_strength" => $hero->getStrength(), 
         ];
     }
 
@@ -163,16 +166,13 @@ class Game
 
         $this->table->dealCorrectStreet($heroPos);
 
-        if ($this->table->getStreet() === 1) {
-            // we reach this when street = 4 and river has already been dealt
-            return $this->showdown();
-        }
+
 
         if ($this->villain->getPosition() === "SB") {
             $action = $this->villain->actionVsCheck();
             if ($action === "check") {
                 if ($this->table->getStreet() >= 4) {
-                    $this->showdown();
+                    $this->compareHands();
                 }
                 if ($street >= 2 && ($table->getBoard() != [])){
                     $card = $this->dealer->dealOne();
@@ -186,13 +186,33 @@ class Game
             }
         }
 
+        // if ($this->table->getStreet() === 1) {
+        //     // we reach this when street = 4 and river has already been dealt
+        //     var_dump($ksufhksf);
+        //     return $this->showdown();
+        // }
+
 
         //$data = $this->getSessionVariables($session);
         //return $this->render('poker/test.html.twig', $data);
     }
 
-    public function showdown() {
-        
-        var_dump($dogball);
+    public function compareHands(SessionInterface $session) {
+        $this->challenge->assignHandStrengths($this->handChecker);
+        $winner = $this->handChecker->compareStrength($this->hero, $this->villain);
+        $winner->takePot($this->table->getPotsize());
+        $this->challenge->setHandWinner($winner->getName());
+        $session->set("winner", $this->challenge->getHandWinner());
+        $session->set("teddy_hand_strength", $this->villain->getStrength());
+        $session->set("mos_hand_strength", $this->hero->getStrength());
+        // $this->addToSession($session, "winner", $winner);
+        // $this->addToSession($session, "teddy_hand_strength", $this->villain->getStrength());
+        // $this->addToSession($session, "mos_hand_strength", $this->hero->getStrength());
+
     }
+
+//     public function addToSession(SessionInterface $session, string $key, $value)
+// {
+//     $session->set($key, $value);
+// }
 }

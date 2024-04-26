@@ -9,7 +9,6 @@ class HandChecker
     private array $strengthMapping;
 
 
-
     public function __construct()
     {
         $this->strengthArray = [

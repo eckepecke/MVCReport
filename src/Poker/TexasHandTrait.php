@@ -7,8 +7,7 @@ namespace App\Poker;
  */
 trait TexasHandTrait
 {
-    protected string $currentStrength;
-
+    protected string $currentStrength = '';
     public function updateStrength(array $boolValues): void
     {
         foreach ($boolValues as $key => $value) {

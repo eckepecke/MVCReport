@@ -211,32 +211,54 @@ class PokerChallengeController extends AbstractController
 
 
         $data = $game->getSessionVariables($session);
+        // if ($game->table->getStreet() === 1 && count($game->table->getBoard()) === 5) {
+
+        if ($game->table->getStreet() === 1) {
+            return $this->redirectToRoute('showdown');
+        }
         return $this->render('poker/test.html.twig', $data);
     }
 
     #[Route("/game/showdown", name: "showdown", methods: ['GET', 'POST'])]
     public function showdown(
+        Request $request,
         SessionInterface $session
     ): Response {
-        $game = $se
-        $table = $session->get("table");
-        $dealer = $session->get("dealer");
-        $villain = $session->get("villain");
-        $hero = $session->get("hero");
-        $challenge = $session->get("challenge");
-        $handChecker = new HandChecker();
+        $game = $session->get("game");
+        $session = $request->getSession();
+        $game->compareHands($session);
 
-        $challenge->assignHandStrengths($handChecker);
-        $winner = $handChecker->compareStrength($hero, $villain);
-        $winner->takePot($table->getPotsize());
 
-        $data = $this->getSessionVariables($session);
-        $data["teddy_hand_strength"] = $villain->getStrength();
-        $data["mos_hand_strength"] = $hero->getStrength();
-        $data["winner"] = $winner->getName();
+        // $data = $game->getSessionVariables($session);
+        // // var_dump($session->get("winner"));
+        // $data["teddy_hand_strength"] = $game->villain->getStrength();
+        // $data["mos_hand_strength"] = $game->hero->getStrength();
+        // $winner = $session->get("winner");
+        // $data["winner"] = $winner->getName();
 
-        $dealer->resetForNextHand();
-        $challenge->incrementHandsPlayed();
+
+
+
+        // $table = $session->get("table");
+        // $dealer = $session->get("dealer");
+        // $villain = $session->get("villain");
+        // $hero = $session->get("hero");
+        // $challenge = $session->get("challenge");
+        // $handChecker = new HandChecker();
+
+        // $challenge->assignHandStrengths($handChecker);
+        // $winner = $handChecker->compareStrength($hero, $villain);
+        // $winner->takePot($table->getPotsize());
+
+        $data = $game->getSessionVariables($session);
+        $game->dealer->resetForNextHand();
+        $game->challenge->incrementHandsPlayed();
+        // var_dump($data["winner"]);
+        // $data["mos_hand_strength"] = $hero->getStrength();
+        // $data["winner"] = $winner->getName();
+
+        // $dealer->resetForNextHand();
+        // $challenge->incrementHandsPlayed();
         return $this->render('poker/showdown.html.twig', $data);
     }
 
