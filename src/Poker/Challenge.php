@@ -125,26 +125,10 @@ class Challenge
                 $this->villain->fold();
                 $this->hero->muckCards();
                 var_dump($this->table->getPotSize());
-                $this->hero->takePot($table->getBlinds());
+                $this->hero->takePot($this->table->getBlinds());
                 $this->table->cleanTable();
                 $this->incrementHandsPlayed();
         } 
-    }
-
-    public function moveChipsAfterFold()
-    {
-        $villainBet = $this->villain->getCurrentBet();
-        $heroBet = $this->hero->getCurrentBet();
-        $this->table->addChipsToPot($villainBet);
-        $this->table->addChipsToPot($heroBet);
-        $pot = $this->table->getPotSize();
-
-        $winner = $this->hero;
-        $biggestBet = max($villainBet, $heroBet);
-        if ($biggestBet === $villainBet) {
-            $winner = $this->villain;
-        }
-        $winner->takePot($pot);
     }
 
     public function assignHandStrengths($handChecker)
@@ -159,13 +143,5 @@ class Challenge
         $fullVillainHand = array_merge($this->villain->getHoleCards(), $board);
         $villainStrength = $handChecker->evaluateHand($fullVillainHand);
         $this->villain->updateStrength($villainStrength);
-    }
-
-    public function resetForNextHand()
-    {
-        $this->hero->fold();
-        $this->villain->fold();
-        $this->table->cleanTable();
-        $this->incrementHandsPlayed();
     }
 }

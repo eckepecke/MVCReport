@@ -55,7 +55,7 @@ class HandChecker
         ];
     }
 
-    public function evaluateHand($cards)
+    public function evaluateHand(array $cards): array
     {
         $ranks = [];
         $suits = [];
@@ -228,7 +228,9 @@ class HandChecker
         } 
         var_dump($heroValue);
         var_dump($villainValue);
-
+        if ($heroValue === $villainValue) {
+            return $villain;
+        }
 
         $bestHand = min($heroValue, $villainValue);
         var_dump($bestHand);

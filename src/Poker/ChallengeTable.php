@@ -129,20 +129,22 @@ class ChallengeTable extends Table
         $this->bbPlayer->resetCurrentBet();
     }
 
-    public function dealCorrectStreet(string $heroPos, int $street): void
+    public function dealCorrectStreet(string $heroPos): void
     {
+        $street = $this->street;
+
         if ($heroPos === "SB" || ($heroPos === "BB" && $street === 1)) {
             echo"activated";
             var_dump($this->street);
             $this->incrementStreet();
             var_dump($this->street);
-
         }
 
         $street = $this->street;
 
         if ($street === 2 && ($this->flop === [])) {
             echo"activated 3";
+            var_dump($this->street);
 
             $flop = $this->dealer->dealFlop();
             $this->registerMany($flop);

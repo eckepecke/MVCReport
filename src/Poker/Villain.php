@@ -11,6 +11,7 @@ class Villain extends Player
     use TexasHandTrait;
 
     private string $name;
+    private object $handChecker;
 
     public function __construct()
     {
@@ -19,7 +20,6 @@ class Villain extends Player
 
         $this->name = "Teddy KGB";
         $this->currentBet = 0;
-
     }
 
     public function getName(): string
@@ -40,6 +40,8 @@ class Villain extends Player
         $this->stack -= ($raiseSize - $this->currentBet);
         $this->currentBet = $raiseSize;
 
+        $this->lastAction = "raise";
+
         return $raiseSize;
     }
 
@@ -48,5 +50,12 @@ class Villain extends Player
         $this->hand = [];
         $this->currentBet = 0;
         $this->currentStrength = "";
+        $this->lastAction = "fold";
+
+    }
+
+    public function addHandChecker(HandChecker $handChecker): void
+    {
+        $this->handChecker = $handChecker;
     }
 }

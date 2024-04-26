@@ -18,9 +18,10 @@ class ChallengeDealer extends Dealer
     private object $playerOne;
     private object $playerTwo;
     private int $handCount;
+    private object $table;
 
 
-    public function __construct($playerList)
+    public function __construct(array $playerList)
     {
         parent::__construct();
 
@@ -29,35 +30,15 @@ class ChallengeDealer extends Dealer
         $this->handCount = 0;
     }
 
-    // public function moveButton()
-    // {
-    //     $currentPosition = $this->playerOne->getPosition();
-    //     echo "hej";
-    //     var_dump($currentPosition);
-    //     if ($currentPosition === "SB") {
-    //         $this->playerOne->setPosition("BB");
-    //         $this->playerTwo->setPosition("SB");
-    //     } else {
-    //         $this->playerOne->setPosition("SB");
-    //         $currentPosition = $this->playerOne->getPosition();
-    //         var_dump($currentPosition);
-    //         $this->playerTwo->setPosition("BB");
-    //     }
-
-    // }
+    public function addTable(ChallengeTable $table): void
+    {
+        $this->table = $table;
+    }
 
     public function incrementHandsPlayed(): void
     {
         $this->handCount += 1;
     }
-
-    // public function dealHoleCards(): void
-    // {
-    //     $firstHand = $this->deck->drawOne();
-    //     $secondHand = $this->deck->drawMany(2);
-    //     $this->playerOne->receiveHoleCards($firstHand);
-    //     $this->playerTwo->receiveHoleCards($secondHand);
-    // }
 
     public function dealHoleCards(): void
     {
@@ -74,33 +55,6 @@ class ChallengeDealer extends Dealer
         $this->playerTwo->receiveCard($fourthCard);
     }
 
-    // public function chargeAntes(int $smallBlind, int $bigBlind) : array {
-    //     $playerOnePos = $this->playerOne->getPosition();
-
-    //     if ($playerOnePos === "SB") {
-    //         $this->playerOne->payBlind($smallBlind);
-    //         $this->playerTwo->payBlind($bigBlind);
-    //     } else {
-    //         $this->playerOne->payBlind($bigBlind);
-    //         $this->playerTwo->payBlind($smallBlind);
-    //     }
-
-    //     $blinds = [$smallBlind, $bigBlind];
-    //     return $blinds;
-    // }
-
-    // public function randButton(): void
-    // {
-    //     $seats = ["SB", "BB"];
-    //     $position = $seats[rand(0, 1)];
-    //     $this->playerOne->setPosition($position);
-    //     if ($position === "SB") {
-    //         $this->playerTwo->setPosition("BB");
-    //     } else {
-    //         $this->playerTwo->setPosition("SB");
-    //     }
-    // }
-
     public function playersAllIn() :bool
     {
         $playerOneBroke = $this->playerOne->getStack() === 0;
@@ -111,5 +65,36 @@ class ChallengeDealer extends Dealer
         }
 
         return false;
+    }
+
+    public function moveChipsAfterFold() :string
+    {
+        $firstBet = $this->playerOne->getCurrentBet();
+        $secondBet = $this->playerTwo->getCurrentBet();
+        $this->table->addChipsToPot($firstBet);
+        $this->table->addChipsToPot($secondBet);
+        $pot = $this->table->getPotSize();
+
+        $winner = $this->playerOne;
+        $biggestBet = max($firstBet, $secondBet);
+        if ($biggestBet === $secondBet) {
+            $winner = $this->playerTwo;
+        }
+        $winner->takePot($pot);
+        return $winner->getName();
+    }
+
+    public function resetForNextHand(): void
+    {
+        $this->playerOne->fold();
+        $this->playerTwo->fold();
+        $this->table->cleanTable();
+    }
+
+    public function dealToShowdown(): void
+    {
+        $board = $this->table->getBoard();
+        $cards = $this->dealRemaining($board);
+        $this->table->registerMany($cards);
     }
 }

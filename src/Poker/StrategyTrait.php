@@ -9,13 +9,12 @@ trait StrategyTrait
 {
     public function randActionRFI(): string
     {
-        $options = [
-            "preflopCall",
-            "preflopRaise",
-            "fold"
-        ];
+        $decision = "preflopRaise";
 
-        $decision = $options[rand(0, 2)];
+        $randNum = rand(0, 10);
+        if ($randNum < 2){
+            $decision = "preflopCall";
+        }
         return $decision;
     }
 
@@ -27,8 +26,8 @@ trait StrategyTrait
             "bet"
         ];
 
-        //$decision = $options[rand(0, 1)];
-        $decision = $options[1];
+        $decision = $options[rand(0, 1)];
+        $this->lastAction = $decision;
 
         return $decision;
     }
@@ -40,18 +39,45 @@ trait StrategyTrait
 
     public function actionFacingBet(): string
     {
-        // if $this->hand === "AA"{
-        //     return "raise"
-        // }
+
         $options = [
             "fold",
+            "fold",
+            "call",
+            "call",
+            "call",
             "call",
             "raise"
         ];
 
-        //$decision = $options[rand(0, 1)];
-        $decision = $options[rand(0, 2)];
+        $decision = $options[rand(0, 6)];
+        $this->lastAction = $decision;
 
+        return $decision;
+    }
+
+    public function postFlopBetOpportunity(): string
+    {
+        if (in_array($this->lastAction, ["raise", "bet"])) {
+            $options = [
+                "check",
+                "bet",
+                "bet",
+                "bet",
+            ];
+            $decision = $options[rand(0, 3)];
+            return $decision;
+        }
+        $options = [
+            "check",
+            "check",
+            "check",
+            "bet",
+        ];
+
+        //$decision = $options[rand(0, 1)];
+        $decision = $options[rand(0, 3)];
+        $this->lastAction = $decision;
         return $decision;
     }
 

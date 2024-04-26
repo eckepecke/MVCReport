@@ -11,6 +11,8 @@ class Player
     protected string $position;
     protected array $holeCards;
     protected int $currentBet;
+    protected string $lastAction;
+
 
 
     public function __construct()
@@ -18,6 +20,7 @@ class Player
         $this->stack = 5000;
         $this->hand = [];
         $this->currentBet = 0;
+        $this->lastAction = "";
 
     }
 
@@ -25,75 +28,32 @@ class Player
     {
         $this->stack -= $price;
         $this->currentBet += $price;
+        $this->lastAction = "call";
     }
-
-    // public function preflop3bet($amount, $bigBlind) : void
-    // {
-    //     $raiseSize = (3 * $bigBlind) - $smallBlind;
-    //     $this->stack -= ($raiseSize - $smallBlind) ;
-    //     $this->currentBet = $raiseSize;
-    // }
 
     public function fold(): void
     {
         $this->hand = [];
         $this->currentBet = 0;
-
+        $this->lastAction = "fold";
     }
-
-    // public function bet(int $amount): int {
-    //     if ($amount > $this->stack) {
-    //         $amount = $this->stack;
-    //     }
-    //     $this->stack -= $amount;
-    //     $this->currentBet = $amount;
-
-    //     return $amount;
-    // }
 
 
     public function bet(int $amount): void
     {
-        //Fixa to dlist note här imorgon
         $amount = min($amount, $this->stack + $this->currentBet);
-
-
-        // if ($amount > $this->stack) {
-        //     $amount = $this->stack + $this->currentBet;
-        //     $this->stack = 0;
-
-        // } else {
-        //     //$this->stack -= $amount - $this->currentBet;
         $this->stack -= $amount - $this->currentBet;
-
-        // }
         $this->currentBet = $amount;
+        $this->lastAction = "bet";
+
     }
 
     public function call(int $amount): void
     {
         $amount = min($amount, $this->stack);
         $this->stack -= $amount;
-
-        // if ($amount > $this->stack) {
-        //     $amount = $this->stack;
-        //     $this->stack -= $amount;
-        // } else {
-        //     $this->stack -= $amount;
-        // }
+        $this->lastAction = "call";
     }
-
-    // public function raise(int $raiseSize): void {
-    //     $this->stack -= $raiseSize;
-    // }
-
-    // public function receiveHoleCards(array $holeCards) : void {
-    //     var_dump($holeCards);
-
-    //     $this->hand = $holeCards;
-    //     var_dump($this->holeCards);
-
-    // }
 
     public function receiveCard(CardGraphic $card): void
     {
@@ -162,5 +122,10 @@ class Player
     public function getCurrentBet(): int
     {
         return $this->currentBet;
+    }
+
+    public function getLastAction()
+    {
+        return $this->lastAction;
     }
 }

@@ -66,12 +66,12 @@ class DeckControllerJson
     public function apiDrawOne(
         SessionInterface $session
     ): Response {
-        $deck = $session->get("deck") ?? throw new \Exception("No deck in session!");
+        $deck = $session->get("deck") ?? throw new Exception("No deck in session!");
 
         $remains = $deck->size();
 
         if ($remains <= 0) {
-            throw new \Exception("No cards in deck!");
+            throw new Exception("No cards in deck!");
         }
         $deck->drawOne();
         $session->set("deck", $deck);
@@ -99,12 +99,12 @@ class DeckControllerJson
         int $num,
         SessionInterface $session
     ): Response {
-        $deck = $session->get("deck") ?? throw new \Exception("No deck in session!");
+        $deck = $session->get("deck") ?? throw new Exception("No deck in session!");
 
         $remains = $deck->size();
 
         if ($num > $remains) {
-            throw new \Exception("Only {$remains} cards in deck!");
+            throw new Exception("Only {$remains} cards in deck!");
         }
         $deck->drawMany($num);
         $session->set("deck", $deck);

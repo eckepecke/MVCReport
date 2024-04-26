@@ -29,6 +29,7 @@ class Hero extends Player
         $raiseSize = $raiseSize - $smallBlind;
         $this->stack -= $raiseSize ;
         $this->currentBet = $raiseSize;
+        $this->lastAction = "raise";
 
         return $raiseSize;
     }
@@ -38,5 +39,6 @@ class Hero extends Player
         $this->hand = [];
         $this->currentBet = 0;
         $this->currentStrength = "";
+        $this->lastAction = "fold";
     }
 }
