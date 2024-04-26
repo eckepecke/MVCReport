@@ -67,7 +67,7 @@ class ChallengeDealer extends Dealer
         return false;
     }
 
-    public function moveChipsAfterFold() :string
+    public function moveChipsAfterFold() : void
     {
         $firstBet = $this->playerOne->getCurrentBet();
         $secondBet = $this->playerTwo->getCurrentBet();
@@ -81,7 +81,6 @@ class ChallengeDealer extends Dealer
             $winner = $this->playerTwo;
         }
         $winner->takePot($pot);
-        return $winner->getName();
     }
 
     public function resetForNextHand(): void

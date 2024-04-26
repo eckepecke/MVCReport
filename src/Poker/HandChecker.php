@@ -82,6 +82,7 @@ class HandChecker
 
         // Check for straight
         $isStraight = false;
+        $upperEndCard = null;
         $straight = $this->checkForStraight($ranks);
         if ($straight !== []) {
             $isStraight = true;
