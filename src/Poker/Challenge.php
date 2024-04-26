@@ -83,4 +83,25 @@ class Challenge
     {
         return ($currentStack - $startingStack);
     }
+
+    public function betWasCalled()
+    {
+        $villainBet = $this->villain->getCurrentBet();
+        $heroBet = $this->hero->getCurrentBet();
+        $biggestBet = max($villainBet, $heroBet);
+        $price = $this->table->getPriceToPlay();
+        $caller = $this->hero;
+
+        if ($biggestBet === $heroBet) {
+            $caller = $this->villain;
+        }
+        $caller->call($price);
+
+        $this->table->addChipsToPot($heroBet);
+        $this->table->addChipsToPot($villainBet);
+        $this->table->addChipsToPot($price);
+
+        $this->villain->resetCurrentBet();
+        $this->hero->resetCurrentBet();
+    }
 }

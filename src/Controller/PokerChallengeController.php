@@ -57,6 +57,7 @@ class PokerChallengeController extends AbstractController
 
         if ($table->getSbPlayer() === $villain) {
             $action = $villain->randActionRFI();
+            $action = "preflopCall";
             var_dump($action);
             switch ($action) {
                 case "preflopRaise":
@@ -179,26 +180,12 @@ class PokerChallengeController extends AbstractController
         $dealer = $session->get("dealer");
         $villain = $session->get("villain");
         $hero = $session->get("hero");
+        $challenge = $session->get("challenge");
 
-        $villainBet = $villain->getCurrentBet();
-        $heroBet = $hero->getCurrentBet();
-        $biggestBet = max($villainBet, $heroBet);
-        $price = $table->getPriceToPlay();
-        $caller = $hero;
+        $challenge->betWasCalled();
+        $street = $table->getStreet();
 
-        if ($biggestBet === $heroBet) {
-            $caller = $villain;
-        }
-        $caller->call($price);
-
-        $table->addChipsToPot($heroBet);
-        $table->addChipsToPot($villainBet);
-        $table->addChipsToPot($price);
-
-        $villain->resetCurrentBet();
-        $hero->resetCurrentBet();
-
-        if($dealer->playersAllIn()) {
+        if($dealer->playersAllIn() || $street === 4) {
             $board = $table->getBoard();
             $cards = $dealer->dealRemaining($board);
             $table->registerMany($cards);
@@ -206,40 +193,10 @@ class PokerChallengeController extends AbstractController
             return $this->redirectToRoute('showdown');
         }
 
-        $street = $table->getStreet();
+        $table->dealCorrectCardAfterCall();
 
-        if ($street === 1) {
-            $flop = $dealer->dealFlop();
-            $table->registerMany($flop);
-            $table->incrementStreet();
-
-            $data = $this->getSessionVariables($session);
-            return $this->render('poker/test.html.twig', $data);
-        }
-
-        if ($street === 2) {
-            $turn = $dealer->dealOne();
-            $table->registerOne($turn);
-            $table->incrementStreet();
-
-            $data = $this->getSessionVariables($session);
-            return $this->render('poker/test.html.twig', $data);
-        }
-
-        if ($street === 3) {
-            $river = $dealer->dealOne();
-            $table->registerOne($river);
-            $table->incrementStreet();
-
-            $data = $this->getSessionVariables($session);
-            return $this->render('poker/test.html.twig', $data);
-        }
-
-        if ($street === 4) {
-            return $this->redirectToRoute('showdown');
-        }
-
-        return $this->redirectToRoute('no streets');
+        $data = $this->getSessionVariables($session);
+        return $this->render('poker/test.html.twig', $data);
     }
 
     #[Route("/game/bet", name: "bet", methods: ['POST'])]
@@ -279,27 +236,31 @@ class PokerChallengeController extends AbstractController
         $dealer = $session->get("dealer");
         $villain = $session->get("villain");
         $hero = $session->get("hero");
-        $challenge = $session->get("challenge");
-
 
         $heroPos = $hero->getPosition();
         $street = $table->getStreet();
+        var_dump($heroPos);
+
+        var_dump($table->getStreet());
         if (($heroPos === "BB" && $street === 1 && $table->getFlop() === [] )) {
             //Adding chips when hero checks back preflop
             $table->collectUnraisedPot();
         }
+        //var_dump($table->getStreet());
+
 
         $table->dealCorrectStreet($heroPos, $street);
 
-        if ($street === 1) {
+        if ($table->getStreet() === 1) {
             // we reach this when river has already been dealt
+            var_dump($crash);
             return $this->redirectToRoute('showdown');
         }
 
         if ($villain->getPosition() === "SB") {
             $action = $villain->actionVsCheck();
             if ($action === "check") {
-                if ($street >= 4) {
+                if ($$table->getStreet() >= 4) {
                     return $this->redirectToRoute('showdown');
                 }
                 $card = $dealer->dealOne();

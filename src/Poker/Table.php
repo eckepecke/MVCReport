@@ -72,12 +72,15 @@ class Table
 
     public function incrementStreet(): void
     {
+        echo "activated inc";
         if ($this->street === 4) {
             $this->street = 1;
             return;
         }
-
+        var_dump($this->street);
         $this->street += 1;
+        var_dump($this->street);
+
     }
 
     public function cleanTable()

@@ -132,20 +132,51 @@ class ChallengeTable extends Table
     public function dealCorrectStreet(string $heroPos, int $street): void
     {
         if ($heroPos === "SB" || ($heroPos === "BB" && $street === 1)) {
+            echo"activated";
+            var_dump($this->street);
             $this->incrementStreet();
+            var_dump($this->street);
+
         }
 
         $street = $this->street;
 
         if ($street === 2 && ($this->flop === [])) {
-            $this->flop = $this->dealer->dealFlop();
-            //$this->registerMany($flop);
+            echo"activated 3";
+
+            $flop = $this->dealer->dealFlop();
+            $this->registerMany($flop);
         }
 
-        if ($street >= 3 && (count($this->fullBoard) < 5)) {
-            $this->fullBoard[] = $this->dealer->dealOne();
-            //$table->registerOne($river);
+        if ($street >= 3 && (count($this->fullBoard) < 5) && $heroPos === "SB") {
+            echo"activated 4";
+
+            $card = $this->dealer->dealOne();
+            $this->registerOne($card);
         }
 
+    }
+
+    public function dealCorrectCardAfterCall()
+    {
+        $street = $this->street;
+        
+        if ($street === 1) {
+            $flop = $this->dealer->dealFlop();
+            $this->registerMany($flop);
+            $this->incrementStreet();
+        }
+
+        if ($street === 2) {
+            $turn = $this->dealer->dealOne();
+            $this->registerOne($turn);
+            $this->incrementStreet();
+        }
+
+        if ($street === 3) {
+            $river = $this->dealer->dealOne();
+            $this->registerOne($river);
+            $this->incrementStreet();
+        }
     }
 }
