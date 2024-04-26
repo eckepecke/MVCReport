@@ -130,4 +130,20 @@ class Challenge
                 $this->incrementHandsPlayed();
         } 
     }
+
+    public function moveChipsAfterFold()
+    {
+        $villainBet = $this->villain->getCurrentBet();
+        $heroBet = $this->hero->getCurrentBet();
+        $this->table->addChipsToPot($villainBet);
+        $this->table->addChipsToPot($heroBet);
+        $pot = $this->table->getPotSize();
+
+        $winner = $this->hero;
+        $biggestBet = max($villainBet, $heroBet);
+        if ($biggestBet === $villainBet) {
+            $winner = $this->villain;
+        }
+        $winner->takePot($pot);
+    }
 }

@@ -131,22 +131,10 @@ class PokerChallengeController extends AbstractController
         $hero = $session->get("hero");
         $challenge = $session->get("challenge");
 
-        $villainBet = $villain->getCurrentBet();
-        $heroBet = $hero->getCurrentBet();
-        $table->addChipsToPot($villainBet);
-        $table->addChipsToPot($heroBet);
-        $pot = $table->getPotSize();
-
-        $winner = $hero;
-        $biggestBet = max($villainBet, $heroBet);
-        if ($biggestBet === $villainBet) {
-            $winner = $villain;
-        }
-        $winner->takePot($pot);
-
-        $hero->fold();
-        $villain->fold();
-        $table->cleanTable();
+        $challenge->moveChipsAfterFold();
+        $challenge->hero->fold();
+        $challenge->villain->fold();
+        $challenge->table->cleanTable();
         $challenge->incrementHandsPlayed();
 
         return $this->redirectToRoute('preflop');

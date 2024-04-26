@@ -180,4 +180,5 @@ class ChallengeTable extends Table
         }
     }
 
+
 }
