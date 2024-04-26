@@ -156,12 +156,16 @@ class PokerChallengeController extends AbstractController
         }
 
         $table->dealCorrectCardAfterCall();
-        $action = $villain->postFlopBetOpportunity();
-        if ($action === "bet") {
-            echo "Villain bettar";
-            $betSize = $villain->betVsCheck($table->getPotSize());
-            $villain->bet($betSize);
+        if ($villain->getPosition() === "BB"){
+            $action = $villain->postFlopBetOpportunity();
+            $action = "check";
+            if ($action === "bet" ) {
+                echo "Villain bettar";
+                $betSize = $villain->betVsCheck($table->getPotSize());
+                $villain->bet($betSize);
+            }
         }
+
         $data = $this->getSessionVariables($session);
         return $this->render('poker/test.html.twig', $data);
     }
@@ -219,23 +223,28 @@ class PokerChallengeController extends AbstractController
             return $this->redirectToRoute('showdown');
         }
 
-        // if ($villain->getPosition() === "SB") {
-        $action = $villain->actionVsCheck();
-        if ($action === "check") {
-            if ($table->getStreet() >= 4) {
-                return $this->redirectToRoute('showdown');
+        if ($villain->getPosition() === "SB") {
+            $action = $villain->actionVsCheck();
+            if ($action === "check") {
+                if ($table->getStreet() >= 4) {
+                    return $this->redirectToRoute('showdown');
+                }
+                if ($street >= 2 && ($table->getBoard() != [])){
+                    $card = $dealer->dealOne();
+                    $table->registerOne($card);
+                    $table->incrementStreet();
+                }
             }
-            if ($street >= 2 && ($table->getBoard() != [])){
-                $card = $dealer->dealOne();
-                $table->registerOne($card);
-                $table->incrementStreet();
+            if ($action === "bet") {
+                $betSize = $villain->betVsCheck($table->getPotSize());
+                $villain->bet($betSize);
             }
         }
-        if ($action === "bet") {
-            $betSize = $villain->betVsCheck($table->getPotSize());
-            $villain->bet($betSize);
-        }
-        // }
+        echo "AAAAAAAAAAAAA";
+        var_dump($street);
+        var_dump($table->getStreet());
+        echo "AAAAAAAAAAAAA";
+
 
         $data = $this->getSessionVariables($session);
         return $this->render('poker/test.html.twig', $data);
