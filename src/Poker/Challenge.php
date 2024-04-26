@@ -146,4 +146,26 @@ class Challenge
         }
         $winner->takePot($pot);
     }
+
+    public function assignHandStrengths($handChecker)
+    {
+        $board = $this->table->getBoard();
+        $fullHeroHand = array_merge($this->hero->getHoleCards(), $board);
+        $heroStrength = $handChecker->evaluateHand($fullHeroHand);
+        $this->hero->updateStrength($heroStrength);
+
+        $handChecker->resetStrengthArray();
+
+        $fullVillainHand = array_merge($this->villain->getHoleCards(), $board);
+        $villainStrength = $handChecker->evaluateHand($fullVillainHand);
+        $this->villain->updateStrength($villainStrength);
+    }
+
+    public function resetForNextHand()
+    {
+        $this->hero->fold();
+        $this->villain->fold();
+        $this->table->cleanTable();
+        $this->incrementHandsPlayed();
+    }
 }

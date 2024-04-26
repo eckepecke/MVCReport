@@ -254,20 +254,9 @@ class PokerChallengeController extends AbstractController
         $villain = $session->get("villain");
         $hero = $session->get("hero");
         $challenge = $session->get("challenge");
-
         $handChecker = new HandChecker();
-        $board = $table->getBoard();
 
-        $fullHeroHand = array_merge($hero->getHoleCards(), $board);
-        $heroStrength = $handChecker->evaluateHand($fullHeroHand);
-        $hero->updateStrength($heroStrength);
-
-        $handChecker->resetStrengthArray();
-
-        $fullVillainHand = array_merge($villain->getHoleCards(), $board);
-        $villainStrength = $handChecker->evaluateHand($fullVillainHand);
-        $villain->updateStrength($villainStrength);
-
+        $challenge->assignHandStrengths($handChecker);
         $winner = $handChecker->compareStrength($hero, $villain);
         $winner->takePot($table->getPotsize());
 
@@ -275,10 +264,9 @@ class PokerChallengeController extends AbstractController
         $data["teddy_hand_strength"] = $villain->getStrength();
         $data["mos_hand_strength"] = $hero->getStrength();
         $data["winner"] = $winner->getName();
-        $hero->fold();
-        $villain->fold();
-        $table->cleanTable();
-        $challenge->incrementHandsPlayed();
+
+        $challenge->resetForNextHand();
+
         return $this->render('poker/showdown.html.twig', $data);
     }
 
