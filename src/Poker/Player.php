@@ -109,11 +109,6 @@ class Player
         $this->stack += $chips;
     }
 
-    public function setCurrentBet(int $amount): void
-    {
-        $this->currentBet += $amount;
-    }
-
     public function resetCurrentBet(): void
     {
         $this->currentBet = 0;

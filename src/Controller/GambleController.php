@@ -70,12 +70,24 @@ class GambleController extends AbstractController
     ): Response
     {
         $action = $request->request->get('action');
+        if ($action === NULL) {
+        $action = $request->request->get('bet');
+        }
         var_dump($action);
 
-
         $game = $session->get("game");
+        echo "1";
+        var_dump($game->hero->getStack());
         $game->play($action);
+        echo "2";
+
+        var_dump($game->hero->getStack());
+
         $data = $game->getGameState();
+        echo "3";
+
+        var_dump($game->hero->getStack());
+
         return $this->render('gamble/play.html.twig', $data);
     }
 

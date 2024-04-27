@@ -3,8 +3,8 @@
 namespace App\FlopAndGo;
 
 
-use App\Poker\StrategyTrait;
-use App\Poker\TexasHandTrait;
+use App\FlopAndGo\StrategyTrait;
+use App\FlopAndGo\TexasHandTrait;
 
 class Villain extends Player
 {

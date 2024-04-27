@@ -17,7 +17,7 @@ class Game
 {
     use GameHelperTrait;
 
-    private object $hero;
+    public object $hero;
     private object $villain;
     private object $dealer;
     private object $table;
@@ -90,20 +90,26 @@ class Game
 
     public function play($action)
     {
-        if ($action != "") {
+        if ($action === null) {
             $this->handSetUp();
         }
 
-        switch ($action) {
-            case "check":
-                $this->heroChecked();
-                break;
-            case "call":
-                $this->heroCalled();
-                break;
-            case "raise":
-                $this->heroRaised();
-                break;
+        if ($action != null){
+            switch ($action) {
+                case "check":
+                    $this->heroChecked();
+                    break;
+                case "call":
+                    $this->heroCalled();
+                    break;
+                case "fold":
+                    $this->heroFolded();
+                    break;
+                default:
+                    $this->heroBet(intval($action));
+                    break;
+            }
         }
+
     }
 }

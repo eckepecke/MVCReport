@@ -80,10 +80,10 @@
         {% endif %}
 
         <!-- Bet/Raise Button with Number Input -->
-        <form method="post" action="{{ path('gamble_play') }}">
-            <input type="hidden" name="action" value="bet">
-            <button type="submit" class="raise-button">Bet/Raise</button>
-            <input type="number" name="bet" value="0" min="{{ min_raise }}" class="bet-input">
+        <form method="post" action="">
+            <button type="submit" name="bet_button" class="raise-button"
+                    onClick="this.form.action='{{ path('gamble_play') }}';">Bet/Raise</button>
+            <input type="number" name="bet" value="0" min="50" class="bet-input">
         </form>
 
         </div>
