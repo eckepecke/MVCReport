@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Poker;
+namespace App\FlopAndGo;
 
 class Table
 {
@@ -8,6 +8,8 @@ class Table
     protected array $flop;
     protected array $fullBoard;
     protected string $street;
+    private object $sbPlayer;
+    private object $bbPlayer;
 
     public function __construct()
     {
@@ -15,6 +17,16 @@ class Table
         $this->flop = [];
         $this->fullBoard = [];
         $this->street = "";
+    }
+
+    public function seatPlayers(object $player1, object $player2): void
+    {
+        $this->sbPlayer = $player1;
+        $this->sbPlayer->setPosition("SB");
+
+        $this->bbPlayer = $player2;
+        $this->bbPlayer->setPosition("BB");
+
     }
 
     public function addChipsToPot(int $chips): void
@@ -46,9 +58,7 @@ class Table
     }
 
     public function setStreet(): void {
-        if (count($this->fullBoard) === 0) {
-            $this->street = "";
-        }
+        $this->street = "";
 
         if (count($this->fullBoard) === 3) {
             $this->street = "flop";
@@ -68,7 +78,7 @@ class Table
         return $this->fullBoard;
     }
 
-    public function getStreet(): int
+    public function getStreet(): string
     {
         return $this->street;
     }
@@ -79,5 +89,15 @@ class Table
         $this->flop = [];
         $this->fullBoard = [];
         $this->street = "";
+    }
+
+    public function moveButton(): void
+    {
+        $temp = $this->sbPlayer;
+        $this->sbPlayer = $this->bbPlayer;
+        $this->bbPlayer = $temp;
+
+        $this->bbPlayer->setPosition("BB");
+        $this->sbPlayer->setPosition("SB");
     }
 }

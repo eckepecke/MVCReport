@@ -56,11 +56,11 @@ class PokerChallengeController extends AbstractController
         return $this->render('poker/delete.html.twig');
     }
 
-    #[Route("/game", name: "game_init_get", methods: ['GET'])]
-    public function init(): Response
-    {
-        return $this->render('poker/game.html.twig');
-    }
+    // #[Route("/game", name: "game_init_get", methods: ['GET'])]
+    // public function init(): Response
+    // {
+    //     return $this->render('poker/game.html.twig');
+    // }
 
     #[Route("/game", name: "game_init_post", methods: ['POST'])]
     public function initCallback(

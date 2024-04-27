@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Poker;
+namespace App\FlopAndGo;
+
 
 use App\Poker\StrategyTrait;
 use App\Poker\TexasHandTrait;
@@ -50,6 +51,5 @@ class Villain extends Player
         $this->currentBet = 0;
         $this->currentStrength = "";
         $this->lastAction = "fold";
-
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Poker;
+namespace App\FlopAndGo;
 
 use App\Cards\CardGraphic;
 
@@ -12,8 +12,6 @@ class Player
     protected int $currentBet;
     protected string $lastAction;
 
-
-
     public function __construct()
     {
         $this->stack = 5000;
@@ -21,14 +19,6 @@ class Player
         $this->currentBet = 0;
         $this->lastAction = "";
     }
-
-    public function fold(): void
-    {
-        $this->hand = [];
-        $this->currentBet = 0;
-        $this->lastAction = "fold";
-    }
-
 
     public function bet(int $amount): void
     {
@@ -101,5 +91,10 @@ class Player
     public function getLastAction()
     {
         return $this->lastAction;
+    }
+
+    public function payBlind(int $ante) : void
+    {
+        $this->stack += $ante;
     }
 }

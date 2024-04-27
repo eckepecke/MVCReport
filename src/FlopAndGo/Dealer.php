@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Poker;
+namespace App\FlopAndGo;
 
-use App\Poker\Hero;
-use App\Poker\Villain;
-use App\Poker\Challenge;
-use App\Cards\DeckOfCards;
+use App\Gamble\Challenge;
+use App\Gamble\DeckOfCards;
+use App\Gamble\Table;
+
 
 class Dealer
 {
@@ -18,17 +18,10 @@ class Dealer
         $this->deck = $deck;
     }
 
-    public function addTable(SpecialTable $table): void
+    public function addTable(Table $table): void
     {
         $this->deck = $deck;
     }
-
-    // public function addPlayers(array $players): void
-    // {
-    //     foreach ($players as $player) {
-    //         $this->playerList[] = $player;
-    //     }
-    // }
 
     public function dealFlop(): array
     {

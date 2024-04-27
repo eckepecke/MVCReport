@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Poker;
+namespace App\FlopAndGo;
 
 use App\Poker\Hero;
 use App\Poker\Villain;
