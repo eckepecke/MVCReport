@@ -5,14 +5,18 @@ namespace App\FlopAndGo;
 use App\FlopAndGo\Dealer;
 use App\FlopAndGo\HandChecker;
 use App\FlopAndGo\Hero;
+use App\FlopAndGo\GameHelperTrait;
 use App\FlopAndGo\Moderator;
 use App\FlopAndGo\Table;
 use App\FlopAndGo\Villain;
 use App\FlopAndGo\SpecialTable;
 
 
+
 class Game
 {
+    use GameHelperTrait;
+
     private object $hero;
     private object $villain;
     private object $dealer;
@@ -84,9 +88,22 @@ class Game
         ];
     }
 
-    public function play()
+    public function play($action)
     {
-        $this->table->getBombPotChips();
-        $this->dealer->dealHoleCards();
+        if ($action != "") {
+            $this->handSetUp();
+        }
+
+        switch ($action) {
+            case "check":
+                $this->heroChecked();
+                break;
+            case "call":
+                $this->heroCalled();
+                break;
+            case "raise":
+                $this->heroRaised();
+                break;
+        }
     }
 }

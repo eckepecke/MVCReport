@@ -63,13 +63,18 @@ class GambleController extends AbstractController
     }
 
 
-    #[Route("/game/gamble/play", name: "gamble_play", methods: ['GET'])]
+    #[Route("/game/gamble/play", name: "gamble_play", methods: ['GET', 'POST'])]
     public function play(
+        Request $request,
         SessionInterface $session
     ): Response
     {
+        $action = $request->request->get('action');
+        var_dump($action);
+
+
         $game = $session->get("game");
-        $game->play();
+        $game->play($action);
         $data = $game->getGameState();
         return $this->render('gamble/play.html.twig', $data);
     }
