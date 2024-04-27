@@ -76,11 +76,13 @@ class Challenge
         return ($currentStack - $startingStack);
     }
 
-    public function getHandWinner(): string {
+    public function getHandWinner(): string
+    {
         return $this->handWinner;
     }
 
-    public function setHandWinner($handWinner): void {
+    public function setHandWinner($handWinner): void
+    {
         $this->handWinner = $handWinner;
     }
 }

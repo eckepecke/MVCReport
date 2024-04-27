@@ -116,9 +116,9 @@ class ChallengeTable extends Table
         return $imgPaths;
     }
 
-    public function getBlinds() : int
+    public function getBlinds(): int
     {
-        return $this->smallBlind + $this->bigBlind; 
+        return $this->smallBlind + $this->bigBlind;
     }
 
     public function collectUnraisedPot(): void
@@ -162,7 +162,7 @@ class ChallengeTable extends Table
     public function dealCorrectCardAfterCall()
     {
         $street = $this->street;
-        
+
         if ($street === 1) {
             $flop = $this->dealer->dealFlop();
             $this->registerMany($flop);

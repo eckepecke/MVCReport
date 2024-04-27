@@ -56,12 +56,12 @@ class HandChecker
 
     public function evaluateHand(array $cards): array
     {
+        //var_dump($this->strengthArray);
         $ranks = [];
         $suits = [];
 
         foreach ($cards as $card) {
             $cardValue = $card->getValue();
-            var_dump($this->rankMapping[$cardValue]);
             $ranks[] = $this->rankMapping[$cardValue];
         }
 
@@ -81,13 +81,13 @@ class HandChecker
 
         // Check for straight
         $isStraight = false;
-        $upperEndCard = null;
-        $straight = $this->checkForStraight($ranks);
-        if ($straight !== []) {
-            $isStraight = true;
-            $this->strengthArray['Straight'] = true;
-            $upperEndCard = max($straight);
-        }
+        //$upperEndCard = null;
+        $this->checkForStraight($ranks);
+        // if ($straight !== []) {
+        //     $isStraight = true;
+        //     $this->strengthArray['Straight'] = true;
+        //     $upperEndCard = max($straight);
+        // }
 
         // Check for straight flush and royal flush
         $isFlush = $this->strengthArray['Flush'];
@@ -97,7 +97,7 @@ class HandChecker
             $this->strengthArray['Straight flush'] = true;
             if ($upperEndCard === 14) {
                 $this->strengthArray['Royal flush'] = true;
-            } 
+            }
         }
 
         $this->checkForQuads($rankCounts);
@@ -114,41 +114,73 @@ class HandChecker
         return $this->strengthArray;
     }
 
-    public function checkForStraight(array $ranks): array
+    public function checkForStraight(array $ranks): void
     {
         $this->strengthArray['Straight'] = false;
-        sort($ranks);
+//        $ranks =[14,2,3,4,5,8,8];
 
-        $previousRank = 0;
-        $count = 0;
-        $wheel = false;
-        foreach ($ranks as $rank) {
-            if ($rank == $previousRank) {
-                continue;
-            } elseif ($rank == ++$previousRank) {
-                $count++;
-            } else {
-                if ($previousRank == 6) {
-                    $wheel = true;
-                }
-                $count = 1;
-                $previousRank = $rank;
-            }
-
-            if ($count == 5 || ($rank == 14 && $wheel)) {
-                $this->strengthArray['Straight'] = true;
-                //echo "Yeah a striiaght, the highest card is: " . $previousRank;
-                $straight = range($previousRank - 4, $previousRank);
-                return $straight;
-            }
+        if (in_array(14, $ranks)) {
+            $ranks[] = 1; // Add Ace with rank 1
         }
-        return [];
+        
+        sort($ranks);
+    
+        $set = array($ranks[0]); // Start with the first card
+        $lastRank = $ranks[0];
+        foreach ($ranks as $card) {
+            if ($card === $lastRank) continue; // Skip duplicates
+            if ($card - $lastRank === 1) {
+                // Consecutive card, add to the set
+                $set[] = $card;
+            } else {
+                // Not consecutive, restart the set with the current card
+                $set = array($card);
+            }
+    
+            if (count($set) === 5) {
+                break; // Found a straight, no need to continue
+            }
+            $lastRank = $card;
+        }
+    
+        if (count($set) === 5) {
+            echo "Found a straight with " . implode(',', $set) . "\n";
+            $this->strengthArray['Straight'] = true;
+        } else {
+            echo "No straight\n";
+        }
+
+        // $previousRank = 0;
+        // $count = 0;
+        // $wheel = false;
+        // foreach ($ranks as $rank) {
+        //     if ($rank == $previousRank) {
+        //         continue;
+        //     } elseif ($rank == ++$previousRank) {
+        //         $count++;
+        //     } else {
+        //         if ($previousRank == 6) {
+        //             $wheel = true;
+        //         }
+        //         $count = 1;
+        //         $previousRank = $rank;
+        //     }
+
+        //     if ($count == 5 || ($rank == 14 && $wheel)) {
+        //         $this->strengthArray['Straight'] = true;
+        //         echo "Yeah a striiaght, the highest card is: " . $previousRank;
+        //         $straight = range($previousRank - 4, $previousRank);
+        //         return $straight;
+        //     }
+        // }
+        // return [];
     }
 
     public function checkForFlush(int $maxSameSuitCount): void
     {
         $this->strengthArray['Flush'] = false;
         if ($maxSameSuitCount >= 5) {
+            echo "flush";
             $this->strengthArray['Flush'] = true;
         }
     }
@@ -157,6 +189,8 @@ class HandChecker
     public function checkForQuads(array $rankCounts): void
     {
         if (in_array(4, $rankCounts)) {
+            echo "quads";
+
             $this->strengthArray['Four of a kind'] = true;
         }
     }
@@ -164,13 +198,17 @@ class HandChecker
     public function checkForFull(array $rankCounts): void
     {
         if (in_array(3, $rankCounts) && in_array(2, $rankCounts)) {
+            echo "full";
             $this->strengthArray['Full House'] = true;
         }
     }
 
     public function checkForTrips(array $rankCounts): void
     {
+
         if (in_array(3, $rankCounts)) {
+        echo "trips";
+
             $this->strengthArray['Three of a kind'] = true;
         }
     }
@@ -185,10 +223,14 @@ class HandChecker
         }
 
         if ($pairCount >= 2) {
+            echo "2pair";
+
             $this->strengthArray['Two pair'] = true;
         }
 
         if ($pairCount > 0 && $pairCount < 2) {
+            echo "one pair";
+
             $this->strengthArray['One pair'] = true;
         }
         $this->strengthArray['High card'] = true;
@@ -219,13 +261,13 @@ class HandChecker
 
         if (array_key_exists($heroStrength, $this->strengthMapping)) {
             $heroValue = $this->strengthMapping[$heroStrength];
-        } 
+        }
 
         $villainValue = 10;
 
         if (array_key_exists($villainStrength, $this->strengthMapping)) {
             $villainValue = $this->strengthMapping[$villainStrength];
-        } 
+        }
         var_dump($heroValue);
         var_dump($villainValue);
         if ($heroValue === $villainValue) {

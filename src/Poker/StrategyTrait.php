@@ -12,7 +12,7 @@ trait StrategyTrait
         $decision = "preflopRaise";
 
         $randNum = rand(0, 10);
-        if ($randNum < 2){
+        if ($randNum < 2) {
             $decision = "preflopCall";
         }
         return $decision;
@@ -60,7 +60,7 @@ trait StrategyTrait
     {
         echo"bet opp triggered";
         if (in_array($this->lastAction, ["raise", "bet"])) {
-        echo"bet opp 1";
+            echo"bet opp 1";
 
             $options = [
                 "check",

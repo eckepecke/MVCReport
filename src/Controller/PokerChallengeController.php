@@ -19,29 +19,28 @@ class PokerChallengeController extends AbstractController
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
-        $session = $request->getSession();
         // $gameState = $game->getGameState();
-        // $currentDetails = $game->getSessionVariables($session);
+        $session = $request->getSession();
+
+        $game->setSessionVariables($session);
 
         if ($game->challenge->challengeComplete()) {
             $startStack = $game->hero->getStartStack();
-            $data = $game->getSessionVariables($session);
+            $data = $game->getSessionVariables();
             $data["result"] = $game->challenge->getResult($startStack, $game->hero->getStack());
             return $this->render('poker/end_game.html.twig', $data);
         }
         $game->preflopPrep();
-        // $table = $gameState['table'];
-        // $villain = $gameState['villain'];
 
         if ($game->table->getSbPlayer() === $game->villain) {
             $action = $game->villain->randActionRFI();
             $game->villainUnOpenedPot($action);
             if ($action === "fold") {
-                $data = $game->getSessionVariables($session);
+                $data = $game->getSessionVariables();
                 return $this->render('poker/teddy_fold.html.twig', $data);
             }
         }
-        $data = $game->getSessionVariables($session);
+        $data = $game->getSessionVariables();
         return $this->render('poker/test.html.twig', $data);
     }
 
@@ -79,10 +78,14 @@ class PokerChallengeController extends AbstractController
 
     #[Route("/game/fold", name: "fold", methods: ['GET', 'POST'])]
     public function fold(
+        Request $request,
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
         $game->someoneFolded();
+        $session = $request->getSession();
+        $game->setSessionVariables($session);
+
 
         return $this->redirectToRoute('preflop');
     }
@@ -103,7 +106,7 @@ class PokerChallengeController extends AbstractController
         $game->table->dealCorrectCardAfterCall();
         $game->villainCouldBetFromBigBlind();
 
-        $data = $game->getSessionVariables($session);
+        $data = $game->getSessionVariables();
         return $this->render('poker/test.html.twig', $data);
     }
 
@@ -133,7 +136,7 @@ class PokerChallengeController extends AbstractController
         }
         $villain->raise($heroBet);
 
-        $data = $game->getSessionVariables($session);
+        $data = $game->getSessionVariables();
         return $this->render('poker/test.html.twig', $data);
     }
 
@@ -143,7 +146,8 @@ class PokerChallengeController extends AbstractController
     ): Response {
         $game = $session->get("game");
         $game->heroChecked();
-        $data = $game->getSessionVariables($session);
+        
+        $data = $game->getSessionVariables();
         if ($game->table->getStreet() === 1) {
             return $this->redirectToRoute('showdown');
         }
@@ -158,7 +162,8 @@ class PokerChallengeController extends AbstractController
         $game = $session->get("game");
         $session = $request->getSession();
         $game->compareHands($session);
-        $data = $game->getSessionVariables($session);
+        $game->setSessionVariables($session);
+        $data = $game->getSessionVariables();
         $game->dealer->resetForNextHand();
         $game->challenge->incrementHandsPlayed();
         return $this->render('poker/showdown.html.twig', $data);
@@ -166,15 +171,18 @@ class PokerChallengeController extends AbstractController
 
     #[Route("/api/game", name: "api_game", methods: ["POST", "GET"])]
     public function apiPoker(
+        Request $request,
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
+        $session = $request->getSession();
+
 
         if (!$session->has("challenge")) {
             throw new Exception("No challenge in session!");
         }
-
-        $data = $game->getSessionVariables($session);
+        $game->setSessionVariables($session);
+        $data = $game->getSessionVariables();
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(

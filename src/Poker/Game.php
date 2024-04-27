@@ -18,7 +18,6 @@ use App\Poker\GameEventTrait;
 use App\Cards\CardHand;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-
 class Game
 {
     public object $challenge;
@@ -58,7 +57,8 @@ class Game
         $this->deck = $deck;
     }
 
-    public function initObjects($handsToPlay, $session) {
+    public function initObjects($handsToPlay, $session)
+    {
 
         $hero = new Hero();
         $villain = new Villain();
@@ -99,24 +99,23 @@ class Game
 
     }
 
-    public function getGameState() {
+    public function getGameState()
+    {
         return [
             "challenge" => $this->challenge,
             "hero" => $this->hero,
             "villain" => $this->villain,
             "table" => $this->table,
             "handChecker" => $this->handChecker,
-            "challenge" => $this->challenge,
-            "challenge" => $this->challenge,
+            "dealer" => $this->dealer,
         ];
     }
 
-    public function getSessionVariables(SessionInterface $session): array
+    public function getSessionVariables(): array
     {
         $hero = $this->hero;
-        $villain = $session->get("villain");
-        $table = $session->get("table");
-        $board = $table->getCardImages();
+        $villain = $this->villain;
+        $table = $this->table;
 
         return [
             "teddy_hand" => $villain->getImgPaths(),
@@ -130,18 +129,43 @@ class Game
             "mos_bet" => $hero->getCurrentBet(),
             "price" => $table->getPriceToPlay(),
             "min_raise" => $table->getMinimumRaiseAllowed(),
-            "board" => $board,
+            "board" => $table->getCardImages(),
             "street" => $table->getStreet(),
             "teddy_last_action" => $villain->getLastAction(),
             "winner" => $this->challenge->getHandWinner(),
             "teddy_hand_strength" => $villain->getStrength(),
-            "mos_hand_strength" => $hero->getStrength(), 
+            "mos_hand_strength" => $hero->getStrength(),
         ];
     }
 
+    public function setSessionVariables(SessionInterface $session): void
+    {
+        $villain = $this->villain;
+        $hero = $this->hero;
+        $table = $this->table;
+    
+        $session->set("teddy_hand", $villain->getImgPaths());
+        $session->set("mos_hand", $hero->getImgPaths());
+        $session->set("teddy_stack", $villain->getStack());
+        $session->set("mos_stack", $hero->getStack());
+        $session->set("teddy_pos", $villain->getPosition());
+        $session->set("mos_pos", $hero->getPosition());
+        $session->set("pot_size", $table->getPotSize());
+        $session->set("teddy_bet", $villain->getCurrentBet());
+        $session->set("mos_bet", $hero->getCurrentBet());
+        $session->set("price", $table->getPriceToPlay());
+        $session->set("min_raise", $table->getMinimumRaiseAllowed());
+        $session->set("board", $table->getCardImages());
+        $session->set("street", $table->getStreet());
+        $session->set("teddy_last_action", $villain->getLastAction());
+        $session->set("winner", $this->challenge->getHandWinner());
+        $session->set("teddy_hand_strength", $villain->getStrength());
+        $session->set("mos_hand_strength", $hero->getStrength());
+    }
 
-//     public function addToSession(SessionInterface $session, string $key, $value)
-// {
-//     $session->set($key, $value);
-// }
+
+    //     public function addToSession(SessionInterface $session, string $key, $value)
+    // {
+    //     $session->set($key, $value);
+    // }
 }

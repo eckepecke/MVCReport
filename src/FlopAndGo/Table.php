@@ -7,17 +7,17 @@ class Table
     protected int $potSize;
     protected array $flop;
     protected array $fullBoard;
-    protected int $street;
+    protected string $street;
 
     public function __construct()
     {
         $this->potSize = 0;
         $this->flop = [];
         $this->fullBoard = [];
-        $this->street = 1;
+        $this->street = "";
     }
 
-    public function addChipsToPot(int $bet): void
+    public function addChipsToPot(int $chips): void
     {
         $this->potSize += $bet;
     }
@@ -25,11 +25,6 @@ class Table
     public function getPotSize(): int
     {
         return $this->potSize;
-    }
-
-    public function resetPotSize(): void
-    {
-        $this->potSize = 0;
     }
 
     public function registerMany(array $cards): void
@@ -50,14 +45,22 @@ class Table
         return $this->flop;
     }
 
-    public function getTurn(): object
-    {
-        return $this->fullBoard[3] ?? [];
-    }
+    public function setStreet(): void {
+        if (count($this->fullBoard) === 0) {
+            $this->street = "";
+        }
 
-    public function getRiver(): object
-    {
-        return $this->fullBoard[4] ?? [];
+        if (count($this->fullBoard) === 3) {
+            $this->street = "flop";
+        }
+
+        if (count($this->fullBoard) === 4) {
+            $this->street = "turn";
+        }
+
+        if (count($this->fullBoard) === 5) {
+            $this->street = "river";
+        }
     }
 
     public function getBoard(): array
@@ -70,21 +73,11 @@ class Table
         return $this->street;
     }
 
-    public function incrementStreet(): void
-    {
-        echo "incrementing";
-        if ($this->street === 4) {
-            $this->street = 1;
-            return;
-        }
-        $this->street += 1;
-    }
-
     public function cleanTable()
     {
         $this->potSize = 0;
         $this->flop = [];
         $this->fullBoard = [];
-        $this->street = 1;
+        $this->street = "";
     }
 }

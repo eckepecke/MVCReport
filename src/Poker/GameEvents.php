@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Poker;
+
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class GameEvents extends Game
@@ -27,24 +28,35 @@ class GameEvents extends Game
         $heroPos = $this->hero->getPosition();
         $street = $this->table->getStreet();
 
-        if (($heroPos === "BB" && $street === 1 && $this->table->getFlop() === [] )) {
+        if (($heroPos === "BB" && $street === 1 && $this->table->getFlop() === [])) {
             //Adding chips when hero checks back preflop
             $this->table->collectUnraisedPot();
         }
 
         $this->table->dealCorrectStreet($heroPos);
+        $street = $this->table->getStreet();
 
         if ($this->villain->getPosition() === "SB") {
             $action = $this->villain->actionVsCheck();
+            $action = "check";
             if ($action === "check") {
-                if ($this->table->getStreet() >= 4) {
-                    $this->compareHands();
-                }
-                if ($street >= 2 && ($this->table->getBoard() != [])){
+                if ($street <= 4 && $street > 1 && count($this->table->getBoard()) < 5) {
                     $card = $this->dealer->dealOne();
                     $this->table->registerOne($card);
-                    $this->table->incrementStreet();
+                    var_dump($this->table->getStreet());
                 }
+                // if ($this->table->getStreet() >= 4) {
+                echo "I am in herochecked";
+                //     ////Ineed to redirect route here
+                //     var_dump($this->table->getStreet());
+
+                //     $this->compareHands();
+                // }
+                $this->table->incrementStreet();
+                var_dump($this->table->getStreet());
+
+
+
             }
             if ($action === "bet") {
                 $betSize = $this->villain->betVsCheck($this->table->getPotSize());
@@ -53,14 +65,19 @@ class GameEvents extends Game
         }
     }
 
-    public function compareHands(SessionInterface $session) {
+    public function compareHands()
+    {
         $this->assignHandStrengths();
         $winner = $this->handChecker->compareStrength($this->hero, $this->villain);
         $winner->takePot($this->table->getPotsize());
         $this->challenge->setHandWinner($winner->getName());
-        $session->set("winner", $this->challenge->getHandWinner());
-        $session->set("teddy_hand_strength", $this->villain->getStrength());
-        $session->set("mos_hand_strength", $this->hero->getStrength());
+        $this->table->incrementStreet();
+        echo"I am in comapare hand";
+        var_dump($this->table->getStreet());
+
+        // $session->set("winner", $this->challenge->getHandWinner());
+        // $session->set("teddy_hand_strength", $this->villain->getStrength());
+        // $session->set("mos_hand_strength", $this->hero->getStrength());
     }
 
     public function betWasCalled()
@@ -107,13 +124,14 @@ class GameEvents extends Game
                 $this->hero->takePot($this->table->getBlinds());
                 $this->table->cleanTable();
                 $this->incrementHandsPlayed();
-        } 
+        }
     }
 
     public function assignHandStrengths()
     {
         $board = $this->table->getBoard();
         $fullHeroHand = array_merge($this->hero->getHoleCards(), $board);
+
         $heroStrength = $this->handChecker->evaluateHand($fullHeroHand);
         $this->hero->updateStrength($heroStrength);
 
@@ -129,11 +147,11 @@ class GameEvents extends Game
         if ($this->villain->getPosition() === "BB") {
             // $this->villainCouldBetFromBigBlind();
             $action = $this->villain->postFlopBetOpportunity();
-        if ($action === "bet" ) {
-            echo "Villain bettar";
-            $betSize = $this->villain->betVsCheck($this->table->getPotSize());
-            $this->villain->bet($betSize);
+            if ($action === "bet") {
+                echo "Villain bettar";
+                $betSize = $this->villain->betVsCheck($this->table->getPotSize());
+                $this->villain->bet($betSize);
+            }
         }
-    }
     }
 }
