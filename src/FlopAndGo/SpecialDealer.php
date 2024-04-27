@@ -2,37 +2,28 @@
 
 namespace App\FlopAndGo;
 
-use App\Poker\Hero;
-use App\Poker\Villain;
-use App\Poker\Challenge;
 use App\Poker\Dealer;
 
-
-use App\Cards\CardGraphic;
-use App\Cards\CardHand;
-
-use App\Cards\DeckOfCards;
-
-class ChallengeDealer extends Dealer
+class SpecialDealer extends Dealer
 {
     private object $playerOne;
     private object $playerTwo;
     private int $handCount;
     private object $table;
 
-
-    public function __construct(array $playerList)
+    public function __construct()
     {
         parent::__construct();
-
-        $this->playerOne = $playerList[0];
-        $this->playerTwo = $playerList[1];
-        $this->handCount = 0;
     }
 
-    public function addTable(ChallengeTable $table): void
+    public function addTable(SpecialTable $table): void
     {
         $this->table = $table;
+    }
+    public function getPlayerList(array $players) : void
+    {
+        $this->playerOne = $players[0];
+        $this->playerTwo = $players[1];
     }
 
     public function incrementHandsPlayed(): void

@@ -95,7 +95,7 @@ class SpecialTable extends Table
         return $imgPaths;
     }
 
-    public function getBombPotChips(): int
+    public function getBombPotChips(): void
     {
         $this->bbPlayer->payAnte($this->ante);
         $this->sbPlayer->payAnte($this->ante);

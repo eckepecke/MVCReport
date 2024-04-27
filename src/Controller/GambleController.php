@@ -3,13 +3,14 @@
 namespace App\Controller;
 
 use App\FlopAndGo\Challenge;
-use App\FlopAndGo\Dealer;
 use App\FlopAndGo\Game;
 use App\FlopAndGo\HandChecker;
 use App\FlopAndGo\Hero;
 use App\FlopAndGo\Moderator;
+use App\FlopAndGo\SpecialDealer;
 use App\FlopAndGo\SpecialTable;
 use App\FlopAndGo\Villain;
+use App\Cards\DeckOfCards;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,17 +41,21 @@ class GambleController extends AbstractController
         $hero = new Hero();
         $villain = new Villain();
         $table = new SpecialTable();
-        $table->seatPlayers($hero, $villain);
-        $dealer = new Dealer();
+        $dealer = new SpecialDealer();
+        $deck = new DeckOfCards();
         $handChecker = new HandChecker();
         $challenge = new Challenge($numHands);
 
+        $dealer->addDeck($deck);
+        $dealer->addTable($table);
+        $table->seatPlayers($hero, $villain);
         $game->addHero($hero);
         $game->addVillain($villain);
         $game->addTable($table);
         $game->addDealer($dealer);
         $game->addHandChecker($handChecker);
         $game->addChallenge($challenge);
+        $dealer->getPlayerList([$hero, $villain]);
 
         $session->set("game", $game);
 
@@ -64,6 +69,7 @@ class GambleController extends AbstractController
     ): Response
     {
         $game = $session->get("game");
+        $game->play();
         $data = $game->getGameState();
         return $this->render('gamble/play.html.twig', $data);
     }

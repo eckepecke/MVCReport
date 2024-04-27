@@ -31,7 +31,7 @@ class Table
 
     public function addChipsToPot(int $chips): void
     {
-        $this->potSize += $bet;
+        $this->potSize += $chips;
     }
 
     public function getPotSize(): int

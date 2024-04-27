@@ -8,6 +8,8 @@ use App\FlopAndGo\Hero;
 use App\FlopAndGo\Moderator;
 use App\FlopAndGo\Table;
 use App\FlopAndGo\Villain;
+use App\FlopAndGo\SpecialTable;
+
 
 class Game
 {
@@ -30,12 +32,12 @@ class Game
         $this->villain = $villain;
     }
 
-    public function addDealer(Dealer $dealer): void
+    public function addDealer(SpecialDealer $dealer): void
     {
         $this->dealer = $dealer;
     }
 
-    public function addTable(Table $table): void
+    public function addTable(SpecialTable $table): void
     {
         $this->table = $table;
     }
@@ -84,6 +86,7 @@ class Game
 
     public function play()
     {
-        
+        $this->table->getBombPotChips();
+        $this->dealer->dealHoleCards();
     }
 }

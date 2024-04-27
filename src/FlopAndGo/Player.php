@@ -93,8 +93,8 @@ class Player
         return $this->lastAction;
     }
 
-    public function payBlind(int $ante) : void
+    public function payAnte(int $ante) : void
     {
-        $this->stack += $ante;
+        $this->stack -= $ante;
     }
 }
