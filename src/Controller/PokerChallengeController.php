@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Poker\Game;
+use App\Poker\GameEvents;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -20,22 +20,22 @@ class PokerChallengeController extends AbstractController
     ): Response {
         $game = $session->get("game");
         $session = $request->getSession();
-        $gameState = $game->getGameState();
-        $currentDetails = $game->getSessionVariables($session);
+        // $gameState = $game->getGameState();
+        // $currentDetails = $game->getSessionVariables($session);
 
         if ($game->challenge->challengeComplete()) {
-            $startStack = $currentDetails['hero_start_stack'];
-            $data = $this->getSessionVariables($session);
-            $data["result"] = $challenge->getResult($startStack, $hero->getStack());
+            $startStack = $game->hero->getStartStack();
+            $data = $game->getSessionVariables($session);
+            $data["result"] = $game->challenge->getResult($startStack, $game->hero->getStack());
             return $this->render('poker/end_game.html.twig', $data);
         }
         $game->preflopPrep();
-        $table = $gameState['table'];
-        $villain = $gameState['villain'];
+        // $table = $gameState['table'];
+        // $villain = $gameState['villain'];
 
-        if ($table->getSbPlayer() === $villain) {
-            $action = $villain->randActionRFI();
-            $gameState['challenge']->villainUnOpenedPot($action);
+        if ($game->table->getSbPlayer() === $game->villain) {
+            $action = $game->villain->randActionRFI();
+            $game->villainUnOpenedPot($action);
             if ($action === "fold") {
                 $data = $game->getSessionVariables($session);
                 return $this->render('poker/teddy_fold.html.twig', $data);
@@ -68,7 +68,8 @@ class PokerChallengeController extends AbstractController
         Request $request,
         SessionInterface $session
     ): Response {
-        $game = new Game();
+        $game = new GameEvents();
+
         $handsToPlay = $request->request->get('num_hands');
         $session = $request->getSession();
         $game->initObjects($handsToPlay, $session);
@@ -91,29 +92,16 @@ class PokerChallengeController extends AbstractController
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
-        $table = $session->get("table");
-        $dealer = $session->get("dealer");
-        $challenge = $session->get("challenge");
-        $villain = $session->get("villain");
 
-        $challenge->betWasCalled();
-        $street = $table->getStreet();
+        $game->betWasCalled();
+        $street = $game->table->getStreet();
 
-        if($dealer->playersAllIn() || $street === 4) {
-            $dealer->dealToShowdown();
+        if($game->dealer->playersAllIn() || $street === 4) {
+            $game->dealer->dealToShowdown();
             return $this->redirectToRoute('showdown');
         }
-
-        $table->dealCorrectCardAfterCall();
-        if ($villain->getPosition() === "BB"){
-            $action = $villain->postFlopBetOpportunity();
-            $action = "check";
-            if ($action === "bet" ) {
-                echo "Villain bettar";
-                $betSize = $villain->betVsCheck($table->getPotSize());
-                $villain->bet($betSize);
-            }
-        }
+        $game->table->dealCorrectCardAfterCall();
+        $game->villainCouldBetFromBigBlind();
 
         $data = $game->getSessionVariables($session);
         return $this->render('poker/test.html.twig', $data);
@@ -145,7 +133,7 @@ class PokerChallengeController extends AbstractController
         }
         $villain->raise($heroBet);
 
-        $data = $this->getSessionVariables($session);
+        $data = $game->getSessionVariables($session);
         return $this->render('poker/test.html.twig', $data);
     }
 
@@ -180,11 +168,13 @@ class PokerChallengeController extends AbstractController
     public function apiPoker(
         SessionInterface $session
     ): Response {
+        $game = $session->get("game");
+
         if (!$session->has("challenge")) {
             throw new Exception("No challenge in session!");
         }
 
-        $data = $this->getSessionVariables($session);
+        $data = $game->getSessionVariables($session);
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(

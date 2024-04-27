@@ -9,6 +9,7 @@ class Hero extends Player
     use TexasHandTrait;
 
     private string $name;
+    private int $startStack;
 
     public function __construct()
     {
@@ -17,6 +18,7 @@ class Hero extends Player
 
         $this->name = "Mos";
         $this->currentBet = 0;
+        $this->startStack = 5000;
     }
 
     public function getName(): string
@@ -40,5 +42,11 @@ class Hero extends Player
         $this->currentBet = 0;
         $this->currentStrength = "";
         $this->lastAction = "fold";
+    }
+
+    public function getStartStack(): int
+    {
+        return $this->startStack;
+
     }
 }

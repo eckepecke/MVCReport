@@ -76,67 +76,6 @@ class Challenge
         return ($currentStack - $startingStack);
     }
 
-    public function betWasCalled()
-    {
-        $villainBet = $this->villain->getCurrentBet();
-        $heroBet = $this->hero->getCurrentBet();
-        $biggestBet = max($villainBet, $heroBet);
-        $price = $this->table->getPriceToPlay();
-        $caller = $this->hero;
-
-        if ($biggestBet === $heroBet) {
-            $caller = $this->villain;
-        }
-        $caller->call($price);
-
-        $this->table->addChipsToPot($heroBet);
-        $this->table->addChipsToPot($villainBet);
-        $this->table->addChipsToPot($price);
-
-        $this->villain->resetCurrentBet();
-        $this->hero->resetCurrentBet();
-    }
-
-    public function villainUnOpenedPot($action)
-    {
-        switch ($action) {
-            case "preflopRaise":
-                echo "raise";
-                $heroBet = $this->hero->getCurrentBet();
-                $this->villain->raise($heroBet);
-                break;
-
-            case "preflopCall":
-                echo "Call";
-                $chipAmount = $this->table->getPriceToPlay();
-                $this->villain->$action($chipAmount);
-                break;
-
-            default:
-                echo "Fold";
-                $this->villain->fold();
-                $this->hero->muckCards();
-                var_dump($this->table->getPotSize());
-                $this->hero->takePot($this->table->getBlinds());
-                $this->table->cleanTable();
-                $this->incrementHandsPlayed();
-        } 
-    }
-
-    public function assignHandStrengths($handChecker)
-    {
-        $board = $this->table->getBoard();
-        $fullHeroHand = array_merge($this->hero->getHoleCards(), $board);
-        $heroStrength = $handChecker->evaluateHand($fullHeroHand);
-        $this->hero->updateStrength($heroStrength);
-
-        $handChecker->resetStrengthArray();
-
-        $fullVillainHand = array_merge($this->villain->getHoleCards(), $board);
-        $villainStrength = $handChecker->evaluateHand($fullVillainHand);
-        $this->villain->updateStrength($villainStrength);
-    }
-
     public function getHandWinner(): string {
         return $this->handWinner;
     }

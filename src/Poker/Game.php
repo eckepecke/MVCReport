@@ -13,6 +13,8 @@ use App\Cards\DeckOfCards;
 use App\Cards\TexasCardHand;
 use App\Poker\HandChecker;
 use App\Poker\Game;
+use App\Poker\GameEventTrait;
+
 use App\Cards\CardHand;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -137,79 +139,6 @@ class Game
         ];
     }
 
-    public function preflopPrep()
-    {
-        $this->table->moveButton();
-        $this->deck->initializeCards();
-        $this->deck->shuffleDeck();
-        //need to turn these in to small blinds
-        $this->table->chargeAntes(25, 50);
-        $this->dealer->dealHoleCards();
-    }
-
-    public function someoneFolded()
-    {
-        $this->dealer->moveChipsAfterFold();
-        $this->dealer->resetForNextHand();
-        $this->challenge->incrementHandsPlayed();
-    }
-
-    public function heroChecked()
-    {
-        $heroPos = $this->hero->getPosition();
-        $street = $this->table->getStreet();
-
-        if (($heroPos === "BB" && $street === 1 && $this->table->getFlop() === [] )) {
-            //Adding chips when hero checks back preflop
-            $this->table->collectUnraisedPot();
-        }
-
-        $this->table->dealCorrectStreet($heroPos);
-
-
-
-        if ($this->villain->getPosition() === "SB") {
-            $action = $this->villain->actionVsCheck();
-            if ($action === "check") {
-                if ($this->table->getStreet() >= 4) {
-                    $this->compareHands();
-                }
-                if ($street >= 2 && ($table->getBoard() != [])){
-                    $card = $this->dealer->dealOne();
-                    $this->table->registerOne($card);
-                    $this->table->incrementStreet();
-                }
-            }
-            if ($action === "bet") {
-                $betSize = $this->villain->betVsCheck($table->getPotSize());
-                $this->villain->bet($betSize);
-            }
-        }
-
-        // if ($this->table->getStreet() === 1) {
-        //     // we reach this when street = 4 and river has already been dealt
-        //     var_dump($ksufhksf);
-        //     return $this->showdown();
-        // }
-
-
-        //$data = $this->getSessionVariables($session);
-        //return $this->render('poker/test.html.twig', $data);
-    }
-
-    public function compareHands(SessionInterface $session) {
-        $this->challenge->assignHandStrengths($this->handChecker);
-        $winner = $this->handChecker->compareStrength($this->hero, $this->villain);
-        $winner->takePot($this->table->getPotsize());
-        $this->challenge->setHandWinner($winner->getName());
-        $session->set("winner", $this->challenge->getHandWinner());
-        $session->set("teddy_hand_strength", $this->villain->getStrength());
-        $session->set("mos_hand_strength", $this->hero->getStrength());
-        // $this->addToSession($session, "winner", $winner);
-        // $this->addToSession($session, "teddy_hand_strength", $this->villain->getStrength());
-        // $this->addToSession($session, "mos_hand_strength", $this->hero->getStrength());
-
-    }
 
 //     public function addToSession(SessionInterface $session, string $key, $value)
 // {
