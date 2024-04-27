@@ -26,28 +26,18 @@ trait GameHelperTrait
         ///Denna route har int prövats
         $villainBet = $this->villain->getCurrentBet();
         $this->hero->call($villainBet);
-        var_dump($this->villain->getCurrentBet());
-
-        var_dump($this->hero->getCurrentBet());
         $this->table->addChipsToPot($villainBet);
         $this->table->addChipsToPot($this->hero->getCurrentBet());
         $this->villain->resetCurrentBet();
         $this->hero->resetCurrentBet();
-        var_dump($this->villain->getCurrentBet());
-
-        var_dump($this->hero->getCurrentBet());
-
     }
 
     public function heroBet($amount) {
-        echo "triggered";
         $this->hero->bet($amount);
         $action = $this->villain->actionFacingBet();
-        var_dump($action);
-        $action = "raise";
+        //var_dump($action);
+        $action = "fold";
         if ($action === "fold") {
-            ///debug here
-            echo"vaillain fold";
             $this->table->addChipsToPot($this->villain->getCurrentBet());
             $this->table->addChipsToPot($this->hero->getCurrentBet());
             $this->villain->fold();
@@ -58,17 +48,15 @@ trait GameHelperTrait
         }
 
         if ($action === "call") {
-            // var_dump($this->villain->getCurrentBet());
-            // var_dump($this->hero->getCurrentBet());
-            // var_dump($crash);
+            $this->villain->call($amount);
+
             $this->table->addChipsToPot($this->villain->getCurrentBet());
             $this->table->addChipsToPot($this->hero->getCurrentBet());
-            $this->villain->call($amount);
             $this->villain->resetCurrentBet();
             $this->hero->resetCurrentBet();
+            return;
         }
-        // we reach this if $action = raise
-        //make sure villain has enough chips to raise
+
         if ($amount >= ($this->villain->getStack() + $this->villain->getCurrentBet())){
             $this->villain->call($amount);
             $this->table->addChipsToPot($this->hero->getCurrentBet());

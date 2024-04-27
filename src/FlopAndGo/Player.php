@@ -30,21 +30,17 @@ class Player
 
     public function call(int $amount): void
     {
-        // $this->lastAction = "call";
         $amount = min($amount, $this->stack);
         if ($amount === $this->stack) {
             $this->currentBet += $amount;
             $this->stack -= $amount;
             return;
         } 
-        // if ($this->currentBet > 0 && $amount > $this->stack) {
-        //     $this->stack -= ($amount - $this->currentBet);
-        //     $this->currentBet += $amount;
-        //     return;
-        // }
-        $this->stack -= $amount - $this->currentBet;
 
+        $this->stack -= $amount - $this->currentBet;
         $this->currentBet = $amount;
+        $this->lastAction = "call";
+
     }
 
     public function receiveCard(CardGraphic $card): void

@@ -90,6 +90,9 @@ class Game
 
     public function play($action)
     {
+        // something like new hand = true eller nåt som kan trigga hand setup
+        echo "play";
+        var_dump($action);
         if ($action === null) {
             $this->handSetUp();
         }
