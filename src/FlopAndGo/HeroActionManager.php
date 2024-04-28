@@ -9,6 +9,7 @@ trait HeroActionManager
 {
     public function heroFolded() : void 
     {
+        echo"hero folded";
         $this->table->addChipsToPot($this->villain->getCurrentBet());
         $this->table->addChipsToPot($this->hero->getCurrentBet());
         $this->hero->fold();
@@ -16,6 +17,7 @@ trait HeroActionManager
         $this->villain->fold();
         $this->table->cleanTable();
         $this->newHand = true;
+        var_dump($this->newHand);
     }
 
     public function heroCalled() : void 
@@ -60,6 +62,8 @@ trait HeroActionManager
             $this->table->addChipsToPot($this->hero->getCurrentBet());
             $this->villain->resetCurrentBet();
             $this->hero->resetCurrentBet();
+            $this->incrementStreet();
+
             //$this->table->nextStreet();
             return;
         }
@@ -78,6 +82,9 @@ trait HeroActionManager
     public function heroChecked() : void 
     {
         $this->hero->check();
+        if ($this->hero->getPosition() === "SB") {
+            $this->incrementStreet();
+        }
     }
 
     public function heroBetSize(int $amount) : int 

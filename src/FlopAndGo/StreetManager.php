@@ -13,6 +13,7 @@ trait StreetManager
         $this->table->getBombPotChips();
         $this->dealer->dealHoleCards();
         $this->newHand = false;
+        $this->table->setStreet(1);
     }
 
     public function streetCheck() : int 
@@ -20,7 +21,7 @@ trait StreetManager
         return $this->table->getStreet();
     }
 
-    public function incrementStreet() : string 
+    public function incrementStreet() : void 
     {
         $current = $this->streetCheck();
         $this->table->setStreet($current + 1);
@@ -47,13 +48,13 @@ trait StreetManager
             case 2:
                 if ($this->cardsDealt() < 4) {
                     $turn = $this->dealer->dealOne();
-                    $this->table->registerMany($turn);
+                    $this->table->registerOne($turn);
                 }
                 break;
             case 3:
                 if ($this->cardsDealt() < 5) {
                     $river = $this->dealer->dealOne();
-                    $this->table->registerMany($river);
+                    $this->table->registerOne($river);
                 }
                 break;
         }

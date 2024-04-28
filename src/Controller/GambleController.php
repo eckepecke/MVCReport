@@ -77,8 +77,11 @@ class GambleController extends AbstractController
         $game = $session->get("game");
         $game->play($action);
         $data = $game->getGameState();
+        echo "----------";
+        var_dump($game->isNewHand());
+        echo "----------";
 
-        if ($data["new_hand"] === true) {
+        if ($game->isNewHand()) {
             echo"tjena";
             $action = null;
             $game->play($action);

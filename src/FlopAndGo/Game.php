@@ -119,7 +119,7 @@ class Game
                     break;
                 case "fold":
                     $this->heroFolded();
-                    $this->handSetUp();
+                    //$this->handSetUp();
                     break;
                 default:
                     $this->heroBet(intval($action));
@@ -127,8 +127,15 @@ class Game
             }
         }
 
-        if ($action === null || "check") {
+        if ($action === null && ($this->villain->getPosition() === "BB")|| $action ==="check") {
+            echo"villainAction triggered";
+            var_dump($this->villain->getPosition());
             $this->villainAction();
         }
+    }
+
+    public function isNewHand() : bool 
+    {
+        return $this->newHand;
     }
 }
