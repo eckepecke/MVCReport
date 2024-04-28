@@ -40,7 +40,11 @@ class Player
         $this->stack -= $amount - $this->currentBet;
         $this->currentBet = $amount;
         $this->lastAction = "call";
+    }
 
+    public function check(): void
+    {
+        $this->lastAction = "check";
     }
 
     public function receiveCard(CardGraphic $card): void

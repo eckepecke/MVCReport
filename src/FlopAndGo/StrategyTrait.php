@@ -85,4 +85,18 @@ trait StrategyTrait
         return $decision;
     }
 
+    public function betOpportunity(): string
+    {
+        $options = [
+            "check",
+            "bet"
+        ];
+
+        $decision = $options[rand(0, 1)];
+        $this->lastAction = $decision;
+
+        return $decision;
+    }
+
+
 }

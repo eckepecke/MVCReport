@@ -77,6 +77,14 @@ class GambleController extends AbstractController
         $game = $session->get("game");
         $game->play($action);
         $data = $game->getGameState();
+
+        if ($data["new_hand"] === true) {
+            echo"tjena";
+            $action = null;
+            $game->play($action);
+        }
+        $data = $game->getGameState();
+
         return $this->render('gamble/play.html.twig', $data);
     }
 

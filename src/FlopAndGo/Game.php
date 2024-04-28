@@ -85,6 +85,7 @@ class Game
             "min_raise" => $table->getMinimumRaiseAllowed(),
             "board" => $table->getCardImages(),
             "street" => $table->getStreet(),
+            "new_hand" => $this->newHand,
             // "teddy_last_action" => $villain->getLastAction(),
             // "winner" => $this->challenge->getHandWinner(),
             // "teddy_hand_strength" => $villain->getStrength(),
@@ -96,8 +97,9 @@ class Game
     {
         // something like new hand = true eller nåt som kan trigga hand setup
         echo "play";
-        var_dump($action);
+        var_dump($this->newHand);
         if ($this->newHand === true) {
+            echo "setting up";
             $this->handSetUp();
         }
 
@@ -118,8 +120,8 @@ class Game
             }
         }
 
-        if ($action === null) {
-            $this->villainOption();
+        if ($action === null || "check") {
+            $this->villainAction();
         }
     }
 }

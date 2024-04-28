@@ -7,13 +7,6 @@ namespace App\FlopAndGo;
  */
 trait HeroActionManager
 {
-    public function handSetUp() : void
-    {
-        $this->table->getBombPotChips();
-        $this->dealer->dealHoleCards();
-        $this->newHand = false;
-    }
-
     public function heroFolded() : void 
     {
         $this->hero->fold();
@@ -46,6 +39,9 @@ trait HeroActionManager
             $this->hero->takePot($this->table->getPotSize());
             $this->hero->fold();
             $this->table->cleanTable();
+            $this->newHand = true;
+
+            // might add strret variable here
             return;
         }
 
@@ -56,6 +52,7 @@ trait HeroActionManager
             $this->table->addChipsToPot($this->hero->getCurrentBet());
             $this->villain->resetCurrentBet();
             $this->hero->resetCurrentBet();
+            //$this->table->nextStreet();
             return;
         }
 
@@ -67,5 +64,10 @@ trait HeroActionManager
             return;
         }
         $this->villain->raise($amount);
+    }
+
+    public function heroChecked() : void 
+    {
+        $this->hero->check();
     }
 }
