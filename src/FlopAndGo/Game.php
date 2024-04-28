@@ -113,6 +113,7 @@ class Game
                     break;
                 case "fold":
                     $this->heroFolded();
+                    $this->handSetUp();
                     break;
                 default:
                     $this->heroBet(intval($action));

@@ -9,6 +9,8 @@ trait HeroActionManager
 {
     public function heroFolded() : void 
     {
+        $this->table->addChipsToPot($this->villain->getCurrentBet());
+        $this->table->addChipsToPot($this->hero->getCurrentBet());
         $this->hero->fold();
         $this->villain->takePot($this->table->getPotSize());
         $this->villain->fold();
@@ -27,11 +29,15 @@ trait HeroActionManager
         $this->hero->resetCurrentBet();
     }
 
-    public function heroBet($amount) {
-        $this->hero->bet($amount);
+    public function heroBet(int $amount) :void
+    {
+
+        $betSize= $this->heroBetSize($amount);
+
+        $this->hero->bet($betSize);
         $action = $this->villain->actionFacingBet();
         //var_dump($action);
-        $action = "fold";
+        //$action = "call";
         if ($action === "fold") {
             $this->table->addChipsToPot($this->villain->getCurrentBet());
             $this->table->addChipsToPot($this->hero->getCurrentBet());
@@ -40,6 +46,8 @@ trait HeroActionManager
             $this->hero->fold();
             $this->table->cleanTable();
             $this->newHand = true;
+            $this->handSetUp();
+
 
             // might add strret variable here
             return;
@@ -61,6 +69,7 @@ trait HeroActionManager
             $this->table->addChipsToPot($this->hero->getCurrentBet());
             $this->table->addChipsToPot($this->villain->getCurrentBet());
             $this->newHand = true;
+            $this->handSetUp();
             return;
         }
         $this->villain->raise($amount);
@@ -69,5 +78,15 @@ trait HeroActionManager
     public function heroChecked() : void 
     {
         $this->hero->check();
+    }
+
+    public function heroBetSize(int $amount) : int 
+    {
+        $villainStack = $this->villain->getStack();
+        $villainCurrentBet = $this->villain->getCurrentBet();
+        if ($amount > ($villainStack + $villainCurrentBet)){
+            $amount = $villainStack + $villainCurrentBet;
+        }
+        return $amount;
     }
 }

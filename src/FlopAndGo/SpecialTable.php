@@ -80,7 +80,8 @@ class SpecialTable extends Table
         $amountTwo = $this->sbPlayer->getCurrentBet();
 
         $biggestAmount = max($amountOne, $amountTwo);
-
+        // If no bets have been placed, min bet = 50
+        $biggestAmount = max($biggestAmount, 25);
         return 2 * $biggestAmount;
     }
 

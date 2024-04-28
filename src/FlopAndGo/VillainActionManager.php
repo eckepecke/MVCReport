@@ -17,18 +17,25 @@ trait VillainActionManager
                 $this->villain->check();
                 return;
             }
-        $this->villain->bet($this->table->getPotSize());
-        
         }
+            // if ($villainBet > $this->hero->getStack()) {
+            //     $villainBet = $villainBet - $this->hero->getStack();
+            // }
+
 
         if ($villainPos === "SB") {
             if ($action === "check") {
                 $this->villain->check();
                 return;
             }
-        $this->villain->bet($this->table->getPotSize());
         }
 
-        $this->table->addChipsToPot($this->villain->getCurrentBet());
+        $betSize = $this->villain->randBetSize($this->table->getPotSize());
+        if ($betSize > $this->hero->getStack()) {
+            $betSize = $this->hero->getStack();
+        }
+        $this->villain->bet($betSize);
+
+        //$this->table->addChipsToPot($this->villain->getCurrentBet());
     }
 }

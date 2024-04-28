@@ -37,6 +37,19 @@ trait StrategyTrait
         return 0.75 * $potSize;
     }
 
+    public function randBetSize(int $potSize): float
+    {
+        $sizes = [
+            0.33,
+            0.75,
+            1.5
+        ];
+
+        $size = $sizes[rand(0, 2)];
+
+        return $size * $potSize;
+    }
+
     public function actionFacingBet(): string
     {
 
