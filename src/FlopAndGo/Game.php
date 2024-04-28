@@ -32,6 +32,10 @@ class Game
     private object $moderator;
     private object $challenge;
     private bool $newHand = true;
+    private bool $showdown = false;
+    private bool $gameOver = false;
+
+
 
     public function addHero(Hero $hero): void
     {
@@ -90,17 +94,24 @@ class Game
             "street" => $table->getStreet(),
             "new_hand" => $this->newHand,
             // "teddy_last_action" => $villain->getLastAction(),
-            // "winner" => $this->challenge->getHandWinner(),
-            // "teddy_hand_strength" => $villain->getStrength(),
-            // "mos_hand_strength" => $hero->getStrength(),
+            "winner" => $this->challenge->getHandWinner(),
+            "teddy_hand_strength" => $villain->getStrength(),
+            "mos_hand_strength" => $hero->getStrength(),
+            "is_showdown" => $this->showdown,
         ];
     }
 
     public function play($action)
     {
         echo "play";
+        if ($this->challengeIsOver()) {
+            return;
+        }
+
         var_dump($this->newHand);
-        if ($this->newHand === true) {
+        var_dump($action);
+
+        if ($this->newHand === true || $action === "next") {
             echo "setting up";
             $this->handSetUp();
         }

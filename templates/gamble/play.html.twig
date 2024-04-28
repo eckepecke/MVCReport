@@ -8,89 +8,150 @@
 
 
     <div class="table">
-        <h4>{{street}}</h4>
+{# 
+        {% if winner != "" %}
+            <div class="pot-box">
+                <h3>Your result was:{{ result }} USD.</h3>
+                {% if result >= 0 %}
+                    <h4>Good job!</h4>
+                {% else %}
+                    <h4>Bad job!</h4>
+                {% endif %}
+            </div> #}
+
+        {% if is_showdown %}
 
 
-        <h3>{{teddy_stack}} USD</h3>
-        <h4>{{teddy_pos}}</h4>
-        <div class="player-box">
-            <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me">
+            {# <div class="table"> #}
 
-            <div class="card-box">
-                <img class="card-img" src="{{ asset('build/images/card_back.svg') }}" alt="card">
-                <img class="card-img" src="{{ asset('build/images/card_back.svg') }}" alt="card">
+                <h3>{{teddy_stack}} USD</h3>
+                <h4>{{teddy_pos}}</h4>
+                <div class="player-box">
+                    <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me">
+
+                    <div class="card-box">
+                    {% for img in teddy_hand %}
+                        <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
+                    </div>
+                </div>
+                <h4>{{teddy_hand_strength}}</h4>
+
+
+                <div class="board-box">
+                    {% for img in board %}
+                        <img class="community-card" src="{{ asset('build/images/' ~ img) }}" alt="card">
+                    {% endfor %}
+                </div>
+
+                <div class="pot-box">
+                    <h3>{{ winner }} takes the{{pot_size}} pot </h3>
+                </div>
+
+
+
+                <h4>{{mos_hand_strength}}</h4>
+                <div class="player-box">
+                    <img class="player-img" src="{{ asset('build/images/good_hand.png') }}" alt="me">
+
+                    <div class="card-box">
+                    {% for img in mos_hand %}
+                        <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
+                    </div>
+                </div>
+                <h3>{{mos_stack}} USD</h3>
+                <h4>{{mos_pos}}</h4>
+
+                <div class="options-box">
+                <form method="post" action="">
+                    <input type="submit" name="next" value="next" class="call-button"
+                        onClick="this.form.action='{{ path('gamble_play') }}';">
+                </form>
+
+                </div>
             </div>
-        </div>
-        {% if teddy_bet != 0 %}
-            <h4> Bet: {{ teddy_bet }}</h4>
-        {% endif %}
 
-        <div class="board-box">
-            {% for img in board %}
-                <img class="community-card" src="{{ asset('build/images/' ~ img) }}" alt="card">
-            {% endfor %}
-        </div>
-
-
-        <div class="pot-box">
-            <h3>{{pot_size}} dollars is in the pot</h3>
-        </div>
-        {% if mos_bet != 0 %}
-            <h4> Bet: {{ mos_bet }}</h4>
-        {% endif %}
-
-        <div class="player-box">
-            <img class="player-img" src="{{ asset('build/images/good_hand.png') }}" alt="me">
-
-            <div class="card-box">
-            {% for img in mos_hand %}
-                <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
-            </div>
-        </div>
-        <h3>{{mos_stack}} USD</h3>
-        <h4>{{mos_pos}}</h4>
-
-        <div class="options-box">
-        {# <div class="fold-button">
-        Fold
-        </div>
-        <div class="call-button">
-        Call
-        </div>
-        <div class="raise-button">
-        Raise
-        </div> #}
-            <!-- Fold Button -->
-        <form method="post" action="{{ path('gamble_play') }}">
-            <input type="hidden" name="action" value="fold">
-            <input type="submit" value="Fold" class="fold-button">
-        </form>
-
-        {# Call Button #}
-        {% if price == 0 %}
-            <form method="post" action="{{ path('gamble_play') }}">
-                <input type="hidden" name="action" value="check">
-                <input type="submit" value="Check" class="call-button">
-            </form>
         {% else %}
-            <form method="post" action="{{ path('gamble_play') }}">
-                <input type="hidden" name="action" value="call">
-                <input type="submit" value="Call {{ price }}" class="call-button">
-            </form>
+                <h4>{{street}}</h4>
+
+
+                <h3>{{teddy_stack}} USD</h3>
+                <h4>{{teddy_pos}}</h4>
+                <div class="player-box">
+                    <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me">
+
+                    <div class="card-box">
+                        <img class="card-img" src="{{ asset('build/images/card_back.svg') }}" alt="card">
+                        <img class="card-img" src="{{ asset('build/images/card_back.svg') }}" alt="card">
+                    </div>
+                </div>
+                {% if teddy_bet != 0 %}
+                    <h4> Bet: {{ teddy_bet }}</h4>
+                {% endif %}
+
+                <div class="board-box">
+                    {% for img in board %}
+                        <img class="community-card" src="{{ asset('build/images/' ~ img) }}" alt="card">
+                    {% endfor %}
+                </div>
+
+
+                <div class="pot-box">
+                    <h3>{{pot_size}} dollars is in the pot</h3>
+                </div>
+                {% if mos_bet != 0 %}
+                    <h4> Bet: {{ mos_bet }}</h4>
+                {% endif %}
+
+                <div class="player-box">
+                    <img class="player-img" src="{{ asset('build/images/good_hand.png') }}" alt="me">
+
+                    <div class="card-box">
+                    {% for img in mos_hand %}
+                        <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
+                    </div>
+                </div>
+                <h3>{{mos_stack}} USD</h3>
+                <h4>{{mos_pos}}</h4>
+
+                <div class="options-box">
+                {# <div class="fold-button">
+                Fold
+                </div>
+                <div class="call-button">
+                Call
+                </div>
+                <div class="raise-button">
+                Raise
+                </div> #}
+                    <!-- Fold Button -->
+                <form method="post" action="{{ path('gamble_play') }}">
+                    <input type="hidden" name="action" value="fold">
+                    <input type="submit" value="Fold" class="fold-button">
+                </form>
+
+                {# Call Button #}
+                {% if price == 0 %}
+                    <form method="post" action="{{ path('gamble_play') }}">
+                        <input type="hidden" name="action" value="check">
+                        <input type="submit" value="Check" class="call-button">
+                    </form>
+                {% else %}
+                    <form method="post" action="{{ path('gamble_play') }}">
+                        <input type="hidden" name="action" value="call">
+                        <input type="submit" value="Call {{ price }}" class="call-button">
+                    </form>
+                {% endif %}
+
+                <!-- Bet/Raise Button with Number Input -->
+                <form method="post" action="">
+                    <button type="submit" name="bet_button" class="raise-button"
+                            onClick="this.form.action='{{ path('gamble_play') }}';">Bet/Raise</button>
+                    <input type="number" name="bet" value="0" min={{min_raise}} class="bet-input">
+                </form>
+
+                </div>
+
         {% endif %}
-
-        <!-- Bet/Raise Button with Number Input -->
-        <form method="post" action="">
-            <button type="submit" name="bet_button" class="raise-button"
-                    onClick="this.form.action='{{ path('gamble_play') }}';">Bet/Raise</button>
-            <input type="number" name="bet" value="0" min={{min_raise}} class="bet-input">
-        </form>
-
-        </div>
-    </div>
-
-
-
-
+            </div>
 
 {% endblock %}

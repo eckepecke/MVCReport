@@ -9,7 +9,7 @@ trait HeroActionManager
 {
     public function heroAction(mixed $action) : void 
     {
-        if ($action != null){
+        if ($action != null && $action != "next"){
             switch ($action) {
                 case "check":
                     $this->heroChecked();
@@ -84,7 +84,6 @@ trait HeroActionManager
             $this->villain->resetCurrentBet();
             $this->hero->resetCurrentBet();
             $this->incrementStreet();
-            var_dump($this->getStreet());
 
             //$this->table->nextStreet();
             return;

@@ -95,9 +95,9 @@ class HandChecker
 
         if ($isStraight && $isFlush) {
             $this->strengthArray['Straight flush'] = true;
-            if ($upperEndCard === 14) {
-                $this->strengthArray['Royal flush'] = true;
-            }
+            // if ($upperEndCard === 14) {
+            //     $this->strengthArray['Royal flush'] = true;
+            // }
         }
 
         $this->checkForQuads($rankCounts);

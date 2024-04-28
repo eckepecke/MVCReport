@@ -69,23 +69,26 @@ class GambleController extends AbstractController
         SessionInterface $session
     ): Response
     {
-        $action = $request->request->get('action');
-        if ($action === NULL) {
-        $action = $request->request->get('bet');
+        // $action = $request->request->get('action');
+        // if ($action === NULL) {
+        // $action = $request->request->get('bet');
+        // }
+        $game = $session->get("game");
+
+        foreach ($request->request->all() as $key => $value) {
+            var_dump($value);
+            // Pass the parameter value to the play() method
+            $game->play($value);
         }
 
-        $game = $session->get("game");
-        $game->play($action);
+        //$game->play($action);
         $data = $game->getGameState();
-        echo "----------";
-        var_dump($game->isNewHand());
-        echo "----------";
 
         if ($game->isNewHand()) {
-            echo"tjena";
             $action = null;
             $game->play($action);
         }
+
         $data = $game->getGameState();
 
         return $this->render('gamble/play.html.twig', $data);

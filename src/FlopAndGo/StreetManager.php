@@ -9,6 +9,10 @@ trait StreetManager
 {
     public function handSetUp() : void
     {
+        $this->hero->fold();
+        $this->villain->fold();
+        $this->table->cleanTable();
+        $this->showdown = false;
         $this->table->moveButton();
         $this->table->getBombPotChips();
         $this->dealer->dealHoleCards();
@@ -61,17 +65,6 @@ trait StreetManager
                     $this->table->registerOne($river);
                 }
                 break;
-            // case 4:
-            //     echo "Hej 4";
-            //     $this->showdown();
-            //     break;
         }
-    }
-
-    public function isShowdown() :bool 
-    {
-        echo "isShowdown";
-        var_dump($this->streetCheck());
-        return ($this->streetCheck() === 4);
     }
 }
