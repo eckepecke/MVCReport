@@ -7,6 +7,27 @@ namespace App\FlopAndGo;
  */
 trait HeroActionManager
 {
+    public function heroAction(mixed $action) : void 
+    {
+        if ($action != null){
+            switch ($action) {
+                case "check":
+                    $this->heroChecked();
+                    break;
+                case "call":
+                    $this->heroCalled();
+                    break;
+                case "fold":
+                    $this->heroFolded();
+                    //$this->handSetUp();
+                    break;
+                default:
+                    $this->heroBet(intval($action));
+                    break;
+            }
+        }
+    }
+
     public function heroFolded() : void 
     {
         echo"hero folded";
@@ -17,7 +38,6 @@ trait HeroActionManager
         $this->villain->fold();
         $this->table->cleanTable();
         $this->newHand = true;
-        var_dump($this->newHand);
     }
 
     public function heroCalled() : void 
@@ -29,6 +49,7 @@ trait HeroActionManager
         $this->table->addChipsToPot($this->hero->getCurrentBet());
         $this->villain->resetCurrentBet();
         $this->hero->resetCurrentBet();
+        $this->incrementStreet();
     }
 
     public function heroBet(int $amount) :void
@@ -63,6 +84,7 @@ trait HeroActionManager
             $this->villain->resetCurrentBet();
             $this->hero->resetCurrentBet();
             $this->incrementStreet();
+            var_dump($this->getStreet());
 
             //$this->table->nextStreet();
             return;
@@ -73,7 +95,9 @@ trait HeroActionManager
             $this->table->addChipsToPot($this->hero->getCurrentBet());
             $this->table->addChipsToPot($this->villain->getCurrentBet());
             $this->newHand = true;
-            $this->handSetUp();
+            $this->incrementStreet();
+
+            //$this->handSetUp();
             return;
         }
         $this->villain->raise($amount);

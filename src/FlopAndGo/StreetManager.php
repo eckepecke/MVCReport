@@ -35,9 +35,11 @@ trait StreetManager
         return $cardsDealt;
     }
 
-    public function dealCorrectStreet($street) : void 
+    public function dealCorrectStreet() : void 
     {
-        echo "Här är jag";
+        echo "dealcorrectStreet";
+        $street = $this->streetCheck();
+        var_dump($street);
         switch ($street) {
             case 1:
                 if ($this->cardsDealt() < 1) {
@@ -46,18 +48,30 @@ trait StreetManager
                 }
                 break;
             case 2:
+                echo "Hej 2";
                 if ($this->cardsDealt() < 4) {
                     $turn = $this->dealer->dealOne();
                     $this->table->registerOne($turn);
                 }
                 break;
             case 3:
+                echo "Hej 3";
                 if ($this->cardsDealt() < 5) {
                     $river = $this->dealer->dealOne();
                     $this->table->registerOne($river);
                 }
                 break;
+            // case 4:
+            //     echo "Hej 4";
+            //     $this->showdown();
+            //     break;
         }
+    }
 
+    public function isShowdown() :bool 
+    {
+        echo "isShowdown";
+        var_dump($this->streetCheck());
+        return ($this->streetCheck() === 4);
     }
 }

@@ -105,7 +105,7 @@ class SpecialTable extends Table
 
     public function setStreet(int $street): void
     {
-        if ($this->street === 4) {
+        if ($this->street === 5) {
             $this->street = 1;
             return;
         }

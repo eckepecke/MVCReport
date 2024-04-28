@@ -8,7 +8,6 @@ class HandChecker
     private array $rankMapping;
     private array $strengthMapping;
 
-
     public function __construct()
     {
         $this->strengthArray = [

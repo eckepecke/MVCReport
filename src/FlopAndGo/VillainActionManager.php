@@ -11,6 +11,8 @@ trait VillainActionManager
     {
         $villainPos = $this->villain->getPosition();
         $action = $this->villain->betOpportunity();
+        var_dump($action);
+        $action = "check";
 
         if ($villainPos === "BB") {
             if ($action === "check") {
@@ -26,6 +28,7 @@ trait VillainActionManager
         if ($villainPos === "SB") {
             if ($action === "check") {
                 $this->villain->check();
+                $this->incrementStreet();
                 return;
             }
         }

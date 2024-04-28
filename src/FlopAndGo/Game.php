@@ -7,6 +7,7 @@ use App\FlopAndGo\HandChecker;
 use App\FlopAndGo\Hero;
 use App\FlopAndGo\HeroActionManager;
 use App\FlopAndGo\Moderator;
+use App\FlopAndGo\ShowdownManager;
 use App\FlopAndGo\SpecialTable;
 use App\FlopAndGo\StreetManager;
 use App\FlopAndGo\Table;
@@ -17,8 +18,10 @@ use App\FlopAndGo\VillainActionManager;
 class Game
 {
     use HeroActionManager;
+    use ShowdownManager;
     use StreetManager;
     use VillainActionManager;
+
 
 
     public object $hero;
@@ -95,7 +98,6 @@ class Game
 
     public function play($action)
     {
-        // something like new hand = true eller nåt som kan trigga hand setup
         echo "play";
         var_dump($this->newHand);
         if ($this->newHand === true) {
@@ -103,35 +105,27 @@ class Game
             $this->handSetUp();
         }
 
-        $street = $this->streetCheck();
-        var_dump($street);
+        // if ($this->isShowdown()) {
+        //     $this->showdown();
+        //     return;
+        // }
 
-        $this->dealCorrectStreet($street);
-
-
-        if ($action != null){
-            switch ($action) {
-                case "check":
-                    $this->heroChecked();
-                    break;
-                case "call":
-                    $this->heroCalled();
-                    break;
-                case "fold":
-                    $this->heroFolded();
-                    //$this->handSetUp();
-                    break;
-                default:
-                    $this->heroBet(intval($action));
-                    break;
-            }
-        }
+        $this->dealCorrectStreet();
+        $this->heroAction($action);
 
         if ($action === null && ($this->villain->getPosition() === "BB")|| $action ==="check") {
             echo"villainAction triggered";
             var_dump($this->villain->getPosition());
             $this->villainAction();
         }
+
+        $this->dealCorrectStreet();
+
+        if ($this->isShowdown()) {
+            $this->showdown();
+            return;
+        }
+
     }
 
     public function isNewHand() : bool 

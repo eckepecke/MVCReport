@@ -74,10 +74,6 @@ class GameEvents extends Game
         $this->table->incrementStreet();
         echo"I am in comapare hand";
         var_dump($this->table->getStreet());
-
-        // $session->set("winner", $this->challenge->getHandWinner());
-        // $session->set("teddy_hand_strength", $this->villain->getStrength());
-        // $session->set("mos_hand_strength", $this->hero->getStrength());
     }
 
     public function betWasCalled()
