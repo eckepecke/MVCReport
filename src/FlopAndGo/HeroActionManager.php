@@ -19,7 +19,6 @@ trait HeroActionManager
                     break;
                 case "fold":
                     $this->heroFolded();
-                    //$this->handSetUp();
                     break;
                 default:
                     $this->heroBet(intval($action));
@@ -37,6 +36,7 @@ trait HeroActionManager
         $this->villain->takePot($this->table->getPotSize());
         $this->villain->fold();
         $this->table->cleanTable();
+        $this->challenge->incrementHandsPlayed();
         $this->newHand = true;
     }
 
@@ -68,6 +68,7 @@ trait HeroActionManager
             $this->hero->takePot($this->table->getPotSize());
             $this->hero->fold();
             $this->table->cleanTable();
+            $this->challenge->incrementHandsPlayed();
             $this->newHand = true;
             $this->handSetUp();
 

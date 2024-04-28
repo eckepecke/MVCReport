@@ -17,12 +17,11 @@ use App\FlopAndGo\VillainActionManager;
 
 class Game
 {
+    use GameStatusManager;
     use HeroActionManager;
     use ShowdownManager;
     use StreetManager;
     use VillainActionManager;
-
-
 
     public object $hero;
     private object $villain;
@@ -34,8 +33,6 @@ class Game
     private bool $newHand = true;
     private bool $showdown = false;
     private bool $gameOver = false;
-
-
 
     public function addHero(Hero $hero): void
     {
@@ -98,6 +95,8 @@ class Game
             "teddy_hand_strength" => $villain->getStrength(),
             "mos_hand_strength" => $hero->getStrength(),
             "is_showdown" => $this->showdown,
+            "game_over" => $this->gameOver,
+            "result" => ($hero->getStack() - $hero->getStartStack()),
         ];
     }
 
@@ -105,6 +104,7 @@ class Game
     {
         echo "play";
         if ($this->challengeIsOver()) {
+
             return;
         }
 
@@ -142,5 +142,26 @@ class Game
     public function isNewHand() : bool 
     {
         return $this->newHand;
+    }
+
+
+
+    public function getUserInput(Request $request) : mixed 
+    {
+        $action = $request->request->get('fold');
+
+        if ($action === NULL) {
+            $action = $request->request->get('check');
+        }
+        if ($action === NULL) {
+            $action = $request->request->get('call');
+        }
+        if ($action === NULL) {
+            $action = $request->request->get('bet');
+        }
+        if ($action === NULL) {
+            $action = $request->request->get('next');
+        }
+        return $action;
     }
 }

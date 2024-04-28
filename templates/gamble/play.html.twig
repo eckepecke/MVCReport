@@ -8,8 +8,8 @@
 
 
     <div class="table">
-{# 
-        {% if winner != "" %}
+
+        {% if game_over %}
             <div class="pot-box">
                 <h3>Your result was:{{ result }} USD.</h3>
                 {% if result >= 0 %}
@@ -17,9 +17,9 @@
                 {% else %}
                     <h4>Bad job!</h4>
                 {% endif %}
-            </div> #}
+            </div>
 
-        {% if is_showdown %}
+        {% elseif is_showdown %}
 
 
             {# <div class="table"> #}
