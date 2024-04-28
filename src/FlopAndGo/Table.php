@@ -7,7 +7,7 @@ class Table
     protected int $potSize;
     protected array $flop;
     protected array $fullBoard;
-    protected string $street;
+    protected int $street;
     private object $sbPlayer;
     private object $bbPlayer;
 
@@ -16,7 +16,7 @@ class Table
         $this->potSize = 0;
         $this->flop = [];
         $this->fullBoard = [];
-        $this->street = "";
+        $this->street = 1;
     }
 
     public function seatPlayers(object $player1, object $player2): void
@@ -57,28 +57,13 @@ class Table
         return $this->flop;
     }
 
-    public function setStreet(): void {
-        $this->street = "";
-
-        if (count($this->fullBoard) === 3) {
-            $this->street = "flop";
-        }
-
-        if (count($this->fullBoard) === 4) {
-            $this->street = "turn";
-        }
-
-        if (count($this->fullBoard) === 5) {
-            $this->street = "river";
-        }
-    }
 
     public function getBoard(): array
     {
         return $this->fullBoard;
     }
 
-    public function getStreet(): string
+    public function getStreet(): int
     {
         return $this->street;
     }
@@ -88,7 +73,7 @@ class Table
         $this->potSize = 0;
         $this->flop = [];
         $this->fullBoard = [];
-        $this->street = "";
+        $this->street = 1;
     }
 
     public function moveButton(): void

@@ -103,6 +103,12 @@ class Game
             $this->handSetUp();
         }
 
+        $street = $this->streetCheck();
+        var_dump($street);
+
+        $this->dealCorrectStreet($street);
+
+
         if ($action != null){
             switch ($action) {
                 case "check":

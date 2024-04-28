@@ -103,4 +103,13 @@ class SpecialTable extends Table
         $this->addChipsToPot(2 * $this->ante);
     }
 
+    public function setStreet(int $street): void
+    {
+        if ($this->street === 4) {
+            $this->street = 1;
+            return;
+        }
+        $this->street = $street;
+    }
+
 }
