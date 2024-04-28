@@ -5,17 +5,21 @@ namespace App\FlopAndGo;
 use App\FlopAndGo\Dealer;
 use App\FlopAndGo\HandChecker;
 use App\FlopAndGo\Hero;
-use App\FlopAndGo\GameHelperTrait;
+use App\FlopAndGo\HeroActionManager;
 use App\FlopAndGo\Moderator;
+use App\FlopAndGo\SpecialTable;
+use App\FlopAndGo\StreetManager;
 use App\FlopAndGo\Table;
 use App\FlopAndGo\Villain;
-use App\FlopAndGo\SpecialTable;
-
+use App\FlopAndGo\VillainActionManager;
 
 
 class Game
 {
-    use GameHelperTrait;
+    use HeroActionManager;
+    use StreetManager;
+    use VillainActionManager;
+
 
     public object $hero;
     private object $villain;
@@ -24,7 +28,7 @@ class Game
     private object $handChecker;
     private object $moderator;
     private object $challenge;
-
+    private bool $newHand = true;
 
     public function addHero(Hero $hero): void
     {
@@ -93,7 +97,7 @@ class Game
         // something like new hand = true eller nåt som kan trigga hand setup
         echo "play";
         var_dump($action);
-        if ($action === null) {
+        if ($this->newHand === true) {
             $this->handSetUp();
         }
 
@@ -114,5 +118,8 @@ class Game
             }
         }
 
+        if ($action === null) {
+            $this->villainOption();
+        }
     }
 }

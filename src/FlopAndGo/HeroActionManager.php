@@ -3,14 +3,15 @@
 namespace App\FlopAndGo;
 
 /**
- * A trait implementing histogram for integers.
+ * A trait managing user input.
  */
-trait GameHelperTrait
+trait HeroActionManager
 {
     public function handSetUp() : void
     {
         $this->table->getBombPotChips();
         $this->dealer->dealHoleCards();
+        $this->newHand = false;
     }
 
     public function heroFolded() : void 
@@ -19,6 +20,7 @@ trait GameHelperTrait
         $this->villain->takePot($this->table->getPotSize());
         $this->villain->fold();
         $this->table->cleanTable();
+        $this->newHand = true;
     }
 
     public function heroCalled() : void 
@@ -61,6 +63,7 @@ trait GameHelperTrait
             $this->villain->call($amount);
             $this->table->addChipsToPot($this->hero->getCurrentBet());
             $this->table->addChipsToPot($this->villain->getCurrentBet());
+            $this->newHand = true;
             return;
         }
         $this->villain->raise($amount);
