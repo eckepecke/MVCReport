@@ -50,13 +50,15 @@ trait HeroActionManager
         $this->villain->resetCurrentBet();
         $this->hero->resetCurrentBet();
         $this->allInCheck($this->villain);
+        $this->allInCheck($this->hero);
+
         $this->incrementStreet();
     }
 
     public function heroBet(int $amount) :void
     {
-
-        $betSize= $this->heroBetSize($amount);
+        $maxBetAllowed = $this->getMaxBet($this->hero, $this->villain);
+        $betSize= $this->heroBetSize($amount, $maxBetAllowed);
         $this->hero->bet($betSize);
         var_dump($betSize);
         var_dump($amount);
@@ -114,19 +116,20 @@ trait HeroActionManager
         }
     }
 
-    public function heroBetSize(int $amount) : int 
+    public function heroBetSize(int $amount, int $maxBet) : int 
     {
-        $villainStack = $this->villain->getStack();
-        $heroStack = $this->hero->getStack();
-        $villainCurrentBet = $this->villain->getCurrentBet();
+        return min($amount, $maxBet);
+//         $villainStack = $this->villain->getStack();
+//         $heroStack = $this->hero->getStack();
+//         $villainCurrentBet = $this->villain->getCurrentBet();
+// //this should go second maybe?
+//         if ($heroStack < $amount) {
+//             return $heroStack;
+//         }
 
-        if ($heroStack < $amount) {
-            return $heroStack;
-        }
-
-        if ($amount > ($villainStack + $villainCurrentBet)){
-            $amount = $villainStack + $villainCurrentBet;
-        }
-        return $amount;
+//         if ($amount > ($villainStack + $villainCurrentBet)){
+//             $amount = $villainStack + $villainCurrentBet;
+//         }
+//         return $amount;
     }
 }

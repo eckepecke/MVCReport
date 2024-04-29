@@ -39,7 +39,6 @@ trait VillainActionManager
     public function villainResponseToBet($amount) {
         echo "villainResonsetoBet()";
         $action = $this->villain->actionFacingBet();
-        $action = "raise";
 
         if ($action === "fold") {
             $this->table->addChipsToPot($this->villain->getCurrentBet());
@@ -72,12 +71,15 @@ trait VillainActionManager
         if (($this->hero->isAllin())){
         echo "hero is allin?";
 
+            // $this->villain->call($amount);
             $this->villain->call($amount);
             var_dump($amount);
             var_dump($this->table->getPotSize());
-
-            $this->table->addChipsToPot($this->hero->getCurrentBet());
+///this adds to many chips since hero bet is bigger than villain call
+            // $this->table->addChipsToPot($this->hero->getCurrentBet());
             $this->table->addChipsToPot($this->villain->getCurrentBet());
+            $this->table->addChipsToPot($this->villain->getCurrentBet());
+
             var_dump($this->table->getPotSize());
 
             $this->dealer->dealToShowdown();
@@ -89,6 +91,8 @@ trait VillainActionManager
         if ($amount >= ($this->villain->getStack() + $this->villain->getCurrentBet()) || $this->hero->isAllin()){
             echo "do Iget here?";
             $this->villain->call($amount);
+            var_dump($amount);
+
             $this->allInCheck($this->villain);
             $this->table->addChipsToPot($this->hero->getCurrentBet());
             $this->table->addChipsToPot($this->villain->getCurrentBet());

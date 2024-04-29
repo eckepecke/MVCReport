@@ -6,11 +6,16 @@
     display:flex;
     flex-direction: column;
 
-    .pot-box {
+    .pot-box, .end-box {
         height: 500px;
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .end-box {
+        background-color: black;
+        color: #eee;
     }
 
     .player-box {

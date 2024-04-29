@@ -485,11 +485,15 @@ button {
   display: flex;
   flex-direction: column;
 }
-.table .pot-box {
+.table .pot-box, .table .end-box {
   height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.table .end-box {
+  background-color: black;
+  color: #eee;
 }
 .table .player-box {
   display: flex;
@@ -538,9 +542,10 @@ button {
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 .board-box .community-card {
-  width: 50px;
+  width: 75px;
   padding-right: 2px;
   height: auto;
 }

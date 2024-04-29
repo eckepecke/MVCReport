@@ -8,22 +8,20 @@
 
 
     <div class="table">
-        {% if game_over %}
-
-                <h3>{{game_over}} game_over {{is_showdown}} is showdown </h3>
-
-                {% if game_over %}
-                <div class="pot-box">
-                    <h3>Your result was:{{ result }} USD.</h3>
+            {% if game_over %}
+                <div class="end-box">
+                    <h1>Your result was:{{ result }} USD.</h1>
                     {% if result >= 0 %}
-                        <h4>Good job!</h4>
+                        <h1>Good job!</h1>
                     {% else %}
-                        <h4>Bad job!</h4>
+                        <h1>Bad job!</h1>
                     {% endif %}
                 </div>
             {% endif %}
 
-        {% elseif is_showdown %}
+        {% if is_showdown %}
+
+        
 
                 <h3>{{teddy_stack}} USD</h3>
                 <h4>{{teddy_pos}}</h4>

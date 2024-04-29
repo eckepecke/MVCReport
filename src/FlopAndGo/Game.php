@@ -2,6 +2,7 @@
 
 namespace App\FlopAndGo;
 
+use App\FlopAndGo\BetSizeManager;
 use App\FlopAndGo\Dealer;
 use App\FlopAndGo\HandChecker;
 use App\FlopAndGo\Hero;
@@ -17,6 +18,7 @@ use App\FlopAndGo\VillainActionManager;
 
 class Game
 {
+    use BetSizeManager;
     use GameStatusManager;
     use HeroActionManager;
     use ShowdownManager;

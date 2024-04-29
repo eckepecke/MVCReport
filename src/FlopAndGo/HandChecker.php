@@ -226,6 +226,7 @@ class HandChecker
             echo "2pair";
 
             $this->strengthArray['Two pair'] = true;
+            return;
         }
 
         if ($pairCount > 0 && $pairCount < 2) {
@@ -239,16 +240,16 @@ class HandChecker
     public function resetStrengthArray(): void
     {
         $this->strengthArray = [
-            'royalFlush' => false,
-            'straightFlush' => false,
-            'fourOfAKind' => false,
-            'fullHouse' => false,
-            'flush' => false,
-            'straight' => false,
-            'threeOfAKind' => false,
-            'twoPair' => false,
-            'onePair' => false,
-            'highCard' => false
+            'Royal flush' => false,
+            'Straight flush' => false,
+            'Four of a kind' => false,
+            'Full House' => false,
+            'Flush' => false,
+            'Straight' => false,
+            'Three of a kind' => false,
+            'Two pair' => false,
+            'One pair' => false,
+            'High card' => false
         ];
     }
 
