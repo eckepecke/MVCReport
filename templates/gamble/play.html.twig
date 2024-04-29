@@ -8,21 +8,22 @@
 
 
     <div class="table">
-
         {% if game_over %}
-            <div class="pot-box">
-                <h3>Your result was:{{ result }} USD.</h3>
-                {% if result >= 0 %}
-                    <h4>Good job!</h4>
-                {% else %}
-                    <h4>Bad job!</h4>
-                {% endif %}
-            </div>
+
+                <h3>{{game_over}} game_over {{is_showdown}} is showdown </h3>
+
+                {% if game_over %}
+                <div class="pot-box">
+                    <h3>Your result was:{{ result }} USD.</h3>
+                    {% if result >= 0 %}
+                        <h4>Good job!</h4>
+                    {% else %}
+                        <h4>Bad job!</h4>
+                    {% endif %}
+                </div>
+            {% endif %}
 
         {% elseif is_showdown %}
-
-
-            {# <div class="table"> #}
 
                 <h3>{{teddy_stack}} USD</h3>
                 <h4>{{teddy_pos}}</h4>
@@ -71,9 +72,6 @@
             </div>
 
         {% else %}
-                <h4>{{street}}</h4>
-
-
                 <h3>{{teddy_stack}} USD</h3>
                 <h4>{{teddy_pos}}</h4>
                 <div class="player-box">
@@ -114,15 +112,6 @@
                 <h4>{{mos_pos}}</h4>
 
                 <div class="options-box">
-                {# <div class="fold-button">
-                Fold
-                </div>
-                <div class="call-button">
-                Call
-                </div>
-                <div class="raise-button">
-                Raise
-                </div> #}
                     <!-- Fold Button -->
                 <form method="post" action="{{ path('gamble_play') }}">
                     <input type="hidden" name="action" value="fold">
@@ -130,6 +119,7 @@
                 </form>
 
                 {# Call Button #}
+                <p>{{price}}</p>
                 {% if price == 0 %}
                     <form method="post" action="{{ path('gamble_play') }}">
                         <input type="hidden" name="action" value="check">
@@ -142,12 +132,12 @@
                     </form>
                 {% endif %}
 
-                <!-- Bet/Raise Button with Number Input -->
-                <form method="post" action="">
-                    <button type="submit" name="bet_button" class="raise-button"
-                            onClick="this.form.action='{{ path('gamble_play') }}';">Bet/Raise</button>
-                    <input type="number" name="bet" value="0" min={{min_raise}} class="bet-input">
-                </form>
+                    <!-- Bet/Raise Button with Number Input -->
+                    <form method="post" action="">
+                        <button type="submit" name="bet_button" class="raise-button"
+                                onClick="this.form.action='{{ path('gamble_play') }}';">Bet/Raise</button>
+                        <input type="number" name="bet" value="0" min={{min_raise}} class="bet-input">
+                    </form>
 
                 </div>
 

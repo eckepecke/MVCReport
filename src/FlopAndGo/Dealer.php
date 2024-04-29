@@ -2,9 +2,9 @@
 
 namespace App\FlopAndGo;
 
-use App\Gamble\Challenge;
-use App\Gamble\DeckOfCards;
-use App\Gamble\Table;
+use App\FlopAndGo\Challenge;
+use App\Cards\DeckOfCards;
+// use App\FlopAndGo\Table;
 
 
 class Dealer
@@ -18,10 +18,10 @@ class Dealer
         $this->deck = $deck;
     }
 
-    public function addTable(Table $table): void
-    {
-        $this->deck = $deck;
-    }
+    // public function addTable(Table $table): void
+    // {
+    //     $this->deck = $deck;
+    // }
 
     public function dealFlop(): array
     {
@@ -41,5 +41,11 @@ class Dealer
         echo "remaining: $remaining";
         $cards = $this->deck->drawMany($remaining);
         return $cards;
+    }
+
+    public function shuffleCards() : void 
+    {
+        $this->deck->initializeCards();
+        $this->deck->shuffleDeck();
     }
 }

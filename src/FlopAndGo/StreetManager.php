@@ -9,15 +9,24 @@ trait StreetManager
 {
     public function handSetUp() : void
     {
+        echo "handSetup ()";
         $this->hero->fold();
         $this->villain->fold();
         $this->table->cleanTable();
-        $this->showdown = false;
         $this->table->moveButton();
         $this->table->getBombPotChips();
+        $this->hero->resetCurrentBet();
+        $this->villain->resetCurrentBet();
+        $this->dealer->shuffleCards();
         $this->dealer->dealHoleCards();
-        $this->newHand = false;
+
+
         $this->table->setStreet(1);
+        $this->hero->isAllIn();
+        $this->villain->isAllIn();
+        $this->showdown = false;
+        $this->newHand = false;
+        //$this->gameOver = false;
     }
 
     public function streetCheck() : int 
@@ -66,5 +75,17 @@ trait StreetManager
                 }
                 break;
         }
+    }
+
+    public function allInCheck(object $player) : void
+    {
+        echo "allInCheck triggered";
+        if($player->isAllin()) {
+            $this->dealer->dealToShowdown();
+            //$this->table->setStreet(4);
+            $this->showdown();
+        }
+
+
     }
 }

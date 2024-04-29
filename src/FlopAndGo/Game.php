@@ -90,7 +90,7 @@ class Game
             "board" => $table->getCardImages(),
             "street" => $table->getStreet(),
             "new_hand" => $this->newHand,
-            // "teddy_last_action" => $villain->getLastAction(),
+            "teddy_last_action" => $villain->getLastAction(),
             "winner" => $this->challenge->getHandWinner(),
             "teddy_hand_strength" => $villain->getStrength(),
             "mos_hand_strength" => $hero->getStrength(),
@@ -103,8 +103,8 @@ class Game
     public function play($action)
     {
         echo "play";
+// this ruins the flow because when all in on turn it quits and you dont reach showdown
         if ($this->challengeIsOver()) {
-
             return;
         }
 
@@ -115,11 +115,6 @@ class Game
             echo "setting up";
             $this->handSetUp();
         }
-
-        // if ($this->isShowdown()) {
-        //     $this->showdown();
-        //     return;
-        // }
 
         $this->dealCorrectStreet();
         $this->heroAction($action);
@@ -144,24 +139,4 @@ class Game
         return $this->newHand;
     }
 
-
-
-    public function getUserInput(Request $request) : mixed 
-    {
-        $action = $request->request->get('fold');
-
-        if ($action === NULL) {
-            $action = $request->request->get('check');
-        }
-        if ($action === NULL) {
-            $action = $request->request->get('call');
-        }
-        if ($action === NULL) {
-            $action = $request->request->get('bet');
-        }
-        if ($action === NULL) {
-            $action = $request->request->get('next');
-        }
-        return $action;
-    }
 }

@@ -2,7 +2,9 @@
 
 namespace App\FlopAndGo;
 
-use App\Poker\Dealer;
+use App\FlopAndGo\Dealer;
+use App\FlopAndGo\SpecialTable;
+
 
 class SpecialDealer extends Dealer
 {
@@ -11,10 +13,10 @@ class SpecialDealer extends Dealer
     private int $handCount;
     private object $table;
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    // public function __construct()
+    // {
+    //     parent::__construct();
+    // }
 
     public function addTable(SpecialTable $table): void
     {
@@ -83,6 +85,7 @@ class SpecialDealer extends Dealer
 
     public function dealToShowdown(): void
     {
+        echo "dealToShowdown TRiggered";
         $board = $this->table->getBoard();
         $cards = $this->dealRemaining($board);
         $this->table->registerMany($cards);

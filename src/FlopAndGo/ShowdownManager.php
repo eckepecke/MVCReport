@@ -12,11 +12,13 @@ trait ShowdownManager
         $winner = $this->handChecker->compareStrength($this->hero, $this->villain);
         $winner->takePot($this->table->getPotsize());
         $this->challenge->setHandWinner($winner->getName());
-        $this->incrementStreet();
+        $this->table->setStreet(4);
+        var_dump($this->table->getPotSize());
+
 
         $this->showdown = true;
         $this->challenge->incrementHandsPlayed();
-        //$this->newHand = true;
+        // $this->newHand = true;
     }
 
     public function assignHandStrengths()

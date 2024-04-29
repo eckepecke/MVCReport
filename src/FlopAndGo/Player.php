@@ -11,6 +11,8 @@ class Player
     protected string $position;
     protected int $currentBet;
     protected string $lastAction;
+    protected bool $allIn;
+
 
     public function __construct()
     {
@@ -18,19 +20,31 @@ class Player
         $this->hand = [];
         $this->currentBet = 0;
         $this->lastAction = "";
+        $this->allIn = false;
+
     }
 
     public function bet(int $amount): void
     {
+        echo "player bet";
         $amount = min($amount, $this->stack + $this->currentBet);
         $this->stack -= $amount - $this->currentBet;
         $this->currentBet = $amount;
         $this->lastAction = "bet";
+
+        if ($this->stack <= 0){
+            echo "hero bet allin";
+            ///
+            $this->allIn = true;
+        }
     }
 
     public function call(int $amount): void
     {
+        echo "call triggered";
         $amount = min($amount, $this->stack);
+        var_dump($amount);
+
         if ($amount === $this->stack) {
             $this->currentBet += $amount;
             $this->stack -= $amount;
@@ -113,5 +127,15 @@ class Player
     public function payAnte(int $ante) : void
     {
         $this->stack -= $ante;
+    }
+
+    public function isAllIn () : bool 
+    {
+        echo"isAllin";
+        $this->allIn = false;
+        if ($this->stack <= 0) {
+            $this->allIn = true;
+        }
+        return $this->allIn;
     }
 }
