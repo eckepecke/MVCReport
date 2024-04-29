@@ -70,30 +70,14 @@ class GambleController extends AbstractController
     ): Response
     {
         $action = $request->request->get('action');
+
+        if ($action === NULL) {
+        $action = $request->request->get('bet');
+        }
         $game = $session->get("game");
-        $action = $game->getUserInput($request);
-        //$action = $request->request->get('fold');
-
-        // if ($action === NULL) {
-        //     $action = $request->request->get('check');
-        // }
-        // if ($action === NULL) {
-        //     $action = $request->request->get('call');
-        // }
-        // if ($action === NULL) {
-        //     $action = $request->request->get('bet');
-        // }
-        // if ($action === NULL) {
-        //     $action = $request->request->get('next');
-        // }
-        var_dump($action);
-
-
-
 
         $game->play($action);
 
-        //$game->play($action);
         $data = $game->getGameState();
 
         if ($game->isNewHand()) {

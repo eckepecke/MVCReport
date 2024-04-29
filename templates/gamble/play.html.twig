@@ -62,9 +62,9 @@
                 <h4>{{mos_pos}}</h4>
 
                 <div class="options-box">
-                <form method="post" action="">
-                    <input type="submit" name="next" value="next" class="call-button"
-                        onClick="this.form.action='{{ path('gamble_play') }}';">
+                <form method="post" action="{{ path('gamble_play') }}">
+                    <input type="hidden" name="action" value="next">
+                    <input type="submit" value="Next Hand" class="fold-button">
                 </form>
 
                 </div>
