@@ -29,7 +29,6 @@ trait HeroActionManager
 
     public function heroFolded() : void 
     {
-        echo"hero folded";
         $this->table->addChipsToPot($this->villain->getCurrentBet());
         $this->table->addChipsToPot($this->hero->getCurrentBet());
         $this->hero->fold();
@@ -60,8 +59,6 @@ trait HeroActionManager
         $maxBetAllowed = $this->getMaxBet($this->hero, $this->villain);
         $betSize= $this->heroBetSize($amount, $maxBetAllowed);
         $this->hero->bet($betSize);
-        var_dump($betSize);
-        var_dump($amount);
 
         $this->villainResponseToBet($betSize);
         // $action = $this->villain->actionFacingBet();

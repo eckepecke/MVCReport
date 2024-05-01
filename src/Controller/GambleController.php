@@ -70,12 +70,11 @@ class GambleController extends AbstractController
     ): Response
     {
         $action = $request->request->get('action');
-
         if ($action === NULL) {
         $action = $request->request->get('bet');
         }
-        $game = $session->get("game");
 
+        $game = $session->get("game");
         $game->play($action);
 
         $data = $game->getGameState();
@@ -86,7 +85,6 @@ class GambleController extends AbstractController
         }
 
         $data = $game->getGameState();
-
         return $this->render('gamble/play.html.twig', $data);
     }
 

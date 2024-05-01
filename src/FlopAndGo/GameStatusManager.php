@@ -9,8 +9,6 @@ trait GameStatusManager
 {
     public function isShowdown() : bool 
         {
-            echo "isShowdown";
-            var_dump($this->streetCheck());
             return ($this->streetCheck() === 4);
         }
 

@@ -8,8 +8,6 @@ trait BetSizeManager
     {
         $player1StackAndBet = ($player1->getStack() + $player1->getCurrentBet());
         $player2StackAndBet = ($player2->getStack()+ $player2->getCurrentBet());
-        var_dump($player1StackAndBet);
-        var_dump($player2StackAndBet);
 
         $maxBet = min($player1StackAndBet, $player2StackAndBet);
 

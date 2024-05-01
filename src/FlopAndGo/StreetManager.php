@@ -9,7 +9,6 @@ trait StreetManager
 {
     public function handSetUp() : void
     {
-        echo "handSetup ()";
         $this->hero->fold();
         $this->villain->fold();
         $this->table->cleanTable();
@@ -19,11 +18,11 @@ trait StreetManager
         $this->villain->resetCurrentBet();
         $this->dealer->shuffleCards();
         $this->dealer->dealHoleCards();
-
-
         $this->table->setStreet(1);
         $this->hero->isAllIn();
         $this->villain->isAllIn();
+        $this->hero->isAllIn();
+
         $this->showdown = false;
         $this->newHand = false;
         //$this->gameOver = false;
@@ -42,17 +41,13 @@ trait StreetManager
 
     public function cardsDealt() : int
     {
-        echo"cardsdealt";
         $cardsDealt = count($this->table->getBoard());
-        var_dump($cardsDealt);
         return $cardsDealt;
     }
 
     public function dealCorrectStreet() : void 
     {
-        echo "dealcorrectStreet";
         $street = $this->streetCheck();
-        var_dump($street);
         switch ($street) {
             case 1:
                 if ($this->cardsDealt() < 1) {
@@ -61,14 +56,12 @@ trait StreetManager
                 }
                 break;
             case 2:
-                echo "Hej 2";
                 if ($this->cardsDealt() < 4) {
                     $turn = $this->dealer->dealOne();
                     $this->table->registerOne($turn);
                 }
                 break;
             case 3:
-                echo "Hej 3";
                 if ($this->cardsDealt() < 5) {
                     $river = $this->dealer->dealOne();
                     $this->table->registerOne($river);
@@ -79,7 +72,6 @@ trait StreetManager
 
     public function allInCheck(object $player) : void
     {
-        echo "allInCheck triggered";
         if($player->isAllin()) {
             $this->dealer->dealToShowdown();
             //$this->table->setStreet(4);

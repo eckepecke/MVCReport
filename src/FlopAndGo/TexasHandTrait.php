@@ -12,7 +12,7 @@ trait TexasHandTrait
     {
         foreach ($boolValues as $key => $value) {
             if ($value !== false) {
-                echo "The first non-false value is '$key'.";
+                //echo "The first non-false value is '$key'.";
                 $this->currentStrength = $key;
                 break;
             }

@@ -10,17 +10,11 @@ trait ShowdownManager
     public function showdown() {
         $this->assignHandStrengths();
         $winner = $this->handChecker->compareStrength($this->hero, $this->villain);
-        echo "showdown";
-        var_dump($winner->getStack());
         
         $winner->takePot($this->table->getPotsize());
-        var_dump($winner->getStack());
 
         $this->challenge->setHandWinner($winner->getName());
         $this->table->setStreet(4);
-        var_dump($this->table->getPotSize());
-
-
 
         $this->showdown = true;
         $this->challenge->incrementHandsPlayed();

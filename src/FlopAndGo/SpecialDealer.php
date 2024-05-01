@@ -85,7 +85,6 @@ class SpecialDealer extends Dealer
 
     public function dealToShowdown(): void
     {
-        echo "dealToShowdown TRiggered";
         $board = $this->table->getBoard();
         $cards = $this->dealRemaining($board);
         $this->table->registerMany($cards);

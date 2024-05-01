@@ -56,7 +56,6 @@ class HandChecker
 
     public function evaluateHand(array $cards): array
     {
-        //var_dump($this->strengthArray);
         $ranks = [];
         $suits = [];
 
@@ -144,10 +143,10 @@ class HandChecker
         }
     
         if (count($set) === 5) {
-            echo "Found a straight with " . implode(',', $set) . "\n";
+            //echo "Found a straight with " . implode(',', $set) . "\n";
             $this->strengthArray['Straight'] = true;
         } else {
-            echo "No straight\n";
+            //echo "No straight\n";
         }
 
         // $previousRank = 0;
@@ -180,7 +179,6 @@ class HandChecker
     {
         $this->strengthArray['Flush'] = false;
         if ($maxSameSuitCount >= 5) {
-            echo "flush";
             $this->strengthArray['Flush'] = true;
         }
     }
@@ -189,8 +187,6 @@ class HandChecker
     public function checkForQuads(array $rankCounts): void
     {
         if (in_array(4, $rankCounts)) {
-            echo "quads";
-
             $this->strengthArray['Four of a kind'] = true;
         }
     }
@@ -198,7 +194,6 @@ class HandChecker
     public function checkForFull(array $rankCounts): void
     {
         if (in_array(3, $rankCounts) && in_array(2, $rankCounts)) {
-            echo "full";
             $this->strengthArray['Full House'] = true;
         }
     }
@@ -207,8 +202,6 @@ class HandChecker
     {
 
         if (in_array(3, $rankCounts)) {
-        echo "trips";
-
             $this->strengthArray['Three of a kind'] = true;
         }
     }
@@ -223,15 +216,11 @@ class HandChecker
         }
 
         if ($pairCount >= 2) {
-            echo "2pair";
-
             $this->strengthArray['Two pair'] = true;
             return;
         }
 
         if ($pairCount > 0 && $pairCount < 2) {
-            echo "one pair";
-
             $this->strengthArray['One pair'] = true;
         }
         $this->strengthArray['High card'] = true;
@@ -269,14 +258,11 @@ class HandChecker
         if (array_key_exists($villainStrength, $this->strengthMapping)) {
             $villainValue = $this->strengthMapping[$villainStrength];
         }
-        var_dump($heroValue);
-        var_dump($villainValue);
         if ($heroValue === $villainValue) {
             return $villain;
         }
 
         $bestHand = min($heroValue, $villainValue);
-        var_dump($bestHand);
 
         if ($bestHand === $heroValue) {
             return $hero;

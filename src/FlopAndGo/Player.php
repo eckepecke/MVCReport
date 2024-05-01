@@ -26,11 +26,8 @@ class Player
 
     public function bet(int $amount): void
     {
-        echo "player bet";
-        var_dump($amount);
 
         $amount = min($amount, $this->stack + $this->currentBet);
-        var_dump($amount);
 
         $this->stack -= $amount - $this->currentBet;
         $this->currentBet = $amount;
@@ -44,17 +41,10 @@ class Player
 
     public function call(int $amount): void
     {
-        echo "call triggered";
-
-        var_dump($this->stack);
         $amount = min($amount, ($this->stack + $this->currentBet));
         $this->stack -= $amount - $this->currentBet;
         $this->lastAction = "call";
         $this->currentBet = $amount;
-
-        var_dump($amount);
-        var_dump($this->stack);
-
 
         // echo "call triggered";
         // $this->lastAction = "call";
@@ -149,7 +139,6 @@ class Player
 
     public function isAllIn () : bool 
     {
-        echo"isAllin";
         $this->allIn = false;
         if ($this->stack <= 0) {
             $this->allIn = true;

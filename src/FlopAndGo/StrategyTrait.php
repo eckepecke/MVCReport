@@ -69,10 +69,7 @@ trait StrategyTrait
 
     public function postFlopBetOpportunity(): string
     {
-        echo"bet opp triggered";
         if (in_array($this->lastAction, ["raise", "bet"])) {
-            echo"bet opp 1";
-
             $options = [
                 "check",
                 "bet",
@@ -82,7 +79,6 @@ trait StrategyTrait
             $decision = $options[rand(0, 3)];
             return $decision;
         }
-        echo "bet opp 2";
 
         $options = [
 

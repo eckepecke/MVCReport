@@ -104,14 +104,10 @@ class Game
 
     public function play($action)
     {
-        echo "play";
 // this ruins the flow because when all in on turn it quits and you dont reach showdown
         if ($this->challengeIsOver()) {
             return;
         }
-
-        var_dump($this->newHand);
-        var_dump($action);
 
         if ($this->newHand === true || $action === "next") {
             echo "setting up";
@@ -122,8 +118,6 @@ class Game
         $this->heroAction($action);
 
         if ($action === null && ($this->villain->getPosition() === "BB")|| $action ==="check") {
-            echo"villainAction triggered";
-            var_dump($this->villain->getPosition());
             $this->villainAction();
         }
 
