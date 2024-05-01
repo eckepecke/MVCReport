@@ -14,11 +14,7 @@ trait GameStatusManager
 
         public function isAllHandsPlayed() : bool 
         {
-            echo "is all hands played?";
-
             return $this->challenge->challengeComplete();
-
-            //return $this->challenge->challengeComplete($heroStack, $villainStack);
         }
 
         public function isSomeoneBroke() {

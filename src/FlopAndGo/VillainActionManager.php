@@ -11,7 +11,8 @@ trait VillainActionManager
     {
         $villainPos = $this->villain->getPosition();
         $action = $this->villain->betOpportunity();
-        $action = "check";
+        $action = "bet";
+
 
         if ($villainPos === "BB") {
             if ($action === "check") {
@@ -41,6 +42,7 @@ trait VillainActionManager
 
     public function villainResponseToBet($amount) {
         $action = $this->villain->actionFacingBet();
+        $action = "fold";
 
         if ($action === "fold") {
             $this->table->addChipsToPot($this->villain->getCurrentBet());
@@ -51,7 +53,7 @@ trait VillainActionManager
             $this->table->cleanTable();
             $this->challenge->incrementHandsPlayed();
             $this->newHand = true;
-            $this->handSetUp();
+            //$this->handSetUp();
             return;
         }
 
