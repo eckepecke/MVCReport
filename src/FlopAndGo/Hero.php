@@ -2,7 +2,7 @@
 
 namespace App\FlopAndGo;
 
-use App\Poker\TexasHandTrait;
+use App\FlopAndGo\TexasHandTrait;
 
 class Hero extends Player
 {

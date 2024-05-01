@@ -11,7 +11,7 @@ use App\FlopAndGo\SpecialDealer;
 use App\FlopAndGo\SpecialTable;
 use App\FlopAndGo\Villain;
 use App\Cards\DeckOfCards;
-
+use Exception;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -88,4 +88,26 @@ class GambleController extends AbstractController
         return $this->render('gamble/play.html.twig', $data);
     }
 
+
+    #[Route("/api/game", name: "api_game", methods: ["POST", "GET"])]
+    public function apiPoker(
+        Request $request,
+        SessionInterface $session
+    ): Response {
+        $game = $session->get("game");
+        // $session = $request->getSession();
+
+
+        if (!$session->has("game")) {
+            throw new Exception("No game in session!");
+        }
+        // $game->setSessionVariables($session);
+        $data = $game->getGameState();
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
 }

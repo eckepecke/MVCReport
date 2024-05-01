@@ -104,34 +104,43 @@ class Game
 
     public function play($action)
     {
-
+        // Check if challenge is over
         if ($this->isAllHandsPlayed()) {
             $this->gameOver = true;
             return;
         }
 
+        // Check if a new hand is starting
         if ($this->newHand === true || $action === "next") {
             echo "setting up";
             $this->handSetUp();
         }
 
+        // Check if any cards need to de dealt
         $this->dealCorrectStreet();
+
+        // Hero could potentially make a play
         $this->heroAction($action);
 
+        // Action is null when it is Villains turn to act
+        // Villain always has the opportunity to act from the big blind
         if ($action === null && ($this->villain->getPosition() === "BB")|| $action ==="check") {
             $this->villainAction();
         }
 
+        // Check if any cards need to de dealt after players have made their plays
         $this->dealCorrectStreet();
         if ($this->isSomeoneBroke()) {
             $this->gameOver = true;
         }
 
+        // Check if all hands have been played
         if ($this->isAllHandsPlayed()) {
             $this->gameOver = true;
             return;
         }
 
+        // Check if it is time for showdown
         if ($this->isShowdown()) {
             $this->showdown();
             return;

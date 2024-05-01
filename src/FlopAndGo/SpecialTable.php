@@ -25,16 +25,6 @@ class SpecialTable extends Table
         $this->bbPlayer->setPosition("BB");
     }
 
-    public function getSmallBlind(): int
-    {
-        return $this->smallBlind;
-    }
-
-    public function getBigBlind(): int
-    {
-        return $this->bigBlind;
-    }
-
     public function moveButton(): void
     {
         $temp = $this->sbPlayer;
@@ -53,14 +43,6 @@ class SpecialTable extends Table
     public function getBbPlayer(): object
     {
         return $this->bbPlayer;
-    }
-
-    public function chargeAntes(): void
-    {
-        $this->sbPlayer->payBlind($this->smallBlind);
-        $this->bbPlayer->payBlind($this->bigBlind);
-        $this->sbPlayer->setCurrentBet($this->smallBlind);
-        $this->bbPlayer->SetCurrentBet($this->bigBlind);
     }
 
     public function getPriceToPlay(): int

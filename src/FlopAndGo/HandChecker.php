@@ -222,7 +222,7 @@ class HandChecker
             return;
         }
 
-        if ($pairCount > 0 && $pairCount < 2) {
+        if ($pairCount === 1) {
             $this->strengthArray['One pair'] = true;
         }
         $this->strengthArray['High card'] = true;
