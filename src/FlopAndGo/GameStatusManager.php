@@ -12,17 +12,24 @@ trait GameStatusManager
             return ($this->streetCheck() === 4);
         }
 
-        public function challengeIsOver() : void 
+        public function isAllHandsPlayed() : bool 
         {
-            echo "is challenge over?";
-            $villainStack = $this->villain->getStack();
-            $heroStack = $this->hero->getStack();
+            echo "is all hands played?";
 
-            if ($this->challenge->challengeComplete($heroStack, $villainStack)) {
-                echo"Sätter gomover till true";
-                $this->gameOver = true;
-            }
+            return $this->challenge->challengeComplete();
 
             //return $this->challenge->challengeComplete($heroStack, $villainStack);
         }
+
+        public function isSomeoneBroke() {
+            $heroStack = $this->hero->getStack();
+            $villainStack = $this->villain->getStack();
+
+            $broke = false;
+            if ($heroStack <= 0 || $villainStack <= 0) {
+                $broke = true;
+            }
+            return $broke;
+        }
+    
 }

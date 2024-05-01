@@ -24,10 +24,10 @@ class Challenge
         $this->handsPlayed += 1;
     }
 
-    public function challengeComplete(int $stack1, int $stack2): bool
+    public function challengeComplete(): bool
     {
         $done = false;
-        if ($stack1 <= 0 || $stack2 <= 0 || $this->handsPlayed >= $this->duration) {
+        if ($this->handsPlayed >= $this->duration) {
             $done = true;
         }
         return $done;
