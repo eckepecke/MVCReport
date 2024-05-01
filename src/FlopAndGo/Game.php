@@ -105,10 +105,10 @@ class Game
     public function play($action)
     {
 // this ruins the flow because when all in on turn it quits and you dont reach showdown
-        if ($this->challengeIsOver()) {
+        if ($this->gameOver) {
+            echo"go";
             return;
         }
-
         if ($this->newHand === true || $action === "next") {
             echo "setting up";
             $this->handSetUp();
@@ -122,6 +122,7 @@ class Game
         }
 
         $this->dealCorrectStreet();
+        $this->challengeIsOver();
 
         if ($this->isShowdown()) {
             $this->showdown();

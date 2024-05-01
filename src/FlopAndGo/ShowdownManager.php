@@ -9,7 +9,8 @@ trait ShowdownManager
 {
     public function showdown() {
         $this->assignHandStrengths();
-        $winner = $this->handChecker->compareStrength($this->hero, $this->villain);
+        $handChecker = new HandChecker();
+        $winner = $handChecker->compareStrength($this->hero, $this->villain);
         
         $winner->takePot($this->table->getPotsize());
 

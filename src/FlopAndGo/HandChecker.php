@@ -74,6 +74,7 @@ class HandChecker
         $suitsCount = array_count_values($suits);
         $maxSameSuitCount = max($suitsCount);
         $isStraight = false;
+        //var_dump($rankCounts);
 
         // Check for flush
         $this->checkForFlush($maxSameSuitCount);
@@ -200,7 +201,8 @@ class HandChecker
 
     public function checkForTrips(array $rankCounts): void
     {
-
+        //echo'in tripcheck';
+        //var_dump($rankCounts);
         if (in_array(3, $rankCounts)) {
             $this->strengthArray['Three of a kind'] = true;
         }
