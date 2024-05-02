@@ -8,20 +8,25 @@
 
 
     <div class="table">
+        {# Game over view #}
             {% if game_over %}
                 <div class="end-box">
-                    <h1>Your result was:{{ result }} USD.</h1>
+                    
                     {% if result >= 0 %}
-                        <h1>Good job!</h1>
-                    {% else %}
-                        <h1>Bad job!</h1>
-                    {% endif %}
+                    <h1>Your result was: +{{ result }} USD.</h1>
+                    <h1> Good job!</h1>
                 </div>
+                <img class="end-img" src="{{ asset('build/images/teddy.gif') }}" alt="me">
+                    {% else %}
+                    <h1>Your result was: {{ result }} USD.</h1>
+                    <h1> Bad job!</h1>
+                </div>
+                    {% endif %}
+
             {% endif %}
 
-        {% if is_showdown %}
-
-        
+        {# Showdown view #}
+        {% if is_showdown and not game_over %}
 
                 <h3>{{teddy_stack}} USD</h3>
                 <h4>{{teddy_pos}}</h4>
@@ -68,17 +73,21 @@
 
                 </div>
             </div>
+        {% endif %}
 
-        {% else %}
+        {# Regular play view #}
+        {% if not game_over and not is_showdown %}
                 <h3>{{teddy_stack}} USD</h3>
-                <h4>{{teddy_pos}}</h4>
-                <div class="player-box">
+                <div class="player-box teddy-box">
+
                     <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me">
 
                     <div class="card-box">
                         <img class="card-img" src="{{ asset('build/images/card_back.svg') }}" alt="card">
                         <img class="card-img" src="{{ asset('build/images/card_back.svg') }}" alt="card">
                     </div>
+                    <h4>{{teddy_pos}}</h4>
+
                 </div>
                 {% if teddy_bet != 0 %}
                     <h4> Bet: {{ teddy_bet }}</h4>
@@ -99,15 +108,15 @@
                 {% endif %}
 
                 <div class="player-box">
-                    <img class="player-img" src="{{ asset('build/images/good_hand.png') }}" alt="me">
+                    <img class="player-img" src="{{ asset('build/images/mike.jpg') }}" alt="me">
 
                     <div class="card-box">
                     {% for img in mos_hand %}
                         <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
                     </div>
+                    <h4>{{mos_pos}}</h4>
                 </div>
-                <h3>{{mos_stack}} USD</h3>
-                <h4>{{mos_pos}}</h4>
+                <h3>{{mos_stack}} USD </h3>
 
                 <div class="options-box">
                     <!-- Fold Button -->
@@ -117,7 +126,6 @@
                 </form>
 
                 {# Call Button #}
-                <p>{{price}}</p>
                 {% if price == 0 %}
                     <form method="post" action="{{ path('gamble_play') }}">
                         <input type="hidden" name="action" value="check">
