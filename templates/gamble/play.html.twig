@@ -29,7 +29,6 @@
         {% if is_showdown and not game_over %}
 
                 <h3>{{teddy_stack}} USD</h3>
-                <h4>{{teddy_pos}}</h4>
                 <div class="player-box">
                     <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me">
 
@@ -37,6 +36,8 @@
                     {% for img in teddy_hand %}
                         <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
                     </div>
+                <h4>{{teddy_pos}}</h4>
+
                 </div>
                 <h4>{{teddy_hand_strength}}</h4>
 
@@ -53,17 +54,17 @@
 
 
 
-                <h4>{{mos_hand_strength}}</h4>
+                <h4>{{mike_hand_strength}}</h4>
                 <div class="player-box">
-                    <img class="player-img" src="{{ asset('build/images/good_hand.png') }}" alt="me">
+                    <img class="player-img" src="{{ asset('build/images/mike.jpg') }}" alt="me">
 
                     <div class="card-box">
-                    {% for img in mos_hand %}
+                    {% for img in mike_hand %}
                         <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
                     </div>
+                <h4>{{mike_pos}}</h4>
                 </div>
-                <h3>{{mos_stack}} USD</h3>
-                <h4>{{mos_pos}}</h4>
+                <h3>{{mike_stack}} USD</h3>
 
                 <div class="options-box">
                 <form method="post" action="{{ path('gamble_play') }}">
@@ -103,20 +104,20 @@
                 <div class="pot-box">
                     <h3>{{pot_size}} dollars is in the pot</h3>
                 </div>
-                {% if mos_bet != 0 %}
-                    <h4> Bet: {{ mos_bet }}</h4>
+                {% if mike_bet != 0 %}
+                    <h4> Bet: {{ mike_bet }}</h4>
                 {% endif %}
 
                 <div class="player-box">
                     <img class="player-img" src="{{ asset('build/images/mike.jpg') }}" alt="me">
 
                     <div class="card-box">
-                    {% for img in mos_hand %}
+                    {% for img in mike_hand %}
                         <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
                     </div>
-                    <h4>{{mos_pos}}</h4>
+                    <h4>{{mike_pos}}</h4>
                 </div>
-                <h3>{{mos_stack}} USD </h3>
+                <h3>{{mike_stack}} USD </h3>
 
                 <div class="options-box">
                     <!-- Fold Button -->
