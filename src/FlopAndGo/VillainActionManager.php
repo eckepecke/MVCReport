@@ -11,8 +11,6 @@ trait VillainActionManager
     {
         $villainPos = $this->villain->getPosition();
         $action = $this->villain->betOpportunity();
-        $action = "bet";
-
 
         if ($villainPos === "BB") {
             if ($action === "check") {
@@ -42,7 +40,6 @@ trait VillainActionManager
 
     public function villainResponseToBet($amount) {
         $action = $this->villain->actionFacingBet();
-        $action = "fold";
 
         if ($action === "fold") {
             $this->table->addChipsToPot($this->villain->getCurrentBet());
@@ -60,7 +57,6 @@ trait VillainActionManager
 
         if ($action === "call") {
             $this->villain->call($amount);
-
             $this->table->addChipsToPot($this->villain->getCurrentBet());
             $this->table->addChipsToPot($this->hero->getCurrentBet());
             $this->villain->resetCurrentBet();
@@ -73,10 +69,7 @@ trait VillainActionManager
         }
 
         if (($this->hero->isAllin())){
-            // $this->villain->call($amount);
             $this->villain->call($amount);
-///this adds to many chips since hero bet is bigger than villain call
-            // $this->table->addChipsToPot($this->hero->getCurrentBet());
             $this->table->addChipsToPot($this->villain->getCurrentBet());
             $this->table->addChipsToPot($this->villain->getCurrentBet());
             $this->dealer->dealToShowdown();
@@ -92,11 +85,8 @@ trait VillainActionManager
             $this->table->addChipsToPot($this->hero->getCurrentBet());
             $this->table->addChipsToPot($this->villain->getCurrentBet());
             $this->allInCheck($this->villain);
-            /// should I call showdown here
             $this->newHand = true;
             $this->incrementStreet();
-
-            //$this->handSetUp();
             return;
         }
 

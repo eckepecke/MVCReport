@@ -4,6 +4,7 @@
 
 
 {% block body %}
+    <div class="doc">
 
     <h1>Welcome to the PokerChallenge</h1>
 
@@ -19,9 +20,17 @@
     <p>-You agree on an amount of hands to be played. Both players must play until the agreed upon volume has been played, or someone goes broke.</p>
     <p>How many hands do you want to to play for this challenge? Must be an even number since you take turns playing with positional advantage.</p>
 
+    <div class="input-container">
     <form method="post" action="">
-        <input type="number" name="num_hands" min="2" max="100" value="2" step="2">
-        <input type="submit" name="do_it" value="Start playing">
+        <input class="num-input" type="number" name="num_hands" min="2" max="100" value="2" step="2">
+        <input class="init-button" type="submit" name="do_it" value="Start playing">
     </form>
+    </div>
+
+
+    <h2><a href="{{ path('game_doc') }}">Click here for documentation</a></h2>
+
+    </div>
+
 
 {% endblock %}

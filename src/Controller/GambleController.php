@@ -76,13 +76,7 @@ class GambleController extends AbstractController
 
         $game = $session->get("game");
         $game->play($action);
-
         $data = $game->getGameState();
-
-        if ($game->isNewHand()) {
-            $action = null;
-            $game->play($action);
-        }
 
         $data = $game->getGameState();
         return $this->render('gamble/play.html.twig', $data);
@@ -95,13 +89,10 @@ class GambleController extends AbstractController
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
-        // $session = $request->getSession();
-
 
         if (!$session->has("game")) {
             throw new Exception("No game in session!");
         }
-        // $game->setSessionVariables($session);
         $data = $game->getGameState();
 
         $response = new JsonResponse($data);
@@ -109,5 +100,11 @@ class GambleController extends AbstractController
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
+    }
+
+    #[Route("/game/doc", name: "game_doc")]
+    public function home(): Response
+    {
+        return $this->render('game/doc.html.twig');
     }
 }

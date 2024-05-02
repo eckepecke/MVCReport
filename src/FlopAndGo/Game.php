@@ -7,7 +7,6 @@ use App\FlopAndGo\Dealer;
 use App\FlopAndGo\HandChecker;
 use App\FlopAndGo\Hero;
 use App\FlopAndGo\HeroActionManager;
-use App\FlopAndGo\Moderator;
 use App\FlopAndGo\ShowdownManager;
 use App\FlopAndGo\SpecialTable;
 use App\FlopAndGo\StreetManager;
@@ -30,7 +29,6 @@ class Game
     private object $dealer;
     private object $table;
     private object $handChecker;
-    private object $moderator;
     private object $challenge;
     private bool $newHand = true;
     private bool $showdown = false;
@@ -59,11 +57,6 @@ class Game
     public function addHandChecker(HandChecker $handChecker): void
     {
         $this->handChecker = $handChecker;
-    }
-
-    public function addModerator(Moderator $moderator): void
-    {
-        $this->moderator = $moderator;
     }
 
     public function addChallenge(Challenge $challenge): void
@@ -138,6 +131,11 @@ class Game
         if ($this->isAllHandsPlayed()) {
             $this->gameOver = true;
             return;
+        }
+
+        // Play again if someone folded before showdown
+        if ($this->newHand) {
+            $this->play(null);
         }
 
         // Check if it is time for showdown

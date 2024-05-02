@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Poker Challenge{% endblock %}
+
+
+{% block body %}
+    <h1>FlopAndGo Challenge Documentation</h1>
+    <div class="doc">
+
+    <h2>Classes</h2>
+
+    <h3>Game</h3>
+    <p>This class will store all the classes below. It will have attributes that singifies that is going on in the game like, ’gameOver’, ’showdown’ ’newHand’.</p>
+
+    <h3>ChallengeClass</h3>
+    <p>This class will contain player classes and the duration of the challenge</p>
+
+    <h3>Moderator</h3>
+    <p>This class will moderate the game by calling all the classes that are ”in the game”.</p>
+
+    <h3>Dealer</h3>
+    <p>The dealer will do what a dealer does, deal cards and move chips.</p>
+
+    <h3>Player</h3>
+    <p>This class can bet, check, call, fold and raise. It will have set and get methods for the chipstack attribute. Also has an attribute to define that represents the player position.</p>
+
+    <h3>Villain</h3>
+    <p>This is the opponent user will be facing. It extends the player class but may have attributes like name, balance and other attributes related to the challenge.</p>
+
+    <h3>Hero</h3>
+    <p>This is the class related to the the user. Like villain it extends the Player class but will be have more specific attributes then the Player class.</p>
+
+    <h3>Table</h3>
+    <p>This class contains information about the pot size and the cards on the table.</p>
+
+    <h3>FlopLogic</h3>
+    <p>This class will contain logic for villain flop decisions.</p>
+
+    <h3>TurnLogic</h3>
+    <p>This class will contain logic for villain turn decisions.</p>
+
+    <h3>RiverLogic</h3>
+    <p>This class will contain logic for villain river decisions.</p>
+    </div>
+
+    <h2>Flowchart</h3>
+    <p>This is the flowchart explaining the flow of the main function play().</p>
+
+
+    <img class="flow-img" src="{{ asset('build/images/flow.png') }}" alt="flowchart">
+
+{% endblock %}
