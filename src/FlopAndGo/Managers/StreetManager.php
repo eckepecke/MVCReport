@@ -1,6 +1,6 @@
 <?php
 
-namespace App\FlopAndGo;
+namespace App\FlopAndGo\Managers;
 
 /**
  * A trait managing card and chip distribution.

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\FlopAndGo;
+namespace App\FlopAndGo\Managers;
 
 /**
  * A trait managing villain opportunities.
@@ -34,8 +34,6 @@ trait VillainActionManager
             $betSize = $this->hero->getStack();
         }
         $this->villain->bet($betSize);
-
-        //$this->table->addChipsToPot($this->villain->getCurrentBet());
     }
 
     public function villainResponseToBet(int $amount): void
@@ -51,7 +49,6 @@ trait VillainActionManager
             $this->table->cleanTable();
             $this->challenge->incrementHandsPlayed();
             $this->newHand = true;
-            //$this->handSetUp();
             return;
         }
 
@@ -64,8 +61,6 @@ trait VillainActionManager
             $this->hero->resetCurrentBet();
             $this->allInCheck($this->villain);
             $this->incrementStreet();
-
-            //$this->table->nextStreet();
             return;
         }
 

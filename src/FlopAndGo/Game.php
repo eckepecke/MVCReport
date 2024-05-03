@@ -2,17 +2,18 @@
 
 namespace App\FlopAndGo;
 
-use App\FlopAndGo\BetSizeManager;
 use App\FlopAndGo\Dealer;
 use App\FlopAndGo\HandChecker;
 use App\FlopAndGo\Hero;
-use App\FlopAndGo\HeroActionManager;
-use App\FlopAndGo\ShowdownManager;
 use App\FlopAndGo\SpecialTable;
-use App\FlopAndGo\StreetManager;
 use App\FlopAndGo\Table;
 use App\FlopAndGo\Villain;
-use App\FlopAndGo\VillainActionManager;
+use App\FlopAndGo\Managers\BetSizeManager;
+use App\FlopAndGo\Managers\GameStatusManager;
+use App\FlopAndGo\Managers\HeroActionManager;
+use App\FlopAndGo\Managers\ShowdownManager;
+use App\FlopAndGo\Managers\StreetManager;
+use App\FlopAndGo\Managers\VillainActionManager;
 
 class Game
 {
