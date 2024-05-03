@@ -94,7 +94,7 @@ class Game
         ];
     }
 
-    public function play($action)
+    public function play(mixed $action): void
     {
         // Check if challenge is over
         if ($this->isAllHandsPlayed()) {

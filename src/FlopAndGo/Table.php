@@ -68,7 +68,7 @@ class Table
         return $this->street;
     }
 
-    public function cleanTable()
+    public function cleanTable(): void
     {
         $this->potSize = 0;
         $this->flop = [];

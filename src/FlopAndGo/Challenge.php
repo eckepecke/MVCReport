@@ -53,7 +53,7 @@ class Challenge
         return $this->handWinner;
     }
 
-    public function setHandWinner($handWinner): void
+    public function setHandWinner(object $handWinner): void
     {
         $this->handWinner = $handWinner;
     }

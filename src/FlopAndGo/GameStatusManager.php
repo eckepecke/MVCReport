@@ -17,7 +17,7 @@ trait GameStatusManager
         return $this->challenge->challengeComplete();
     }
 
-    public function isSomeoneBroke()
+    public function isSomeoneBroke(): bool
     {
         $heroStack = $this->hero->getStack();
         $villainStack = $this->villain->getStack();

@@ -127,7 +127,7 @@ class Player
         $this->currentBet = $amount;
     }
 
-    public function getLastAction()
+    public function getLastAction(): string
     {
         return $this->lastAction;
     }

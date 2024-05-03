@@ -38,7 +38,7 @@ trait VillainActionManager
         //$this->table->addChipsToPot($this->villain->getCurrentBet());
     }
 
-    public function villainResponseToBet($amount)
+    public function villainResponseToBet(int $amount): void
     {
         $action = $this->villain->actionFacingBet();
 

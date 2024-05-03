@@ -7,9 +7,8 @@ namespace App\FlopAndGo;
  */
 trait ShowdownManager
 {
-    public function showdown()
+    public function showdown(): void
     {
-        echo"showdow!!";
         $this->assignHandStrengths();
         $handChecker = new HandChecker();
         $winner = $handChecker->compareStrength($this->hero, $this->villain);
@@ -21,10 +20,9 @@ trait ShowdownManager
 
         $this->showdown = true;
         $this->challenge->incrementHandsPlayed();
-        // $this->newHand = true;
     }
 
-    public function assignHandStrengths()
+    public function assignHandStrengths(): void
     {
         $board = $this->table->getBoard();
         $fullHeroHand = array_merge($this->hero->getHand(), $board);
