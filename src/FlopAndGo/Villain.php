@@ -2,7 +2,6 @@
 
 namespace App\FlopAndGo;
 
-
 use App\FlopAndGo\StrategyTrait;
 use App\FlopAndGo\TexasHandTrait;
 

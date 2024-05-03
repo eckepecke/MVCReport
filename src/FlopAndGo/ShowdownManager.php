@@ -7,12 +7,13 @@ namespace App\FlopAndGo;
  */
 trait ShowdownManager
 {
-    public function showdown() {
+    public function showdown()
+    {
         echo"showdow!!";
         $this->assignHandStrengths();
         $handChecker = new HandChecker();
         $winner = $handChecker->compareStrength($this->hero, $this->villain);
-        
+
         $winner->takePot($this->table->getPotSize());
 
         $this->challenge->setHandWinner($winner->getName());

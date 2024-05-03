@@ -117,18 +117,19 @@ class HandChecker
     public function checkForStraight(array $ranks): void
     {
         $this->strengthArray['Straight'] = false;
-//        $ranks =[14,2,3,4,5,8,8];
 
         if (in_array(14, $ranks)) {
             $ranks[] = 1; // Add Ace with rank 1
         }
-        
+
         sort($ranks);
-    
+
         $set = array($ranks[0]); // Start with the first card
         $lastRank = $ranks[0];
         foreach ($ranks as $card) {
-            if ($card === $lastRank) continue; // Skip duplicates
+            if ($card === $lastRank) {
+                continue;
+            } // Skip duplicates
             if ($card - $lastRank === 1) {
                 // Consecutive card, add to the set
                 $set[] = $card;
@@ -136,13 +137,13 @@ class HandChecker
                 // Not consecutive, restart the set with the current card
                 $set = array($card);
             }
-    
+
             if (count($set) === 5) {
                 break; // Found a straight, no need to continue
             }
             $lastRank = $card;
         }
-    
+
         if (count($set) === 5) {
             //echo "Found a straight with " . implode(',', $set) . "\n";
             $this->strengthArray['Straight'] = true;

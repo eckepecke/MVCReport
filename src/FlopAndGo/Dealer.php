@@ -4,6 +4,7 @@ namespace App\FlopAndGo;
 
 use App\FlopAndGo\Challenge;
 use App\Cards\DeckOfCards;
+
 // use App\FlopAndGo\Table;
 
 
@@ -43,7 +44,7 @@ class Dealer
         return $cards;
     }
 
-    public function shuffleCards() : void 
+    public function shuffleCards(): void
     {
         $this->deck->initializeCards();
         $this->deck->shuffleDeck();

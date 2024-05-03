@@ -5,7 +5,6 @@ namespace App\FlopAndGo;
 use App\FlopAndGo\Dealer;
 use App\FlopAndGo\SpecialTable;
 
-
 class SpecialDealer extends Dealer
 {
     private object $playerOne;
@@ -22,7 +21,7 @@ class SpecialDealer extends Dealer
     {
         $this->table = $table;
     }
-    public function getPlayerList(array $players) : void
+    public function getPlayerList(array $players): void
     {
         $this->playerOne = $players[0];
         $this->playerTwo = $players[1];

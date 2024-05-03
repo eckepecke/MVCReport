@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use Exception;
 
 use Symfony\Component\HttpFoundation\Response;

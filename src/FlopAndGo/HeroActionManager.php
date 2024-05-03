@@ -7,9 +7,9 @@ namespace App\FlopAndGo;
  */
 trait HeroActionManager
 {
-    public function heroAction(mixed $action) : void 
+    public function heroAction(mixed $action): void
     {
-        if ($action != null && $action != "next"){
+        if ($action != null && $action != "next") {
             switch ($action) {
                 case "check":
                     $this->heroChecked();
@@ -27,7 +27,7 @@ trait HeroActionManager
         }
     }
 
-    public function heroFolded() : void 
+    public function heroFolded(): void
     {
         $this->table->addChipsToPot($this->villain->getCurrentBet());
         $this->table->addChipsToPot($this->hero->getCurrentBet());
@@ -39,7 +39,7 @@ trait HeroActionManager
         $this->newHand = true;
     }
 
-    public function heroCalled() : void 
+    public function heroCalled(): void
     {
         ///Denna route har int prövats
         $villainBet = $this->villain->getCurrentBet();
@@ -54,10 +54,10 @@ trait HeroActionManager
         $this->incrementStreet();
     }
 
-    public function heroBet(int $amount) :void
+    public function heroBet(int $amount): void
     {
         $maxBetAllowed = $this->getMaxBet($this->hero, $this->villain);
-        $betSize= $this->heroBetSize($amount, $maxBetAllowed);
+        $betSize = $this->heroBetSize($amount, $maxBetAllowed);
         $this->hero->bet($betSize);
 
         $this->villainResponseToBet($betSize);
@@ -105,7 +105,7 @@ trait HeroActionManager
         // $this->villain->raise($amount);
     }
 
-    public function heroChecked() : void 
+    public function heroChecked(): void
     {
         $this->hero->check();
         if ($this->hero->getPosition() === "SB") {
@@ -113,20 +113,20 @@ trait HeroActionManager
         }
     }
 
-    public function heroBetSize(int $amount, int $maxBet) : int 
+    public function heroBetSize(int $amount, int $maxBet): int
     {
         return min($amount, $maxBet);
-//         $villainStack = $this->villain->getStack();
-//         $heroStack = $this->hero->getStack();
-//         $villainCurrentBet = $this->villain->getCurrentBet();
-// //this should go second maybe?
-//         if ($heroStack < $amount) {
-//             return $heroStack;
-//         }
+        //         $villainStack = $this->villain->getStack();
+        //         $heroStack = $this->hero->getStack();
+        //         $villainCurrentBet = $this->villain->getCurrentBet();
+        // //this should go second maybe?
+        //         if ($heroStack < $amount) {
+        //             return $heroStack;
+        //         }
 
-//         if ($amount > ($villainStack + $villainCurrentBet)){
-//             $amount = $villainStack + $villainCurrentBet;
-//         }
-//         return $amount;
+        //         if ($amount > ($villainStack + $villainCurrentBet)){
+        //             $amount = $villainStack + $villainCurrentBet;
+        //         }
+        //         return $amount;
     }
 }

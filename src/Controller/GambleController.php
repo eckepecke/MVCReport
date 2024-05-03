@@ -22,7 +22,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class GambleController extends AbstractController
 {
-
     #[Route("/game", name: "game_init_get", methods: ['GET'])]
     public function init(): Response
     {
@@ -33,8 +32,7 @@ class GambleController extends AbstractController
     public function initCallback(
         Request $request,
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $numHands = $request->request->get('num_hands');
 
         $game = new Game();
@@ -67,11 +65,10 @@ class GambleController extends AbstractController
     public function play(
         Request $request,
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $action = $request->request->get('action');
-        if ($action === NULL) {
-        $action = $request->request->get('bet');
+        if ($action === null) {
+            $action = $request->request->get('bet');
         }
 
         $game = $session->get("game");
@@ -85,7 +82,6 @@ class GambleController extends AbstractController
 
     #[Route("/api/game", name: "api_game", methods: ["POST", "GET"])]
     public function apiPoker(
-        Request $request,
         SessionInterface $session
     ): Response {
         $game = $session->get("game");

@@ -7,7 +7,7 @@ namespace App\FlopAndGo;
  */
 trait StreetManager
 {
-    public function handSetUp() : void
+    public function handSetUp(): void
     {
         $this->hero->fold();
         $this->villain->fold();
@@ -28,24 +28,24 @@ trait StreetManager
         //$this->gameOver = false;
     }
 
-    public function streetCheck() : int 
+    public function streetCheck(): int
     {
         return $this->table->getStreet();
     }
 
-    public function incrementStreet() : void 
+    public function incrementStreet(): void
     {
         $current = $this->streetCheck();
         $this->table->setStreet($current + 1);
     }
 
-    public function cardsDealt() : int
+    public function cardsDealt(): int
     {
         $cardsDealt = count($this->table->getBoard());
         return $cardsDealt;
     }
 
-    public function dealCorrectStreet() : void 
+    public function dealCorrectStreet(): void
     {
         $street = $this->streetCheck();
         switch ($street) {
@@ -70,7 +70,7 @@ trait StreetManager
         }
     }
 
-    public function allInCheck(object $player) : void
+    public function allInCheck(object $player): void
     {
         if($player->isAllin()) {
             $this->dealer->dealToShowdown();

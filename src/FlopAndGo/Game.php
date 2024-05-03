@@ -14,7 +14,6 @@ use App\FlopAndGo\Table;
 use App\FlopAndGo\Villain;
 use App\FlopAndGo\VillainActionManager;
 
-
 class Game
 {
     use BetSizeManager;
@@ -117,7 +116,7 @@ class Game
 
         // Action is null when it is Villains turn to act
         // Villain always has the opportunity to act from the big blind
-        if ($action === null && ($this->villain->getPosition() === "BB")|| $action ==="check") {
+        if ($action === null && ($this->villain->getPosition() === "BB") || $action === "check") {
             $this->villainAction();
         }
 
@@ -146,7 +145,7 @@ class Game
 
     }
 
-    public function isNewHand() : bool 
+    public function isNewHand(): bool
     {
         return $this->newHand;
     }

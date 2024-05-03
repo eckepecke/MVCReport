@@ -7,7 +7,7 @@ namespace App\FlopAndGo;
  */
 trait VillainActionManager
 {
-    public function villainAction() : void 
+    public function villainAction(): void
     {
         $villainPos = $this->villain->getPosition();
         $action = $this->villain->betOpportunity();
@@ -38,7 +38,8 @@ trait VillainActionManager
         //$this->table->addChipsToPot($this->villain->getCurrentBet());
     }
 
-    public function villainResponseToBet($amount) {
+    public function villainResponseToBet($amount)
+    {
         $action = $this->villain->actionFacingBet();
 
         if ($action === "fold") {
@@ -68,7 +69,7 @@ trait VillainActionManager
             return;
         }
 
-        if (($this->hero->isAllin())){
+        if (($this->hero->isAllin())) {
             $this->villain->call($amount);
             $this->table->addChipsToPot($this->villain->getCurrentBet());
             $this->table->addChipsToPot($this->villain->getCurrentBet());
@@ -78,7 +79,7 @@ trait VillainActionManager
 
         }
 
-        if ($amount >= ($this->villain->getStack() + $this->villain->getCurrentBet()) || $this->hero->isAllin()){
+        if ($amount >= ($this->villain->getStack() + $this->villain->getCurrentBet()) || $this->hero->isAllin()) {
             $this->villain->call($amount);
 
             $this->allInCheck($this->villain);

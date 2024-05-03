@@ -147,7 +147,7 @@ class PokerChallengeController extends AbstractController
 //     ): Response {
 //         $game = $session->get("game");
 //         $game->heroChecked();
-        
+
 //         $data = $game->getSessionVariables();
 //         if ($game->table->getStreet() === 1) {
 //             return $this->redirectToRoute('showdown');

@@ -33,7 +33,7 @@ class Player
         $this->currentBet = $amount;
         $this->lastAction = "bet";
 
-        if ($this->stack <= 0){
+        if ($this->stack <= 0) {
             ///
             $this->allIn = true;
         }
@@ -56,7 +56,7 @@ class Player
         //     $this->currentBet += $amount;
         //     $this->stack -= $amount;
         //     return $amount;
-        // } 
+        // }
 
         // $this->stack -= $amount - $this->currentBet;
         // $this->currentBet = $amount;
@@ -132,12 +132,12 @@ class Player
         return $this->lastAction;
     }
 
-    public function payAnte(int $ante) : void
+    public function payAnte(int $ante): void
     {
         $this->stack -= $ante;
     }
 
-    public function isAllIn () : bool 
+    public function isAllIn(): bool
     {
         $this->allIn = false;
         if ($this->stack <= 0) {
