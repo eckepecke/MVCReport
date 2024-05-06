@@ -2,15 +2,14 @@
 
 namespace App\FlopAndGo;
 
-use App\Poker\Hero;
-use App\Poker\Villain;
+use App\FlopAndGo\Hero;
+use App\FlopAndGo\Villain;
 
 class Challenge
 {
     private int $duration;
     private int $handsPlayed;
     private string $handWinner;
-
 
     public function __construct(int $hands)
     {
@@ -53,7 +52,7 @@ class Challenge
         return $this->handWinner;
     }
 
-    public function setHandWinner(object $handWinner): void
+    public function setHandWinner(string $handWinner): void
     {
         $this->handWinner = $handWinner;
     }

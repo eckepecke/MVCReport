@@ -1,6 +1,7 @@
 <?php
 
 namespace App\FlopAndGo\Managers;
+use App\FlopAndGo\HandChecker;
 
 /**
  * A trait managing showdown.
@@ -12,6 +13,8 @@ trait ShowdownManager
         $this->assignHandStrengths();
         $handChecker = new HandChecker();
         $winner = $handChecker->compareStrength($this->hero, $this->villain);
+        var_dump($this->hero->getStack());
+        var_dump($this->villain->getStack());
 
         $winner->takePot($this->table->getPotSize());
 

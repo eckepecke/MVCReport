@@ -11,11 +11,11 @@
             <ul>
             <li class="links"><a href="#kmom01">kmom01</a></li>
             <li class="links"><a href="#kmom02">kmom02</a></li>
-            <li class="links"><a href="#kmom02">kmom03</a></li>
-            <li class="links"><a href="#kmom02">kmom04</a></li>
-            <li class="links"><a href="#kmom02">kmom05</a></li>
-            <li class="links"><a href="#kmom02">kmom06</a></li>
-            <li class="links"><a href="#kmom02">kmom07</a></li>
+            <li class="links"><a href="#kmom03">kmom03</a></li>
+            <li class="links"><a href="#kmom04">kmom04</a></li>
+            <li class="links"><a href="#kmom05">kmom05</a></li>
+            <li class="links"><a href="#kmom06">kmom06</a></li>
+            <li class="links"><a href="#kmom07">kmom07</a></li>
             </ul>
         </aside>
 
@@ -48,7 +48,13 @@
 
         <section class="doc">
             <h2 id="kmom03">Kmom03</h2>
-            <p></p>
+            <p>Jag tycker absolut att flödesdiagrammet och pseudokoden var bra verktyg. Det kanske låter dumt när min kod ser annorlunda ut från det jag planerade innan jag satte igång. Jag följde dock mina flödesdiagramm och pseudokod och hade ett fungerande spel lokalt som i princip var det pseudokoden och flödesdiagrammet planerade. Problemet var att min kontroller blev otroligt tjock då planeringen jag gjorde krävde väldigt många routes och templates. Man kan säga att flödesschemat och pseudo-koden tog mig dit jag siktade, men jag hade siktat otroligt dåligt. Därför började jag om och har nu en mycket mer nedskalad kontroller. Min play()-funktion i spelklassen hanterar alla scenarior nu istället för som tidigare där jag hade olika funktioner som hanterade olika gator i spelet. Mina funktioner som används i spelet hanterar alla gator i spelet vilket gör det lättare att felsöka nu, då felet som uppstår inte kan finnas på så många olika ställen.</p>
+
+<p>Trots att jag förbättrat min initiala kod avsevärt är jag fortfarande lite osäker på mitt projekt. Jag har många klasser som injiceras i spelklassen. Det jag inte kunde förutse på förhand var hur mycket funktioner som skulle behövas för att få alla klasserna att kunna samverka. Istället för att ha 25 funktioner i spelklassen valde jag till slut att använda traits. Det blev en smidig lösning för mig då jag inte behövde skriva en ’Manager’-klass och ha getter funktioner för alla attribut i spelklassen. Men filosofiskt känns det fel att använda traits på det här sättet. Mina traits är helt specifika till min spel-klass, det finns ingen annan klass i hela världen som skulle ha nytta av dom. På något sätt skulle jag vilja ha en manager-klass som också injiceras i spelklassen. Jag kan lätt hitta det jag ska i mina traits då jag är van att använda pokertermer och har själv skrivit koden. Problemet blir då att jag måsta ha getter-funktioner för alla attributen i spelklassen eller så måste jag injicera alla relevanta objekt i mina managers. I och med att mycket av det som mina managers gör är att ändra ”state” eller attribut på spelklasssen valde jag den enkla vägen och använde traits då de har tillgång till attributen i spelklassen. Jag förstår att det är svårt i och med mycket rättningar men skulle hemskt gärna få feedback på hur just denna delen hade kunnat varit bättre. </p>
+
+<p>Jag undrar också över vad jag ska prioritera när det kommer till kontrollern och template-filerna. Jag har nu skalat kontrollern så mycket det går och all logik sker i spelklassen. Validatorerna klara på för hög komplexitet i play()-funktionen man jag vill inte lyfta ut fler delar.  I min mening skulle det leda till fler frågor om jag klumpar ihop vissa spelevents och kallar det ”bothPlayerActions()” eller liknande. Jag hade tidigare 3 eller 4 olika templates och 4 olika routes som hanterade logiken bakom användarens beslut. Call hade en route, bet hade en route, osv. Naturligtvis blev kontrollern enorm. Jag försökte lyfta ut logiken men i och med att jag renderade olika templates och skickade vidare flödet med redirects var mycket tvunget att ske i kontrollern. Jag valde nu att ha bara en template och en route som tar input, uppdaterar spelet och renderar samma template. Jag får då mer kod i template-filen och det ser lite rörigt ut. Jag vet inte riktigt vad min fråga är men jag hoppas på en rak, hård och ärlig analys av mitt projekt.</p>   <p>Att koda i Symfony har varit trevligt nu när jag fått ordning på allt krångel som uppstod i tidigare kursmoment. Jag skulle gärna försöka mig på att använda javascript för att få spelupplevelsen till en högre nivå. Just nu känns allt lite kantigt då motståndaren spelar blixtsnabbt och korten och chipsen flyger utan att man hinner blinka. Foldar motståndaren mot användarens bet kan nog användaren undra vad som hände, var tog min hand vägen? Vann jag potten? Men tiden finns inte just nu att lösa de sakerna.</p>
+
+<p>Min TIL för detta kursmoment är att bygga stora projekt är svårt och mycket tid bör läggas på att bygga de enkla delarna väldigt noga så att när koden växer uppstår så lite problem som möjligt. Ett stort misstag jag gjorde var att bli upphetsad över att skriva en smart motspelare. Jag ville bara bli klar med spellogiken så att jag kunde börja göra motspelaren smart. Jag har spelat poker professionellt i 8 år och tyckte det var väldigt spännande att tänka på hur jag skulle skriva den koden. Nu sitter jag här, en vecka sen och motspelar-klassen har ingen intelligens.</p>
         </section>
 
         <section>
