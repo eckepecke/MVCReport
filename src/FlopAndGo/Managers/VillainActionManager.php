@@ -14,7 +14,6 @@ trait VillainActionManager
 
         if ($villainPos === "BB") {
             if ($action === "check") {
-                echo"villain checking OOP";
                 $this->villain->check();
                 return;
             }
@@ -23,7 +22,6 @@ trait VillainActionManager
         if ($villainPos === "SB") {
             if ($action === "check") {
                 $this->villain->check();
-                echo"villain checking IP";
                 $this->incrementStreet();
                 return;
             }

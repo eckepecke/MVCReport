@@ -16,6 +16,8 @@ trait StreetManager
         $this->table->getBombPotChips();
         $this->hero->resetCurrentBet();
         $this->villain->resetCurrentBet();
+        $this->hero->resetLastAction();
+        $this->villain->resetLastAction();
         $this->dealer->shuffleCards();
         $this->dealer->dealHoleCards();
         $this->table->setStreet(1);

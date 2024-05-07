@@ -132,6 +132,11 @@ class Player
         return $this->lastAction;
     }
 
+    public function resetLastAction(): string
+    {
+        return $this->lastAction = "";
+    }
+
     public function payAnte(int $ante): void
     {
         $this->stack -= $ante;

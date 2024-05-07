@@ -12,21 +12,24 @@
             {% if game_over %}
                 <div class="end-box">
                     
-                    {% if result >= 0 %}
+                    {% if result > 0 %}
                     <h1>Your result was: +{{ result }} USD.</h1>
                     <h1> Good job!</h1>
                 </div>
-                <img class="end-img" src="{{ asset('build/images/teddy.gif') }}" alt="me">
+                <img class="end-img" src="{{ asset('build/images/teddy.gif') }}" alt="result pic">
                     {% else %}
                     <h1>Your result was: {{ result }} USD.</h1>
                     <h1> Bad job!</h1>
+
                 </div>
+                <img class="end-img" src="{{ asset('build/images/loss.gif') }}" alt="result pic">
+
                     {% endif %}
 
             {% endif %}
 
         {# Showdown view #}
-        {% if is_showdown and not game_over %}
+        {% if is_showdown %}
 
                 <h3>{{teddy_stack}} USD</h3>
                 <div class="player-box">
@@ -36,7 +39,7 @@
                     {% for img in teddy_hand %}
                         <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
                     </div>
-                <h4>{{teddy_pos}}</h4>
+                <h4 class="blind">{{teddy_pos}}</h4>
 
                 </div>
                 <h4>{{teddy_hand_strength}}</h4>
@@ -62,9 +65,10 @@
                     {% for img in mike_hand %}
                         <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
                     </div>
-                <h4>{{mike_pos}}</h4>
+                <h4 class="blind">{{mike_pos}}</h4>
                 </div>
                 <h3>{{mike_stack}} USD</h3>
+            {% if is_showdown and not game_over %}
 
                 <div class="options-box">
                 <form method="post" action="{{ path('gamble_play') }}">
@@ -73,6 +77,8 @@
                 </form>
 
                 </div>
+            {% endif %}
+
             </div>
         {% endif %}
 
@@ -87,11 +93,15 @@
                         <img class="card-img" src="{{ asset('build/images/card_back.svg') }}" alt="card">
                         <img class="card-img" src="{{ asset('build/images/card_back.svg') }}" alt="card">
                     </div>
-                    <h4>{{teddy_pos}}</h4>
+                    <h4 class="blind">{{teddy_pos}}</h4>
 
                 </div>
                 {% if teddy_bet != 0 %}
                     <h4> Bet: {{ teddy_bet }}</h4>
+                {% elseif teddy_last_action is same as "check" %}
+                    <h4>Check!</h4>
+                {% elseif teddy_last_action is same as "call" %}
+                    <h4>Call!</h4>
                 {% endif %}
 
                 <div class="board-box">
@@ -115,7 +125,7 @@
                     {% for img in mike_hand %}
                         <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
                     </div>
-                    <h4>{{mike_pos}}</h4>
+                    <h4 class="blind">{{mike_pos}}</h4>
                 </div>
                 <h3>{{mike_stack}} USD </h3>
 

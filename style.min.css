@@ -484,9 +484,12 @@ button {
   height: 800px;
   display: flex;
   flex-direction: column;
+  border-radius: 40%;
+  border: 30px solid rgb(30, 17, 17);
+  align-items: center;
 }
 .table .pot-box, .table .end-box {
-  height: 500px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -494,12 +497,22 @@ button {
 .table .end-box {
   background-color: black;
   color: #eee;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: 5px solid #BEE2FA;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .table .player-box {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+.table .player-box .card-box {
+  padding-left: 5px;
 }
 .table .player-box .card-box .card-img {
   width: 100px;
@@ -510,6 +523,13 @@ button {
   width: 150px;
   height: auto;
   border-radius: 50%;
+  border: 5px solid rgb(0, 0, 0);
+}
+.table .player-box .blind {
+  background-color: red;
+  border-radius: 50%;
+  padding: 7px;
+  border: 2px solid rgb(0, 0, 0);
 }
 .table .options-box {
   display: flex;
@@ -533,9 +553,15 @@ button {
   border-radius: 0.2rem;
   line-height: 1.4;
 }
-.table .options-box:hover {
-  background-color: #ddd;
+.table .options-box .fold-button:hover,
+.table .options-box .call-button:hover,
+.table .options-box .raise-button:hover {
+  background-color: #c53535;
   background-image: none;
+}
+.table .options-box .bet-input {
+  width: 50px;
+  height: 40px;
 }
 
 .board-box {
@@ -546,7 +572,56 @@ button {
   justify-content: center;
 }
 .board-box .community-card {
-  width: 75px;
+  width: 100px;
   padding-right: 2px;
   height: auto;
+}
+
+.doc {
+  padding-top: 10px;
+  background-color: rgb(37, 37, 37);
+  border: 2px solid #BEE2FA;
+}
+.doc p {
+  padding-right: 2em;
+}
+
+.flow-img {
+  border: 2px solid #BEE2FA;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.input-container form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.input-container form .init-button {
+  color: #333;
+  background-color: #fff;
+  background-image: linear-gradient(#fff, #eee);
+  border: 1px solid #ccc;
+  text-decoration: none;
+  box-sizing: border-box;
+  display: inline-block;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.4rem;
+  padding: 0.4rem 1rem;
+  text-align: center;
+  border-radius: 0.2rem;
+  line-height: 1.4;
+}
+.input-container form .init-button:hover {
+  background-color: #c53535;
+  background-image: none;
+}
+.input-container form .num-input {
+  width: 50px;
+  height: 45px;
+  margin-right: 4px;
 }

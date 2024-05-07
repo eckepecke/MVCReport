@@ -13,8 +13,6 @@ trait ShowdownManager
         $this->assignHandStrengths();
         $handChecker = new HandChecker();
         $winner = $handChecker->compareStrength($this->hero, $this->villain);
-        var_dump($this->hero->getStack());
-        var_dump($this->villain->getStack());
 
         $winner->takePot($this->table->getPotSize());
 

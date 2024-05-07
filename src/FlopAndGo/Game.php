@@ -103,9 +103,14 @@ class Game
             return;
         }
 
+        // Check if someone is broke
+        if ($this->isSomeoneBroke()) {
+            $this->gameOver = true;
+            return;
+        }
+
         // Check if a new hand is starting
         if ($this->newHand === true || $action === "next") {
-            echo "setting up";
             $this->handSetUp();
         }
 

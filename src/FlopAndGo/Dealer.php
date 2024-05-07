@@ -39,7 +39,6 @@ class Dealer
     public function dealRemaining(array $board): array
     {
         $remaining = 5 - count($board);
-        echo "remaining: $remaining";
         $cards = $this->deck->drawMany($remaining);
         return $cards;
     }
