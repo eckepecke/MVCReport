@@ -27,10 +27,10 @@ class SpecialDealer extends Dealer
         $this->playerTwo = $players[1];
     }
 
-    public function incrementHandsPlayed(): void
-    {
-        $this->handCount += 1;
-    }
+    // public function incrementHandsPlayed(): void
+    // {
+    //     $this->handCount += 1;
+    // }
 
     public function dealHoleCards(): void
     {

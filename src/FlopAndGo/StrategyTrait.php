@@ -7,16 +7,16 @@ namespace App\FlopAndGo;
  */
 trait StrategyTrait
 {
-    public function randActionRFI(): string
-    {
-        $decision = "preflopRaise";
+    // public function randActionRFI(): string
+    // {
+    //     $decision = "preflopRaise";
 
-        $randNum = rand(0, 10);
-        if ($randNum < 2) {
-            $decision = "preflopCall";
-        }
-        return $decision;
-    }
+    //     $randNum = rand(0, 10);
+    //     if ($randNum < 2) {
+    //         $decision = "preflopCall";
+    //     }
+    //     return $decision;
+    // }
 
 
     public function actionVsCheck(): string

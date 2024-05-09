@@ -75,14 +75,4 @@ class Table
         $this->fullBoard = [];
         $this->street = 1;
     }
-
-    public function moveButton(): void
-    {
-        $temp = $this->sbPlayer;
-        $this->sbPlayer = $this->bbPlayer;
-        $this->bbPlayer = $temp;
-
-        $this->bbPlayer->setPosition("BB");
-        $this->sbPlayer->setPosition("SB");
-    }
 }

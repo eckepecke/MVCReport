@@ -11,7 +11,7 @@ class Challenge
     private int $handsPlayed;
     private string $handWinner;
 
-    public function __construct(int $hands)
+    public function __construct(int $hands = 2)
     {
         $this->duration = $hands;
         $this->handsPlayed = 0;
