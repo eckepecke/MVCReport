@@ -125,15 +125,13 @@ class PlayerTest extends TestCase
 
         $this->player->bet(1);
         $res = $this->player->isAllin();
-        $exp = false;
+
         $this->assertFalse($res);
 
         $this->player->bet(5000);
         $res = $this->player->isAllin();
-        $exp = true;
         $this->assertTrue($res);
     }
-
 
     /**
     * Test that player pays table ante correctly.

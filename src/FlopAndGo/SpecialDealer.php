@@ -9,7 +9,7 @@ class SpecialDealer extends Dealer
 {
     private object $playerOne;
     private object $playerTwo;
-    private int $handCount;
+    // private int $handCount;
     private object $table;
 
     // public function __construct()

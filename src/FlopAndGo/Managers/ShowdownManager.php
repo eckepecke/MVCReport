@@ -1,6 +1,7 @@
 <?php
 
 namespace App\FlopAndGo\Managers;
+
 use App\FlopAndGo\HandChecker;
 
 /**

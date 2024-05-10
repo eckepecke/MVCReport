@@ -104,23 +104,37 @@
                                 <section>
                                         <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/app.html">App</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="namespaces/app-flopandgo.html">FlopAndGo</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/app-dice.html">Dice</a></li>
     </ul>
 
-    <article class="phpdocumentor-element -trait">
+    <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    StrategyTrait
+    DiceHand
+
+    
+            <div class="phpdocumentor-element__package">
+            in package
+            <ul class="phpdocumentor-breadcrumbs">
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Application.html">Application</a></li>
+                            </ul>
+        </div>
+    
+    
     </h2>
 
+<div class="phpdocumentor-label-line">
+
+
+</div>
+
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/StrategyTrait.php"><a href="files/src-flopandgo-strategytrait.html"><abbr title="src/FlopAndGo/StrategyTrait.php">StrategyTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Dice/DiceHand.php"><a href="files/src-dice-dicehand.html"><abbr title="src/Dice/DiceHand.php">DiceHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">8</span>
+    <span class="phpdocumentor-element-found-in__line">7</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">A trait implementing histogram for integers.</p>
-
+        
 
 
 
@@ -128,7 +142,7 @@
 
 <h3 id="toc">
     Table of Contents
-    <a href="classes/App-FlopAndGo-StrategyTrait.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/App-Dice-DiceHand.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -140,47 +154,54 @@
 
 
 
+<h4 id="toc-properties">
+    Properties
+    <a href="classes/App-Dice-DiceHand.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/App-Dice-DiceHand.html#property_hand">$hand</a>
+    <span>
+                        &nbsp;: mixed            </span>
+</dt>
+
+    </dl>
 
 <h4 id="toc-methods">
     Methods
-    <a href="classes/App-FlopAndGo-StrategyTrait.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/App-Dice-DiceHand.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-StrategyTrait.html#method_actionFacingBet">actionFacingBet()</a>
+    <a href="classes/App-Dice-DiceHand.html#method_add">add()</a>
     <span>
-                                &nbsp;: string    </span>
+                                &nbsp;: void    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-StrategyTrait.html#method_actionVsCheck">actionVsCheck()</a>
+    <a href="classes/App-Dice-DiceHand.html#method_getNumberDices">getNumberDices()</a>
     <span>
-                                &nbsp;: string    </span>
+                                &nbsp;: int    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-StrategyTrait.html#method_betOpportunity">betOpportunity()</a>
+    <a href="classes/App-Dice-DiceHand.html#method_getString">getString()</a>
     <span>
-                                &nbsp;: string    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-StrategyTrait.html#method_betVsCheck">betVsCheck()</a>
+    <a href="classes/App-Dice-DiceHand.html#method_roll">roll()</a>
     <span>
-                                &nbsp;: float    </span>
+                                &nbsp;: void    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-StrategyTrait.html#method_postFlopBetOpportunity">postFlopBetOpportunity()</a>
+    <a href="classes/App-Dice-DiceHand.html#method_sum">sum()</a>
     <span>
-                                &nbsp;: string    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-StrategyTrait.html#method_randBetSize">randBetSize()</a>
-    <span>
-                                &nbsp;: float    </span>
+                                &nbsp;: int    </span>
 </dt>
 
     </dl>
@@ -191,11 +212,51 @@
         
 
         
+    <section class="phpdocumentor-properties">
+        <h3 class="phpdocumentor-elements__header" id="properties">
+            Properties
+            <a href="classes/App-Dice-DiceHand.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h3>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_hand">
+        $hand
+        <a href="classes/App-Dice-DiceHand.html#property_hand" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Dice/DiceHand.php"><a href="files/src-dice-dicehand.html"><abbr title="src/Dice/DiceHand.php">DiceHand.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">9</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$hand</span>
+     = <span class="phpdocumentor-signature__default-value">[]</span></code>
+
+    
+    
+    
+
+</article>
+            </section>
 
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/App-FlopAndGo-StrategyTrait.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/App-Dice-DiceHand.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -204,127 +265,22 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_actionFacingBet">
-        actionFacingBet()
-        <a href="classes/App-FlopAndGo-StrategyTrait.html#method_actionFacingBet" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_add">
+        add()
+        <a href="classes/App-Dice-DiceHand.html#method_add" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/StrategyTrait.php"><a href="files/src-flopandgo-strategytrait.html"><abbr title="src/FlopAndGo/StrategyTrait.php">StrategyTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Dice/DiceHand.php"><a href="files/src-dice-dicehand.html"><abbr title="src/Dice/DiceHand.php">DiceHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">53</span>
+    <span class="phpdocumentor-element-found-in__line">11</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">actionFacingBet</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_actionVsCheck">
-        actionVsCheck()
-        <a href="classes/App-FlopAndGo-StrategyTrait.html#method_actionVsCheck" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/StrategyTrait.php"><a href="files/src-flopandgo-strategytrait.html"><abbr title="src/FlopAndGo/StrategyTrait.php">StrategyTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">22</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">actionVsCheck</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_betOpportunity">
-        betOpportunity()
-        <a href="classes/App-FlopAndGo-StrategyTrait.html#method_betOpportunity" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/StrategyTrait.php"><a href="files/src-flopandgo-strategytrait.html"><abbr title="src/FlopAndGo/StrategyTrait.php">StrategyTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">97</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">betOpportunity</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_betVsCheck">
-        betVsCheck()
-        <a href="classes/App-FlopAndGo-StrategyTrait.html#method_betVsCheck" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/StrategyTrait.php"><a href="files/src-flopandgo-strategytrait.html"><abbr title="src/FlopAndGo/StrategyTrait.php">StrategyTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">35</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">betVsCheck</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$potSize</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float</span></code>
+                    <span class="phpdocumentor-signature__name">add</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Dice-Dice.html"><abbr title="\App\Dice\Dice">Dice</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$die</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -332,8 +288,8 @@
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$potSize</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                <span class="phpdocumentor-signature__argument__name">$die</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Dice-Dice.html"><abbr title="\App\Dice\Dice">Dice</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
@@ -342,11 +298,7 @@
 
     
 
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">float</span>
-            </section>
-
+    
 </article>
                     <article
         class="phpdocumentor-element
@@ -354,22 +306,22 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_postFlopBetOpportunity">
-        postFlopBetOpportunity()
-        <a href="classes/App-FlopAndGo-StrategyTrait.html#method_postFlopBetOpportunity" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_getNumberDices">
+        getNumberDices()
+        <a href="classes/App-Dice-DiceHand.html#method_getNumberDices" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/StrategyTrait.php"><a href="files/src-flopandgo-strategytrait.html"><abbr title="src/FlopAndGo/StrategyTrait.php">StrategyTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Dice/DiceHand.php"><a href="files/src-dice-dicehand.html"><abbr title="src/Dice/DiceHand.php">DiceHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">70</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">postFlopBetOpportunity</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">getNumberDices</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -379,7 +331,7 @@
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
+        <span class="phpdocumentor-signature__response_type">int</span>
             </section>
 
 </article>
@@ -389,42 +341,98 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_randBetSize">
-        randBetSize()
-        <a href="classes/App-FlopAndGo-StrategyTrait.html#method_randBetSize" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_getString">
+        getString()
+        <a href="classes/App-Dice-DiceHand.html#method_getString" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/StrategyTrait.php"><a href="files/src-flopandgo-strategytrait.html"><abbr title="src/FlopAndGo/StrategyTrait.php">StrategyTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Dice/DiceHand.php"><a href="files/src-dice-dicehand.html"><abbr title="src/Dice/DiceHand.php">DiceHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">37</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">randBetSize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$potSize</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float</span></code>
+                    <span class="phpdocumentor-signature__name">getString</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
     
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$potSize</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
+    
     
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">float</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_roll">
+        roll()
+        <a href="classes/App-Dice-DiceHand.html#method_roll" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Dice/DiceHand.php"><a href="files/src-dice-dicehand.html"><abbr title="src/Dice/DiceHand.php">DiceHand.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">16</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">roll</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_sum">
+        sum()
+        <a href="classes/App-Dice-DiceHand.html#method_sum" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Dice/DiceHand.php"><a href="files/src-dice-dicehand.html"><abbr title="src/Dice/DiceHand.php">DiceHand.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">28</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">sum</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
             </section>
 
 </article>
@@ -434,7 +442,7 @@
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/FlopAndGo/StrategyTrait.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Dice/DiceHand.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -533,18 +541,26 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                <li><a href="classes/App-FlopAndGo-StrategyTrait.html#toc-methods">Methods</a></li>
+                                                            <li><a href="classes/App-Dice-DiceHand.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/App-Dice-DiceHand.html#toc-methods">Methods</a></li>
                                     </ul>
             </li>
-                                                <li class="phpdocumentor-on-this-page-section__title">Methods</li>
+            
+                            <li class="phpdocumentor-on-this-page-section__title">Properties</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/App-Dice-DiceHand.html#property_hand">$hand<a href="classes/App-Dice-DiceHand.html"></li>
+                                            </ul>
+                </li>
+            
+                        <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li><a href="classes/App-FlopAndGo-StrategyTrait.html#method_actionFacingBet">actionFacingBet()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-StrategyTrait.html#method_actionVsCheck">actionVsCheck()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-StrategyTrait.html#method_betOpportunity">betOpportunity()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-StrategyTrait.html#method_betVsCheck">betVsCheck()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-StrategyTrait.html#method_postFlopBetOpportunity">postFlopBetOpportunity()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-StrategyTrait.html#method_randBetSize">randBetSize()</a></li>
+                                            <li><a href="classes/App-Dice-DiceHand.html#method_add">add()</a></li>
+                                            <li><a href="classes/App-Dice-DiceHand.html#method_getNumberDices">getNumberDices()</a></li>
+                                            <li><a href="classes/App-Dice-DiceHand.html#method_getString">getString()</a></li>
+                                            <li><a href="classes/App-Dice-DiceHand.html#method_roll">roll()</a></li>
+                                            <li><a href="classes/App-Dice-DiceHand.html#method_sum">sum()</a></li>
                                     </ul>
             </li>
                     </ul>
@@ -564,7 +580,7 @@
     </section>
 </section>
         </div>
-        <a href="classes/App-FlopAndGo-StrategyTrait.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/App-Dice-DiceHand.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

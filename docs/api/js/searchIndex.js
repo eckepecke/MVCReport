@@ -326,10 +326,50 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Dice-Dice.html#method_getAsString"
         },                {
+            "fqsen": "\\App\\Dice\\Dice\u003A\u003AgetValue\u0028\u0029",
+            "name": "getValue",
+            "summary": "",
+            "url": "classes/App-Dice-Dice.html#method_getValue"
+        },                {
             "fqsen": "\\App\\Dice\\Dice\u003A\u003A\u0024value",
             "name": "value",
             "summary": "",
             "url": "classes/App-Dice-Dice.html#property_value"
+        },                {
+            "fqsen": "\\App\\Dice\\DiceHand",
+            "name": "DiceHand",
+            "summary": "",
+            "url": "classes/App-Dice-DiceHand.html"
+        },                {
+            "fqsen": "\\App\\Dice\\DiceHand\u003A\u003Aadd\u0028\u0029",
+            "name": "add",
+            "summary": "",
+            "url": "classes/App-Dice-DiceHand.html#method_add"
+        },                {
+            "fqsen": "\\App\\Dice\\DiceHand\u003A\u003Aroll\u0028\u0029",
+            "name": "roll",
+            "summary": "",
+            "url": "classes/App-Dice-DiceHand.html#method_roll"
+        },                {
+            "fqsen": "\\App\\Dice\\DiceHand\u003A\u003AgetNumberDices\u0028\u0029",
+            "name": "getNumberDices",
+            "summary": "",
+            "url": "classes/App-Dice-DiceHand.html#method_getNumberDices"
+        },                {
+            "fqsen": "\\App\\Dice\\DiceHand\u003A\u003Asum\u0028\u0029",
+            "name": "sum",
+            "summary": "",
+            "url": "classes/App-Dice-DiceHand.html#method_sum"
+        },                {
+            "fqsen": "\\App\\Dice\\DiceHand\u003A\u003AgetString\u0028\u0029",
+            "name": "getString",
+            "summary": "",
+            "url": "classes/App-Dice-DiceHand.html#method_getString"
+        },                {
+            "fqsen": "\\App\\Dice\\DiceHand\u003A\u003A\u0024hand",
+            "name": "hand",
+            "summary": "",
+            "url": "classes/App-Dice-DiceHand.html#property_hand"
         },                {
             "fqsen": "\\App\\FlopAndGo\\Challenge",
             "name": "Challenge",
@@ -906,11 +946,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-FlopAndGo-SpecialDealer.html#method_getPlayerList"
         },                {
-            "fqsen": "\\App\\FlopAndGo\\SpecialDealer\u003A\u003AincrementHandsPlayed\u0028\u0029",
-            "name": "incrementHandsPlayed",
-            "summary": "",
-            "url": "classes/App-FlopAndGo-SpecialDealer.html#method_incrementHandsPlayed"
-        },                {
             "fqsen": "\\App\\FlopAndGo\\SpecialDealer\u003A\u003AdealHoleCards\u0028\u0029",
             "name": "dealHoleCards",
             "summary": "",
@@ -945,11 +980,6 @@ Search.appendIndex(
             "name": "playerTwo",
             "summary": "",
             "url": "classes/App-FlopAndGo-SpecialDealer.html#property_playerTwo"
-        },                {
-            "fqsen": "\\App\\FlopAndGo\\SpecialDealer\u003A\u003A\u0024handCount",
-            "name": "handCount",
-            "summary": "",
-            "url": "classes/App-FlopAndGo-SpecialDealer.html#property_handCount"
         },                {
             "fqsen": "\\App\\FlopAndGo\\SpecialDealer\u003A\u003A\u0024table",
             "name": "table",
@@ -1030,11 +1060,6 @@ Search.appendIndex(
             "name": "StrategyTrait",
             "summary": "A\u0020trait\u0020implementing\u0020histogram\u0020for\u0020integers.",
             "url": "classes/App-FlopAndGo-StrategyTrait.html"
-        },                {
-            "fqsen": "\\App\\FlopAndGo\\StrategyTrait\u003A\u003ArandActionRFI\u0028\u0029",
-            "name": "randActionRFI",
-            "summary": "",
-            "url": "classes/App-FlopAndGo-StrategyTrait.html#method_randActionRFI"
         },                {
             "fqsen": "\\App\\FlopAndGo\\StrategyTrait\u003A\u003AactionVsCheck\u0028\u0029",
             "name": "actionVsCheck",
@@ -1120,11 +1145,6 @@ Search.appendIndex(
             "name": "cleanTable",
             "summary": "",
             "url": "classes/App-FlopAndGo-Table.html#method_cleanTable"
-        },                {
-            "fqsen": "\\App\\FlopAndGo\\Table\u003A\u003AmoveButton\u0028\u0029",
-            "name": "moveButton",
-            "summary": "",
-            "url": "classes/App-FlopAndGo-Table.html#method_moveButton"
         },                {
             "fqsen": "\\App\\FlopAndGo\\Table\u003A\u003A\u0024potSize",
             "name": "potSize",

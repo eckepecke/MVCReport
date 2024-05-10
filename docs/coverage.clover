@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1715332220">
-  <project timestamp="1715332220">
+<coverage generated="1715332540">
+  <project timestamp="1715332540">
     <file name="/Users/erik/dbwebb-kurser/mvc/me/report/src/Cards/Card.php">
       <class name="App\Cards\Card" namespace="global">
         <metrics complexity="4" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="15" elements="20" coveredelements="18"/>
@@ -444,30 +444,30 @@
       <line num="22" type="stmt" count="1"/>
       <line num="25" type="method" name="getValue" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="27" type="stmt" count="0"/>
-      <metrics loc="29" ncloc="29" classes="1" methods="4" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="2" elements="9" coveredelements="4"/>
+      <metrics loc="30" ncloc="30" classes="1" methods="4" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="2" elements="9" coveredelements="4"/>
     </file>
     <file name="/Users/erik/dbwebb-kurser/mvc/me/report/src/Dice/DiceHand.php">
       <class name="App\Dice\DiceHand" namespace="global">
         <metrics complexity="8" methods="5" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="7" elements="17" coveredelements="10"/>
       </class>
-      <line num="10" type="method" name="add" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="12" type="stmt" count="1"/>
-      <line num="15" type="method" name="roll" visibility="public" complexity="2" crap="2" count="1"/>
-      <line num="17" type="stmt" count="1"/>
+      <line num="11" type="method" name="add" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="13" type="stmt" count="1"/>
+      <line num="16" type="method" name="roll" visibility="public" complexity="2" crap="2" count="1"/>
       <line num="18" type="stmt" count="1"/>
-      <line num="22" type="method" name="getNumberDices" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="27" type="method" name="sum" visibility="public" complexity="2" crap="2" count="1"/>
-      <line num="29" type="stmt" count="1"/>
+      <line num="19" type="stmt" count="1"/>
+      <line num="23" type="method" name="getNumberDices" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="25" type="stmt" count="0"/>
+      <line num="28" type="method" name="sum" visibility="public" complexity="2" crap="2" count="1"/>
       <line num="30" type="stmt" count="1"/>
       <line num="31" type="stmt" count="1"/>
-      <line num="33" type="stmt" count="1"/>
-      <line num="36" type="method" name="getString" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="38" type="stmt" count="0"/>
+      <line num="32" type="stmt" count="1"/>
+      <line num="34" type="stmt" count="1"/>
+      <line num="37" type="method" name="getString" visibility="public" complexity="2" crap="6" count="0"/>
       <line num="39" type="stmt" count="0"/>
       <line num="40" type="stmt" count="0"/>
-      <line num="42" type="stmt" count="0"/>
-      <metrics loc="44" ncloc="44" classes="1" methods="5" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="7" elements="17" coveredelements="10"/>
+      <line num="41" type="stmt" count="0"/>
+      <line num="43" type="stmt" count="0"/>
+      <metrics loc="46" ncloc="46" classes="1" methods="5" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="7" elements="17" coveredelements="10"/>
     </file>
     <file name="/Users/erik/dbwebb-kurser/mvc/me/report/src/FlopAndGo/Challenge.php">
       <class name="App\FlopAndGo\Challenge" namespace="global">
@@ -832,25 +832,25 @@
       <class name="App\FlopAndGo\Managers\ShowdownManager" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="18" coveredelements="18"/>
       </class>
-      <line num="11" type="method" name="showdown" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="13" type="stmt" count="1"/>
+      <line num="12" type="method" name="showdown" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="14" type="stmt" count="1"/>
       <line num="15" type="stmt" count="1"/>
-      <line num="17" type="stmt" count="1"/>
-      <line num="19" type="stmt" count="1"/>
+      <line num="16" type="stmt" count="1"/>
+      <line num="18" type="stmt" count="1"/>
       <line num="20" type="stmt" count="1"/>
-      <line num="22" type="stmt" count="1"/>
+      <line num="21" type="stmt" count="1"/>
       <line num="23" type="stmt" count="1"/>
-      <line num="26" type="method" name="assignHandStrengths" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="28" type="stmt" count="1"/>
+      <line num="24" type="stmt" count="1"/>
+      <line num="27" type="method" name="assignHandStrengths" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="29" type="stmt" count="1"/>
-      <line num="31" type="stmt" count="1"/>
+      <line num="30" type="stmt" count="1"/>
       <line num="32" type="stmt" count="1"/>
-      <line num="34" type="stmt" count="1"/>
-      <line num="36" type="stmt" count="1"/>
+      <line num="33" type="stmt" count="1"/>
+      <line num="35" type="stmt" count="1"/>
       <line num="37" type="stmt" count="1"/>
       <line num="38" type="stmt" count="1"/>
-      <metrics loc="42" ncloc="39" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="18" coveredelements="18"/>
+      <line num="39" type="stmt" count="1"/>
+      <metrics loc="43" ncloc="40" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="18" coveredelements="18"/>
     </file>
     <file name="/Users/erik/dbwebb-kurser/mvc/me/report/src/FlopAndGo/Managers/StreetManager.php">
       <class name="App\FlopAndGo\Managers\StreetManager" namespace="global">
@@ -1069,7 +1069,7 @@
       <line num="87" type="stmt" count="2"/>
       <line num="88" type="stmt" count="2"/>
       <line num="89" type="stmt" count="2"/>
-      <metrics loc="92" ncloc="84" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="32" elements="39" coveredelements="39"/>
+      <metrics loc="92" ncloc="83" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="32" elements="39" coveredelements="39"/>
     </file>
     <file name="/Users/erik/dbwebb-kurser/mvc/me/report/src/FlopAndGo/SpecialTable.php">
       <class name="App\FlopAndGo\SpecialTable" namespace="global">
@@ -1269,6 +1269,6 @@
       </class>
       <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <metrics files="32" loc="2695" ncloc="2386" classes="30" methods="167" coveredmethods="118" conditionals="0" coveredconditionals="0" statements="909" coveredstatements="519" elements="1076" coveredelements="637"/>
+    <metrics files="32" loc="2699" ncloc="2389" classes="30" methods="167" coveredmethods="118" conditionals="0" coveredconditionals="0" statements="909" coveredstatements="519" elements="1076" coveredelements="637"/>
   </project>
 </coverage>
