@@ -118,37 +118,19 @@ class GameTest extends TestCase
 
         $res = $this->game->isSomeoneBroke();
         $this->assertTrue($res);
+
+        $this->game->play(null);
+
+        $data = $this->game->getGameState();
+        $this->assertEquals(true, $data["game_over"]);
+
     }
 
     /**
      * Test that user input lead to correct action.
      */
-    public function testHeroActions() 
+    public function testHeroBet() 
     {
-        // $action = "check";
-
-        // $this->game->heroAction($action);
-        // $resAction = $this->hero->getLastAction();
-        // $expAction = "check";
-
-        // $this->assertSame($expAction, $resAction);
-
-        // $action = "call";
-
-        // $this->game->heroAction($action);
-        // $resAction = $this->hero->getLastAction();
-        // $expAction = "call";
-
-        // $this->assertSame($expAction, $resAction);
-
-        // $action = "fold";
-
-        // $this->game->heroAction($action);
-        // $resAction = $this->hero->getLastAction();
-        // $expAction = "fold";
-
-        // $this->assertSame($expAction, $resAction);
-
         $villain = $this->createMock(Villain::class);
         $villain->method('actionFacingBet')
                 ->willReturn("call");
@@ -218,8 +200,90 @@ class GameTest extends TestCase
     $data = $this->game->getGameState();
 
     $this->assertEquals(true, $data["game_over"]);
-}
+    }
+
+    /**
+     * Test that all Cards are dealt when player is allin.
+     */
+    public function testAllInCheck() 
+    {
+        $board = $this->table->getBoard();
+        $this->assertCount(0, $board);
+        $this->hero->bet(5000);
+        $this->game->allInCheck($this->hero);
+        $board = $this->table->getBoard();
+        $this->assertCount(5, $board);
+    }
+
+    /**
+     * Test that correct street is dealt.
+     */
+    public function testDealCorrectStreet() 
+    {
+        // No cards dealt at first
+        $board = $this->table->getBoard();
+        $this->assertCount(0, $board);
+
+        // 3 cards should be dealt
+        $this->game->dealCorrectStreet();
+        $board = $this->table->getBoard();
+        $this->assertCount(3, $board);
+
+        // 1 card should be dealt at next street
+        $this->table->setStreet(2);
+        $this->game->dealCorrectStreet();
+        $board = $this->table->getBoard();
+        $this->assertCount(4, $board);
+
+        // 1 card should be dealt at next street
+        $this->table->setStreet(3);
+        $this->game->dealCorrectStreet();
+        $board = $this->table->getBoard();
+        $this->assertCount(5, $board);
+    }
 
 
+    /**
+     * Test that game variables update after hero action.
+     */
+    public function testHeroActions() 
+    {
+        $action = "check";
 
+        $this->game->heroAction($action);
+        $resAction = $this->hero->getLastAction();
+        $expAction = "check";
+
+        $this->assertSame($expAction, $resAction);
+
+        $action = "call";
+
+        $this->game->heroAction($action);
+        $resAction = $this->hero->getLastAction();
+        $expAction = "call";
+
+        $this->assertSame($expAction, $resAction);
+
+        $action = "fold";
+
+        $this->game->heroAction($action);
+        $resAction = $this->hero->getLastAction();
+        $expAction = "fold";
+
+        $this->assertSame($expAction, $resAction);
+    }
+
+    /**
+     * Test that game variables update after hero action.
+     */
+    public function testNewHandVariable() 
+    {
+        $res = $this->game->isNewHand();
+        $this->assertTrue($res);
+
+        $this->game->play(null);
+
+        $res = $this->game->isNewHand();
+        $this->assertFalse($res);
+    }
 }

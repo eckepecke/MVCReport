@@ -188,7 +188,7 @@ class HandChecker
 
     public function checkForQuads(array $rankCounts): void
     {
-        if (in_array(4, $rankCounts)) {
+        if (in_array(4, $rankCounts) || in_array(5, $rankCounts)) {
             $this->strengthArray['Four of a kind'] = true;
         }
     }

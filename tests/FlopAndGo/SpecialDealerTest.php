@@ -129,8 +129,27 @@ class SpecialDealerTest extends TestCase
         $board = $this->table->getBoard();
 
         $this->assertCount(5, $board);
+    }
 
+    /**
+     * Test to see that dealer moves chips to winner.
+     */
+    public function testMoveChips()
+    {
+        $player1Bet = 1000;
+        $player2Bet = 3000;
+        $this->player1->bet($player1Bet);
+        $this->player2->bet($player2Bet);
+        // $this->table->addChipsToPot($heroBet);
+        // $this->table->addChipsToPot($villainBet);
+        $this->dealer->moveChipsAfterFold();
+        $resStackP1 = $this->player1->getStack();
+        $expStackP1 = 4000;
+        $resStackP2 = $this->player2->getStack();
+        $expStackP2 = 6000;
 
+        $this->assertSame($expStackP2, $resStackP2);
+        $this->assertSame($expStackP1, $resStackP1);
 
     }
 }
