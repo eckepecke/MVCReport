@@ -1,0 +1,32 @@
+
+Dotenv Variables & Files
+========================
+
+Scanned Files (in descending priority)
+--------------------------------------
+
+ * ⨯ .env.local.php
+ * ✓ .env.student.local
+ * ⨯ .env.student
+ * ✓ .env.local
+ * ✓ .env
+
+Variables
+---------
+
+ ------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------ ----------------------------------- ----------------------------------- ----------------------------------- 
+  Variable                  Value                                                                                                                                                        .env.student.local                  .env.local                          .env                               
+ ------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------ ----------------------------------- ----------------------------------- ----------------------------------- 
+  APP_SECRET                3d2ca867973cd33e7c81912161ed2e57                                                                                                                             n/a                                 n/a                                 3d2ca867973cd33e7c81912161ed2e...  
+  DATABASE_HOST             blu-ray.student.bth.se                                                                                                                                       blu-ray.student.bth.se              n/a                                 n/a                                
+  DATABASE_NAME             eroo23                                                                                                                                                       eroo23                              n/a                                 n/a                                
+  DATABASE_PASSWORD         N9jioCDez8wt                                                                                                                                                 N9jioCDez8wt                        n/a                                 n/a                                
+  DATABASE_PORT             3306                                                                                                                                                         3306                                n/a                                 n/a                                
+  DATABASE_URL              mysql://%env(DATABASE_USER)%:%env(DATABASE_PASSWORD)%@%env(DATABASE_HOST)%:%env(DATABASE_PORT)%/%env(DATABASE_NAME)%?serverVersion=%env(DATABASE_VERSION)%   mysql://%env(DATABASE_USER)%:%...   mysql://dbadm:P%40ssw0rd@127.0...   sqlite:///%kernel.project_dir%...  
+  DATABASE_USER             eroo23                                                                                                                                                       eroo23                              n/a                                 n/a                                
+  DATABASE_VERSION          mariadb-10.5.23                                                                                                                                              mariadb-10.5.23                     n/a                                 n/a                                
+  MESSENGER_TRANSPORT_DSN   doctrine://default?auto_setup=0                                                                                                                              n/a                                 n/a                                 doctrine://default?auto_setup=...  
+ ------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------ ----------------------------------- ----------------------------------- ----------------------------------- 
+
+ // Note that values might be different between web and CLI.                                                            
+

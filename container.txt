@@ -1,0 +1,19 @@
+
+Symfony Container Environment Variables
+=======================================
+
+ ------------------------- --------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  Name                      Default value   Real value                                                                                                                                                    
+ ------------------------- --------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  APP_SECRET                n/a             "3d2ca867973cd33e7c81912161ed2e57"                                                                                                                            
+  DATABASE_URL              n/a             "mysql://%env(DATABASE_USER)%:%env(DATABASE_PASSWORD)%@%env(DATABASE_HOST)%:%env(DATABASE_PORT)%/%env(DATABASE_NAME)%?serverVersion=%env(DATABASE_VERSION)%"  
+  MAILER_DSN                n/a             n/a                                                                                                                                                           
+  MESSENGER_TRANSPORT_DSN   n/a             "doctrine://default?auto_setup=0"                                                                                                                             
+ ------------------------- --------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ // Note real values might be different between web and CLI.                                                            
+
+ [WARNING] The following variables are missing:                                                                         
+
+ * MAILER_DSN
+

@@ -565,6 +565,7 @@ button {
 }
 
 .board-box {
+  padding-top: 30px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;

@@ -57,9 +57,13 @@
 <p>Min TIL för detta kursmoment är att bygga stora projekt är svårt och mycket tid bör läggas på att bygga de enkla delarna väldigt noga så att när koden växer uppstår så lite problem som möjligt. Ett stort misstag jag gjorde var att bli upphetsad över att skriva en smart motspelare. Jag ville bara bli klar med spellogiken så att jag kunde börja göra motspelaren smart. Jag har spelat poker professionellt i 8 år och tyckte det var väldigt spännande att tänka på hur jag skulle skriva den koden. Nu sitter jag här, en vecka sen och motspelar-klassen har ingen intelligens.</p>
         </section>
 
-        <section>
+        <section class="doc">
             <h2 id="kmom04">Kmom04</h2>
-            <p></p>
+            <p>Till en början tyckte jag att skriva testerna var roligt. Det blir lite repetitivt till slut och man får vara disciplinerad för att inte skriva tester bara för att få mer kodtäckning, utan att faktiskt skriva tester som testar koden väl.  Det är nog roligare att testa andras kod, då man inte själv behöver laga den.</p>
+
+<p>Jag tycker att efter förutsättningarna lyckades jag okej med kodtäckningen. De delar som inte täcks är framförallt motspelarens strategimodul och motspelarens respons till användarens bet. Strategimodulen är något jag skulle vilja skriva om helt och hållet när jag får tiden till det. Just nu har motspelaren en strategi som varken baseras på sina kort, korten på bordet, vilket stackdjup han har etc. I och med att strategin är något av en quick fix som bara returnerar slumpvalda beslut är jag inte särskilt intresserad av att testa den. Motspelarens beslut mot användarens bet skulle dock vara bra att testa. Även om jag lyckades med mockning i andra delar av koden blir det helt enkelt för komplicerat för mig i den här delen av koden. Konceptet med testdriven utveckling tilltalar mig och jag skulle hellre skriva om koden efter att ha skrivit testerna först, istället för att skriva extremt komplicerad testkod. I och med att spelflödet sker i princip en enda lång loop är jag nöjd med att ta mig över 80%. Alla klasserna som agerar byggstenar i spelet är vältestade och fungerar väl. Problemet är spelklassen och dess traits.</p>  <p>I kmom03 fick jag stora problem då jag byggde ett stort komplicerat spel och fick lära mig den hårda vägen att en bra struktur är viktigt. Självklart ser jag nu att hade jag gått in i projektet med en struktur som baserades på testning hade jag snabbare löst vissa delar av spelet som i själva kodandet var svårt att åtgärda då flödet var långt och rörigt. Med testbar kod kan jag testa små delar av koden och se vart felet ligger.</p>
+
+<p>Min TIL för detta kursmoment är att testdriven utveckling kanske är något jag bör pröva och se om det sparar mig tid och möda i mitt kodande.</p> 
         </section>
 
         <section>
