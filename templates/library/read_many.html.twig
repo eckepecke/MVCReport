@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All books{% endblock %}
+
+{% block body %}
+
+<div class="doc">
+    <div class="book-shelf">
+
+    {% for book in books %}
+        <div class="book-box">
+            <a href="{{ path('read_one', {'id': book.id}) }}">
+            <h3> {{ book.title}} </h3>
+            <img class="book" src="{{ asset('build/images/' ~ book.img) }}" alt="book">
+            <a/>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

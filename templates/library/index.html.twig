@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LibraryController!{% endblock %}
+
+{% block body %}
+
+    <div class="api-wrapper">
+        <div class="doc">
+
+        <h1>Library</h1>
+
+        <h2><a href="{{ path('add_form') }}">Add book</a></h2>
+        {# <h2><a href="{{ path('read_one') }}">Read one</a></h2> #}
+        <h2><a href="{{ path('read_many') }}">Read many</a></h2>
+        {# <h2><a href="{{ path('update_book') }}">Update book</a></h2>
+        <h2><a href="{{ path('delete_book') }}">Delete book</a></h2>
+        </div> #}
+    </div>
+{% endblock %}

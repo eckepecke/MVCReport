@@ -626,3 +626,11 @@ button {
   height: 45px;
   margin-right: 4px;
 }
+
+.book-shelf {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

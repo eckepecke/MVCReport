@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ book.title }} {% endblock %}
+
+{% block body %}
+
+<div class="doc">
+
+    <div class="single-box">
+    <h3> {{ book.title}} </h3>
+    <img class="single-book" src="{{ asset('build/images/' ~ book.img) }}" alt="book">
+    <p></p>
+    </div>
+
+
+</div>
+
+{% endblock %}
