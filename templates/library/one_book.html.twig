@@ -7,11 +7,20 @@
 <div class="doc">
 
     <div class="single-box">
-    <h3> {{ book.title}} </h3>
-    <h4> {{ book.publishedYear}} </h4>
+        <h3> {{ book.title}} </h3>
+        <p> {{ book.description }} </p>
+        {% if book.publishedYear is not empty %}
+            <p>Publication year: {{ book.publishedYear }}</p>
+        {% endif %}
 
-    <img class="single-book" src="{{ asset('build/images/' ~ book.img) }}" alt="book">
-    <p></p>
+        <img class="single-book" src="{{ asset('build/images/' ~ book.img) }}" alt="book">
+        <div class="button-container">
+            <a href="{{ path('update_book', {'id': book.id}) }}"><button class="button">Update</button></a>
+            <form action="{{ path('delete_book', {'id': book.id}) }}" method="post">
+                <button class="button" type="submit">Delete</button>
+            </form>        
+        </div>
+
     </div>
 
 

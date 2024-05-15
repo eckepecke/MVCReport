@@ -34,7 +34,7 @@ class LibraryController extends AbstractController
         ]);
     }
 
-    #[Route('/library/show/{id}', name: 'read_one')]
+    #[Route('/library/show_one/{id}', name: 'read_one')]
     public function readOne(
         BookRepository $bookRepository,
         int $id
@@ -59,90 +59,65 @@ class LibraryController extends AbstractController
     #[Route('/library/create', name: 'create_book', methods: ["POST"])]
     public function createBook(
         ManagerRegistry $doctrine,
+        BookRepository $bookRepository,
         Request $request
     ): Response {
-        $title = $request->request->get('title');
-        $isbn = $request->request->get('isbn');
-        $author = $request->request->get('author');
-        $img = $request->request->get('image_name');
-        $description = $request->request->get('description');
-        $year = $request->request->get('year');
-
+        $book = $bookRepository->processBookFromRequest($request);
+    
         $entityManager = $doctrine->getManager();
-
-        $book = new Book();
-        if (!empty($title)) {
-            $book->setTitle($title);
-        }
-        if (!empty($isbn)) {
-            $book->setIsbn($isbn);
-        }
-        if (!empty($author)) {
-            $book->setAuthor($author);
-        }
-        if (!empty($img)) {
-            $book->setImg($img);
-        }
-        if (!empty($description)) {
-            $book->setDesription($description);
-        }
-        if (!empty($year)) {
-            $book->setPublicationYear($year);
-        }
-        // tell Doctrine you want to (eventually) save the Product
-        // (no queries yet)
         $entityManager->persist($book);
-
-        // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
-
-        return new Response('Saved new book with id '.$book->getId());
+    
+        return $this->redirectToRoute('read_many');
     }
 
 
-    #[Route('/library/update', name: 'update_book', methods: ["POST"])]
+
+    #[Route('/library/update/{id}', name: 'update_book')]
     public function updateBook(
-        ManagerRegistry $doctrine
+        BookRepository $bookRepository,
+        int $id
     ): Response {
-        // $title = $request->request->get('title');
-        // $isbn = $request->request->get('isbn');
-        // $author = $request->request->get('author');
-        // $img = $request->request->get('image_name');
-        // $description = $request->request->get('description');
-        // $year = $request->request->get('year');
+        $book = $bookRepository
+            ->find($id);
 
-        // $entityManager = $doctrine->getManager();
 
-        // $book = new Book();
-        // if (!empty($title)) {
-        //     $book->setTitle($title);
-        // }
-        // if (!empty($isbn)) {
-        //     $book->setIsbn($isbn);
-        // }
-        // if (!empty($author)) {
-        //     $book->setAuthor($author);
-        // }
-        // if (!empty($img)) {
-        //     $book->setImg($img);
-        // }
-        // if (!empty($description)) {
-        //     $book->setDesription($description);
-        // }
-        // if (!empty($year)) {
-        //     $book->setPublicationYear($year);
-        // }
-        // $entityManager = $doctrine->getManager();
-        // $book = $entityManager->getRepository(Book::class)->find($id);
-        // if (!$book) {
-        //     throw $this->createNotFoundException(
-        //         'No book found for id '.$id
-        //     );
-        // }
+        return $this->render('library/update_form.html.twig', [
+            'book' => $book,
+            'controller_name' => 'LibraryController'
+        ]);
+    }
 
-        // $book->setPublishedYear($year);
-        // $entityManager->flush();
+    #[Route('/library/update_data', name: 'update_data', methods: ["POST"])]
+    public function updateBookData(
+        ManagerRegistry $doctrine,
+        BookRepository $bookRepository,
+        Request $request
+    ): Response {
+        $id = $request->request->get('id');
+        $book = $bookRepository->find($id);
+        $book = $bookRepository->processBookFromRequest($request, $book);
 
-        return $this->redirectToRoute('create_book');
+        $entityManager = $doctrine->getManager();
+        $entityManager->persist($book);
+        $entityManager->flush();
+    
+        return $this->redirectToRoute('read_one', ['id' => $id]);
+    }
+
+    #[Route('/library/delete_book{id}', name: 'delete_book', methods: ["POST"])]
+    public function deleteBook(
+        ManagerRegistry $doctrine,
+        BookRepository $bookRepository,
+        int $id
+    ): Response {
+
+        $book = $bookRepository->find($id);
+
+        $entityManager = $doctrine->getManager();
+        $entityManager->remove($book);
+        $entityManager->flush();
+    
+        return $this->redirectToRoute('read_many');
     }
 }

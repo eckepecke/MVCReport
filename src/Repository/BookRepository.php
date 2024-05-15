@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Book;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @extends ServiceEntityRepository<Book>
@@ -16,20 +17,47 @@ class BookRepository extends ServiceEntityRepository
         parent::__construct($registry, Book::class);
     }
 
-    // /**
-    // * @return Book[] Returns an array of Book objects
-    // */
-    // public function getAllBooks(): array
-    // {
-    //     return $this->createQueryBuilder('b')
-    //         ->andWhere('b.exampleField = :val')
-    //         ->setParameter('val', $value)
-    //         ->orderBy('b.id', 'ASC')
-    //         ->setMaxResults(10)
-    //         ->getQuery()
-    //         ->getResult()
-    //     ;
-    // }
+    public function findAllBooks(): array
+{
+    return $this->createQueryBuilder('p')
+        ->getQuery()
+        ->getResult();
+}
+
+    public function processBookFromRequest(Request $request, ?Book $book = null): Book
+    {
+        if (!$book) {
+            $book = new Book();
+        }
+        $title = $request->request->get('title');
+        $isbn = $request->request->get('isbn');
+        $author = $request->request->get('author');
+        $image_name = $request->request->get('image_name');
+        $description = $request->request->get('description');
+        $year = $request->request->get('year');
+
+        if (!empty($title)) {
+            $book->setTitle($title);
+        }
+        if (!empty($isbn)) {
+            $book->setIsbn($isbn);
+        }
+        if (!empty($author)) {
+            $book->setAuthor($author);
+        }
+        if (!empty($image_name)) {
+            $book->setImg($image_name);
+        }
+        if (!empty($description)) {
+            $book->setDescription($description);
+        }
+        if (!empty($year)) {
+            $book->setPublishedYear($year);
+        }
+
+        return $book;
+    }
+
 
     // public function findBookById($id): ?Book
     // {

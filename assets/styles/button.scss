@@ -1,12 +1,19 @@
-button {
-    background-color: $font-alternative-color;
-    border: none;
-    color: $background-alternative-color;
-    padding: 15px 32px;
-    text-align: center;
+.button {
+    color: #333;
+    background-color: #BEF5FA;
+    background-image: linear-gradient(#fff, #BEF5FA);
     text-decoration: none;
+    box-sizing: border-box;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.4rem;
+    padding: 0.4rem 1rem;
+    text-align: center;
+    border-radius: $border-radius;
+    line-height: 1.4;
+}
+
+.button:hover {
+    background-color: #f4fdff;
+    background-image: none;
 }

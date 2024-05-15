@@ -12,7 +12,7 @@
         </div>
         <div>
             <label class="input-label" for="isbn">ISBN:</label>
-            <input type="text" id="isbn" name="isbn" pattern="[0-9]*" placeholder="ISBN" required="required">
+            <input type="text" id="isbn" name="isbn" min="10" max="14" placeholder="ISBN" required="required">
         </div>
         <div>
             <label class="input-label" for="author">Author:</label>
@@ -20,17 +20,17 @@
         </div>
         <div>
             <label class="input-label" for="description">Description:</label>
-            <textarea id="description" name="description" placeholder="Description" maxlength="255" rows="4"></textarea>
+            <textarea id="description" placeholder="Description" maxlength="255" rows="4"></textarea>
         </div>
         <div>
             <label class="input-label" for="year">Year of publication:</label>
-            <input type="text" id="year" name="year" placeholder="Year of publication">
+            <input type="text" id="year" placeholder="Year of publication">
         </div>
         <div>
             <label class="input-label" for="image_name">Image name:</label>
             <input type="text" id="image_name" name="image_name" placeholder="Image name" required="required">
         </div>
-        <button type="submit">Submit</button>
+        <button class="button" type="submit">Submit</button>
     </form>
 </div>
 

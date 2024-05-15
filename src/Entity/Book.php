@@ -89,7 +89,7 @@ class Book
         return $this->publishedYear;
     }
 
-    public function setPublishedYear(int $year): static
+    public function setPublishedYear(?int $year): static
     {
         $this->publishedYear = $year;
 
