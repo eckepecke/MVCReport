@@ -25,6 +25,12 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $img = null;
 
+    #[ORM\Column(length: 4)]
+    private ?int $publishedYear = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $description = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +80,30 @@ class Book
     public function setImg(string $img): static
     {
         $this->img = $img;
+
+        return $this;
+    }
+
+    public function getPublishedYear(): ?int
+    {
+        return $this->publishedYear;
+    }
+
+    public function setPublishedYear(int $year): static
+    {
+        $this->publishedYear = $year;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }

@@ -3,35 +3,31 @@
 {% block title %}Add form{% endblock %}
 
 {% block body %}
+
 <div class="doc">
     <form class="book-form" action="{{ path('create_book') }}" method="POST">
         <h1>Add book</h1>
         <div>
-            <label class="input-label" for="title">Title:</label>
+            <label for="title">Title:</label>
             <input type="text" id="title" name="title" placeholder="Title" required="required">
         </div>
         <div>
-            <label class="input-label" for="isbn">ISBN:</label>
+            <label for="isbn">ISBN:</label>
             <input type="text" id="isbn" name="isbn" pattern="[0-9]*" placeholder="ISBN" required="required">
         </div>
         <div>
-            <label class="input-label" for="author">Author:</label>
+            <label for="author">Author:</label>
             <input type="text" id="author" name="author" placeholder="Author" required="required">
         </div>
         <div>
-            <label class="input-label" for="description">Description:</label>
+            <label for="description">Description:</label>
             <textarea id="description" name="description" placeholder="Description" maxlength="255" rows="4"></textarea>
         </div>
         <div>
-            <label class="input-label" for="year">Year of publication:</label>
-            <input type="text" id="year" name="year" placeholder="Year of publication">
-        </div>
-        <div>
-            <label class="input-label" for="image_name">Image name:</label>
+            <label for="image_name">Image name:</label>
             <input type="text" id="image_name" name="image_name" placeholder="Image name" required="required">
         </div>
         <button type="submit">Submit</button>
     </form>
 </div>
-
 {% endblock %}

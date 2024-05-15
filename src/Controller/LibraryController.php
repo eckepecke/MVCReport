@@ -65,16 +65,30 @@ class LibraryController extends AbstractController
         $isbn = $request->request->get('isbn');
         $author = $request->request->get('author');
         $img = $request->request->get('image_name');
-        var_dump($isbn);
+        $description = $request->request->get('description');
+        $year = $request->request->get('year');
 
         $entityManager = $doctrine->getManager();
 
         $book = new Book();
-        $book->setTitle($title);
-        $book->setIsbn($isbn);
-        $book->setAuthor($author);
-        $book->setImg($img);
-
+        if (!empty($title)) {
+            $book->setTitle($title);
+        }
+        if (!empty($isbn)) {
+            $book->setIsbn($isbn);
+        }
+        if (!empty($author)) {
+            $book->setAuthor($author);
+        }
+        if (!empty($img)) {
+            $book->setImg($img);
+        }
+        if (!empty($description)) {
+            $book->setDesription($description);
+        }
+        if (!empty($year)) {
+            $book->setPublicationYear($year);
+        }
         // tell Doctrine you want to (eventually) save the Product
         // (no queries yet)
         $entityManager->persist($book);
@@ -83,5 +97,52 @@ class LibraryController extends AbstractController
         $entityManager->flush();
 
         return new Response('Saved new book with id '.$book->getId());
+    }
+
+
+    #[Route('/library/update', name: 'update_book', methods: ["POST"])]
+    public function updateBook(
+        ManagerRegistry $doctrine
+    ): Response {
+        // $title = $request->request->get('title');
+        // $isbn = $request->request->get('isbn');
+        // $author = $request->request->get('author');
+        // $img = $request->request->get('image_name');
+        // $description = $request->request->get('description');
+        // $year = $request->request->get('year');
+
+        // $entityManager = $doctrine->getManager();
+
+        // $book = new Book();
+        // if (!empty($title)) {
+        //     $book->setTitle($title);
+        // }
+        // if (!empty($isbn)) {
+        //     $book->setIsbn($isbn);
+        // }
+        // if (!empty($author)) {
+        //     $book->setAuthor($author);
+        // }
+        // if (!empty($img)) {
+        //     $book->setImg($img);
+        // }
+        // if (!empty($description)) {
+        //     $book->setDesription($description);
+        // }
+        // if (!empty($year)) {
+        //     $book->setPublicationYear($year);
+        // }
+        // $entityManager = $doctrine->getManager();
+        // $book = $entityManager->getRepository(Book::class)->find($id);
+        // if (!$book) {
+        //     throw $this->createNotFoundException(
+        //         'No book found for id '.$id
+        //     );
+        // }
+
+        // $book->setPublishedYear($year);
+        // $entityManager->flush();
+
+        return $this->redirectToRoute('create_book');
     }
 }
