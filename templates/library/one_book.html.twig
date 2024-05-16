@@ -7,30 +7,21 @@
 <div class="doc">
 
     <div class="single-box">
-    {{ book.id }}
-    {{ nextId }}
-    {{ prevId }}
-    {{ firstId }}
-    {{ lastId }}
+        <div class="nav-button-container">
+            {% if book.id != firstId %}
+                <a href="{{ path('read_one', {'id': prevId}) }}">
+                    <button class="button small-button" type="submit">&larr;</button>
+                </a>
+            {% else %}
+                <div class="empty-div"></div>
+            {% endif %}
+            {% if nextId is not null and nextId is not empty %}
+                <a href="{{ path('read_one', {'id': nextId}) }}">
+                    <button class="button small-button" type="submit">&rarr;</button>
+                </a>
+            {% endif %}
 
-
-
-
-        {% if nextId is not null and nextId is not empty %}
-            <a href="{{ path('read_one', {'id': nextId}) }}">
-                <button class="button" type="submit">See next</button>
-            </a>
-        {% endif %}
-        {% if book.id != firstId %}
-            <a href="{{ path('read_one', {'id': prevId}) }}">
-                <button class="button" type="submit">See previous</button>
-            </a>
-        {% endif %}
-        {# {% if book.id != amount %}
-            <a href="{{ path('read_one', {'id': (book.id + 1)}) }}">
-                <button class="button" type="submit">Next book</button>
-            </a>
-        {% endif %} #}
+        </div>
         <h1> {{ book.title}} </h1>
         <h3>by {{ book.author}} </h3>
         <p> {{ book.description }} </p>

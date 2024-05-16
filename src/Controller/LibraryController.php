@@ -48,42 +48,29 @@ class LibraryController extends AbstractController
 
         $lastId = end($idArray);
         $lastId = $lastId["id"];
-        var_dump($lastId);
 
         $firstId = reset($idArray);
         $firstId = $firstId["id"];
-        var_dump($firstId);
 
-        $idIndex = null; // Initialize the index variable
+        $idIndex = null;
 
-        // Loop through each element in $idArray
         foreach ($idArray as $key => $item) {
-            // Check if the "id" key in the current element matches $id
             if ($item['id'] === $id) {
-                // If it matches, store the key and break out of the loop
                 $idIndex = $key;
                 break;
             }
         }
 
-        var_dump($idIndex);
         $nextId = null;
         $prevId = null;
-        
-        // Assuming $idArray is your array and $idIndex is the index you're interested in
+
         if (isset($idArray[$idIndex + 1]["id"])) {
             $nextId = $idArray[$idIndex + 1]["id"];
         }
-        var_dump($nextId);
 
         if (isset($idArray[$idIndex - 1]["id"])) {
             $prevId = $idArray[$idIndex - 1]["id"];
         }
-        var_dump($prevId);
-
-
-
-
 
         return $this->render('library/one_book.html.twig', [
             'book' => $book,

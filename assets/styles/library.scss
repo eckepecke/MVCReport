@@ -67,5 +67,10 @@
         height: auto;
         margin-bottom: $small-padding;
     }
+}
 
+.nav-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
