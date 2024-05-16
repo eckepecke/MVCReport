@@ -4,15 +4,24 @@
 
 {% block body %}
 
-    <div class="api-wrapper">
-        <div class="doc">
+    
+        <h1>Welcome to my library</h1>
+        <h3>Here you can find some of my favourite books</h3>
+        <div class="lib-landing">
+            <img class="picture" src="{{ asset('build/images/lib.jpg') }}" alt="me">
 
-        <h1>Library</h1>
+            <div class="library-menu">
 
-        <h2><a href="{{ path('add_form') }}">Add book</a></h2>
-        {# <h2><a href="{{ path('read_one') }}">Read one</a></h2> #}
-        <h2><a href="{{ path('read_many') }}">Read many</a></h2>
-        {# <h2><a href="{{ path('delete_book') }}">Delete book</a></h2> #}
-        </div>
-    </div>
+                <h4><a href="{{ path('add_form') }}">Add book</a></h4>
+                {# <h2><a href="{{ path('read_one') }}">Read one</a></h2> #}
+                <h4><a href="{{ path('read_many') }}">See all books</a></h4>
+                <h4><a href="{{ path('api_library') }}">See books in JSON format</a></h4>
+                <h4><a href="{{ path('api_book', {'isbn': '9780374528379' }) }}">See my favourite book in JSON format</a></h4>
+            <div>
+
+        <div>
+
+
+
+
 {% endblock %}

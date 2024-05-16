@@ -1,3 +1,17 @@
+.library-menu {
+    max-width: 200px;
+    background-color: $background-color;
+    border: $icy-border;
+    padding: $small-padding;
+    height: 100%;
+}
+
+.lib-landing {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .book-shelf {
     display: flex;
     flex-wrap: wrap;

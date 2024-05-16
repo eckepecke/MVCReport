@@ -398,17 +398,24 @@ pre code {
     flex: 0 0 100%; /* Set both columns to full width */
   }
 }
-button {
-  background-color: #BEE2FA;
-  border: none;
-  color: #0C2333;
-  padding: 15px 32px;
-  text-align: center;
+.button {
+  color: #333;
+  background-color: #BEF5FA;
+  background-image: linear-gradient(#fff, #BEF5FA);
   text-decoration: none;
+  box-sizing: border-box;
   display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.4rem;
+  padding: 0.4rem 1rem;
+  text-align: center;
+  border-radius: 0.2em;
+  line-height: 1.4;
+}
+
+.button:hover {
+  background-color: #f4fdff;
+  background-image: none;
 }
 
 .api-wrapper h1 {
@@ -586,6 +593,12 @@ button {
 .doc p {
   padding-right: 2em;
 }
+.doc .picture {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* This centers the image horizontally within its container */
+}
 
 .flow-img {
   border: 2px solid #BEE2FA;
@@ -633,4 +646,80 @@ button {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  width: 600px;
+}
+.book-shelf .book-box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 150px;
+}
+.book-shelf .book {
+  width: 100%;
+  height: auto;
+}
+.book-shelf h3 {
+  overflow-wrap: anywhere;
+}
+
+.single-box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
+}
+.single-box .button-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.single-box .button-container .button {
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+}
+.single-box .single-book {
+  width: 50%;
+  height: auto;
+  margin-bottom: 1em;
+}
+
+.book-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
+}
+.book-form input, .book-form textarea {
+  /* font-size: $body-font-size;
+  line-height: $line-height;
+  font-family: $font-body; */
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 0.2rem;
+  padding: 0.6rem 0.6rem;
+  box-sizing: border-box;
+  width: 32rem;
+  margin-bottom: 1.4rem;
+}
+.book-form input:valid {
+  border: 1px solid green;
+}
+.book-form input:invalid {
+  border: 1px solid red;
+}
+.book-form label {
+  font-weight: bold;
+  display: block;
+  color: #ffffff;
 }

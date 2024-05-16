@@ -107,4 +107,17 @@ class Book
 
         return $this;
     }
+
+    public function getAttributesAsArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'title' => $this->getTitle(),
+            'isbn' => $this->getIsbn(),
+            'author' => $this->getAuthor(),
+            'img' => $this->getImg(),
+            'publishedYear' => $this->getPublishedYear(),
+            'description' => $this->getDescription(),
+        ];
+    }
 }

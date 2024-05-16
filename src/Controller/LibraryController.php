@@ -7,6 +7,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\BookRepository;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
@@ -119,5 +120,52 @@ class LibraryController extends AbstractController
         $entityManager->flush();
     
         return $this->redirectToRoute('read_many');
+    }
+
+    #[Route("/api/library/books", name: "api_library", methods: ["POST", "GET"])]
+    public function apiLibrary(
+        BookRepository $bookRepository
+    ): Response {
+        $books = $bookRepository
+            ->findAll();
+
+            if (!$books) {
+                throw new Exception("No books in library!");
+            }
+
+        $bookArray = [];
+        
+        foreach ($books as $book) {
+            $bookArray[] = $book->getAttributesAsArray();
+        }
+
+        $response = new JsonResponse($bookArray);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
+
+    #[Route("/api/library/book/{isbn}", name: "api_book", methods: ["POST", "GET"])]
+    public function apiBook(
+        BookRepository $bookRepository,
+        string $isbn
+    ): Response {
+        $book = $bookRepository
+            ->findByISBN($isbn);
+
+            if (!$book) {
+                throw new Exception("No book with that number!");
+            }
+
+
+        $bookData = $book->getAttributesAsArray();
+
+
+        $response = new JsonResponse($bookData);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
     }
 }

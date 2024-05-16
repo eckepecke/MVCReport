@@ -18,11 +18,11 @@ class BookRepository extends ServiceEntityRepository
     }
 
     public function findAllBooks(): array
-{
+    {
     return $this->createQueryBuilder('p')
         ->getQuery()
         ->getResult();
-}
+    }
 
     public function processBookFromRequest(Request $request, ?Book $book = null): Book
     {
@@ -59,13 +59,13 @@ class BookRepository extends ServiceEntityRepository
     }
 
 
-    // public function findBookById($id): ?Book
-    // {
-    //     return $this->createQueryBuilder('b')
-    //         ->andWhere('b.exampleField = :val')
-    //         ->setParameter('val', $id)
-    //         ->getQuery()
-    //         ->getOneOrNullResult()
-    //     ;
-    // }
+    public function findByISBN($isbn): ?Book
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.isbn = :val')
+            ->setParameter('val', $isbn)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }
