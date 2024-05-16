@@ -40,7 +40,6 @@ class LibraryController extends AbstractController
         BookRepository $bookRepository,
         int $id
     ): Response {
-        echo "start";
         $book = $bookRepository
             ->find($id);
         $idArray = $bookRepository
