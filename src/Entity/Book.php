@@ -25,10 +25,10 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $img = null;
 
-    #[ORM\Column(length: 4)]
+    #[ORM\Column(nullable: true)]
     private ?int $publishedYear = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
     public function getId(): ?int
@@ -89,9 +89,9 @@ class Book
         return $this->publishedYear;
     }
 
-    public function setPublishedYear(?int $year): static
+    public function setPublishedYear(?int $publishedYear): static
     {
-        $this->publishedYear = $year;
+        $this->publishedYear = $publishedYear;
 
         return $this;
     }

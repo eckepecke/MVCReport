@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Repository;
+// namespace App\Repository;
 
-use App\Entity\Book;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\HttpFoundation\Request;
+// use App\Entity\Book;
+// use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+// use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<Book>
@@ -33,9 +32,15 @@ class BookRepository extends ServiceEntityRepository
         $isbn = $request->request->get('isbn');
         $author = $request->request->get('author');
         $image_name = $request->request->get('image_name');
+
         $description = $request->request->get('description');
         $year = $request->request->get('year');
+        var_dump($description);
+        var_dump($year);
+        var_dump($crash);
         
+
+
         if (!empty($title)) {
             $book->setTitle($title);
         }

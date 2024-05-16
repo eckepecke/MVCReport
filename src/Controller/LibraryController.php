@@ -64,11 +64,11 @@ class LibraryController extends AbstractController
         Request $request
     ): Response {
         $book = $bookRepository->processBookFromRequest($request);
-    
+
         $entityManager = $doctrine->getManager();
         $entityManager->persist($book);
         $entityManager->flush();
-    
+
         return $this->redirectToRoute('read_many');
     }
 
@@ -102,7 +102,7 @@ class LibraryController extends AbstractController
         $entityManager = $doctrine->getManager();
         $entityManager->persist($book);
         $entityManager->flush();
-    
+
         return $this->redirectToRoute('read_one', ['id' => $id]);
     }
 
@@ -118,7 +118,7 @@ class LibraryController extends AbstractController
         $entityManager = $doctrine->getManager();
         $entityManager->remove($book);
         $entityManager->flush();
-    
+
         return $this->redirectToRoute('read_many');
     }
 
@@ -129,12 +129,12 @@ class LibraryController extends AbstractController
         $books = $bookRepository
             ->findAll();
 
-            if (!$books) {
-                throw new Exception("No books in library!");
-            }
+        if (!$books) {
+            throw new Exception("No books in library!");
+        }
 
         $bookArray = [];
-        
+
         foreach ($books as $book) {
             $bookArray[] = $book->getAttributesAsArray();
         }
@@ -154,9 +154,9 @@ class LibraryController extends AbstractController
         $book = $bookRepository
             ->findByISBN($isbn);
 
-            if (!$book) {
-                throw new Exception("No book with that number!");
-            }
+        if (!$book) {
+            throw new Exception("No book with that number!");
+        }
 
 
         $bookData = $book->getAttributesAsArray();

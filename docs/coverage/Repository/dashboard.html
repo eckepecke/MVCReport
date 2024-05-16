@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for /Users/erik/dbwebb-kurser/mvc/me/report/src/Dice</title>
+  <title>Dashboard for /Users/erik/dbwebb-kurser/mvc/me/report/src/Repository</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../_css/bootstrap.min.css?v=9.2.31" rel="stylesheet" type="text/css">
   <link href="../_css/nv.d3.min.css?v=9.2.31" rel="stylesheet" type="text/css">
@@ -17,7 +17,7 @@
       <nav aria-label="breadcrumb">
        <ol class="breadcrumb">
          <li class="breadcrumb-item"><a href="../index.html">/Users/erik/dbwebb-kurser/mvc/me/report/src</a></li>
-         <li class="breadcrumb-item"><a href="index.html">Dice</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Repository</a></li>
          <li class="breadcrumb-item active">(Dashboard)</li>
 
        </ol>
@@ -58,8 +58,8 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="Dice.php.html#5">App\Dice\Dice</a></td><td class="text-right">40%</td></tr>
-       <tr><td><a href="DiceHand.php.html#7">App\Dice\DiceHand</a></td><td class="text-right">58%</td></tr>
+       <tr><td><a href="BookRepository.php.html#13">App\Repository\BookRepository</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProductRepository.php.html#12">App\Repository\ProductRepository</a></td><td class="text-right">0%</td></tr>
 
        </tbody>
       </table>
@@ -76,7 +76,7 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="DiceHand.php.html#7">App\Dice\DiceHand</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="BookRepository.php.html#13">App\Repository\BookRepository</a></td><td class="text-right">132</td></tr>
 
        </tbody>
       </table>
@@ -114,10 +114,13 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="Dice.php.html#14"><abbr title="App\Dice\Dice::roll">roll</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="Dice.php.html#25"><abbr title="App\Dice\Dice::getValue">getValue</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="DiceHand.php.html#23"><abbr title="App\Dice\DiceHand::getNumberDices">getNumberDices</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="DiceHand.php.html#37"><abbr title="App\Dice\DiceHand::getString">getString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BookRepository.php.html#15"><abbr title="App\Repository\BookRepository::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BookRepository.php.html#20"><abbr title="App\Repository\BookRepository::findAllBooks">findAllBooks</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BookRepository.php.html#27"><abbr title="App\Repository\BookRepository::processBookFromRequest">processBookFromRequest</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BookRepository.php.html#62"><abbr title="App\Repository\BookRepository::findByISBN">findByISBN</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProductRepository.php.html#14"><abbr title="App\Repository\ProductRepository::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProductRepository.php.html#24"><abbr title="App\Repository\ProductRepository::findByMinimumValue">findByMinimumValue</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProductRepository.php.html#40"><abbr title="App\Repository\ProductRepository::findByMinimumValue2">findByMinimumValue2</abbr></a></td><td class="text-right">0%</td></tr>
 
        </tbody>
       </table>
@@ -134,7 +137,7 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="DiceHand.php.html#37"><abbr title="App\Dice\DiceHand::getString">getString</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="BookRepository.php.html#27"><abbr title="App\Repository\BookRepository::processBookFromRequest">processBookFromRequest</abbr></a></td><td class="text-right">72</td></tr>
 
        </tbody>
       </table>
@@ -163,7 +166,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#classCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,1,1,0,0,0,0,0], "Class Coverage"))
+      .datum(getCoverageDistributionData([2,0,0,0,0,0,0,0,0,0,0,0], "Class Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -181,7 +184,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([4,0,0,0,0,0,0,0,0,0,0,5], "Method Coverage"))
+      .datum(getCoverageDistributionData([7,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -231,7 +234,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[40,4,"<a href=\"Dice.php.html#5\">App\\Dice\\Dice<\/a>"],[58.333333333333336,8,"<a href=\"DiceHand.php.html#7\">App\\Dice\\DiceHand<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([[0,11,"<a href=\"BookRepository.php.html#13\">App\\Repository\\BookRepository<\/a>"],[0,3,"<a href=\"ProductRepository.php.html#12\">App\\Repository\\ProductRepository<\/a>"]], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -255,7 +258,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([[100,1,"<a href=\"Dice.php.html#9\">App\\Dice\\Dice::__construct<\/a>"],[0,1,"<a href=\"Dice.php.html#14\">App\\Dice\\Dice::roll<\/a>"],[100,1,"<a href=\"Dice.php.html#20\">App\\Dice\\Dice::getAsString<\/a>"],[0,1,"<a href=\"Dice.php.html#25\">App\\Dice\\Dice::getValue<\/a>"],[100,1,"<a href=\"DiceHand.php.html#11\">App\\Dice\\DiceHand::add<\/a>"],[100,2,"<a href=\"DiceHand.php.html#16\">App\\Dice\\DiceHand::roll<\/a>"],[0,1,"<a href=\"DiceHand.php.html#23\">App\\Dice\\DiceHand::getNumberDices<\/a>"],[100,2,"<a href=\"DiceHand.php.html#28\">App\\Dice\\DiceHand::sum<\/a>"],[0,2,"<a href=\"DiceHand.php.html#37\">App\\Dice\\DiceHand::getString<\/a>"]], 'Method Complexity'))
+      .datum(getComplexityData([[0,1,"<a href=\"BookRepository.php.html#15\">App\\Repository\\BookRepository::__construct<\/a>"],[0,1,"<a href=\"BookRepository.php.html#20\">App\\Repository\\BookRepository::findAllBooks<\/a>"],[0,8,"<a href=\"BookRepository.php.html#27\">App\\Repository\\BookRepository::processBookFromRequest<\/a>"],[0,1,"<a href=\"BookRepository.php.html#62\">App\\Repository\\BookRepository::findByISBN<\/a>"],[0,1,"<a href=\"ProductRepository.php.html#14\">App\\Repository\\ProductRepository::__construct<\/a>"],[0,1,"<a href=\"ProductRepository.php.html#24\">App\\Repository\\ProductRepository::findByMinimumValue<\/a>"],[0,1,"<a href=\"ProductRepository.php.html#40\">App\\Repository\\ProductRepository::findByMinimumValue2<\/a>"]], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);
