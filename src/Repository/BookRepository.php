@@ -32,10 +32,10 @@ class BookRepository extends ServiceEntityRepository
         $title = $request->request->get('title');
         $isbn = $request->request->get('isbn');
         $author = $request->request->get('author');
-        $image_name = $request->request->get('image_name');
+        $img = $request->request->get('image_name');
         $description = $request->request->get('description');
         $year = $request->request->get('year');
-        
+
         if (!empty($title)) {
             $book->setTitle($title);
         }
@@ -45,8 +45,8 @@ class BookRepository extends ServiceEntityRepository
         if (!empty($author)) {
             $book->setAuthor($author);
         }
-        if (!empty($image_name)) {
-            $book->setImg($image_name);
+        if (!empty($img)) {
+            $book->setImg($img);
         }
         if (!empty($description)) {
             $book->setDescription($description);
@@ -67,5 +67,13 @@ class BookRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult()
         ;
+    }
+
+    public function findAllIds(): array
+    {
+        return $this->createQueryBuilder('b')
+        ->select('b.id')
+        ->getQuery()
+        ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
     }
 }

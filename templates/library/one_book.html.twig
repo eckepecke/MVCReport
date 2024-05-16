@@ -7,14 +7,39 @@
 <div class="doc">
 
     <div class="single-box">
+    {{ book.id }}
+    {{ nextId }}
+    {{ prevId }}
+    {{ firstId }}
+    {{ lastId }}
+
+
+
+
+        {% if nextId is not null and nextId is not empty %}
+            <a href="{{ path('read_one', {'id': nextId}) }}">
+                <button class="button" type="submit">See next</button>
+            </a>
+        {% endif %}
+        {% if book.id != firstId %}
+            <a href="{{ path('read_one', {'id': prevId}) }}">
+                <button class="button" type="submit">See previous</button>
+            </a>
+        {% endif %}
+        {# {% if book.id != amount %}
+            <a href="{{ path('read_one', {'id': (book.id + 1)}) }}">
+                <button class="button" type="submit">Next book</button>
+            </a>
+        {% endif %} #}
         <h1> {{ book.title}} </h1>
         <h3>by {{ book.author}} </h3>
         <p> {{ book.description }} </p>
+
+
+        <img class="single-book" src="{{ asset('build/images/' ~ book.img) }}" alt="book">
         {% if book.publishedYear is not empty %}
             <p>Publication year: {{ book.publishedYear }}</p>
         {% endif %}
-
-        <img class="single-book" src="{{ asset('build/images/' ~ book.img) }}" alt="book">
         <div class="button-container">
             <a href="{{ path('update_book', {'id': book.id}) }}"><button class="button">Update</button></a>
             <form action="{{ path('delete_book', {'id': book.id}) }}" method="post">
