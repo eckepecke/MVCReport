@@ -1,5 +1,5 @@
 Title, ISBN, Author, Image
 
-1984, 978-1443434973, George Orwell, 1984.jpg
-Brave New World, 978-0582060166 ,Aldous Huxley
-The Brothers Karamazov, 978-0374528379, Fyodor Dostoyevsky
+1984, 9781443434973, George Orwell, 1984.jpg
+Brave New World, 9780582060166 ,Aldous Huxley
+The Brothers Karamazov, 9780374528379, Fyodor Dostoyevsky

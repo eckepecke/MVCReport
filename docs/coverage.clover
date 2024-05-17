@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1715890428">
-  <project timestamp="1715890428">
+<coverage generated="1715950381">
+  <project timestamp="1715950381">
     <file name="/Users/erik/dbwebb-kurser/mvc/me/report/src/Cards/Card.php">
       <class name="App\Cards\Card" namespace="global">
         <metrics complexity="4" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="15" elements="20" coveredelements="18"/>
@@ -811,7 +811,7 @@
       <line num="117" type="method" name="checkForStraight" visibility="public" complexity="7" crap="7" count="2"/>
       <line num="119" type="stmt" count="2"/>
       <line num="121" type="stmt" count="2"/>
-      <line num="122" type="stmt" count="2"/>
+      <line num="122" type="stmt" count="1"/>
       <line num="125" type="stmt" count="2"/>
       <line num="127" type="stmt" count="2"/>
       <line num="128" type="stmt" count="2"/>
@@ -838,17 +838,17 @@
       <line num="199" type="stmt" count="1"/>
       <line num="203" type="method" name="checkForTrips" visibility="public" complexity="2" crap="2" count="2"/>
       <line num="207" type="stmt" count="2"/>
-      <line num="208" type="stmt" count="2"/>
+      <line num="208" type="stmt" count="1"/>
       <line num="212" type="method" name="checkForPairs" visibility="public" complexity="5" crap="5" count="2"/>
       <line num="214" type="stmt" count="2"/>
       <line num="215" type="stmt" count="2"/>
       <line num="216" type="stmt" count="2"/>
-      <line num="217" type="stmt" count="1"/>
+      <line num="217" type="stmt" count="2"/>
       <line num="221" type="stmt" count="2"/>
       <line num="222" type="stmt" count="1"/>
       <line num="223" type="stmt" count="1"/>
       <line num="226" type="stmt" count="2"/>
-      <line num="227" type="stmt" count="1"/>
+      <line num="227" type="stmt" count="2"/>
       <line num="229" type="stmt" count="2"/>
       <line num="232" type="method" name="resetStrengthArray" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="234" type="stmt" count="2"/>

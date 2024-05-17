@@ -66,9 +66,13 @@
 <p>Min TIL för detta kursmoment är att testdriven utveckling kanske är något jag bör pröva och se om det sparar mig tid och möda i mitt kodande.</p> 
         </section>
 
-        <section>
+        <section class="doc">
             <h2 id="kmom05">Kmom05</h2>
-            <p></p>
+            <p><p>Övningen med Symfony och Doctrine gick bra. Jag fick problem med migrationerna när jag gick tillbaka från Mariadb till Sqlite. Jag raderade till slut mina entiteter och migrationer och började om på nytt. Då fungerade allt som jag tänkte igen. Jag blev förvånad över hur enkelt det var att generera alla klasser och att man fick en del grundläggande sql frågor inbyggda i repositoryn.</p>
+
+<p>Jag började med att göra en enkel landningssida som länkade till [CREATE] då jag behövde böcker i min tabell. När jag gjort ett formulär skapade jag också en länk till [READ MANY]. Det kändes naturligt att på den sidan låta användaren klicka på böckerna för att ta sig till [READ ONE]. Där hittar man funktionaliteten för [UPDATE] och [DELETE]. Skulle biblioteket växa kanske man behöver en tabell utan bilder eller en sökfunktion. För nu tycker jag att den här lösningen är snygg och användarvänlig. Jag har lagt till navigeringsknappar som gör att man kan bläddra till nästa eller föregående bok. Funktionalitet förstörs inte om man tar bort eller lägger till böcker. Mina formulär visar med färg vilka fält som är obligatoriska och inte. Om man vill uppdatera en bok fylls nuvarande värden i automatiskt så att man vet vad man behöver lägga till eller ändra på.</p>  <p>De frågor jag ställer mot databasen i detta kursmoment är relativt simpla. Jag hade inga större problem att skriva mina frågor ”utan sql” men framtiden får utvisa vad jag tycker när jag behöver bygga upp mer avancerade frågor. Jag var lite orolig över just denna delen när kursmomentet startade men det var förvånansvärt lätt att hantera. Jag tror att detta kändes obehagligt då jag har jobbat med SQL i databaskursen och jag vet hur jag skriver dessa frågor, men egentligen är ORM det enkla sättet att jobba mot databaser.</p>
+
+<p>Min TIL är att det finns flera anledningar till varför man vill jobba med ORM. Att inte knyta sig till en databasleverantör är den mest uppenbara fördelen. Att kunna fortsätta koda objekorienterat kan göra koden lättare att underhålla och man slipper skriva SQL-kod om man tycker det är jobbigt.</p> </p>
         </section>
 
         <section>
