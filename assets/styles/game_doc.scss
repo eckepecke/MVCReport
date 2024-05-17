@@ -13,6 +13,16 @@
         display: block;
         float: left;
     }
+
+    ul, li {
+        color: $font-color;
+    }
+
+    .doc-pic {
+        width: 100%;
+        padding-left: $padding;
+        padding-right: $padding;
+    }
 }
 
 .flow-img {

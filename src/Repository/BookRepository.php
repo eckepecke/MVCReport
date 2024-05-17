@@ -24,41 +24,44 @@ class BookRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    /**
+     * Processes a book from the request and updates or creates a Book object.
+     *
+     * @param Request $request The request object containing book data.
+     * @param Book|null $book The book object to update, or null to create a new one.
+     * @return Book The updated or newly created Book object.
+     */
     public function processBookFromRequest(Request $request, ?Book $book = null): Book
     {
         if (!$book) {
             $book = new Book();
         }
-        $title = $request->request->get('title');
-        $isbn = $request->request->get('isbn');
-        $author = $request->request->get('author');
-        $img = $request->request->get('image_name');
-        $description = $request->request->get('description');
-        $year = $request->request->get('year');
-
-        if (!empty($title)) {
-            $book->setTitle($title);
+    
+        $fields = [
+            'title' => 'setTitle',
+            'isbn' => 'setIsbn',
+            'author' => 'setAuthor',
+            'image_name' => 'setImg',
+            'description' => 'setDescription',
+            'year' => 'setPublishedYear'
+        ];
+    
+        foreach ($fields as $requestField => $method) {
+            $value = $request->request->get($requestField);
+            if (!empty($value)) {
+                $book->$method($value);
+            }
         }
-        if (!empty($isbn)) {
-            $book->setIsbn($isbn);
-        }
-        if (!empty($author)) {
-            $book->setAuthor($author);
-        }
-        if (!empty($img)) {
-            $book->setImg($img);
-        }
-        if (!empty($description)) {
-            $book->setDescription($description);
-        }
-        if (!empty($year)) {
-            $book->setPublishedYear($year);
-        }
-
+    
         return $book;
     }
 
-
+    /**
+     * Find a book by its ISBN.
+     *
+     * @param string $isbn The ISBN of the book to find.
+     * @return Book|null The found book entity or null if no book was found.
+     */
     public function findByISBN($isbn): ?Book
     {
         return $this->createQueryBuilder('b')
@@ -69,6 +72,11 @@ class BookRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+     * Find all book IDs.
+     *
+     * @return array An array containing the IDs of all books.
+     */
     public function findAllIds(): array
     {
         return $this->createQueryBuilder('b')

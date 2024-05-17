@@ -423,7 +423,7 @@ pre code {
   font-size: 1rem;
   padding: 0.3rem 0.8rem;
   line-height: 1.2;
-  background-color: aquamarine;
+  max-width: 40px;
 }
 
 .api-wrapper h1 {
@@ -607,6 +607,9 @@ pre code {
   display: block;
   float: left;
 }
+.doc ul, .doc li {
+  color: #ffffff;
+}
 
 .flow-img {
   border: 2px solid #BEE2FA;
@@ -716,7 +719,6 @@ pre code {
 .nav-button-container {
   width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
 }
 

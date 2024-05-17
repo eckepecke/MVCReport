@@ -6,7 +6,6 @@ use App\FlopAndGo\Challenge;
 use App\FlopAndGo\Game;
 use App\FlopAndGo\HandChecker;
 use App\FlopAndGo\Hero;
-use App\FlopAndGo\Moderator;
 use App\FlopAndGo\SpecialDealer;
 use App\FlopAndGo\SpecialTable;
 use App\FlopAndGo\Villain;
@@ -73,7 +72,6 @@ class GambleController extends AbstractController
 
         $game = $session->get("game");
         $game->play($action);
-        $data = $game->getGameState();
 
         $data = $game->getGameState();
         return $this->render('gamble/play.html.twig', $data);

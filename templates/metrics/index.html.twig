@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Metrics!{% endblock %}
+
+{% block body %}
+
+    
+        <h1>Welcome to my Metrics Report</h1>
+
+        <div class="doc">
+        <h2>Introduction</h2>
+        <p>In programming there are ways to measure code quality. I will introduce you to the "6C".
+        In some parts of your code you may have to accept that some of your scores are not amazing, but in general if you strive to follow these priniples you will write clean, readable, maintainable and functioning code.</p>
+        
+        <h3>Codestyle</h3>
+        <p>It is useful for everyone if there is an agreed upon codestyle within a programming language.
+        By codestyle you typically refer to things like:</p>
+        <ul>
+            <li>Rules for indentation</li>
+            <li>Code layout</li>
+            <li>Naming conventions</li>
+        </ul>
+
+        <h3>Coverage</h3>
+        <p>To have good coverage means that a big part of the code base passed tests. By testing often you can catch 
+        bugs early and save time in the development process. It will very likely make your code more robust and maintanable since testable code usually goes hand in hand
+        with a well structured app/project.</p>
+
+
+        <h3>Complexity</h3>
+        <p>This metric tells you how complex your code is. Every decision point in the code increases the cyclomatic complexity by 1.
+        If you see a function with with a lof of indentation, if-statements and loops, this will be a function with high complexity.
+        A good example of this is the function "play()" in my Game class. I built the game to run almost completely within the game play() function.
+        The function constantly checks the poker players stacks, how many cards are on the table, did the players action change the state of the game?
+        Naturally a function like this will end up with a high complexity score as shown below in the picture. In this case it might be necessary to make the game work.</p>
+        <img class="doc-pic" src="{{ asset('build/images/complexity.png') }}" alt="book">
+
+        <p>A different, maybe more managable example is the HandChecker class. The game is Texas No Limit Holdem and I did not spend much time thinking about how to structure this class.
+        The evaluateHand() function checks if what hand strength the given hand has. It does that by running a long script that calls multiple other functions. Maybe there is a smarter way to structure this class so that
+        evaluateHand() can have less responsibility?</p>
+
+        <h3>Cohesion</h3>
+        <p>To have high cohesion means that you classes have one area of responsibility. To have low cohesion means that your classes do multiple things and maybe
+        you should consider splitting it into two or more classes. Single Responsibility Principle is something that will improve your cohesion score.</p>
+
+
+        <h3>Coupling</h3>
+        <p>High coupling is when two or more classes call each other's functions and use eachothers data. This is terrible for maintainabilty of the the code.
+        Use Dependency injection and Encasulation to get a lower coupling.</p>
+
+        <h3>CRAP</h3>
+        <p>CRAP stands for "Change Risk Anti Patterns". CRAP is a metric that combines complexity and coverage to
+        alert the developer of risky parts of the code. If the complexity is high and not possible to get rid of, the developer should spend more time on testing to lower the CRAP score.</p>
+
+
+        <h2>Phpmetrics</h2>
+        <p>Lets identify some major flaws with my current application. The three biggest contributors to the bad statistics are the the following files:
+        </p>
+        <img class="doc-pic" src="{{ asset('build/images/phpmetrics.png') }}" alt="book">
+
+        <ul>
+            <li>The Handchecker class</li>
+            <li>The Game class</li>
+            <li>The VillainActionManager</li>
+        </ul>
+        <p>Most classes have a decent score on complexity but these three really are complex. VillainActionManager also has low test coverage because of its complex structure.</p>
+
+        <h2>Phpmetrics</h2>
+        <img class="doc-pic" src="{{ asset('build/images/scrutinizer2.png') }}" alt="book">
+        <p>Not that on the picture above there are 28 issues noted. The total score is close to a 10.
+        Coverage is only 51%.</p>
+
+        <img class="doc-pic" src="{{ asset('build/images/scrutinizer5.png') }}" alt="book">
+        <p>I am surprised to see processBookFromRequest() being ranked so poorly, probably something I would have missed without using scrutinizer.
+        Again we can see that the HandChecker, VillainActionManager and Game class is causing trouble.</p>
+
+        <h2>Förbättringar</h2>
+        <p>When I am done with this kmom I hope to have achieved the following:</p>
+
+        <ul>
+            <li>Reduce average cyclomatic complexity by class by at lest 20%.</li>
+            <li>Achieve code coverage above 80%.</li>
+            <li>Get rid of most the 28 Scrutinizer issues.</li>
+            <li>Have a Scrutinizer score of 10.</li>
+        </ul>
+
+        <p></p>
+        <img src="https://scrutinizer-ci.com/g/eckepecke/MVCReport/badges/quality-score.png?b=main" alt="Scrutinizer Code Quality" />
+        <img src="https://scrutinizer-ci.com/g/eckepecke/MVCReport/badges/coverage.png?b=main" alt="Code Coverage" />
+        <img src="https://scrutinizer-ci.com/g/eckepecke/MVCReport/badges/build.png?b=main" alt="Build Status" />
+        <img src="https://scrutinizer-ci.com/g/eckepecke/MVCReport/badges/code-intelligence.svg?b=main" alt="Code Intelligence Status" />
+
+        <div>
+
+
+
+
+{% endblock %}
