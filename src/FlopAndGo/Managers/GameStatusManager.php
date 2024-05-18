@@ -7,10 +7,7 @@ namespace App\FlopAndGo\Managers;
  */
 trait GameStatusManager
 {
-    public function isShowdown(): bool
-    {
-        return ($this->streetCheck() === 4);
-    }
+
 
     public function isAllHandsPlayed(): bool
     {
@@ -26,6 +23,8 @@ trait GameStatusManager
         if ($heroStack <= 0 || $villainStack <= 0) {
             $broke = true;
         }
+
+
         return $broke;
     }
 

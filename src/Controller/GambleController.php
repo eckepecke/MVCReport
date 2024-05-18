@@ -58,7 +58,7 @@ class GambleController extends AbstractController
         $game->addManager($manager);
         $dealer->getPlayerList([$hero, $villain]);
         $manager->addGame($game);
-        $manager->addGameProperties($game);
+        $manager->addGameProperties();
 
 
 

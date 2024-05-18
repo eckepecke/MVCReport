@@ -49,6 +49,7 @@ trait StreetManager
 
     public function dealCorrectStreet(): void
     {
+        $this->dealRestWhenAllIn();
         $street = $this->streetCheck();
         switch ($street) {
             case 1:
@@ -86,5 +87,24 @@ trait StreetManager
     public function isNewHand(): bool
     {
         return $this->newHand;
+    }
+
+    public function dealRestWhenAllIn()
+    {
+    $dealToShowdown = false;
+
+    if ($this->gameProperties['hero']->isAllIn() && ($this->gameProperties['villain']->getLastaction() === "call")) {
+        $dealToShowdown = true;
+    }
+
+    if ($this->gameProperties['villain']->isAllIn() && ($this->gameProperties['hero']->getLastaction() === "call")) {
+        $dealToShowdown = true;
+    }
+
+    if ($dealToShowdown) {
+        $this->gameProperties['dealer']->dealToShowdown();
+    }
+
+
     }
 }

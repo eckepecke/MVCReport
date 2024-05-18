@@ -79,7 +79,7 @@ class Game
             "winner" => $this->challenge->getHandWinner(),
             "teddy_hand_strength" => $villain->getStrength(),
             "mike_hand_strength" => $hero->getStrength(),
-            "is_showdown" => $this->manager->showdownCheck(),
+            "is_showdown" => $this->manager->isShowdown(),
             "game_over" => $this->manager->gameOverCheck(),
             "result" => ($hero->getStack() - $hero->getStartStack()),
         ];
@@ -87,12 +87,12 @@ class Game
 
     public function play(mixed $action): void
     {
-    $gamOver = false;
-    $gameOver = $this->manager->updateGameOverVar();
+    $this->manager->allHandsHavePlayed();
 
-    if ($gameOver === true) {
+    if ($this->manager->gameOverCheck()) {
         return;
     }
+    
 
     $this->manager->setUpStreet($action);
 
@@ -107,35 +107,39 @@ class Game
     // Check if any cards need to de dealt after players have made their plays
     $this->manager->dealCorrectStreet();
 
+
     $gameOver = $this->manager->isSomeoneBroke();
 
 
     // Check if all hands have been played
-    $gameOver = ($this->manager->isAllHandsPlayed());
+
+    $this->manager->allHandsHavePlayed();
 
 
-    if ($gameOver === true) {
+    if ($this->manager->gameOverCheck()) {
         return;
     }
+
+    // Check if it is time for showdown
+    $this->manager->updateShowdownProp();
+    
+    if ($this->manager->isShowdown()) {
+        $this->manager->showdown();
+    return;
+    }
+
 
     // Play again if someone folded before showdown
     if ($this->manager->newHandCheck()) {
         $this->play(null);
     }
 
-    // Check if it is time for showdown
-    if ($this->manager->isShowdown()) {
-        $this->manager->showdown();
-        return;
-    }
 
-
+        
 
     // Check if someone is broke
-    $gameOver = ($this->manager->isSomeoneBroke());
-    if ($gameOver === true) {
-        return;
-    }
+    // $this->manager->isSomeoneBroke();
+
     }
 
     public function getAllProperties(): array

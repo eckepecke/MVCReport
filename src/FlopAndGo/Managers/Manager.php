@@ -42,12 +42,11 @@ class Manager
         $this->gameProperties = $this->game->getAllProperties();
     }
 
-    public function updateGameOverVar(): void
+    public function allHandsHavePlayed(): void
     {
     // Check if challenge is over
-    if ($this->isAllHandsPlayed()) {
+    if ($this->gameProperties['challenge']->challengeComplete()) {
         $this->gameOver = true;
-        return;
     }
     }
 
@@ -60,12 +59,21 @@ class Manager
 
     }
 
+    public function updateShowdownProp(): void
+    {
+    var_dump($this->streetCheck());
+    if  ($this->streetCheck() === 4){
+        echo "Showdown time";
+        $this->showdown = true;
+    };
+    }
+
     public function newHandCheck(): bool 
     {
         return $this->newHand;
     }
 
-    public function showdownCheck(): bool 
+    public function isShowdown(): bool 
     {
         return $this->showdown;
     }

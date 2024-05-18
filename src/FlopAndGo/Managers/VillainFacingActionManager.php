@@ -31,7 +31,7 @@ trait VillainFacingActionManager
         $this->gameProperties['table']->addChipsToPot($this->gameProperties['villain']->getCurrentBet());
         $this->gameProperties['table']->addChipsToPot($this->gameProperties['hero']->getCurrentBet());
         $this->gameProperties['villain']->fold();
-        $this->gameProperties['hero']->takePot($this->table->getPotSize());
+        $this->gameProperties['hero']->takePot($this->gameProperties['table']->getPotSize());
         $this->gameProperties['hero']->fold();
         $this->gameProperties['table']->cleanTable();
         $this->gameProperties['challenge']->incrementHandsPlayed();
