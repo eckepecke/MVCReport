@@ -14,6 +14,8 @@ use App\FlopAndGo\Managers\HeroActionManager;
 use App\FlopAndGo\Managers\ShowdownManager;
 use App\FlopAndGo\Managers\StreetManager;
 use App\FlopAndGo\Managers\VillainActionManager;
+use App\FlopAndGo\Managers\VillainFacingActionManager;
+
 
 class Game
 {
@@ -23,6 +25,8 @@ class Game
     use ShowdownManager;
     use StreetManager;
     use VillainActionManager;
+    use VillainFacingActionManager;
+
 
     public object $hero;
     private object $villain;
@@ -97,8 +101,6 @@ class Game
 
     public function play(mixed $action): void
     {
-    var_dump($action);
-
     $this->updateGameOverVar();
     if ($this->gameOver === true) {
         return;
@@ -117,6 +119,7 @@ class Game
 
     // Check if any cards need to de dealt after players have made their plays
     $this->dealCorrectStreet();
+
     if ($this->isSomeoneBroke()) {
         $this->gameOver = true;
     }
@@ -138,11 +141,6 @@ class Game
         return;
     }
 
-    }
-
-    public function isNewHand(): bool
-    {
-        return $this->newHand;
     }
 
     public function updateGameOverVar(): void
@@ -171,54 +169,5 @@ class Game
     $this->dealCorrectStreet();
     }
 
-    public function villainPlay($heroAction): void
-    {
-        $villainPos = $this->villain->getPosition();
 
-        if (($heroAction === null) && ($villainPos === "SB")) {
-            // Villain nedds to wait his turn
-            return;
-        }
-        $action = $this->villain->betOpportunity();
-
-        if ($villainPos === "SB") {
-            var_dump($action);
-            $this->villainPlayIP($action);
-            return;
-        }
-
-        $this->villainPlayOOP($action);
-    }
-
-    public function villainPlayIP(string $action)
-    {
-    if ($action === "check") {
-        $this->villain->check();
-        $this->incrementStreet();
-        return;
-    }
-    $this->villainBet();
-    }
-
-
-    public function villainPlayOOP(string $action)
-    {
-        echo"villain play oop";
-        if ($action === "check") {
-            $this->villain->check();
-            return;
-        }
-        $this->villainBet();
-    }
-
-    public function villainBet()
-    {
-    echo"villain net";
-
-    $betSize = $this->villain->randBetSize($this->table->getPotSize());
-    if ($betSize > $this->hero->getStack()) {
-        $betSize = $this->hero->getStack();
-    }
-    $this->villain->bet($betSize);
-    }
 }

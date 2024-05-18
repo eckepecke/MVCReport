@@ -82,4 +82,9 @@ trait StreetManager
 
 
     }
+
+    public function isNewHand(): bool
+    {
+        return $this->newHand;
+    }
 }
