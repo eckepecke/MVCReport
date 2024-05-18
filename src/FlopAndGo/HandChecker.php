@@ -4,24 +4,22 @@ namespace App\FlopAndGo;
 
 class HandChecker
 {
-    private array $strengthArray;
     private array $rankMapping;
     private array $strengthMapping;
 
-
     public function __construct()
     {
-        $this->strengthArray = [
+        $this->handRanks = [
             'Royal flush' => false,
             'Straight flush' => false,
             'Four of a kind' => false,
             'Full House' => false,
-            'Flush' => false,
+            'flush' => false,
             'Straight' => false,
             'Three of a kind' => false,
             'Two pair' => false,
             'One pair' => false,
-            'High card' => false
+            'High card' => true,
         ];
 
         $this->rankMapping = [
@@ -56,62 +54,49 @@ class HandChecker
 
     public function evaluateHand(array $cards): array
     {
+        list($ranks, $suits) = $this->extractRanksAndSuits($cards);
+
+        $rankCounts = array_count_values($ranks);
+        $suitsCount = array_count_values($suits);
+        $maxSameSuitCount = max($suitsCount);
+
+        $this->resetStrengthArray();
+        $this->checkForFlush($maxSameSuitCount);
+        $this->checkForStraight($ranks);
+        $this->checkForStraightFlush();
+        $this->checkForQuads($rankCounts);
+        $this->checkForFullHouse($rankCounts);
+        $this->checkForTrips($rankCounts);
+        $this->checkForPairs($rankCounts);
+
+        return $this->getStrengthArray();
+    }
+
+    private function extractRanksAndSuits(array $cards): array
+    {
         $ranks = [];
         $suits = [];
 
         foreach ($cards as $card) {
-            $cardValue = $card->getValue();
-            $ranks[] = $this->rankMapping[$cardValue];
+            $ranks[] = $this->rankMapping[$card->getValue()];
+            $suits[] = $card->getSuit();
         }
 
-        foreach ($cards as $card) {
-            $cardSuit = $card->getSuit();
-            $suits[] = $cardSuit;
-        }
+        return [$ranks, $suits];
+    }
 
-        $rankCounts = array_count_values($ranks);
-
-        $suitsCount = array_count_values($suits);
-        $maxSameSuitCount = max($suitsCount);
-        $isStraight = false;
-        //var_dump($rankCounts);
-
-        // Check for flush
-        $this->checkForFlush($maxSameSuitCount);
-
-        // Check for straight
-        $isStraight = false;
-        //$upperEndCard = null;
-        $this->checkForStraight($ranks);
-        // if ($straight !== []) {
-        //     $isStraight = true;
-        //     $this->strengthArray['Straight'] = true;
-        //     $upperEndCard = max($straight);
-        // }
-
-        // Check for straight flush and royal flush
-        $isFlush = $this->strengthArray['Flush'];
-        $isStraight = $this->strengthArray['Straight'];
-
-        if ($isStraight && $isFlush) {
-            $this->strengthArray['Straight flush'] = true;
-            // if ($upperEndCard === 14) {
-            //     $this->strengthArray['Royal flush'] = true;
-            // }
-        }
-
-        $this->checkForQuads($rankCounts);
-
-        // Check for full house
-        $this->checkForFull($rankCounts);
-
-        // Check for three of a kind
-        $this->checkForTrips($rankCounts);
-
-        // Check for two pair
-        $this->checkForPairs($rankCounts);
-
-        return $this->strengthArray;
+    private function resetStrengths()
+    {
+        $this->royalFlush = false;
+        $this->straightFlush = false;
+        $this->fourOfAKind = false;
+        $this->fullHouse = false;
+        $this->flush = false;
+        $this->straight = false;
+        $this->threeOfAKind = false;
+        $this->twoPair = false;
+        $this->onePair = false;
+        $this->highCard = true;
     }
 
     public function checkForStraight(array $ranks): void
@@ -147,39 +132,18 @@ class HandChecker
         if (count($set) === 5) {
             //echo "Found a straight with " . implode(',', $set) . "\n";
             $this->strengthArray['Straight'] = true;
-        } else {
-            //echo "No straight\n";
         }
+    }
 
-        // $previousRank = 0;
-        // $count = 0;
-        // $wheel = false;
-        // foreach ($ranks as $rank) {
-        //     if ($rank == $previousRank) {
-        //         continue;
-        //     } elseif ($rank == ++$previousRank) {
-        //         $count++;
-        //     } else {
-        //         if ($previousRank == 6) {
-        //             $wheel = true;
-        //         }
-        //         $count = 1;
-        //         $previousRank = $rank;
-        //     }
-
-        //     if ($count == 5 || ($rank == 14 && $wheel)) {
-        //         $this->strengthArray['Straight'] = true;
-        //         echo "Yeah a striiaght, the highest card is: " . $previousRank;
-        //         $straight = range($previousRank - 4, $previousRank);
-        //         return $straight;
-        //     }
-        // }
-        // return [];
+    public function checkForStraightFlush(): void
+    {
+        if ($this->flush = true && $this->straight = true) {
+            $this->strengthArray['Straight Flush'] = true;
+        }
     }
 
     public function checkForFlush(int $maxSameSuitCount): void
     {
-        $this->strengthArray['Flush'] = false;
         if ($maxSameSuitCount >= 5) {
             $this->strengthArray['Flush'] = true;
         }
@@ -189,21 +153,18 @@ class HandChecker
     public function checkForQuads(array $rankCounts): void
     {
         if (in_array(4, $rankCounts) || in_array(5, $rankCounts)) {
-            $this->strengthArray['Four of a kind'] = true;
-        }
+            $this->strengthArray['Four of a kind'] = true;        }
     }
 
-    public function checkForFull(array $rankCounts): void
+    public function checkForFullHouse(array $rankCounts): void
     {
         if (in_array(3, $rankCounts) && in_array(2, $rankCounts)) {
-            $this->strengthArray['Full House'] = true;
+            $this->strengthArray['Full house'] = true;
         }
     }
 
     public function checkForTrips(array $rankCounts): void
     {
-        //echo'in tripcheck';
-        //var_dump($rankCounts);
         if (in_array(3, $rankCounts)) {
             $this->strengthArray['Three of a kind'] = true;
         }
@@ -224,9 +185,7 @@ class HandChecker
         }
 
         if ($pairCount === 1) {
-            $this->strengthArray['One pair'] = true;
-        }
-        $this->strengthArray['High card'] = true;
+            $this->strengthArray['One pair'] = true;        }
     }
 
     public function resetStrengthArray(): void
@@ -241,7 +200,7 @@ class HandChecker
             'Three of a kind' => false,
             'Two pair' => false,
             'One pair' => false,
-            'High card' => false
+            'High card' => true
         ];
     }
 
@@ -249,28 +208,15 @@ class HandChecker
     {
         $heroStrength = $hero->getStrength();
         $villainStrength = $villain->getStrength();
-
-        $heroValue = 10;
-
-        if (array_key_exists($heroStrength, $this->strengthMapping)) {
-            $heroValue = $this->strengthMapping[$heroStrength];
-        }
-
-        $villainValue = 10;
-
-        if (array_key_exists($villainStrength, $this->strengthMapping)) {
-            $villainValue = $this->strengthMapping[$villainStrength];
-        }
+    
+        $heroValue = $this->strengthMapping[$heroStrength] ?? 10;
+        $villainValue = $this->strengthMapping[$villainStrength] ?? 10;
+    
         if ($heroValue === $villainValue) {
             return $villain;
         }
-
-        $bestHand = min($heroValue, $villainValue);
-
-        if ($bestHand === $heroValue) {
-            return $hero;
-        }
-        return $villain;
+    
+        return $heroValue < $villainValue ? $hero : $villain;
     }
 
     public function getStrengthArray(): array
