@@ -9,9 +9,12 @@ trait VillainActionManager
 {
     public function villainPlay($heroAction): void
     {
+        echo "villainplay()";
+        echo "heroAction:";
+        var_dump($heroAction);
         $villainPos = $this->villain->getPosition();
 
-        if (($heroAction === null) && ($villainPos === "SB")) {
+        if (($heroAction !== "check") && ($villainPos === "SB")) {
             // Villain nedds to wait his turn
             return;
         }
@@ -27,8 +30,11 @@ trait VillainActionManager
 
     public function villainPlayIP(string $action)
     {
+    echo "villainplay IP()";
+
     if ($action === "check") {
         $this->villain->check();
+        echo"check IP inc";
         $this->incrementStreet();
         return;
     }
@@ -38,6 +44,7 @@ trait VillainActionManager
 
     public function villainPlayOOP(string $action)
     {
+        echo "villainplay OOP()";
         if ($action === "check") {
             $this->villain->check();
             return;
@@ -47,7 +54,7 @@ trait VillainActionManager
 
     public function villainBet()
     {
-
+    echo "villainBet()";
     $betSize = $this->villain->randBetSize($this->table->getPotSize());
     if ($betSize > $this->hero->getStack()) {
         $betSize = $this->hero->getStack();

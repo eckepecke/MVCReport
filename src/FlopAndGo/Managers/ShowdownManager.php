@@ -28,7 +28,6 @@ trait ShowdownManager
         $fullHeroHand = array_merge($this->hero->getHand(), $board);
 
         $heroStrength = $this->handChecker->evaluateHand($fullHeroHand);
-        var_dump($heroStrength);
         $this->hero->updateStrength($heroStrength);
         $this->handChecker->resetStrengthArray();
         $fullVillainHand = array_merge($this->villain->getHand(), $board);

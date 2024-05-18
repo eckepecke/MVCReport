@@ -50,7 +50,7 @@ trait HeroActionManager
         $this->hero->resetCurrentBet();
         $this->allInCheck($this->villain);
         $this->allInCheck($this->hero);
-
+        echo "hero called inc";
         $this->incrementStreet();
     }
 

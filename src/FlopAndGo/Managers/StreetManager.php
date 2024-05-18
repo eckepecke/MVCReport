@@ -37,6 +37,7 @@ trait StreetManager
 
     public function incrementStreet(): void
     {
+        echo"incrementing";
         $current = $this->streetCheck();
         $this->table->setStreet($current + 1);
     }

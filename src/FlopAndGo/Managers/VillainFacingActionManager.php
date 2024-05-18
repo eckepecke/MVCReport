@@ -45,6 +45,8 @@ trait VillainFacingActionManager
         $this->villain->resetCurrentBet();
         $this->hero->resetCurrentBet();
         $this->allInCheck($this->villain);
+        echo "villain called inc";
+
         $this->incrementStreet();
     }
 
@@ -67,6 +69,8 @@ trait VillainFacingActionManager
             $this->table->addChipsToPot($this->villain->getCurrentBet());
             $this->allInCheck($this->villain);
             $this->newHand = true;
+            echo "cillain called shove inc";
+
             $this->incrementStreet();
             return;
         }
