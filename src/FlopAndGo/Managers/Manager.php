@@ -61,9 +61,7 @@ class Manager
 
     public function updateShowdownProp(): void
     {
-    var_dump($this->streetCheck());
     if  ($this->streetCheck() === 4){
-        echo "Showdown time";
         $this->showdown = true;
     };
     }

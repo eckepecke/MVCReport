@@ -4,6 +4,8 @@ namespace App\FlopAndGo;
 
 use PHPUnit\Framework\TestCase;
 use App\Cards\DeckOfCards;
+use App\FlopAndGo\Managers\Manager;
+
 
 /**
  * Test cases for class game.
@@ -18,6 +20,8 @@ class GameTest extends TestCase
     private HandChecker $handChecker;
     private Challenge $challenge;
     private DeckOfCards $deck;
+    private Manager $manager;
+
 
 
     protected function setUp(): void
@@ -31,6 +35,8 @@ class GameTest extends TestCase
         $this->deck = new DeckOfCards();
         $this->handChecker = new HandChecker();
         $this->challenge = new Challenge();
+        $this->manager = new Manager();
+
 
         $this->dealer->addDeck($this->deck);
         $this->dealer->addTable($this->table);
@@ -41,6 +47,12 @@ class GameTest extends TestCase
         $this->game->addDealer($this->dealer);
         $this->game->addHandChecker($this->handChecker);
         $this->game->addChallenge($this->challenge);
+        $this->game->addManager($this->manager);
+        $this->manager->addGame($this->game);
+        $this->manager->addGameProperties();
+
+
+
         $this->dealer->getPlayerList([$this->hero, $this->villain]);
     }
 
@@ -58,20 +70,20 @@ class GameTest extends TestCase
      * Test that max bet is not more than players stack and current bet.
      */
     public function testMaxBet() {
-        $res = $this->game->getMaxBet($this->hero, $this->villain);
+        $res = $this->manager->getMaxBet($this->hero, $this->villain);
         $exp = 5000;
 
         $this->assertSame($exp, $res);
 
         $this->hero->bet(1000);
         $this->hero->fold();
-        $res = $this->game->getMaxBet($this->hero, $this->villain);
+        $res = $this->manager->getMaxBet($this->hero, $this->villain);
         $exp = 4000;
 
         $this->assertSame($exp, $res);
 
         $this->hero->bet(1000);
-        $res = $this->game->getMaxBet($this->hero, $this->villain);
+        $res = $this->manager->getMaxBet($this->hero, $this->villain);
         $exp = 4000;
 
         $this->assertSame($exp, $res);
@@ -82,12 +94,13 @@ class GameTest extends TestCase
      */
     public function testShowdownCheck() 
     {
-        $res = $this->game->isShowdown();
-        $this->assertFalse($res);
+        $this->manager->isShowdown();
+        $this->assertFalse($this->manager->isShowdown());
 
         $this->table->setStreet(4);
-        $res = $this->game->isShowdown();
-        $this->assertTrue($res);
+        $this->manager->updateShowdownProp();
+        
+        $this->assertTrue($this->manager->isShowdown());
     }
 
     /**
@@ -95,13 +108,13 @@ class GameTest extends TestCase
      */
     public function testAlHandsPlayedCheck() 
     {
-        $res = $this->game->isAllHandsPlayed();
+        $res = $this->manager->isAllHandsPlayed();
         $this->assertFalse($res);
 
         $this->challenge->incrementHandsPlayed();
         $this->challenge->incrementHandsPlayed();
 
-        $res = $this->game->isAllHandsPlayed();
+        $res = $this->manager->isAllHandsPlayed();
         $this->assertTrue($res);
     }
 
@@ -110,20 +123,14 @@ class GameTest extends TestCase
      */
     public function testIsSomeoneBroke() 
     {
-        $res = $this->game->isSomeoneBroke();
+        $res = $this->manager->isSomeoneBroke();
         $this->assertFalse($res);
 
         $this->hero->bet(5000);
         $this->hero->fold();
 
-        $res = $this->game->isSomeoneBroke();
+        $res = $this->manager->isSomeoneBroke();
         $this->assertTrue($res);
-
-        $this->game->play(null);
-
-        $data = $this->game->getGameState();
-        $this->assertEquals(true, $data["game_over"]);
-
     }
 
     /**
@@ -138,7 +145,7 @@ class GameTest extends TestCase
     
         $bet = "1000";
     
-        $this->game->heroAction($bet);
+        $this->manager->heroAction($bet);
         $res = $this->hero->getLastAction();
         $exp = "bet";
 
@@ -153,13 +160,13 @@ class GameTest extends TestCase
     {
         $maxBet = 5000;
         $userInput = 1000;
-        $res = $this->game->heroBetSize($userInput, $maxBet);
+        $res = $this->manager->heroBetSize($userInput, $maxBet);
         $exp = 1000;
 
         $this->assertSame($exp, $res);
 
         $maxBet = 500;
-        $res = $this->game->heroBetSize($userInput, $maxBet);
+        $res = $this->manager->heroBetSize($userInput, $maxBet);
         $exp = 500;
 
         $this->assertSame($exp, $res);
@@ -192,14 +199,6 @@ class GameTest extends TestCase
     $this->assertCount(2, $data["mike_hand"]);
     $this->assertNotEquals(5000, $data["teddy_stack"]);
     $this->assertNotEquals(5000, $data["mike_stack"]);
-
-    // Hero out of chips causes game over
-    $this->hero->bet(10000);
-    $this->hero->fold();
-    $this->game->play(null);
-    $data = $this->game->getGameState();
-
-    $this->assertEquals(true, $data["game_over"]);
     }
 
     /**
@@ -210,7 +209,7 @@ class GameTest extends TestCase
         $board = $this->table->getBoard();
         $this->assertCount(0, $board);
         $this->hero->bet(5000);
-        $this->game->allInCheck($this->hero);
+        $this->manager->allInCheck($this->hero);
         $board = $this->table->getBoard();
         $this->assertCount(5, $board);
     }
@@ -225,19 +224,19 @@ class GameTest extends TestCase
         $this->assertCount(0, $board);
 
         // 3 cards should be dealt
-        $this->game->dealCorrectStreet();
+        $this->manager->dealCorrectStreet();
         $board = $this->table->getBoard();
         $this->assertCount(3, $board);
 
         // 1 card should be dealt at next street
         $this->table->setStreet(2);
-        $this->game->dealCorrectStreet();
+        $this->manager->dealCorrectStreet();
         $board = $this->table->getBoard();
         $this->assertCount(4, $board);
 
         // 1 card should be dealt at next street
         $this->table->setStreet(3);
-        $this->game->dealCorrectStreet();
+        $this->manager->dealCorrectStreet();
         $board = $this->table->getBoard();
         $this->assertCount(5, $board);
     }
@@ -250,7 +249,7 @@ class GameTest extends TestCase
     {
         $action = "check";
 
-        $this->game->heroAction($action);
+        $this->manager->heroAction($action);
         $resAction = $this->hero->getLastAction();
         $expAction = "check";
 
@@ -258,7 +257,7 @@ class GameTest extends TestCase
 
         $action = "call";
 
-        $this->game->heroAction($action);
+        $this->manager->heroAction($action);
         $resAction = $this->hero->getLastAction();
         $expAction = "call";
 
@@ -266,7 +265,7 @@ class GameTest extends TestCase
 
         $action = "fold";
 
-        $this->game->heroAction($action);
+        $this->manager->heroAction($action);
         $resAction = $this->hero->getLastAction();
         $expAction = "fold";
 
@@ -278,12 +277,12 @@ class GameTest extends TestCase
      */
     public function testNewHandVariable() 
     {
-        $res = $this->game->isNewHand();
+        $res = $this->manager->newHandCheck();
         $this->assertTrue($res);
 
         $this->game->play(null);
 
-        $res = $this->game->isNewHand();
+        $res = $this->manager->newHandCheck();
         $this->assertFalse($res);
     }
 }

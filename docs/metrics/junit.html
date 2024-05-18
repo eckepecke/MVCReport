@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2024-05-18 18:02:45        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2024-05-18 20:35:05        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -67,17 +67,17 @@
         <div class="bloc bloc-number">
             <div class="label">Assertions</div>
             <div class="number">
-                96            </div>
+                128            </div>
         </div>
     </div>
     <div class="column">
         <div class="bloc bloc-number">
             <div class="label">
                 classes never called by tests
-                <small>(67.57 %)</small>
+                <small>(64.86 %)</small>
             </div>
             <div class="number">
-                25            </div>
+                24            </div>
         </div>
     </div>
 </div>
@@ -136,25 +136,14 @@
                                     </td>
                                                             </tr>
                                                         <tr>
-                                <td><span class="path">App\FlopAndGo\Managers\Manager</span></td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.13);">
-                                        4                                        </span>
-                                    </td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.03);">
-                                        0.03                                        </span>
-                                    </td>
-                                                            </tr>
-                                                        <tr>
                                 <td><span class="path">App\FlopAndGo\Managers\GameStatusManager</span></td>
                                                                     <td>
                                         <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.09);">
                                         3                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.04);">
-                                        0.04                                        </span>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.03);">
+                                        0.03                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
@@ -182,12 +171,12 @@
                                                         <tr>
                                 <td><span class="path">App\FlopAndGo\Managers\StreetManager</span></td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.3);">
-                                        8                                        </span>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.48);">
+                                        12                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.15);">
-                                        0.15                                        </span>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.2);">
+                                        0.2                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
@@ -465,7 +454,7 @@
                                             -                                        </span>
                                         <span class="path">PHPUnit\Framework\TestCase</span>
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
-                                            6                                        </span>
+                                            5                                        </span>
                                         <span class="path">App\FlopAndGo\Game</span>
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
                                             1                                        </span>
@@ -488,6 +477,9 @@
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
                                             2                                        </span>
                                         <span class="path">App\FlopAndGo\Challenge</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            5                                        </span>
+                                        <span class="path">App\FlopAndGo\Managers\Manager</span>
                                                                     </td>
                             </tr>
                                                     <tr>
@@ -830,7 +822,7 @@
 
 
             
-            var json = {"name":"Execution time","children":[{"name":"App\\Dice\\DiceHandTest","time":0.013661},{"name":"App\\Dice\\DiceTest","time":0.001674},{"name":"App\\FlopAndGo\\ChallengeTest","time":0.00233},{"name":"App\\FlopAndGo\\DealerTest","time":0.004059},{"name":"App\\FlopAndGo\\GameTest","time":0.011737},{"name":"App\\FlopAndGo\\HandCheckerTest","time":0.001237},{"name":"App\\FlopAndGo\\HeroTest","time":0.000669},{"name":"App\\FlopAndGo\\PlayerTest","time":0.001733},{"name":"App\\FlopAndGo\\SpecialDealerTest","time":0.002843},{"name":"App\\FlopAndGo\\SpecialTableTest","time":0.001945},{"name":"App\\FlopAndGo\\VillainTest","time":0.000821}]};
+            var json = {"name":"Execution time","children":[{"name":"App\\Dice\\DiceHandTest","time":0.016097},{"name":"App\\Dice\\DiceTest","time":0.001675},{"name":"App\\FlopAndGo\\ChallengeTest","time":0.002186},{"name":"App\\FlopAndGo\\DealerTest","time":0.004132},{"name":"App\\FlopAndGo\\GameTest","time":0.014028},{"name":"App\\FlopAndGo\\HandCheckerTest","time":0.001122},{"name":"App\\FlopAndGo\\HeroTest","time":0.000627},{"name":"App\\FlopAndGo\\PlayerTest","time":0.001751},{"name":"App\\FlopAndGo\\SpecialDealerTest","time":0.002692},{"name":"App\\FlopAndGo\\SpecialTableTest","time":0.001916},{"name":"App\\FlopAndGo\\VillainTest","time":0.000856}]};
             root = json;
             var nodes = treemap.nodes(json)
                 .filter(function (d) {
