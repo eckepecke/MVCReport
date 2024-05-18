@@ -80,4 +80,9 @@ class Manager
     {
         return $this->gameOver;
     }
+
+    public function setNewHandTrue(): void 
+    {
+        $this->newHand = true;
+    }
 }

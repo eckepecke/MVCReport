@@ -36,7 +36,7 @@ trait HeroActionManager
         $this->gameProperties['villain']->fold();
         $this->gameProperties['table']->cleanTable();
         $this->gameProperties['challenge']->incrementHandsPlayed();
-        $this->newHand = true;
+        $this->setNewHandTrue();
     }
 
     public function heroCalled(): void
