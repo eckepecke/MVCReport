@@ -15,7 +15,7 @@ use App\FlopAndGo\Managers\ShowdownManager;
 use App\FlopAndGo\Managers\StreetManager;
 use App\FlopAndGo\Managers\VillainActionManager;
 
-class Game
+class GameOG
 {
     use BetSizeManager;
     use GameStatusManager;
@@ -97,46 +97,57 @@ class Game
 
     public function play(mixed $action): void
     {
-    var_dump($action);
+        // Check if challenge is over
+        if ($this->isAllHandsPlayed()) {
+            $this->gameOver = true;
+            return;
+        }
 
-    $this->updateGameOverVar();
-    if ($this->gameOver === true) {
-        return;
-    }
-    $this->setUpStreet($action);
+        // Check if someone is broke
+        if ($this->isSomeoneBroke()) {
+            $this->gameOver = true;
+            return;
+        }
 
+        // Check if a new hand is starting
+        if ($this->newHand === true || $action === "next") {
+            $this->handSetUp();
+        }
 
+        // Check if any cards need to de dealt
+        $this->dealCorrectStreet();
 
-    $this->villainPlay($action);
-    // fall through to hero action in both cases
-    
+        // Hero could potentially make a play
+        $this->heroAction($action);
 
-    // Hero could potentially make a play
-    $this->heroAction($action);
+        // Action is null when it is Villains turn to act
+        // Villain always has the opportunity to act from the big blind
+        if ($action === null && ($this->villain->getPosition() === "BB") || $action === "check") {
+            $this->villainAction();
+        }
 
+        // Check if any cards need to de dealt after players have made their plays
+        $this->dealCorrectStreet();
+        if ($this->isSomeoneBroke()) {
+            $this->gameOver = true;
+        }
 
-    // Check if any cards need to de dealt after players have made their plays
-    $this->dealCorrectStreet();
-    if ($this->isSomeoneBroke()) {
-        $this->gameOver = true;
-    }
+        // Check if all hands have been played
+        if ($this->isAllHandsPlayed()) {
+            $this->gameOver = true;
+            return;
+        }
 
-    // Check if all hands have been played
-    if ($this->isAllHandsPlayed()) {
-        $this->gameOver = true;
-        return;
-    }
+        // Play again if someone folded before showdown
+        if ($this->newHand) {
+            $this->play(null);
+        }
 
-    // Play again if someone folded before showdown
-    if ($this->newHand) {
-        $this->play(null);
-    }
-
-    // Check if it is time for showdown
-    if ($this->isShowdown()) {
-        $this->showdown();
-        return;
-    }
+        // Check if it is time for showdown
+        if ($this->isShowdown()) {
+            $this->showdown();
+            return;
+        }
 
     }
 
@@ -145,80 +156,4 @@ class Game
         return $this->newHand;
     }
 
-    public function updateGameOverVar(): void
-    {
-    // Check if challenge is over
-    if ($this->isAllHandsPlayed()) {
-        $this->gameOver = true;
-        return;
-    }
-
-    // Check if someone is broke
-    if ($this->isSomeoneBroke()) {
-        $this->gameOver = true;
-        return;
-    }
-    }
-
-    public function setUpStreet(mixed $action): void
-    {
-    // Check if a new hand is starting
-    if ($this->newHand === true || $action === "next") {
-        $this->handSetUp();
-    }
-
-    // Check if any cards need to de dealt
-    $this->dealCorrectStreet();
-    }
-
-    public function villainPlay($heroAction): void
-    {
-        $villainPos = $this->villain->getPosition();
-
-        if (($heroAction === null) && ($villainPos === "SB")) {
-            // Villain nedds to wait his turn
-            return;
-        }
-        $action = $this->villain->betOpportunity();
-
-        if ($villainPos === "SB") {
-            var_dump($action);
-            $this->villainPlayIP($action);
-            return;
-        }
-
-        $this->villainPlayOOP($action);
-    }
-
-    public function villainPlayIP(string $action)
-    {
-    if ($action === "check") {
-        $this->villain->check();
-        $this->incrementStreet();
-        return;
-    }
-    $this->villainBet();
-    }
-
-
-    public function villainPlayOOP(string $action)
-    {
-        echo"villain play oop";
-        if ($action === "check") {
-            $this->villain->check();
-            return;
-        }
-        $this->villainBet();
-    }
-
-    public function villainBet()
-    {
-    echo"villain net";
-
-    $betSize = $this->villain->randBetSize($this->table->getPotSize());
-    if ($betSize > $this->hero->getStack()) {
-        $betSize = $this->hero->getStack();
-    }
-    $this->villain->bet($betSize);
-    }
 }
