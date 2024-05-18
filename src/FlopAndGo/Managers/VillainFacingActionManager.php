@@ -10,7 +10,7 @@ trait VillainFacingActionManager
 
     public function villainResponseToBet(int $amount): void
     {
-        $action = $this->villain->actionFacingBet();
+        $action = $this->gameProperties['villain']->actionFacingBet();
 
         if ($action != null && $action != "next") {
             switch ($action) {
@@ -28,54 +28,52 @@ trait VillainFacingActionManager
     }
 
     public function villainFoldVBet() {
-        $this->table->addChipsToPot($this->villain->getCurrentBet());
-        $this->table->addChipsToPot($this->hero->getCurrentBet());
-        $this->villain->fold();
-        $this->hero->takePot($this->table->getPotSize());
-        $this->hero->fold();
-        $this->table->cleanTable();
-        $this->challenge->incrementHandsPlayed();
+        $this->gameProperties['table']->addChipsToPot($this->gameProperties['villain']->getCurrentBet());
+        $this->gameProperties['table']->addChipsToPot($this->gameProperties['hero']->getCurrentBet());
+        $this->gameProperties['villain']->fold();
+        $this->gameProperties['hero']->takePot($this->table->getPotSize());
+        $this->gameProperties['hero']->fold();
+        $this->gameProperties['table']->cleanTable();
+        $this->gameProperties['challenge']->incrementHandsPlayed();
         $this->newHand = true;
     }
 
     public function villainCallBet($amount) {
-        $this->villain->call($amount);
-        $this->table->addChipsToPot($this->villain->getCurrentBet());
-        $this->table->addChipsToPot($this->hero->getCurrentBet());
-        $this->villain->resetCurrentBet();
-        $this->hero->resetCurrentBet();
-        $this->allInCheck($this->villain);
-        echo "villain called inc";
+        $this->gameProperties['villain']->call($amount);
+        $this->gameProperties['table']->addChipsToPot($this->gameProperties['villain']->getCurrentBet());
+        $this->gameProperties['table']->addChipsToPot($this->gameProperties['hero']->getCurrentBet());
+        $this->gameProperties['villain']->resetCurrentBet();
+        $this->gameProperties['hero']->resetCurrentBet();
+        $this->allInCheck($this->gameProperties['villain']);
 
         $this->incrementStreet();
     }
 
     public function villainRaisedVBet($amount) {
-        if (($this->hero->isAllin())) {
-            $this->villain->call($amount);
-            $this->table->addChipsToPot($this->villain->getCurrentBet());
-            $this->table->addChipsToPot($this->villain->getCurrentBet());
-            $this->dealer->dealToShowdown();
+        if (($this->gameProperties['hero']->isAllin())) {
+            $this->gameProperties['villain']->call($amount);
+            $this->gameProperties['table']->addChipsToPot($this->gameProperties['villain']->getCurrentBet());
+            $this->gameProperties['table']->addChipsToPot($this->gameProperties['villain']->getCurrentBet());
+            $this->gameProperties['dealer']->dealToShowdown();
             $this->showdown();
             return;
 
         }
 
-        if ($amount >= ($this->villain->getStack() + $this->villain->getCurrentBet()) || $this->hero->isAllin()) {
-            $this->villain->call($amount);
+        if ($amount >= ($this->gameProperties['villain']->getStack() + $this->gameProperties['villain']->getCurrentBet()) || $this->gameProperties['hero']->isAllin()) {
+            $this->gameProperties['villain']->call($amount);
 
-            $this->allInCheck($this->villain);
-            $this->table->addChipsToPot($this->hero->getCurrentBet());
-            $this->table->addChipsToPot($this->villain->getCurrentBet());
-            $this->allInCheck($this->villain);
+            $this->allInCheck($this->gameProperties['villain']);
+            $this->gameProperties['table']->addChipsToPot($this->gameProperties['hero']->getCurrentBet());
+            $this->gameProperties['table']->addChipsToPot($this->gameProperties['villain']->getCurrentBet());
+            $this->allInCheck($this->gameProperties['villain']);
             $this->newHand = true;
-            echo "cillain called shove inc";
 
             $this->incrementStreet();
             return;
         }
 
-        $this->villain->raise($amount);
+        $this->gameProperties['villain']->raise($amount);
     }
 
 }

@@ -14,13 +14,13 @@ trait GameStatusManager
 
     public function isAllHandsPlayed(): bool
     {
-        return $this->challenge->challengeComplete();
+        return $this->gameProperties['challenge']->challengeComplete();
     }
 
     public function isSomeoneBroke(): bool
     {
-        $heroStack = $this->hero->getStack();
-        $villainStack = $this->villain->getStack();
+        $heroStack = $this->gameProperties['hero']->getStack();
+        $villainStack = $this->gameProperties['villain']->getStack();
 
         $broke = false;
         if ($heroStack <= 0 || $villainStack <= 0) {

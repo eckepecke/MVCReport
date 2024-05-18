@@ -9,16 +9,13 @@ trait VillainActionManager
 {
     public function villainPlay($heroAction): void
     {
-        echo "villainplay()";
-        echo "heroAction:";
-        var_dump($heroAction);
-        $villainPos = $this->villain->getPosition();
+        $villainPos = $this->gameProperties['villain']->getPosition();
 
         if (($heroAction !== "check") && ($villainPos === "SB")) {
             // Villain nedds to wait his turn
             return;
         }
-        $action = $this->villain->betOpportunity();
+        $action = $this->gameProperties['villain']->betOpportunity();
 
         if ($villainPos === "SB") {
             $this->villainPlayIP($action);
@@ -30,10 +27,8 @@ trait VillainActionManager
 
     public function villainPlayIP(string $action)
     {
-    echo "villainplay IP()";
-
     if ($action === "check") {
-        $this->villain->check();
+        $this->gameProperties['villain']->check();
         echo"check IP inc";
         $this->incrementStreet();
         return;
@@ -44,9 +39,8 @@ trait VillainActionManager
 
     public function villainPlayOOP(string $action)
     {
-        echo "villainplay OOP()";
         if ($action === "check") {
-            $this->villain->check();
+            $this->gameProperties['villain']->check();
             return;
         }
         $this->villainBet();
@@ -54,11 +48,10 @@ trait VillainActionManager
 
     public function villainBet()
     {
-    echo "villainBet()";
-    $betSize = $this->villain->randBetSize($this->table->getPotSize());
-    if ($betSize > $this->hero->getStack()) {
-        $betSize = $this->hero->getStack();
+    $betSize = $this->gameProperties['villain']->randBetSize($this->gameProperties['table']->getPotSize());
+    if ($betSize > $this->gameProperties['hero']->getStack()) {
+        $betSize = $this->gameProperties['hero']->getStack();
     }
-    $this->villain->bet($betSize);
+    $this->gameProperties['villain']->bet($betSize);
     }
 }

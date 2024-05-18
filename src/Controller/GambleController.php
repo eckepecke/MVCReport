@@ -6,6 +6,7 @@ use App\FlopAndGo\Challenge;
 use App\FlopAndGo\Game;
 use App\FlopAndGo\HandChecker;
 use App\FlopAndGo\Hero;
+use App\FlopAndGo\Managers\Manager;
 use App\FlopAndGo\SpecialDealer;
 use App\FlopAndGo\SpecialTable;
 use App\FlopAndGo\Villain;
@@ -42,6 +43,8 @@ class GambleController extends AbstractController
         $deck = new DeckOfCards();
         $handChecker = new HandChecker();
         $challenge = new Challenge($numHands);
+        $manager = new Manager();
+
 
         $dealer->addDeck($deck);
         $dealer->addTable($table);
@@ -52,7 +55,12 @@ class GambleController extends AbstractController
         $game->addDealer($dealer);
         $game->addHandChecker($handChecker);
         $game->addChallenge($challenge);
+        $game->addManager($manager);
         $dealer->getPlayerList([$hero, $villain]);
+        $manager->addGame($game);
+        $manager->addGameProperties($game);
+
+
 
         $session->set("game", $game);
 

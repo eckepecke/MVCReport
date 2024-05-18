@@ -8,38 +8,17 @@ use App\FlopAndGo\Hero;
 use App\FlopAndGo\SpecialTable;
 use App\FlopAndGo\Table;
 use App\FlopAndGo\Villain;
-
-// use App\FlopAndGo\Managers\Manager;
-
-use App\FlopAndGo\Managers\BetSizeManager;
-use App\FlopAndGo\Managers\GameStatusManager;
-use App\FlopAndGo\Managers\HeroActionManager;
-use App\FlopAndGo\Managers\ShowdownManager;
-use App\FlopAndGo\Managers\StreetManager;
-use App\FlopAndGo\Managers\VillainActionManager;
-use App\FlopAndGo\Managers\VillainFacingActionManager;
-
+use App\FlopAndGo\Managers\Manager;
 
 class Game
 {
-    use BetSizeManager;
-    use GameStatusManager;
-    use HeroActionManager;
-    use ShowdownManager;
-    use StreetManager;
-    use VillainActionManager;
-    use VillainFacingActionManager;
-
-
     public object $hero;
     private object $villain;
     private object $dealer;
     private object $table;
     private object $handChecker;
     private object $challenge;
-    private bool $newHand = true;
-    private bool $showdown = false;
-    private bool $gameOver = false;
+    private object $manager;
 
     public function addHero(Hero $hero): void
     {
@@ -71,6 +50,10 @@ class Game
         $this->challenge = $challenge;
     }
 
+    public function addManager(Manager $manager): void
+    {
+        $this->manager = $manager;
+    }
     public function getGameState(): array
     {
         $hero = $this->hero;
@@ -91,86 +74,80 @@ class Game
             "min_raise" => $table->getMinimumRaiseAllowed(),
             "board" => $table->getCardImages(),
             "street" => $table->getStreet(),
-            "new_hand" => $this->newHand,
+            "new_hand" => $this->manager->newHandCheck(),
             "teddy_last_action" => $villain->getLastAction(),
             "winner" => $this->challenge->getHandWinner(),
             "teddy_hand_strength" => $villain->getStrength(),
             "mike_hand_strength" => $hero->getStrength(),
-            "is_showdown" => $this->showdown,
-            "game_over" => $this->gameOver,
+            "is_showdown" => $this->manager->showdownCheck(),
+            "game_over" => $this->manager->gameOverCheck(),
             "result" => ($hero->getStack() - $hero->getStartStack()),
         ];
     }
 
     public function play(mixed $action): void
     {
-    $this->updateGameOverVar();
-    if ($this->gameOver === true) {
+    $gamOver = false;
+    $gameOver = $this->manager->updateGameOverVar();
+
+    if ($gameOver === true) {
         return;
     }
-    $this->setUpStreet($action);
 
+    $this->manager->setUpStreet($action);
 
+    // Check if any cards need to de dealt
+    $this->manager->dealCorrectStreet();
 
-    $this->villainPlay($action);
-    // fall through to hero action in both cases
-    
+    $this->manager->villainPlay($action);
 
     // Hero could potentially make a play
-    $this->heroAction($action);
-
+    $this->manager->heroAction($action);
 
     // Check if any cards need to de dealt after players have made their plays
-    $this->dealCorrectStreet();
+    $this->manager->dealCorrectStreet();
 
-    if ($this->isSomeoneBroke()) {
-        $this->gameOver = true;
-    }
+    $gameOver = $this->manager->isSomeoneBroke();
+
 
     // Check if all hands have been played
-    if ($this->isAllHandsPlayed()) {
-        $this->gameOver = true;
+    $gameOver = ($this->manager->isAllHandsPlayed());
+
+
+    if ($gameOver === true) {
         return;
     }
 
     // Play again if someone folded before showdown
-    if ($this->newHand) {
+    if ($this->manager->newHandCheck()) {
         $this->play(null);
     }
 
     // Check if it is time for showdown
-    if ($this->isShowdown()) {
-        $this->showdown();
+    if ($this->manager->isShowdown()) {
+        $this->manager->showdown();
         return;
     }
 
-    }
 
-    public function updateGameOverVar(): void
-    {
-    // Check if challenge is over
-    if ($this->isAllHandsPlayed()) {
-        $this->gameOver = true;
-        return;
-    }
 
     // Check if someone is broke
-    if ($this->isSomeoneBroke()) {
-        $this->gameOver = true;
+    $gameOver = ($this->manager->isSomeoneBroke());
+    if ($gameOver === true) {
         return;
     }
     }
 
-    public function setUpStreet(mixed $action): void
+    public function getAllProperties(): array
     {
-    // Check if a new hand is starting
-    if ($this->newHand === true || $action === "next") {
-        $this->handSetUp();
+        return [
+            'hero' => $this->hero,
+            'villain' => $this->villain,
+            'dealer' => $this->dealer,
+            'table' => $this->table,
+            'handChecker' => $this->handChecker,
+            'challenge' => $this->challenge,
+            'manager' => $this->manager,
+        ];
     }
-
-    // Check if any cards need to de dealt
-    $this->dealCorrectStreet();
-    }
-
-
 }

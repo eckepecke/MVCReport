@@ -29,44 +29,43 @@ trait HeroActionManager
 
     public function heroFolded(): void
     {
-        $this->table->addChipsToPot($this->villain->getCurrentBet());
-        $this->table->addChipsToPot($this->hero->getCurrentBet());
-        $this->hero->fold();
-        $this->villain->takePot($this->table->getPotSize());
-        $this->villain->fold();
-        $this->table->cleanTable();
-        $this->challenge->incrementHandsPlayed();
+        $this->gameProperties['table']->addChipsToPot($this->gameProperties['villain']->getCurrentBet());
+        $this->gameProperties['table']->addChipsToPot($this->gameProperties['hero']->getCurrentBet());
+        $this->gameProperties['hero']->fold();
+        $this->gameProperties['villain']->takePot($this->gameProperties['table']->getPotSize());
+        $this->gameProperties['villain']->fold();
+        $this->gameProperties['table']->cleanTable();
+        $this->gameProperties['challenge']->incrementHandsPlayed();
         $this->newHand = true;
     }
 
     public function heroCalled(): void
     {
         ///Denna route har int prövats
-        $villainBet = $this->villain->getCurrentBet();
-        $this->hero->call($villainBet);
-        $this->table->addChipsToPot($villainBet);
-        $this->table->addChipsToPot($this->hero->getCurrentBet());
-        $this->villain->resetCurrentBet();
-        $this->hero->resetCurrentBet();
-        $this->allInCheck($this->villain);
-        $this->allInCheck($this->hero);
-        echo "hero called inc";
+        $villainBet = $this->gameProperties['villain']->getCurrentBet();
+        $this->gameProperties['hero']->call($villainBet);
+        $this->gameProperties['table']->addChipsToPot($villainBet);
+        $this->gameProperties['table']->addChipsToPot($this->gameProperties['hero']->getCurrentBet());
+        $this->gameProperties['villain']->resetCurrentBet();
+        $this->gameProperties['hero']->resetCurrentBet();
+        $this->allInCheck($this->gameProperties['villain']);
+        $this->allInCheck($this->gameProperties['hero']);
         $this->incrementStreet();
     }
 
     public function heroBet(int $amount): void
     {
-        $maxBetAllowed = $this->getMaxBet($this->hero, $this->villain);
+        $maxBetAllowed = $this->getMaxBet($this->gameProperties['hero'], $this->gameProperties['villain']);
         $betSize = $this->heroBetSize($amount, $maxBetAllowed);
-        $this->hero->bet($betSize);
+        $this->gameProperties['hero']->bet($betSize);
 
         $this->villainResponseToBet($betSize);
     }
 
     public function heroChecked(): void
     {
-        $this->hero->check();
-        if ($this->hero->getPosition() === "SB") {
+        $this->gameProperties['hero']->check();
+        if ($this->gameProperties['hero']->getPosition() === "SB") {
             $this->incrementStreet();
         }
     }
