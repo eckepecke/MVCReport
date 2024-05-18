@@ -98,15 +98,15 @@ class HandCheckerTest extends TestCase
             4 => 3
         ];
 
-        $this->handChecker->checkForFull($noFull);
+        $this->handChecker->checkForFullHouse($noFull);
         $data = $this->handChecker->getStrengthArray();
-        $bool = $data['Full House'];
+        $bool = $data['Full house'];
 
         $this->assertFalse($bool);
 
-        $this->handChecker->checkForFull($hasFull);
+        $this->handChecker->checkForFullHouse($hasFull);
         $data = $this->handChecker->getStrengthArray();
-        $bool = $data['Full House'];
+        $bool = $data['Full house'];
 
         $this->assertTrue($bool);
     }

@@ -4,7 +4,9 @@ namespace App\FlopAndGo;
 
 class HandChecker
 {
+    private array $handRanks;
     private array $rankMapping;
+    private array $strengthArray;
     private array $strengthMapping;
 
     public function __construct()
@@ -38,11 +40,24 @@ class HandChecker
             'ace' => 14
         ];
 
+        $this->strengthArray = [
+            'Royal flush' => false,
+            'Straight flush' => false,
+            'Four of a kind' => false,
+            'Full house' => false,
+            'Flush' => false,
+            'Straight' => false,
+            'Three of a kind' => false,
+            'Two pair' => false,
+            'One pair' => false,
+            'High card' => true
+        ];
+
         $this->strengthMapping = [
             'Royal flush' => 0,
             'Straight flush' => 1,
             'Four of a kind' => 2,
-            'Full House' => 3,
+            'Full house' => 3,
             'Flush' => 4,
             'Straight' => 5,
             'Three of a kind' => 6,
@@ -85,20 +100,6 @@ class HandChecker
         return [$ranks, $suits];
     }
 
-    private function resetStrengths()
-    {
-        $this->royalFlush = false;
-        $this->straightFlush = false;
-        $this->fourOfAKind = false;
-        $this->fullHouse = false;
-        $this->flush = false;
-        $this->straight = false;
-        $this->threeOfAKind = false;
-        $this->twoPair = false;
-        $this->onePair = false;
-        $this->highCard = true;
-    }
-
     public function checkForStraight(array $ranks): void
     {
         $this->strengthArray['Straight'] = false;
@@ -137,7 +138,7 @@ class HandChecker
 
     public function checkForStraightFlush(): void
     {
-        if ($this->flush = true && $this->straight = true) {
+        if ($this->strengthArray['Flush'] = true && $this->strengthArray['Straight'] = true) {
             $this->strengthArray['Straight Flush'] = true;
         }
     }
@@ -194,7 +195,7 @@ class HandChecker
             'Royal flush' => false,
             'Straight flush' => false,
             'Four of a kind' => false,
-            'Full House' => false,
+            'Full house' => false,
             'Flush' => false,
             'Straight' => false,
             'Three of a kind' => false,
