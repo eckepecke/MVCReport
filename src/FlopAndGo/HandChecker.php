@@ -138,16 +138,19 @@ class HandChecker
 
     public function checkForStraightFlush(): void
     {
-        if ($this->strengthArray['Flush'] = true && $this->strengthArray['Straight'] = true) {
-            $this->strengthArray['Straight Flush'] = true;
+        if (($this->strengthArray['Flush'] === true) && ($this->strengthArray['Straight'] === true)) {
+            $this->strengthArray['Straight flush'] = true;
         }
     }
 
     public function checkForFlush(int $maxSameSuitCount): void
     {
+        var_dump($this->strengthArray['Flush']);
+
         if ($maxSameSuitCount >= 5) {
             $this->strengthArray['Flush'] = true;
         }
+        var_dump($this->strengthArray['Flush']);
     }
 
 
@@ -209,10 +212,13 @@ class HandChecker
     {
         $heroStrength = $hero->getStrength();
         $villainStrength = $villain->getStrength();
-    
+        var_dump($heroStrength);
+        var_dump($villainStrength);
         $heroValue = $this->strengthMapping[$heroStrength] ?? 10;
         $villainValue = $this->strengthMapping[$villainStrength] ?? 10;
-    
+        var_dump($heroValue);
+        var_dump($villainValue);
+
         if ($heroValue === $villainValue) {
             return $villain;
         }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1716025545">
-  <project timestamp="1716025545">
+<coverage generated="1716025779">
+  <project timestamp="1716025779">
     <file name="/Users/erik/dbwebb-kurser/mvc/me/report/src/Cards/Card.php">
       <class name="App\Cards\Card" namespace="global">
         <metrics complexity="4" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="15" elements="20" coveredelements="18"/>
@@ -854,12 +854,12 @@
       <line num="176" type="stmt" count="2"/>
       <line num="177" type="stmt" count="2"/>
       <line num="178" type="stmt" count="2"/>
-      <line num="179" type="stmt" count="1"/>
+      <line num="179" type="stmt" count="2"/>
       <line num="183" type="stmt" count="2"/>
       <line num="184" type="stmt" count="1"/>
       <line num="185" type="stmt" count="1"/>
       <line num="188" type="stmt" count="2"/>
-      <line num="189" type="stmt" count="1"/>
+      <line num="189" type="stmt" count="2"/>
       <line num="192" type="method" name="resetStrengthArray" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="194" type="stmt" count="2"/>
       <line num="195" type="stmt" count="2"/>
