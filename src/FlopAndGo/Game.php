@@ -87,59 +87,56 @@ class Game
 
     public function play(mixed $action): void
     {
+    // Return if game is already over
     $this->manager->allHandsHavePlayed();
-
     if ($this->manager->gameOverCheck()) {
         return;
     }
     
-
+    // Set up table correctly
     $this->manager->setUpStreet($action);
 
-    // Check if any cards need to de dealt
+    // Check if players are allin
+    $this->manager->dealRestWhenAllIn();
+    if ($this->manager->isShowdown()) {
+        return;
+    }
+
+    // Deal cards if necessary
     $this->manager->dealCorrectStreet();
 
+    //Players make their plays
     $this->manager->villainPlay($action);
-
-    // Hero could potentially make a play
     $this->manager->heroAction($action);
 
-    // Check if any cards need to de dealt after players have made their plays
+    // Deal cards if necessary
     $this->manager->dealCorrectStreet();
 
-
-    $gameOver = $this->manager->isSomeoneBroke();
-
+    // Check if players are allin
+    $this->manager->dealRestWhenAllIn();
+    if ($this->manager->isShowdown()) {
+        return;
+    }
 
     // Check if all hands have been played
-
+    // or someone went broke
+    $this->manager->isSomeoneBroke();
     $this->manager->allHandsHavePlayed();
-
-
     if ($this->manager->gameOverCheck()) {
         return;
     }
 
     // Check if it is time for showdown
     $this->manager->updateShowdownProp();
-    
     if ($this->manager->isShowdown()) {
         $this->manager->showdown();
     return;
     }
 
-
     // Play again if someone folded before showdown
     if ($this->manager->newHandCheck()) {
         $this->play(null);
     }
-
-
-        
-
-    // Check if someone is broke
-    // $this->manager->isSomeoneBroke();
-
     }
 
     public function getAllProperties(): array

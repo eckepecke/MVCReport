@@ -129,6 +129,10 @@ class LibraryController extends AbstractController
     ): Response {
         $id = $request->request->get('id');
         $book = $bookRepository->find($id);
+        if ($book === null) {
+            throw new Exception("Book with id $id not found.");
+        }
+        
         $book = $bookRepository->processBookFromRequest($request, $book);
 
         $entityManager = $doctrine->getManager();
@@ -161,7 +165,7 @@ class LibraryController extends AbstractController
         $books = $bookRepository
             ->findAll();
 
-        if (!$books) {
+        if (empty($books)) {
             throw new Exception("No books in library!");
         }
 

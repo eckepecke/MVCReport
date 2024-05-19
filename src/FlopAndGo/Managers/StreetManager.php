@@ -49,7 +49,6 @@ trait StreetManager
 
     public function dealCorrectStreet(): void
     {
-        $this->dealRestWhenAllIn();
         $street = $this->streetCheck();
         switch ($street) {
             case 1:
@@ -97,7 +96,7 @@ trait StreetManager
     
         if ($dealToShowdown) {
             $this->gameProperties['dealer']->dealToShowdown();
+            $this->showdown();
         }
-
     }
 }
