@@ -88,12 +88,12 @@ trait StreetManager
     {
         $hero = $this->gameProperties['hero'];
         $villain = $this->gameProperties['villain'];
-    
+
         $dealToShowdown = (
             ($hero->isAllIn() && $villain->getLastaction() === "call") ||
             ($villain->isAllIn() && $hero->getLastaction() === "call")
         );
-    
+
         if ($dealToShowdown) {
             $this->gameProperties['dealer']->dealToShowdown();
             $this->showdown();

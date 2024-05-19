@@ -175,7 +175,7 @@ var classes = [
         "afferentCoupling": 2,
         "efferentCoupling": 1,
         "instability": 0.33,
-        "numberOfUnitTests": 4,
+        "numberOfUnitTests": 5,
         "violations": {}
     },
     {
@@ -382,7 +382,7 @@ var classes = [
         "afferentCoupling": 2,
         "efferentCoupling": 7,
         "instability": 0.78,
-        "numberOfUnitTests": 1,
+        "numberOfUnitTests": 2,
         "violations": {}
     },
     {
@@ -657,7 +657,7 @@ var classes = [
         "afferentCoupling": 2,
         "efferentCoupling": 1,
         "instability": 0.33,
-        "numberOfUnitTests": 1,
+        "numberOfUnitTests": 2,
         "violations": {}
     },
     {
@@ -1221,7 +1221,7 @@ var classes = [
         "afferentCoupling": 2,
         "efferentCoupling": 0,
         "instability": 0,
-        "numberOfUnitTests": 3,
+        "numberOfUnitTests": 4,
         "violations": {}
     },
     {
@@ -1305,7 +1305,7 @@ var classes = [
         "afferentCoupling": 2,
         "efferentCoupling": 1,
         "instability": 0.33,
-        "numberOfUnitTests": 4,
+        "numberOfUnitTests": 6,
         "violations": {}
     },
     {
@@ -1429,7 +1429,7 @@ var classes = [
         "afferentCoupling": 3,
         "efferentCoupling": 1,
         "instability": 0.25,
-        "numberOfUnitTests": 3,
+        "numberOfUnitTests": 4,
         "violations": {}
     },
     {
@@ -1777,7 +1777,7 @@ var classes = [
         "afferentCoupling": 2,
         "efferentCoupling": 0,
         "instability": 0,
-        "numberOfUnitTests": 2,
+        "numberOfUnitTests": 3,
         "violations": {}
     },
     {
@@ -1883,7 +1883,7 @@ var classes = [
         "afferentCoupling": 2,
         "efferentCoupling": 2,
         "instability": 0.5,
-        "numberOfUnitTests": 3,
+        "numberOfUnitTests": 4,
         "violations": {}
     },
     {
@@ -2447,7 +2447,7 @@ var classes = [
         "afferentCoupling": 4,
         "efferentCoupling": 1,
         "instability": 0.2,
-        "numberOfUnitTests": 5,
+        "numberOfUnitTests": 6,
         "violations": {}
     },
     {
@@ -3428,8 +3428,8 @@ var classes = [
         "nbMethodsPublic": 10,
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
-        "wmc": 17,
-        "ccn": 8,
+        "wmc": 18,
+        "ccn": 9,
         "ccnMethodMax": 5,
         "externals": [
             "Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
@@ -3449,6 +3449,7 @@ var classes = [
             "Doctrine\\Persistence\\ManagerRegistry",
             "App\\Repository\\BookRepository",
             "Symfony\\Component\\HttpFoundation\\Request",
+            "Exception",
             "Symfony\\Component\\HttpFoundation\\Response",
             "Doctrine\\Persistence\\ManagerRegistry",
             "App\\Repository\\BookRepository",
@@ -3466,26 +3467,26 @@ var classes = [
         ],
         "implements": [],
         "lcom": 4,
-        "length": 243,
-        "vocabulary": 59,
-        "volume": 1429.48,
-        "difficulty": 12.92,
-        "effort": 18473.31,
+        "length": 250,
+        "vocabulary": 62,
+        "volume": 1488.55,
+        "difficulty": 12.54,
+        "effort": 18660.99,
         "level": 0.08,
-        "bugs": 0.48,
-        "time": 1026,
-        "intelligentContent": 110.61,
-        "number_operators": 51,
-        "number_operands": 192,
+        "bugs": 0.5,
+        "time": 1037,
+        "intelligentContent": 118.74,
+        "number_operators": 53,
+        "number_operands": 197,
         "number_operators_unique": 7,
-        "number_operands_unique": 52,
+        "number_operands_unique": 55,
         "cloc": 10,
-        "loc": 108,
-        "lloc": 98,
-        "mi": 56.1,
-        "mIwoC": 33.39,
-        "commentWeight": 22.71,
-        "kanDefect": 0.96,
+        "loc": 111,
+        "lloc": 101,
+        "mi": 55.27,
+        "mIwoC": 32.85,
+        "commentWeight": 22.42,
+        "kanDefect": 1.03,
         "relativeStructuralComplexity": 225,
         "relativeDataComplexity": 0.73,
         "relativeSystemComplexity": 225.73,

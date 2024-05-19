@@ -123,14 +123,14 @@ class GameTest extends TestCase
      */
     public function testIsSomeoneBroke() 
     {
-        $res = $this->manager->isSomeoneBroke();
-        $this->assertFalse($res);
+        $this->manager->isSomeoneBroke();
+        $this->assertFalse($this->manager->gameOverCheck());
 
         $this->hero->bet(5000);
         $this->hero->fold();
 
-        $res = $this->manager->isSomeoneBroke();
-        $this->assertTrue($res);
+        $this->manager->isSomeoneBroke();
+        $this->assertTrue($this->manager->gameOverCheck());
     }
 
     /**

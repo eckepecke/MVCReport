@@ -36,7 +36,7 @@ class BookRepository extends ServiceEntityRepository
         if (!$book) {
             $book = new Book();
         }
-    
+
         $fields = [
             'title' => 'setTitle',
             'isbn' => 'setIsbn',
@@ -45,14 +45,14 @@ class BookRepository extends ServiceEntityRepository
             'description' => 'setDescription',
             'year' => 'setPublishedYear'
         ];
-    
+
         foreach ($fields as $requestField => $method) {
             $value = $request->request->get($requestField);
             if (!empty($value)) {
                 $book->$method($value);
             }
         }
-    
+
         return $book;
     }
 

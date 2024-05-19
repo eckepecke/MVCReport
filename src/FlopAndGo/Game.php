@@ -87,56 +87,56 @@ class Game
 
     public function play(mixed $action): void
     {
-    // Return if game is already over
-    $this->manager->allHandsHavePlayed();
-    if ($this->manager->gameOverCheck()) {
-        return;
-    }
-    
-    // Set up table correctly
-    $this->manager->setUpStreet($action);
+        // Return if game is already over
+        $this->manager->allHandsHavePlayed();
+        if ($this->manager->gameOverCheck()) {
+            return;
+        }
 
-    // Check if players are allin
-    $this->manager->dealRestWhenAllIn();
-    if ($this->manager->isShowdown()) {
-        return;
-    }
+        // Set up table correctly
+        $this->manager->setUpStreet($action);
 
-    // Deal cards if necessary
-    $this->manager->dealCorrectStreet();
+        // Check if players are allin
+        $this->manager->dealRestWhenAllIn();
+        if ($this->manager->isShowdown()) {
+            return;
+        }
 
-    //Players make their plays
-    $this->manager->villainPlay($action);
-    $this->manager->heroAction($action);
+        // Deal cards if necessary
+        $this->manager->dealCorrectStreet();
 
-    // Deal cards if necessary
-    $this->manager->dealCorrectStreet();
+        //Players make their plays
+        $this->manager->villainPlay($action);
+        $this->manager->heroAction($action);
 
-    // Check if players are allin
-    $this->manager->dealRestWhenAllIn();
-    if ($this->manager->isShowdown()) {
-        return;
-    }
+        // Deal cards if necessary
+        $this->manager->dealCorrectStreet();
 
-    // Check if all hands have been played
-    // or someone went broke
-    $this->manager->isSomeoneBroke();
-    $this->manager->allHandsHavePlayed();
-    if ($this->manager->gameOverCheck()) {
-        return;
-    }
+        // Check if players are allin
+        $this->manager->dealRestWhenAllIn();
+        if ($this->manager->isShowdown()) {
+            return;
+        }
 
-    // Check if it is time for showdown
-    $this->manager->updateShowdownProp();
-    if ($this->manager->isShowdown()) {
-        $this->manager->showdown();
-    return;
-    }
+        // Check if all hands have been played
+        // or someone went broke
+        $this->manager->isSomeoneBroke();
+        $this->manager->allHandsHavePlayed();
+        if ($this->manager->gameOverCheck()) {
+            return;
+        }
 
-    // Play again if someone folded before showdown
-    if ($this->manager->newHandCheck()) {
-        $this->play(null);
-    }
+        // Check if it is time for showdown
+        $this->manager->updateShowdownProp();
+        if ($this->manager->isShowdown()) {
+            $this->manager->showdown();
+            return;
+        }
+
+        // Play again if someone folded before showdown
+        if ($this->manager->newHandCheck()) {
+            $this->play(null);
+        }
     }
 
     public function getAllProperties(): array

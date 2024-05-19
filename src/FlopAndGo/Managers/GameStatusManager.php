@@ -7,8 +7,6 @@ namespace App\FlopAndGo\Managers;
  */
 trait GameStatusManager
 {
-
-
     public function isAllHandsPlayed(): bool
     {
         return $this->gameProperties['challenge']->challengeComplete();

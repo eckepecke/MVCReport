@@ -7,7 +7,6 @@ namespace App\FlopAndGo\Managers;
  */
 trait VillainFacingActionManager
 {
-
     public function villainResponseToBet(int $amount): void
     {
         $action = $this->gameProperties['villain']->actionFacingBet();
@@ -27,7 +26,8 @@ trait VillainFacingActionManager
         }
     }
 
-    public function villainFoldVBet() {
+    public function villainFoldVBet()
+    {
         $this->gameProperties['table']->addChipsToPot($this->gameProperties['villain']->getCurrentBet());
         $this->gameProperties['table']->addChipsToPot($this->gameProperties['hero']->getCurrentBet());
         $this->gameProperties['villain']->fold();
@@ -38,7 +38,8 @@ trait VillainFacingActionManager
         $this->newHand = true;
     }
 
-    public function villainCallBet($amount) {
+    public function villainCallBet($amount)
+    {
         $this->gameProperties['villain']->call($amount);
         $this->gameProperties['table']->addChipsToPot($this->gameProperties['villain']->getCurrentBet());
         $this->gameProperties['table']->addChipsToPot($this->gameProperties['hero']->getCurrentBet());
@@ -49,7 +50,8 @@ trait VillainFacingActionManager
         $this->incrementStreet();
     }
 
-    public function villainRaisedVBet($amount) {
+    public function villainRaisedVBet($amount)
+    {
         if (($this->gameProperties['hero']->isAllin())) {
             $this->gameProperties['villain']->call($amount);
             $this->gameProperties['table']->addChipsToPot($this->gameProperties['villain']->getCurrentBet());

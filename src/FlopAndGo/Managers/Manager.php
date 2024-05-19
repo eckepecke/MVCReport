@@ -44,44 +44,44 @@ class Manager
 
     public function allHandsHavePlayed(): void
     {
-    // Check if challenge is over
-    if ($this->gameProperties['challenge']->challengeComplete()) {
-        $this->gameOver = true;
-    }
+        // Check if challenge is over
+        if ($this->gameProperties['challenge']->challengeComplete()) {
+            $this->gameOver = true;
+        }
     }
 
     public function setUpStreet(mixed $action): void
     {
-    // Check if a new hand is starting
-    if ($this->newHand === true || $action === "next") {
-        $this->handSetUp();
-    }
+        // Check if a new hand is starting
+        if ($this->newHand === true || $action === "next") {
+            $this->handSetUp();
+        }
 
     }
 
     public function updateShowdownProp(): void
     {
-    if  ($this->streetCheck() === 4){
-        $this->showdown = true;
-    };
+        if  ($this->streetCheck() === 4) {
+            $this->showdown = true;
+        };
     }
 
-    public function newHandCheck(): bool 
+    public function newHandCheck(): bool
     {
         return $this->newHand;
     }
 
-    public function isShowdown(): bool 
+    public function isShowdown(): bool
     {
         return $this->showdown;
     }
 
-    public function gameOverCheck(): bool 
+    public function gameOverCheck(): bool
     {
         return $this->gameOver;
     }
 
-    public function setNewHandTrue(): void 
+    public function setNewHandTrue(): void
     {
         $this->newHand = true;
     }

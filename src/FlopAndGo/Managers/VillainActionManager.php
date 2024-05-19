@@ -27,13 +27,12 @@ trait VillainActionManager
 
     public function villainPlayIP(string $action)
     {
-    if ($action === "check") {
-        $this->gameProperties['villain']->check();
-        echo"check IP inc";
-        $this->incrementStreet();
-        return;
-    }
-    $this->villainBet();
+        if ($action === "check") {
+            $this->gameProperties['villain']->check();
+            $this->incrementStreet();
+            return;
+        }
+        $this->villainBet();
     }
 
 
@@ -48,10 +47,10 @@ trait VillainActionManager
 
     public function villainBet()
     {
-    $betSize = $this->gameProperties['villain']->randBetSize($this->gameProperties['table']->getPotSize());
-    if ($betSize > $this->gameProperties['hero']->getStack()) {
-        $betSize = $this->gameProperties['hero']->getStack();
-    }
-    $this->gameProperties['villain']->bet($betSize);
+        $betSize = $this->gameProperties['villain']->randBetSize($this->gameProperties['table']->getPotSize());
+        if ($betSize > $this->gameProperties['hero']->getStack()) {
+            $betSize = $this->gameProperties['hero']->getStack();
+        }
+        $this->gameProperties['villain']->bet($betSize);
     }
 }

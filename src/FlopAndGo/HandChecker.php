@@ -155,7 +155,8 @@ class HandChecker
     public function checkForQuads(array $rankCounts): void
     {
         if (in_array(4, $rankCounts) || in_array(5, $rankCounts)) {
-            $this->strengthArray['Four of a kind'] = true;        }
+            $this->strengthArray['Four of a kind'] = true;
+        }
     }
 
     public function checkForFullHouse(array $rankCounts): void
@@ -187,7 +188,8 @@ class HandChecker
         }
 
         if ($pairCount === 1) {
-            $this->strengthArray['One pair'] = true;        }
+            $this->strengthArray['One pair'] = true;
+        }
     }
 
     public function resetStrengthArray(): void
@@ -217,7 +219,7 @@ class HandChecker
         if ($heroValue === $villainValue) {
             return $villain;
         }
-    
+
         return $heroValue < $villainValue ? $hero : $villain;
     }
 

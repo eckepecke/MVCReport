@@ -150,7 +150,7 @@ class SpecialTableTest extends TestCase
         $this->assertSame($exp, $res);
     }
 
-        /**
+    /**
      * Test if street is being set to one if set to 1 after incrementing on street 4.
      */
     public function testSetStreet()
@@ -162,6 +162,18 @@ class SpecialTableTest extends TestCase
         $exp = 1;
 
         $this->assertSame($exp, $res);
+    }
+
+    /**
+     * Test players are seated at different positions.
+     */
+    public function testSeatPlayers()
+    {
+        $this->table->seatPlayers($this->hero, $this->villain);
+        $heroPos = $this->hero->getPosition();
+        $villainPos = $this->villain->getPosition();
+
+        $this->assertNotEquals($heroPos, $villainPos);
     }
 
 

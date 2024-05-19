@@ -152,4 +152,24 @@ class SpecialDealerTest extends TestCase
         $this->assertSame($expStackP1, $resStackP1);
 
     }
+
+        /**
+     * Test if return flop works.
+     */
+    public function testGetFlop()
+    {
+        $res = $this->table->getFlop();
+        $exp = [];
+
+        $this->assertSame($exp, $res);
+
+        $flop = $this->dealer->dealFlop();
+        $this->table->registerMany($flop);
+
+        $res = $this->table->getFlop();
+        $exp = 3;
+
+        $this->assertCount($exp, $res);
+    }
+
 }

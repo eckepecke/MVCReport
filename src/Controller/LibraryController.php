@@ -132,7 +132,7 @@ class LibraryController extends AbstractController
         if ($book === null) {
             throw new Exception("Book with id $id not found.");
         }
-        
+
         $book = $bookRepository->processBookFromRequest($request, $book);
 
         $entityManager = $doctrine->getManager();
