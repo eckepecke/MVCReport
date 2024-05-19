@@ -12,6 +12,9 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class BookRepositoryTest extends TestCase
 {
+    /**
+     * Make sure BookRepositoryTest updates book object correctly.
+     */
     public function testProcessBookFromRequest()
     {
         // Mock the Request object

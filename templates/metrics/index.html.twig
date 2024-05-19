@@ -74,7 +74,7 @@
         <p>I am surprised to see processBookFromRequest() being ranked so poorly, probably something I would have missed without using scrutinizer.
         Again we can see that the HandChecker, VillainActionManager and Game class is causing trouble.</p>
 
-        <h2>Förbättringar</h2>
+        <h2>Improvements</h2>
         <p>When I am done with this kmom I hope to have achieved the following:</p>
 
         <ul>
@@ -90,9 +90,29 @@
         <img src="https://scrutinizer-ci.com/g/eckepecke/MVCReport/badges/build.png?b=main" alt="Build Status" />
         <img src="https://scrutinizer-ci.com/g/eckepecke/MVCReport/badges/code-intelligence.svg?b=main" alt="Code Intelligence Status" />
 
+
+        <h2>Discussion</h2>
         <div>
+        <p>I have worked hard on trying to improve the numbers on my project. Have I succeded? The main problems going inte to the cleanup I thought was the HandChecker class, play()-function in the Game 
+        class together with the VillainActionManager trait. I have rebuilt the flow so that undependent of who made the latest move we enter both Villain's and and Hero's action managers.
+        This has allowed me to break out the actions Villain has to make when facing an hero Action. This in turn has yielded higher code coverage since I can more easily test the code now.</p>
 
+        <p>I also rebuilt the HandChecker class. The complexity of the three problem children mentioned above has decreased. Even though that might look like a win some other numbers are getting worse. The system complexity has slightly increased
+        instead. Where does the problem lay? In kmom03 I mentioned in my report text that I made a functioning, fun game to play but I was not unsure if my use of traits was the correct choice.
+        In hindsight I think it was a major mistake. Almost every issue I have in scrutinizer is related to a trait using the Manager's properties and methods. When I fixe one issue another one is introduced. To get rid of them I have to rebuild my entire game. Clearly there are major structural problems within the game application.
+        </p>
 
+        <p>On the positive side I have increased the coverage a lot. I have gone from 9.87 to 9.95 in scrutinizer score. I have 83 tests and 213 asserts. Above all I have learned an important lesson.
+        I am a professional poker player and know a thing or two about game theory. It is fascinating to see how you can draw similar conclusions when it comes to programming. If you make big mistakes early
+        in the game tree, it is impossible to repair with perfect late game play. If you play perfectly early, your late game mistakes dont cost very much. I think using the tools introduced in this course can help me build better from the start.
+        In the state my project is now I would would have to remove the entire structure to make big improvements on statistics like complexity and cohesion. The time for a complete rebuild I do not have now.
+        I am looking forward to using them from the start when building my examintion project.
+        </p>
 
+        <p>
+        As mentioned in earlier report texts I think the combination of tools like phpmetrics and scrutinizer together with test driven development is something that will eliminate "small" mistakes
+        that eventually grows into a messy and complicated app. Poker game theory shows that good play is to make as few mistakes as possible. Playing well is actually just "not playing poorly". It is quite amaxing that in programming
+        you have so many tools to help you "not code poorly".
+        </p>
 
 {% endblock %}

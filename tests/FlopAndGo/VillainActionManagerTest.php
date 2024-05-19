@@ -148,7 +148,7 @@ class VillainActionManager extends TestCase
 
     }
 
-        /**
+    /**
      * Test that villainRaisedVBet() works as intended.
      */
     public function testVillainCalledVsBetOk(): void
@@ -163,7 +163,5 @@ class VillainActionManager extends TestCase
         // Assert Villain only calls when hero is allin
         $this->assertEquals($expAction, $action);
         $this->assertNotEquals($beforeStreet, $afterStreet);
-
-
     }
 }

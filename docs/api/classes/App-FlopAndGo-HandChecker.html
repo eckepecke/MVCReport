@@ -73,7 +73,15 @@
                 
             </li>
                     <li>
+                <a href="namespaces/app-entity.html" class="">Entity</a>
+                
+            </li>
+                    <li>
                 <a href="namespaces/app-flopandgo.html" class="">FlopAndGo</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/app-repository.html" class="">Repository</a>
                 
             </li>
             </ul>
@@ -161,6 +169,12 @@
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/App-FlopAndGo-HandChecker.html#property_handRanks">$handRanks</a>
+    <span>
+                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/App-FlopAndGo-HandChecker.html#property_rankMapping">$rankMapping</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
@@ -199,7 +213,7 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-HandChecker.html#method_checkForFull">checkForFull()</a>
+    <a href="classes/App-FlopAndGo-HandChecker.html#method_checkForFullHouse">checkForFullHouse()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
@@ -218,6 +232,12 @@
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-FlopAndGo-HandChecker.html#method_checkForStraight">checkForStraight()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-FlopAndGo-HandChecker.html#method_checkForStraightFlush">checkForStraightFlush()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
@@ -252,6 +272,12 @@
                                 &nbsp;: void    </span>
 </dt>
 
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/App-FlopAndGo-HandChecker.html#method_extractRanksAndSuits">extractRanksAndSuits()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+
     </dl>
 
 
@@ -266,6 +292,39 @@
             <a href="classes/App-FlopAndGo-HandChecker.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_handRanks">
+        $handRanks
+        <a href="classes/App-FlopAndGo-HandChecker.html#property_handRanks" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/HandChecker.php"><a href="files/src-flopandgo-handchecker.html"><abbr title="src/FlopAndGo/HandChecker.php">HandChecker.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">7</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
+    <span class="phpdocumentor-signature__name">$handRanks</span>
+    </code>
+
+    
+    
+    
+
+</article>
                     <article
         class="
             phpdocumentor-element
@@ -316,7 +375,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/HandChecker.php"><a href="files/src-flopandgo-handchecker.html"><abbr title="src/FlopAndGo/HandChecker.php">HandChecker.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">7</span>
+    <span class="phpdocumentor-element-found-in__line">9</span>
 
     </aside>
 
@@ -349,7 +408,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/HandChecker.php"><a href="files/src-flopandgo-handchecker.html"><abbr title="src/FlopAndGo/HandChecker.php">HandChecker.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">9</span>
+    <span class="phpdocumentor-element-found-in__line">10</span>
 
     </aside>
 
@@ -418,7 +477,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/HandChecker.php"><a href="files/src-flopandgo-handchecker.html"><abbr title="src/FlopAndGo/HandChecker.php">HandChecker.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">180</span>
+    <span class="phpdocumentor-element-found-in__line">146</span>
 
     </aside>
 
@@ -451,22 +510,22 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_checkForFull">
-        checkForFull()
-        <a href="classes/App-FlopAndGo-HandChecker.html#method_checkForFull" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_checkForFullHouse">
+        checkForFullHouse()
+        <a href="classes/App-FlopAndGo-HandChecker.html#method_checkForFullHouse" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/HandChecker.php"><a href="files/src-flopandgo-handchecker.html"><abbr title="src/FlopAndGo/HandChecker.php">HandChecker.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">196</span>
+    <span class="phpdocumentor-element-found-in__line">162</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">checkForFull</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$rankCounts</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">checkForFullHouse</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$rankCounts</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -500,7 +559,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/HandChecker.php"><a href="files/src-flopandgo-handchecker.html"><abbr title="src/FlopAndGo/HandChecker.php">HandChecker.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">212</span>
+    <span class="phpdocumentor-element-found-in__line">176</span>
 
     </aside>
 
@@ -541,7 +600,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/HandChecker.php"><a href="files/src-flopandgo-handchecker.html"><abbr title="src/FlopAndGo/HandChecker.php">HandChecker.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">189</span>
+    <span class="phpdocumentor-element-found-in__line">155</span>
 
     </aside>
 
@@ -582,7 +641,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/HandChecker.php"><a href="files/src-flopandgo-handchecker.html"><abbr title="src/FlopAndGo/HandChecker.php">HandChecker.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">117</span>
+    <span class="phpdocumentor-element-found-in__line">103</span>
 
     </aside>
 
@@ -615,6 +674,37 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_checkForStraightFlush">
+        checkForStraightFlush()
+        <a href="classes/App-FlopAndGo-HandChecker.html#method_checkForStraightFlush" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/HandChecker.php"><a href="files/src-flopandgo-handchecker.html"><abbr title="src/FlopAndGo/HandChecker.php">HandChecker.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">139</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">checkForStraightFlush</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_checkForTrips">
         checkForTrips()
         <a href="classes/App-FlopAndGo-HandChecker.html#method_checkForTrips" class="headerlink"><i class="fas fa-link"></i></a>
@@ -623,7 +713,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/HandChecker.php"><a href="files/src-flopandgo-handchecker.html"><abbr title="src/FlopAndGo/HandChecker.php">HandChecker.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">203</span>
+    <span class="phpdocumentor-element-found-in__line">169</span>
 
     </aside>
 
@@ -664,7 +754,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/HandChecker.php"><a href="files/src-flopandgo-handchecker.html"><abbr title="src/FlopAndGo/HandChecker.php">HandChecker.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">248</span>
+    <span class="phpdocumentor-element-found-in__line">211</span>
 
     </aside>
 
@@ -716,7 +806,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/HandChecker.php"><a href="files/src-flopandgo-handchecker.html"><abbr title="src/FlopAndGo/HandChecker.php">HandChecker.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">70</span>
 
     </aside>
 
@@ -761,7 +851,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/HandChecker.php"><a href="files/src-flopandgo-handchecker.html"><abbr title="src/FlopAndGo/HandChecker.php">HandChecker.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">276</span>
+    <span class="phpdocumentor-element-found-in__line">226</span>
 
     </aside>
 
@@ -796,7 +886,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/HandChecker.php"><a href="files/src-flopandgo-handchecker.html"><abbr title="src/FlopAndGo/HandChecker.php">HandChecker.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">232</span>
+    <span class="phpdocumentor-element-found-in__line">195</span>
 
     </aside>
 
@@ -812,6 +902,51 @@
     
 
     
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_extractRanksAndSuits">
+        extractRanksAndSuits()
+        <a href="classes/App-FlopAndGo-HandChecker.html#method_extractRanksAndSuits" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/HandChecker.php"><a href="files/src-flopandgo-handchecker.html"><abbr title="src/FlopAndGo/HandChecker.php">HandChecker.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">90</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">extractRanksAndSuits</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$cards</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$cards</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
 </article>
             </section>
 
@@ -926,6 +1061,7 @@
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/App-FlopAndGo-HandChecker.html#property_handRanks">$handRanks<a href="classes/App-FlopAndGo-HandChecker.html"></li>
                                                     <li><a href="classes/App-FlopAndGo-HandChecker.html#property_rankMapping">$rankMapping<a href="classes/App-FlopAndGo-HandChecker.html"></li>
                                                     <li><a href="classes/App-FlopAndGo-HandChecker.html#property_strengthArray">$strengthArray<a href="classes/App-FlopAndGo-HandChecker.html"></li>
                                                     <li><a href="classes/App-FlopAndGo-HandChecker.html#property_strengthMapping">$strengthMapping<a href="classes/App-FlopAndGo-HandChecker.html"></li>
@@ -937,15 +1073,17 @@
                 <ul class="phpdocumentor-list -clean">
                                             <li><a href="classes/App-FlopAndGo-HandChecker.html#method___construct">__construct()</a></li>
                                             <li><a href="classes/App-FlopAndGo-HandChecker.html#method_checkForFlush">checkForFlush()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-HandChecker.html#method_checkForFull">checkForFull()</a></li>
+                                            <li><a href="classes/App-FlopAndGo-HandChecker.html#method_checkForFullHouse">checkForFullHouse()</a></li>
                                             <li><a href="classes/App-FlopAndGo-HandChecker.html#method_checkForPairs">checkForPairs()</a></li>
                                             <li><a href="classes/App-FlopAndGo-HandChecker.html#method_checkForQuads">checkForQuads()</a></li>
                                             <li><a href="classes/App-FlopAndGo-HandChecker.html#method_checkForStraight">checkForStraight()</a></li>
+                                            <li><a href="classes/App-FlopAndGo-HandChecker.html#method_checkForStraightFlush">checkForStraightFlush()</a></li>
                                             <li><a href="classes/App-FlopAndGo-HandChecker.html#method_checkForTrips">checkForTrips()</a></li>
                                             <li><a href="classes/App-FlopAndGo-HandChecker.html#method_compareStrength">compareStrength()</a></li>
                                             <li><a href="classes/App-FlopAndGo-HandChecker.html#method_evaluateHand">evaluateHand()</a></li>
                                             <li><a href="classes/App-FlopAndGo-HandChecker.html#method_getStrengthArray">getStrengthArray()</a></li>
                                             <li><a href="classes/App-FlopAndGo-HandChecker.html#method_resetStrengthArray">resetStrengthArray()</a></li>
+                                            <li><a href="classes/App-FlopAndGo-HandChecker.html#method_extractRanksAndSuits">extractRanksAndSuits()</a></li>
                                     </ul>
             </li>
                     </ul>

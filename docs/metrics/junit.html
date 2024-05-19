@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2024-05-19 10:12:45        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2024-05-19 15:07:16        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -60,24 +60,24 @@
         <div class="bloc bloc-number">
             <div class="label">Test suites</div>
             <div class="number">
-                13            </div>
+                16            </div>
         </div>
     </div>
     <div class="column">
         <div class="bloc bloc-number">
             <div class="label">Assertions</div>
             <div class="number">
-                145            </div>
+                213            </div>
         </div>
     </div>
     <div class="column">
         <div class="bloc bloc-number">
             <div class="label">
                 classes never called by tests
-                <small>(64.86 %)</small>
+                <small>(54.05 %)</small>
             </div>
             <div class="number">
-                24            </div>
+                20            </div>
         </div>
     </div>
 </div>
@@ -103,17 +103,6 @@
                         </thead>
                         <tbody id="contentAreaJunitNeverCalled" class="clusterize-content">
                                                     <tr>
-                                <td><span class="path">App\Repository\BookRepository</span></td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.13);">
-                                        4                                        </span>
-                                    </td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.08);">
-                                        0.08                                        </span>
-                                    </td>
-                                                            </tr>
-                                                        <tr>
                                 <td><span class="path">App\FlopAndGo\Managers\VillainFacingActionManager</span></td>
                                                                     <td>
                                         <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.3);">
@@ -219,17 +208,6 @@
                                         1                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.09);">
-                                        0.09                                        </span>
-                                    </td>
-                                                            </tr>
-                                                        <tr>
-                                <td><span class="path">App\Entity\Book</span></td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0);">
-                                        1                                        </span>
-                                    </td>
-                                                                    <td>
                                         <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.08);">
                                         0.08                                        </span>
                                     </td>
@@ -243,28 +221,6 @@
                                                                     <td>
                                         <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.09);">
                                         0.09                                        </span>
-                                    </td>
-                                                            </tr>
-                                                        <tr>
-                                <td><span class="path">App\Cards\CardGraphic</span></td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0);">
-                                        1                                        </span>
-                                    </td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.02);">
-                                        0.02                                        </span>
-                                    </td>
-                                                            </tr>
-                                                        <tr>
-                                <td><span class="path">App\Cards\CardHand</span></td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.09);">
-                                        3                                        </span>
-                                    </td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.02);">
-                                        0.02                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
@@ -401,6 +357,20 @@
                         </thead>
                         <tbody id="contentAreaJunitCalled" class="clusterize-content">
                                                     <tr>
+                                <td valign="top"><span class="path">App\Card\CardHandTest</span></td>
+                                <td style="padding-bottom: 1em;">
+                                                                                                                    <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">PHPUnit\Framework\TestCase</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            3                                        </span>
+                                        <span class="path">App\Cards\CardHand</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            1                                        </span>
+                                        <span class="path">App\Cards\CardGraphic</span>
+                                                                    </td>
+                            </tr>
+                                                    <tr>
                                 <td valign="top"><span class="path">App\Dice\DiceHandTest</span></td>
                                 <td style="padding-bottom: 1em;">
                                                                                                                     <span class="badge" title="Cyclomatic complexity of class">
@@ -409,6 +379,9 @@
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
                                             4                                        </span>
                                         <span class="path">App\Dice\DiceHand</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            1                                        </span>
+                                        <span class="path">App\Dice\Dice</span>
                                                                     </td>
                             </tr>
                                                     <tr>
@@ -420,6 +393,17 @@
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
                                             1                                        </span>
                                         <span class="path">App\Dice\Dice</span>
+                                                                    </td>
+                            </tr>
+                                                    <tr>
+                                <td valign="top"><span class="path">App\Entity\BookTest</span></td>
+                                <td style="padding-bottom: 1em;">
+                                                                                                                    <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">PHPUnit\Framework\TestCase</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            1                                        </span>
+                                        <span class="path">App\Entity\Book</span>
                                                                     </td>
                             </tr>
                                                     <tr>
@@ -622,6 +606,20 @@
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
                                             2                                        </span>
                                         <span class="path">App\FlopAndGo\Villain</span>
+                                                                    </td>
+                            </tr>
+                                                    <tr>
+                                <td valign="top"><span class="path">App\Repository\BookRepositoryTest</span></td>
+                                <td style="padding-bottom: 1em;">
+                                                                                                                    <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">PHPUnit\Framework\TestCase</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">Symfony\Component\HttpFoundation\Request</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            4                                        </span>
+                                        <span class="path">App\Repository\BookRepository</span>
                                                                     </td>
                             </tr>
                                             </table>
@@ -868,7 +866,7 @@
 
 
             
-            var json = {"name":"Execution time","children":[{"name":"App\\Dice\\DiceHandTest","time":0.013524},{"name":"App\\Dice\\DiceTest","time":0.001671},{"name":"App\\FlopAndGo\\ChallengeTest","time":0.002282},{"name":"App\\FlopAndGo\\DealerTest","time":0.004135},{"name":"App\\FlopAndGo\\GameTest","time":0.015421},{"name":"App\\FlopAndGo\\HandCheckerTest","time":0.001133},{"name":"App\\FlopAndGo\\HeroTest","time":0.000627},{"name":"App\\FlopAndGo\\PlayerTest","time":0.001639},{"name":"App\\FlopAndGo\\SpecialDealerTest","time":0.003126},{"name":"App\\FlopAndGo\\SpecialTableTest","time":0.002061},{"name":"App\\FlopAndGo\\StrategyTraitTest","time":0.001304},{"name":"App\\FlopAndGo\\VillainActionManager","time":0.003205},{"name":"App\\FlopAndGo\\VillainTest","time":0.000833}]};
+            var json = {"name":"Execution time","children":[{"name":"App\\Card\\CardHandTest","time":0.015271},{"name":"App\\Dice\\DiceHandTest","time":0.001934},{"name":"App\\Dice\\DiceTest","time":0.003794},{"name":"App\\Entity\\BookTest","time":0.000613},{"name":"App\\FlopAndGo\\ChallengeTest","time":0.001915},{"name":"App\\FlopAndGo\\DealerTest","time":0.002914},{"name":"App\\FlopAndGo\\GameTest","time":0.01157},{"name":"App\\FlopAndGo\\HandCheckerTest","time":0.00114},{"name":"App\\FlopAndGo\\HeroTest","time":0.000641},{"name":"App\\FlopAndGo\\PlayerTest","time":0.001659},{"name":"App\\FlopAndGo\\SpecialDealerTest","time":0.003114},{"name":"App\\FlopAndGo\\SpecialTableTest","time":0.002013},{"name":"App\\FlopAndGo\\StrategyTraitTest","time":0.001463},{"name":"App\\FlopAndGo\\VillainActionManager","time":0.003126},{"name":"App\\FlopAndGo\\VillainTest","time":0.000831},{"name":"App\\Repository\\BookRepositoryTest","time":0.013194}]};
             root = json;
             var nodes = treemap.nodes(json)
                 .filter(function (d) {

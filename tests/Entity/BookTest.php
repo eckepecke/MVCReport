@@ -9,6 +9,9 @@ use PHPUnit\Framework\TestCase;
  */
 class BookTest extends TestCase
 {
+    /**
+     * Make sure Book returns correct array.
+     */
     public function testGetAttributesAsArray()
     {
         $book = new Book();

@@ -256,6 +256,61 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-GambleController.html#method_home"
         },                {
+            "fqsen": "\\App\\Controller\\LibraryController",
+            "name": "LibraryController",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003Aindex\u0028\u0029",
+            "name": "index",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryController.html#method_index"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowAllBooks\u0028\u0029",
+            "name": "showAllBooks",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryController.html#method_showAllBooks"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AreadOne\u0028\u0029",
+            "name": "readOne",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryController.html#method_readOne"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AaddForm\u0028\u0029",
+            "name": "addForm",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryController.html#method_addForm"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AcreateBook\u0028\u0029",
+            "name": "createBook",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryController.html#method_createBook"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AupdateBook\u0028\u0029",
+            "name": "updateBook",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryController.html#method_updateBook"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AupdateBookData\u0028\u0029",
+            "name": "updateBookData",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryController.html#method_updateBookData"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AdeleteBook\u0028\u0029",
+            "name": "deleteBook",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryController.html#method_deleteBook"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AapiLibrary\u0028\u0029",
+            "name": "apiLibrary",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryController.html#method_apiLibrary"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AapiBook\u0028\u0029",
+            "name": "apiBook",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryController.html#method_apiBook"
+        },                {
             "fqsen": "\\App\\Controller\\LuckyController",
             "name": "LuckyController",
             "summary": "",
@@ -301,10 +356,15 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-MeControllerTwig.html#method_api"
         },                {
-            "fqsen": "\\App\\Controller\\PokerChallengeController",
-            "name": "PokerChallengeController",
+            "fqsen": "\\App\\Controller\\MetricsController",
+            "name": "MetricsController",
             "summary": "",
-            "url": "classes/App-Controller-PokerChallengeController.html"
+            "url": "classes/App-Controller-MetricsController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\MetricsController\u003A\u003Ametrics\u0028\u0029",
+            "name": "metrics",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html#method_metrics"
         },                {
             "fqsen": "\\App\\Dice\\Dice",
             "name": "Dice",
@@ -371,49 +431,159 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Dice-DiceHand.html#property_hand"
         },                {
+            "fqsen": "\\App\\Entity\\Book",
+            "name": "Book",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AgetTitle\u0028\u0029",
+            "name": "getTitle",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_getTitle"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AsetTitle\u0028\u0029",
+            "name": "setTitle",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_setTitle"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AgetIsbn\u0028\u0029",
+            "name": "getIsbn",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_getIsbn"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AsetIsbn\u0028\u0029",
+            "name": "setIsbn",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_setIsbn"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AgetAuthor\u0028\u0029",
+            "name": "getAuthor",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_getAuthor"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AsetAuthor\u0028\u0029",
+            "name": "setAuthor",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_setAuthor"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AgetImg\u0028\u0029",
+            "name": "getImg",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_getImg"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AsetImg\u0028\u0029",
+            "name": "setImg",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_setImg"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AgetPublishedYear\u0028\u0029",
+            "name": "getPublishedYear",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_getPublishedYear"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AsetPublishedYear\u0028\u0029",
+            "name": "setPublishedYear",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_setPublishedYear"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AgetDescription\u0028\u0029",
+            "name": "getDescription",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_getDescription"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AsetDescription\u0028\u0029",
+            "name": "setDescription",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_setDescription"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AgetAttributesAsArray\u0028\u0029",
+            "name": "getAttributesAsArray",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_getAttributesAsArray"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003A\u0024title",
+            "name": "title",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#property_title"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003A\u0024isbn",
+            "name": "isbn",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#property_isbn"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003A\u0024author",
+            "name": "author",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#property_author"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003A\u0024img",
+            "name": "img",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#property_img"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003A\u0024publishedYear",
+            "name": "publishedYear",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#property_publishedYear"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003A\u0024description",
+            "name": "description",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#property_description"
+        },                {
             "fqsen": "\\App\\FlopAndGo\\Challenge",
             "name": "Challenge",
-            "summary": "",
+            "summary": "Tracks\u0020hands\u0020played\u0020and\u0020handwinner.",
             "url": "classes/App-FlopAndGo-Challenge.html"
         },                {
             "fqsen": "\\App\\FlopAndGo\\Challenge\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Challenge\u0020constructor.",
             "url": "classes/App-FlopAndGo-Challenge.html#method___construct"
         },                {
             "fqsen": "\\App\\FlopAndGo\\Challenge\u003A\u003AincrementHandsPlayed\u0028\u0029",
             "name": "incrementHandsPlayed",
-            "summary": "",
+            "summary": "Increment\u0020the\u0020number\u0020of\u0020hands\u0020played\u0020in\u0020the\u0020challenge.",
             "url": "classes/App-FlopAndGo-Challenge.html#method_incrementHandsPlayed"
         },                {
             "fqsen": "\\App\\FlopAndGo\\Challenge\u003A\u003AchallengeComplete\u0028\u0029",
             "name": "challengeComplete",
-            "summary": "",
+            "summary": "Check\u0020if\u0020the\u0020challenge\u0020is\u0020complete.",
             "url": "classes/App-FlopAndGo-Challenge.html#method_challengeComplete"
         },                {
             "fqsen": "\\App\\FlopAndGo\\Challenge\u003A\u003AgetDuration\u0028\u0029",
             "name": "getDuration",
-            "summary": "",
+            "summary": "Get\u0020the\u0020duration\u0020of\u0020the\u0020challenge.",
             "url": "classes/App-FlopAndGo-Challenge.html#method_getDuration"
         },                {
             "fqsen": "\\App\\FlopAndGo\\Challenge\u003A\u003AgetHandsPlayed\u0028\u0029",
             "name": "getHandsPlayed",
-            "summary": "",
+            "summary": "Get\u0020the\u0020number\u0020of\u0020hands\u0020played\u0020in\u0020the\u0020challenge.",
             "url": "classes/App-FlopAndGo-Challenge.html#method_getHandsPlayed"
         },                {
             "fqsen": "\\App\\FlopAndGo\\Challenge\u003A\u003AgetResult\u0028\u0029",
             "name": "getResult",
-            "summary": "",
+            "summary": "Get\u0020the\u0020result\u0020of\u0020the\u0020challenge.",
             "url": "classes/App-FlopAndGo-Challenge.html#method_getResult"
         },                {
             "fqsen": "\\App\\FlopAndGo\\Challenge\u003A\u003AgetHandWinner\u0028\u0029",
             "name": "getHandWinner",
-            "summary": "",
+            "summary": "Get\u0020the\u0020winner\u0020of\u0020the\u0020current\u0020hand\u0020in\u0020the\u0020challenge.",
             "url": "classes/App-FlopAndGo-Challenge.html#method_getHandWinner"
         },                {
             "fqsen": "\\App\\FlopAndGo\\Challenge\u003A\u003AsetHandWinner\u0028\u0029",
             "name": "setHandWinner",
-            "summary": "",
+            "summary": "Set\u0020the\u0020winner\u0020of\u0020the\u0020current\u0020hand\u0020in\u0020the\u0020challenge.",
             "url": "classes/App-FlopAndGo-Challenge.html#method_setHandWinner"
         },                {
             "fqsen": "\\App\\FlopAndGo\\Challenge\u003A\u003A\u0024duration",
@@ -506,6 +676,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-FlopAndGo-Game.html#method_addChallenge"
         },                {
+            "fqsen": "\\App\\FlopAndGo\\Game\u003A\u003AaddManager\u0028\u0029",
+            "name": "addManager",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Game.html#method_addManager"
+        },                {
             "fqsen": "\\App\\FlopAndGo\\Game\u003A\u003AgetGameState\u0028\u0029",
             "name": "getGameState",
             "summary": "",
@@ -516,10 +691,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-FlopAndGo-Game.html#method_play"
         },                {
-            "fqsen": "\\App\\FlopAndGo\\Game\u003A\u003AisNewHand\u0028\u0029",
-            "name": "isNewHand",
+            "fqsen": "\\App\\FlopAndGo\\Game\u003A\u003AgetAllProperties\u0028\u0029",
+            "name": "getAllProperties",
             "summary": "",
-            "url": "classes/App-FlopAndGo-Game.html#method_isNewHand"
+            "url": "classes/App-FlopAndGo-Game.html#method_getAllProperties"
         },                {
             "fqsen": "\\App\\FlopAndGo\\Game\u003A\u003A\u0024hero",
             "name": "hero",
@@ -551,20 +726,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-FlopAndGo-Game.html#property_challenge"
         },                {
-            "fqsen": "\\App\\FlopAndGo\\Game\u003A\u003A\u0024newHand",
-            "name": "newHand",
+            "fqsen": "\\App\\FlopAndGo\\Game\u003A\u003A\u0024manager",
+            "name": "manager",
             "summary": "",
-            "url": "classes/App-FlopAndGo-Game.html#property_newHand"
-        },                {
-            "fqsen": "\\App\\FlopAndGo\\Game\u003A\u003A\u0024showdown",
-            "name": "showdown",
-            "summary": "",
-            "url": "classes/App-FlopAndGo-Game.html#property_showdown"
-        },                {
-            "fqsen": "\\App\\FlopAndGo\\Game\u003A\u003A\u0024gameOver",
-            "name": "gameOver",
-            "summary": "",
-            "url": "classes/App-FlopAndGo-Game.html#property_gameOver"
+            "url": "classes/App-FlopAndGo-Game.html#property_manager"
         },                {
             "fqsen": "\\App\\FlopAndGo\\HandChecker",
             "name": "HandChecker",
@@ -581,10 +746,20 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-FlopAndGo-HandChecker.html#method_evaluateHand"
         },                {
+            "fqsen": "\\App\\FlopAndGo\\HandChecker\u003A\u003AextractRanksAndSuits\u0028\u0029",
+            "name": "extractRanksAndSuits",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-HandChecker.html#method_extractRanksAndSuits"
+        },                {
             "fqsen": "\\App\\FlopAndGo\\HandChecker\u003A\u003AcheckForStraight\u0028\u0029",
             "name": "checkForStraight",
             "summary": "",
             "url": "classes/App-FlopAndGo-HandChecker.html#method_checkForStraight"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\HandChecker\u003A\u003AcheckForStraightFlush\u0028\u0029",
+            "name": "checkForStraightFlush",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-HandChecker.html#method_checkForStraightFlush"
         },                {
             "fqsen": "\\App\\FlopAndGo\\HandChecker\u003A\u003AcheckForFlush\u0028\u0029",
             "name": "checkForFlush",
@@ -596,10 +771,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-FlopAndGo-HandChecker.html#method_checkForQuads"
         },                {
-            "fqsen": "\\App\\FlopAndGo\\HandChecker\u003A\u003AcheckForFull\u0028\u0029",
-            "name": "checkForFull",
+            "fqsen": "\\App\\FlopAndGo\\HandChecker\u003A\u003AcheckForFullHouse\u0028\u0029",
+            "name": "checkForFullHouse",
             "summary": "",
-            "url": "classes/App-FlopAndGo-HandChecker.html#method_checkForFull"
+            "url": "classes/App-FlopAndGo-HandChecker.html#method_checkForFullHouse"
         },                {
             "fqsen": "\\App\\FlopAndGo\\HandChecker\u003A\u003AcheckForTrips\u0028\u0029",
             "name": "checkForTrips",
@@ -626,15 +801,20 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-FlopAndGo-HandChecker.html#method_getStrengthArray"
         },                {
-            "fqsen": "\\App\\FlopAndGo\\HandChecker\u003A\u003A\u0024strengthArray",
-            "name": "strengthArray",
+            "fqsen": "\\App\\FlopAndGo\\HandChecker\u003A\u003A\u0024handRanks",
+            "name": "handRanks",
             "summary": "",
-            "url": "classes/App-FlopAndGo-HandChecker.html#property_strengthArray"
+            "url": "classes/App-FlopAndGo-HandChecker.html#property_handRanks"
         },                {
             "fqsen": "\\App\\FlopAndGo\\HandChecker\u003A\u003A\u0024rankMapping",
             "name": "rankMapping",
             "summary": "",
             "url": "classes/App-FlopAndGo-HandChecker.html#property_rankMapping"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\HandChecker\u003A\u003A\u0024strengthArray",
+            "name": "strengthArray",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-HandChecker.html#property_strengthArray"
         },                {
             "fqsen": "\\App\\FlopAndGo\\HandChecker\u003A\u003A\u0024strengthMapping",
             "name": "strengthMapping",
@@ -691,11 +871,6 @@ Search.appendIndex(
             "summary": "A\u0020trait\u0020managing\u0020card\u0020and\u0020chip\u0020distribution.",
             "url": "classes/App-FlopAndGo-Managers-GameStatusManager.html"
         },                {
-            "fqsen": "\\App\\FlopAndGo\\Managers\\GameStatusManager\u003A\u003AisShowdown\u0028\u0029",
-            "name": "isShowdown",
-            "summary": "",
-            "url": "classes/App-FlopAndGo-Managers-GameStatusManager.html#method_isShowdown"
-        },                {
             "fqsen": "\\App\\FlopAndGo\\Managers\\GameStatusManager\u003A\u003AisAllHandsPlayed\u0028\u0029",
             "name": "isAllHandsPlayed",
             "summary": "",
@@ -740,6 +915,81 @@ Search.appendIndex(
             "name": "heroBetSize",
             "summary": "",
             "url": "classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroBetSize"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\Manager",
+            "name": "Manager",
+            "summary": "Manages\u0020the\u0020game.",
+            "url": "classes/App-FlopAndGo-Managers-Manager.html"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\Manager\u003A\u003AaddGame\u0028\u0029",
+            "name": "addGame",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-Manager.html#method_addGame"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\Manager\u003A\u003AaddGameProperties\u0028\u0029",
+            "name": "addGameProperties",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-Manager.html#method_addGameProperties"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\Manager\u003A\u003AallHandsHavePlayed\u0028\u0029",
+            "name": "allHandsHavePlayed",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-Manager.html#method_allHandsHavePlayed"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\Manager\u003A\u003AsetUpStreet\u0028\u0029",
+            "name": "setUpStreet",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-Manager.html#method_setUpStreet"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\Manager\u003A\u003AupdateShowdownProp\u0028\u0029",
+            "name": "updateShowdownProp",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-Manager.html#method_updateShowdownProp"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\Manager\u003A\u003AnewHandCheck\u0028\u0029",
+            "name": "newHandCheck",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-Manager.html#method_newHandCheck"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\Manager\u003A\u003AisShowdown\u0028\u0029",
+            "name": "isShowdown",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-Manager.html#method_isShowdown"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\Manager\u003A\u003AgameOverCheck\u0028\u0029",
+            "name": "gameOverCheck",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-Manager.html#method_gameOverCheck"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\Manager\u003A\u003AsetNewHandTrue\u0028\u0029",
+            "name": "setNewHandTrue",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-Manager.html#method_setNewHandTrue"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\Manager\u003A\u003A\u0024newHand",
+            "name": "newHand",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-Manager.html#property_newHand"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\Manager\u003A\u003A\u0024showdown",
+            "name": "showdown",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-Manager.html#property_showdown"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\Manager\u003A\u003A\u0024gameOver",
+            "name": "gameOver",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-Manager.html#property_gameOver"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\Manager\u003A\u003A\u0024game",
+            "name": "game",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-Manager.html#property_game"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\Manager\u003A\u003A\u0024gameProperties",
+            "name": "gameProperties",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-Manager.html#property_gameProperties"
         },                {
             "fqsen": "\\App\\FlopAndGo\\Managers\\ShowdownManager",
             "name": "ShowdownManager",
@@ -791,20 +1041,60 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-FlopAndGo-Managers-StreetManager.html#method_allInCheck"
         },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\StreetManager\u003A\u003AdealRestWhenAllIn\u0028\u0029",
+            "name": "dealRestWhenAllIn",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-StreetManager.html#method_dealRestWhenAllIn"
+        },                {
             "fqsen": "\\App\\FlopAndGo\\Managers\\VillainActionManager",
             "name": "VillainActionManager",
             "summary": "A\u0020trait\u0020managing\u0020villain\u0020opportunities.",
             "url": "classes/App-FlopAndGo-Managers-VillainActionManager.html"
         },                {
-            "fqsen": "\\App\\FlopAndGo\\Managers\\VillainActionManager\u003A\u003AvillainAction\u0028\u0029",
-            "name": "villainAction",
+            "fqsen": "\\App\\FlopAndGo\\Managers\\VillainActionManager\u003A\u003AvillainPlay\u0028\u0029",
+            "name": "villainPlay",
             "summary": "",
-            "url": "classes/App-FlopAndGo-Managers-VillainActionManager.html#method_villainAction"
+            "url": "classes/App-FlopAndGo-Managers-VillainActionManager.html#method_villainPlay"
         },                {
-            "fqsen": "\\App\\FlopAndGo\\Managers\\VillainActionManager\u003A\u003AvillainResponseToBet\u0028\u0029",
+            "fqsen": "\\App\\FlopAndGo\\Managers\\VillainActionManager\u003A\u003AvillainPlayIP\u0028\u0029",
+            "name": "villainPlayIP",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-VillainActionManager.html#method_villainPlayIP"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\VillainActionManager\u003A\u003AvillainPlayOOP\u0028\u0029",
+            "name": "villainPlayOOP",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-VillainActionManager.html#method_villainPlayOOP"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\VillainActionManager\u003A\u003AvillainBet\u0028\u0029",
+            "name": "villainBet",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-VillainActionManager.html#method_villainBet"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\VillainFacingActionManager",
+            "name": "VillainFacingActionManager",
+            "summary": "A\u0020trait\u0020managing\u0020villain\u0020opportunities.",
+            "url": "classes/App-FlopAndGo-Managers-VillainFacingActionManager.html"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\VillainFacingActionManager\u003A\u003AvillainResponseToBet\u0028\u0029",
             "name": "villainResponseToBet",
             "summary": "",
-            "url": "classes/App-FlopAndGo-Managers-VillainActionManager.html#method_villainResponseToBet"
+            "url": "classes/App-FlopAndGo-Managers-VillainFacingActionManager.html#method_villainResponseToBet"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\VillainFacingActionManager\u003A\u003AvillainFoldVBet\u0028\u0029",
+            "name": "villainFoldVBet",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-VillainFacingActionManager.html#method_villainFoldVBet"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\VillainFacingActionManager\u003A\u003AvillainCallBet\u0028\u0029",
+            "name": "villainCallBet",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-VillainFacingActionManager.html#method_villainCallBet"
+        },                {
+            "fqsen": "\\App\\FlopAndGo\\Managers\\VillainFacingActionManager\u003A\u003AvillainRaisedVBet\u0028\u0029",
+            "name": "villainRaisedVBet",
+            "summary": "",
+            "url": "classes/App-FlopAndGo-Managers-VillainFacingActionManager.html#method_villainRaisedVBet"
         },                {
             "fqsen": "\\App\\FlopAndGo\\Player",
             "name": "Player",
@@ -1081,11 +1371,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-FlopAndGo-StrategyTrait.html#method_actionFacingBet"
         },                {
-            "fqsen": "\\App\\FlopAndGo\\StrategyTrait\u003A\u003ApostFlopBetOpportunity\u0028\u0029",
-            "name": "postFlopBetOpportunity",
-            "summary": "",
-            "url": "classes/App-FlopAndGo-StrategyTrait.html#method_postFlopBetOpportunity"
-        },                {
             "fqsen": "\\App\\FlopAndGo\\StrategyTrait\u003A\u003AbetOpportunity\u0028\u0029",
             "name": "betOpportunity",
             "summary": "",
@@ -1231,6 +1516,36 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Kernel.html"
         },                {
+            "fqsen": "\\App\\Repository\\BookRepository",
+            "name": "BookRepository",
+            "summary": "",
+            "url": "classes/App-Repository-BookRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\BookRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-BookRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\BookRepository\u003A\u003AfindAllBooks\u0028\u0029",
+            "name": "findAllBooks",
+            "summary": "",
+            "url": "classes/App-Repository-BookRepository.html#method_findAllBooks"
+        },                {
+            "fqsen": "\\App\\Repository\\BookRepository\u003A\u003AprocessBookFromRequest\u0028\u0029",
+            "name": "processBookFromRequest",
+            "summary": "Processes\u0020a\u0020book\u0020from\u0020the\u0020request\u0020and\u0020updates\u0020or\u0020creates\u0020a\u0020Book\u0020object.",
+            "url": "classes/App-Repository-BookRepository.html#method_processBookFromRequest"
+        },                {
+            "fqsen": "\\App\\Repository\\BookRepository\u003A\u003AfindByISBN\u0028\u0029",
+            "name": "findByISBN",
+            "summary": "Find\u0020a\u0020book\u0020by\u0020its\u0020ISBN.",
+            "url": "classes/App-Repository-BookRepository.html#method_findByISBN"
+        },                {
+            "fqsen": "\\App\\Repository\\BookRepository\u003A\u003AfindAllIds\u0028\u0029",
+            "name": "findAllIds",
+            "summary": "Find\u0020all\u0020book\u0020IDs.",
+            "url": "classes/App-Repository-BookRepository.html#method_findAllIds"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -1251,6 +1566,11 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/app-dice.html"
         },                {
+            "fqsen": "\\App\\Entity",
+            "name": "Entity",
+            "summary": "",
+            "url": "namespaces/app-entity.html"
+        },                {
             "fqsen": "\\App\\FlopAndGo",
             "name": "FlopAndGo",
             "summary": "",
@@ -1265,5 +1585,10 @@ Search.appendIndex(
             "name": "App",
             "summary": "",
             "url": "namespaces/app.html"
+        },                {
+            "fqsen": "\\App\\Repository",
+            "name": "Repository",
+            "summary": "",
+            "url": "namespaces/app-repository.html"
         }            ]
 );

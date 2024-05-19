@@ -73,7 +73,15 @@
                 
             </li>
                     <li>
+                <a href="namespaces/app-entity.html" class="">Entity</a>
+                
+            </li>
+                    <li>
                 <a href="namespaces/app-flopandgo.html" class="">FlopAndGo</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/app-repository.html" class="">Repository</a>
                 
             </li>
             </ul>
@@ -120,9 +128,6 @@
         </div>
     
     
-            <span class="phpdocumentor-element__extends">
-            Uses
-                            <a href="classes/App-FlopAndGo-Managers-BetSizeManager.html"><abbr title="\App\FlopAndGo\Managers\BetSizeManager">BetSizeManager</abbr></a>,                             <a href="classes/App-FlopAndGo-Managers-GameStatusManager.html"><abbr title="\App\FlopAndGo\Managers\GameStatusManager">GameStatusManager</abbr></a>,                             <a href="classes/App-FlopAndGo-Managers-HeroActionManager.html"><abbr title="\App\FlopAndGo\Managers\HeroActionManager">HeroActionManager</abbr></a>,                             <a href="classes/App-FlopAndGo-Managers-ShowdownManager.html"><abbr title="\App\FlopAndGo\Managers\ShowdownManager">ShowdownManager</abbr></a>,                             <a href="classes/App-FlopAndGo-Managers-StreetManager.html"><abbr title="\App\FlopAndGo\Managers\StreetManager">StreetManager</abbr></a>,                             <a href="classes/App-FlopAndGo-Managers-VillainActionManager.html"><abbr title="\App\FlopAndGo\Managers\VillainActionManager">VillainActionManager</abbr></a>                    </span>
     </h2>
 
 <div class="phpdocumentor-label-line">
@@ -133,7 +138,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">18</span>
+    <span class="phpdocumentor-element-found-in__line">13</span>
 
     </aside>
 
@@ -182,27 +187,15 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/App-FlopAndGo-Game.html#property_gameOver">$gameOver</a>
-    <span>
-                        &nbsp;: bool            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/App-FlopAndGo-Game.html#property_handChecker">$handChecker</a>
     <span>
                         &nbsp;: object            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/App-FlopAndGo-Game.html#property_newHand">$newHand</a>
+    <a href="classes/App-FlopAndGo-Game.html#property_manager">$manager</a>
     <span>
-                        &nbsp;: bool            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/App-FlopAndGo-Game.html#property_showdown">$showdown</a>
-    <span>
-                        &nbsp;: bool            </span>
+                        &nbsp;: object            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
@@ -250,6 +243,12 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-FlopAndGo-Game.html#method_addManager">addManager()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-FlopAndGo-Game.html#method_addTable">addTable()</a>
     <span>
                                 &nbsp;: void    </span>
@@ -262,27 +261,9 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_allInCheck">allInCheck()</a>
+    <a href="classes/App-FlopAndGo-Game.html#method_getAllProperties">getAllProperties()</a>
     <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-ShowdownManager.html#method_assignHandStrengths">assignHandStrengths()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_cardsDealt">cardsDealt()</a>
-    <span>
-                                &nbsp;: int    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_dealCorrectStreet">dealCorrectStreet()</a>
-    <span>
-                                &nbsp;: void    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
@@ -292,109 +273,7 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-BetSizeManager.html#method_getMaxBet">getMaxBet()</a>
-    <span>
-                                &nbsp;: int    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_handSetUp">handSetUp()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroAction">heroAction()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroBet">heroBet()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroBetSize">heroBetSize()</a>
-    <span>
-                                &nbsp;: int    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroCalled">heroCalled()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroChecked">heroChecked()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroFolded">heroFolded()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_incrementStreet">incrementStreet()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-GameStatusManager.html#method_isAllHandsPlayed">isAllHandsPlayed()</a>
-    <span>
-                                &nbsp;: bool    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Game.html#method_isNewHand">isNewHand()</a>
-    <span>
-                                &nbsp;: bool    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-GameStatusManager.html#method_isShowdown">isShowdown()</a>
-    <span>
-                                &nbsp;: bool    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-GameStatusManager.html#method_isSomeoneBroke">isSomeoneBroke()</a>
-    <span>
-                                &nbsp;: bool    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-FlopAndGo-Game.html#method_play">play()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-ShowdownManager.html#method_showdown">showdown()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_streetCheck">streetCheck()</a>
-    <span>
-                                &nbsp;: int    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-VillainActionManager.html#method_villainAction">villainAction()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-FlopAndGo-Managers-VillainActionManager.html#method_villainResponseToBet">villainResponseToBet()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
@@ -430,7 +309,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">27</span>
+    <span class="phpdocumentor-element-found-in__line">15</span>
 
     </aside>
 
@@ -463,7 +342,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">20</span>
 
     </aside>
 
@@ -496,7 +375,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">29</span>
+    <span class="phpdocumentor-element-found-in__line">17</span>
 
     </aside>
 
@@ -506,39 +385,6 @@
         <span class="phpdocumentor-signature__type">object</span>
     <span class="phpdocumentor-signature__name">$dealer</span>
     </code>
-
-    
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="property_gameOver">
-        $gameOver
-        <a href="classes/App-FlopAndGo-Game.html#property_gameOver" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">35</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">bool</span>
-    <span class="phpdocumentor-signature__name">$gameOver</span>
-     = <span class="phpdocumentor-signature__default-value">false</span></code>
 
     
     
@@ -562,7 +408,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">31</span>
+    <span class="phpdocumentor-element-found-in__line">19</span>
 
     </aside>
 
@@ -585,9 +431,9 @@
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_newHand">
-        $newHand
-        <a href="classes/App-FlopAndGo-Game.html#property_newHand" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_manager">
+        $manager
+        <a href="classes/App-FlopAndGo-Game.html#property_manager" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
@@ -595,49 +441,16 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">33</span>
+    <span class="phpdocumentor-element-found-in__line">21</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">bool</span>
-    <span class="phpdocumentor-signature__name">$newHand</span>
-     = <span class="phpdocumentor-signature__default-value">true</span></code>
-
-    
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="property_showdown">
-        $showdown
-        <a href="classes/App-FlopAndGo-Game.html#property_showdown" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">34</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">bool</span>
-    <span class="phpdocumentor-signature__name">$showdown</span>
-     = <span class="phpdocumentor-signature__default-value">false</span></code>
+        <span class="phpdocumentor-signature__type">object</span>
+    <span class="phpdocumentor-signature__name">$manager</span>
+    </code>
 
     
     
@@ -661,7 +474,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">18</span>
 
     </aside>
 
@@ -694,7 +507,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">16</span>
 
     </aside>
 
@@ -732,7 +545,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">62</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
@@ -773,7 +586,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">47</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
@@ -814,7 +627,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">43</span>
 
     </aside>
 
@@ -855,7 +668,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
@@ -888,6 +701,47 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_addManager">
+        addManager()
+        <a href="classes/App-FlopAndGo-Game.html#method_addManager" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">53</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addManager</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-FlopAndGo-Managers-Manager.html"><abbr title="\App\FlopAndGo\Managers\Manager">Manager</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$manager</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$manager</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-FlopAndGo-Managers-Manager.html"><abbr title="\App\FlopAndGo\Managers\Manager">Manager</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_addTable">
         addTable()
         <a href="classes/App-FlopAndGo-Game.html#method_addTable" class="headerlink"><i class="fas fa-link"></i></a>
@@ -896,7 +750,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">52</span>
+    <span class="phpdocumentor-element-found-in__line">38</span>
 
     </aside>
 
@@ -937,7 +791,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">42</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
@@ -970,94 +824,22 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_allInCheck">
-        allInCheck()
-        <a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_allInCheck" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_getAllProperties">
+        getAllProperties()
+        <a href="classes/App-FlopAndGo-Game.html#method_getAllProperties" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/StreetManager.php"><a href="files/src-flopandgo-managers-streetmanager.html"><abbr title="src/FlopAndGo/Managers/StreetManager.php">StreetManager.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">75</span>
+    <span class="phpdocumentor-element-found-in__line">142</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">allInCheck</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$player</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$player</span>
-                : <span class="phpdocumentor-signature__argument__return-type">object</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_assignHandStrengths">
-        assignHandStrengths()
-        <a href="classes/App-FlopAndGo-Managers-ShowdownManager.html#method_assignHandStrengths" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/ShowdownManager.php"><a href="files/src-flopandgo-managers-showdownmanager.html"><abbr title="src/FlopAndGo/Managers/ShowdownManager.php">ShowdownManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">27</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">assignHandStrengths</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_cardsDealt">
-        cardsDealt()
-        <a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_cardsDealt" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/StreetManager.php"><a href="files/src-flopandgo-managers-streetmanager.html"><abbr title="src/FlopAndGo/Managers/StreetManager.php">StreetManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">44</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">cardsDealt</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+                    <span class="phpdocumentor-signature__name">getAllProperties</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1067,40 +849,9 @@
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             </section>
 
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_dealCorrectStreet">
-        dealCorrectStreet()
-        <a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_dealCorrectStreet" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/StreetManager.php"><a href="files/src-flopandgo-managers-streetmanager.html"><abbr title="src/FlopAndGo/Managers/StreetManager.php">StreetManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">50</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">dealCorrectStreet</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-    
 </article>
                     <article
         class="phpdocumentor-element
@@ -1116,7 +867,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">67</span>
+    <span class="phpdocumentor-element-found-in__line">57</span>
 
     </aside>
 
@@ -1143,487 +894,6 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getMaxBet">
-        getMaxBet()
-        <a href="classes/App-FlopAndGo-Managers-BetSizeManager.html#method_getMaxBet" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/BetSizeManager.php"><a href="files/src-flopandgo-managers-betsizemanager.html"><abbr title="src/FlopAndGo/Managers/BetSizeManager.php">BetSizeManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">7</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getMaxBet</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$player1</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$player2</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$player1</span>
-                : <span class="phpdocumentor-signature__argument__return-type">object</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$player2</span>
-                : <span class="phpdocumentor-signature__argument__return-type">object</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_handSetUp">
-        handSetUp()
-        <a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_handSetUp" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/StreetManager.php"><a href="files/src-flopandgo-managers-streetmanager.html"><abbr title="src/FlopAndGo/Managers/StreetManager.php">StreetManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">10</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">handSetUp</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_heroAction">
-        heroAction()
-        <a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroAction" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/HeroActionManager.php"><a href="files/src-flopandgo-managers-heroactionmanager.html"><abbr title="src/FlopAndGo/Managers/HeroActionManager.php">HeroActionManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">10</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">heroAction</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$action</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$action</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_heroBet">
-        heroBet()
-        <a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroBet" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/HeroActionManager.php"><a href="files/src-flopandgo-managers-heroactionmanager.html"><abbr title="src/FlopAndGo/Managers/HeroActionManager.php">HeroActionManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">57</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">heroBet</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$amount</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$amount</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_heroBetSize">
-        heroBetSize()
-        <a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroBetSize" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/HeroActionManager.php"><a href="files/src-flopandgo-managers-heroactionmanager.html"><abbr title="src/FlopAndGo/Managers/HeroActionManager.php">HeroActionManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">74</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">heroBetSize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$amount</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$maxBet</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$amount</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$maxBet</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_heroCalled">
-        heroCalled()
-        <a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroCalled" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/HeroActionManager.php"><a href="files/src-flopandgo-managers-heroactionmanager.html"><abbr title="src/FlopAndGo/Managers/HeroActionManager.php">HeroActionManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">42</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">heroCalled</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_heroChecked">
-        heroChecked()
-        <a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroChecked" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/HeroActionManager.php"><a href="files/src-flopandgo-managers-heroactionmanager.html"><abbr title="src/FlopAndGo/Managers/HeroActionManager.php">HeroActionManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">66</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">heroChecked</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_heroFolded">
-        heroFolded()
-        <a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroFolded" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/HeroActionManager.php"><a href="files/src-flopandgo-managers-heroactionmanager.html"><abbr title="src/FlopAndGo/Managers/HeroActionManager.php">HeroActionManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">30</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">heroFolded</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_incrementStreet">
-        incrementStreet()
-        <a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_incrementStreet" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/StreetManager.php"><a href="files/src-flopandgo-managers-streetmanager.html"><abbr title="src/FlopAndGo/Managers/StreetManager.php">StreetManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">38</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">incrementStreet</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_isAllHandsPlayed">
-        isAllHandsPlayed()
-        <a href="classes/App-FlopAndGo-Managers-GameStatusManager.html#method_isAllHandsPlayed" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/GameStatusManager.php"><a href="files/src-flopandgo-managers-gamestatusmanager.html"><abbr title="src/FlopAndGo/Managers/GameStatusManager.php">GameStatusManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">15</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">isAllHandsPlayed</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">bool</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_isNewHand">
-        isNewHand()
-        <a href="classes/App-FlopAndGo-Game.html#method_isNewHand" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">154</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">isNewHand</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">bool</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_isShowdown">
-        isShowdown()
-        <a href="classes/App-FlopAndGo-Managers-GameStatusManager.html#method_isShowdown" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/GameStatusManager.php"><a href="files/src-flopandgo-managers-gamestatusmanager.html"><abbr title="src/FlopAndGo/Managers/GameStatusManager.php">GameStatusManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">10</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">isShowdown</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">bool</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_isSomeoneBroke">
-        isSomeoneBroke()
-        <a href="classes/App-FlopAndGo-Managers-GameStatusManager.html#method_isSomeoneBroke" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/GameStatusManager.php"><a href="files/src-flopandgo-managers-gamestatusmanager.html"><abbr title="src/FlopAndGo/Managers/GameStatusManager.php">GameStatusManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">20</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">isSomeoneBroke</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">bool</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_play">
         play()
         <a href="classes/App-FlopAndGo-Game.html#method_play" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1632,7 +902,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Game.php"><a href="files/src-flopandgo-game.html"><abbr title="src/FlopAndGo/Game.php">Game.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">98</span>
+    <span class="phpdocumentor-element-found-in__line">88</span>
 
     </aside>
 
@@ -1649,144 +919,6 @@
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$action</span>
                 : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_showdown">
-        showdown()
-        <a href="classes/App-FlopAndGo-Managers-ShowdownManager.html#method_showdown" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/ShowdownManager.php"><a href="files/src-flopandgo-managers-showdownmanager.html"><abbr title="src/FlopAndGo/Managers/ShowdownManager.php">ShowdownManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">12</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">showdown</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_streetCheck">
-        streetCheck()
-        <a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_streetCheck" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/StreetManager.php"><a href="files/src-flopandgo-managers-streetmanager.html"><abbr title="src/FlopAndGo/Managers/StreetManager.php">StreetManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">33</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">streetCheck</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_villainAction">
-        villainAction()
-        <a href="classes/App-FlopAndGo-Managers-VillainActionManager.html#method_villainAction" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/VillainActionManager.php"><a href="files/src-flopandgo-managers-villainactionmanager.html"><abbr title="src/FlopAndGo/Managers/VillainActionManager.php">VillainActionManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">10</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">villainAction</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_villainResponseToBet">
-        villainResponseToBet()
-        <a href="classes/App-FlopAndGo-Managers-VillainActionManager.html#method_villainResponseToBet" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/FlopAndGo/Managers/VillainActionManager.php"><a href="files/src-flopandgo-managers-villainactionmanager.html"><abbr title="src/FlopAndGo/Managers/VillainActionManager.php">VillainActionManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">37</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">villainResponseToBet</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$amount</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$amount</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
@@ -1913,10 +1045,8 @@
                                                     <li><a href="classes/App-FlopAndGo-Game.html#property_hero">$hero<a href="classes/App-FlopAndGo-Game.html"></li>
                                                     <li><a href="classes/App-FlopAndGo-Game.html#property_challenge">$challenge<a href="classes/App-FlopAndGo-Game.html"></li>
                                                     <li><a href="classes/App-FlopAndGo-Game.html#property_dealer">$dealer<a href="classes/App-FlopAndGo-Game.html"></li>
-                                                    <li><a href="classes/App-FlopAndGo-Game.html#property_gameOver">$gameOver<a href="classes/App-FlopAndGo-Game.html"></li>
                                                     <li><a href="classes/App-FlopAndGo-Game.html#property_handChecker">$handChecker<a href="classes/App-FlopAndGo-Game.html"></li>
-                                                    <li><a href="classes/App-FlopAndGo-Game.html#property_newHand">$newHand<a href="classes/App-FlopAndGo-Game.html"></li>
-                                                    <li><a href="classes/App-FlopAndGo-Game.html#property_showdown">$showdown<a href="classes/App-FlopAndGo-Game.html"></li>
+                                                    <li><a href="classes/App-FlopAndGo-Game.html#property_manager">$manager<a href="classes/App-FlopAndGo-Game.html"></li>
                                                     <li><a href="classes/App-FlopAndGo-Game.html#property_table">$table<a href="classes/App-FlopAndGo-Game.html"></li>
                                                     <li><a href="classes/App-FlopAndGo-Game.html#property_villain">$villain<a href="classes/App-FlopAndGo-Game.html"></li>
                                             </ul>
@@ -1929,31 +1059,12 @@
                                             <li><a href="classes/App-FlopAndGo-Game.html#method_addDealer">addDealer()</a></li>
                                             <li><a href="classes/App-FlopAndGo-Game.html#method_addHandChecker">addHandChecker()</a></li>
                                             <li><a href="classes/App-FlopAndGo-Game.html#method_addHero">addHero()</a></li>
+                                            <li><a href="classes/App-FlopAndGo-Game.html#method_addManager">addManager()</a></li>
                                             <li><a href="classes/App-FlopAndGo-Game.html#method_addTable">addTable()</a></li>
                                             <li><a href="classes/App-FlopAndGo-Game.html#method_addVillain">addVillain()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_allInCheck">allInCheck()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-ShowdownManager.html#method_assignHandStrengths">assignHandStrengths()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_cardsDealt">cardsDealt()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_dealCorrectStreet">dealCorrectStreet()</a></li>
+                                            <li><a href="classes/App-FlopAndGo-Game.html#method_getAllProperties">getAllProperties()</a></li>
                                             <li><a href="classes/App-FlopAndGo-Game.html#method_getGameState">getGameState()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-BetSizeManager.html#method_getMaxBet">getMaxBet()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_handSetUp">handSetUp()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroAction">heroAction()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroBet">heroBet()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroBetSize">heroBetSize()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroCalled">heroCalled()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroChecked">heroChecked()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-HeroActionManager.html#method_heroFolded">heroFolded()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_incrementStreet">incrementStreet()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-GameStatusManager.html#method_isAllHandsPlayed">isAllHandsPlayed()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Game.html#method_isNewHand">isNewHand()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-GameStatusManager.html#method_isShowdown">isShowdown()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-GameStatusManager.html#method_isSomeoneBroke">isSomeoneBroke()</a></li>
                                             <li><a href="classes/App-FlopAndGo-Game.html#method_play">play()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-ShowdownManager.html#method_showdown">showdown()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-StreetManager.html#method_streetCheck">streetCheck()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-VillainActionManager.html#method_villainAction">villainAction()</a></li>
-                                            <li><a href="classes/App-FlopAndGo-Managers-VillainActionManager.html#method_villainResponseToBet">villainResponseToBet()</a></li>
                                     </ul>
             </li>
                     </ul>

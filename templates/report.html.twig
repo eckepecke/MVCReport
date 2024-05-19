@@ -75,9 +75,14 @@
 <p>Min TIL är att det finns flera anledningar till varför man vill jobba med ORM. Att inte knyta sig till en databasleverantör är den mest uppenbara fördelen. Att kunna fortsätta koda objekorienterat kan göra koden lättare att underhålla och man slipper skriva SQL-kod om man tycker det är jobbigt.</p> </p>
         </section>
 
-        <section>
+        <section class="doc">
             <h2 id="kmom06">Kmom06</h2>
-            <p></p>
+<p>Det jag gillade mest med PhpMetrics var att det var så enkelt att peka ut stora problem i koden. Dels fick jag en översikt på hur komplexa mina klasser är överlag. När det finns klasser som som ligger högt över snittet kan man enkelt identifiera det och försöka åtgärda det. Jag tycker också det var fint att det fanns många olika typer av komplexitet att analysera. Gjorde jag ett bra jobb som minskade komplexiteten på klassen och komplexiteten för systemet ökade?</p>
+
+<p>Scrutinizer var mitt favorit verktyg. Jag förstod från issues att ett jätteproblem i min applikation var hur jag använde mig av traits i spelklassen. Hade jag valt ett mindre spel som 21 hade jag sannolikt kunnat strukturera om hela spelet i en rimlig tidsram. I och med att jag tog mig vatten överhuvudet och valdet ett avancerat pokerspel nöjde jag mig med att förstå att det upplägget med traits var fel beslut. Jag bad om feedback på detta i kmom03 men fick inget svar då. Nu fick jag svart på vitt att det var fel. Trots det fick jag bättre betyg från scrutinizer än jag förväntade mig. Första bygget gav 9.87 och sista 9.95. Jag var uppe på 9.97 ett tag. Sedan ändrade jag lite i strukturen och föll tillbaka. Personligen tyckte jag koden blev mer testbar och lättläst för en människa och behöll således ändringen.</p>
+
+<p>Jag upprepar mig igen här från Metricsrapporten. Jag vill se på kodkvalitet som jag ser på spelteori. Vi kan ta schack som exempel. Öppningen av spelet är extremt viktigt, ifall du lyckas öppna matchen med få misstag, har du kanske råd med en blunder senare i spelet. Om du istället öppnar med många misstag så kan du spela perfekt(utan misstag, i schack och poker är det bästa beslutet ”det minsta misstaget”.) andra halvan och fortfarande förlora, även om din motspelare inte är särskilt duktig. Därför tycker jag det är helt fantastiskt att alla dessa verktyg finns. Jag, en total nybörjare kan skriva kod, få feedback, rätta till min kod och sedan med säkerhet säga att min kod är inte dålig, därför är den bra! Nu är min kod inte speciellt imponerande i och med att enorma misstag begicks innan tillgången till verktygen, men upp till bevis i projektet.</p>  <p>Det finns mjukvara för poker som på ett liknande sätt pekar ut dina misstag och hur stora dom är. Dessa program kostar 10-tusentals kronor för de bra versionerna. Alternativt 200 dollar i månaden. Jag vill verkligen understryka att jag nästan faller av stolen när jag ser att det finns program som lär mig skriva bra kod, aktivt ger mig personlig feedback på det jag gör, och jag betalar inte en krona! Det jag tar med mig från detta kursmoment är en verktygslåda för att bygga bättre applikationer och skriva robust kod.</p>
+
         </section>
 
         <section>
