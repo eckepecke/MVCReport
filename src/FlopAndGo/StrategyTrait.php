@@ -15,8 +15,6 @@ trait StrategyTrait
         ];
 
         $decision = $options[rand(0, 1)];
-        $this->lastAction = $decision;
-
         return $decision;
     }
 

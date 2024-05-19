@@ -156,7 +156,7 @@ class PlayerTest extends TestCase
         $opponent = new Player();
         $dealer->addDeck($deck);
         $dealer->getPlayerList([$this->player, $opponent]);
-        $dealer->dealHoleCards($deck);
+        $dealer->dealHoleCards();
 
         $res = $this->player->getImgPaths();
         $exp = [

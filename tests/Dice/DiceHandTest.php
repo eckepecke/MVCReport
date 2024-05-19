@@ -30,4 +30,50 @@ class DiceHandTest extends TestCase
         $res = $dicehand->sum();
         $this->assertEquals(12, $res);
     }
+
+    /**
+     * Make sure Hand has the right aoumnt of die.
+     */
+    public function testGetNumberDices()
+    {
+        $hand = new DiceHand();
+        $initial = $hand->getNumberDices();
+        $exp = 0;
+
+        $this->assertEquals($exp, $initial);
+        $hand->add(new Dice());
+
+        $addedOne = $hand->getNumberDices();
+        $exp = 1;
+
+        $this->assertEquals($exp, $addedOne);
+
+        $hand->add(new Dice());
+        $hand->add(new Dice());
+        $hand->add(new Dice());
+
+        $addedFour = $hand->getNumberDices();
+        $exp = 4;
+
+        $this->assertEquals($exp, $addedFour);
+    }
+
+    public function testGetString()
+    {
+
+        $die1 = $this->createMock(Dice::class);
+        $die1->method('getAsString')->willReturn('1');
+
+        $die2 = $this->createMock(Dice::class);
+        $die2->method('getAsString')->willReturn('2');
+
+        $hand = new DiceHand();
+        $hand->add($die1);
+        $hand->add($die2);
+
+        $result = $hand->getString();
+        $exp =['1', '2'];
+
+        $this->assertEquals($exp, $result);
+    }
 }
