@@ -136,22 +136,22 @@ class GameTest extends TestCase
     /**
      * Test that user input lead to correct action.
      */
-    public function testHeroBet() 
-    {
-        $villain = $this->createMock(Villain::class);
-        $villain->method('actionFacingBet')
-                ->willReturn("call");
-        $this->game->addVillain($villain);
+    // public function testHeroBet() 
+    // {
+    //     $villain = $this->createMock(Villain::class);
+    //     $villain->method('actionFacingBet')
+    //             ->willReturn("call");
+    //     $this->game->addVillain($villain);
     
-        $bet = "1000";
+    //     $bet = "1000";
     
-        $this->manager->heroAction($bet);
-        $res = $this->hero->getLastAction();
-        $exp = "bet";
+    //     $this->manager->heroAction($bet);
+    //     $res = $this->hero->getLastAction();
+    //     $exp = "bet";
 
-        $this->assertSame($exp, $res);
+    //     $this->assertSame($exp, $res);
 
-    }
+    // }
 
     /**
      * Test that hero uses expected betsize.

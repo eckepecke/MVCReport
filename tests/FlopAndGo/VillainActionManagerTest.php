@@ -59,8 +59,6 @@ class VillainActionManager extends TestCase
      */
     public function testVillainWaitsHisTurnIP(): void
     {
-        $heroAction = null;
-
         $this->villain->setPosition("SB");
         $lastAction = $this->villain->getLastAction();
         $exp = '';
@@ -70,7 +68,7 @@ class VillainActionManager extends TestCase
         $heroAction = "check";
 
         $this->manager->villainPlay($heroAction);
-        $lastAction = $this->villain->getLastAction("check");
+        $lastAction = $this->villain->getLastAction();
         $expectedActions = [
             "check",
             "bet",
