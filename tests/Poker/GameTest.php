@@ -23,7 +23,7 @@ class GameTest extends TestCase
         $player2 = new Player();
         $player3 = new Player();
 
-        $dealer = new Dealer();
+        $dealer = new CardManager();
         $deck = new DeckOfCards();
         $dealer->addDeck($deck);
 

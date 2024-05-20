@@ -11,16 +11,16 @@ use App\Cards\DeckOfCards;
 /**
  * Test cases for class HoleCardManager.
  */
-class HoleCardManagerTest extends TestCase
+class CardManagerTest extends TestCase
 {
-    private HoleCardManager $manager;
+    private CardManager $manager;
     
     /**
      * Set up.
      */
     protected function setUp(): void
     {
-        $this->manager = new HoleCardManager();
+        $this->manager = new CardManager();
 
 
         $deck = new DeckOfCards();
@@ -32,9 +32,9 @@ class HoleCardManagerTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties, use no arguments.
      */
-    public function testCreateHoleCardManager()
+    public function testCreateCardManager()
     {
-        $this->assertInstanceOf("\App\Poker\HoleCardManager", $this->manager);
+        $this->assertInstanceOf("\App\Poker\CardManager", $this->manager);
     }
 
 
