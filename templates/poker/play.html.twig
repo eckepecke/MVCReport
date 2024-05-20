@@ -1,15 +1,55 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Poker Challenge{% endblock %}
 
 
 {% block body %}
 
+    {# <h2>P1 {{ player1Hand }}</h2>
+    <h2>P2 {{ player2Hand }}</h2>
+    <h2>P3 {{ player3Hand }}</h2> #}
 
-    <h1>{{ villain }} VS {{ hero }}</h1>
-    <h2>{{hands_played}} hands out of {{ duration }} has been played</h2>
-    <h2>{{pot_size}} dollars is in the pot</h2>
+                <div class="board-box">
+                    {% for img in board %}
+                        <img class="community-card" src="{{ asset('build/images/' ~ img) }}" alt="card">
+                    {% endfor %}
+                </div>
 
 
+                <div class="player-box">
+{# 
+                    <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me"> #}
+
+                    <div class="card-box">
+                    {% for img in player1Hand %}
+                        <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    
+                    {% endfor %}
+                    </div>
+                    {# <h4 class="blind">{{teddy_pos}}</h4> #}
+                </div>
+
+                <div class="player-box">
+{# 
+                    <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me"> #}
+
+                    <div class="card-box">
+                    {% for img in player2Hand %}
+                        <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    
+                    {% endfor %}
+                    </div>
+                    {# <h4 class="blind">{{teddy_pos}}</h4> #}
+                </div>
+                <div class="player-box">
+{# 
+                    <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me"> #}
+
+                    <div class="card-box">
+                    {% for img in player3Hand %}
+                        <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    
+                    {% endfor %}
+                    </div>
+                    {# <h4 class="blind">{{teddy_pos}}</h4> #}
+                </div>
 
 {% endblock %}

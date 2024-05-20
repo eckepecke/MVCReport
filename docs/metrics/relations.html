@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2024-05-19 15:07:16        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2024-05-20 15:55:21        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -399,9 +399,49 @@
         "relations": []
     },
     {
-        "name": "\\App\\Cards\\Card",
+        "name": "\\App\\Poker\\CommunityCardManager",
         "size": 3000,
         "relations": []
+    },
+    {
+        "name": "\\App\\Poker\\Dealer",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Poker\\Game",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Poker\\Manager",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Poker\\Player",
+        "size": 3000,
+        "relations": [
+            "\\App\\Cards\\CardHand"
+        ]
+    },
+    {
+        "name": "\\App\\Poker\\PotManager",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Poker\\PositionManager",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Poker\\HoleCardManager",
+        "size": 3000,
+        "relations": [
+            "\\App\\Poker\\Dealer",
+            "\\App\\Cards\\CardHand"
+        ]
     },
     {
         "name": "\\App\\Cards\\CardHand",
@@ -409,6 +449,16 @@
         "relations": [
             "\\App\\Cards\\CardGraphic"
         ]
+    },
+    {
+        "name": "\\App\\Poker\\StreetStateManager",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Cards\\Card",
+        "size": 3000,
+        "relations": []
     },
     {
         "name": "\\App\\Dice\\DiceHand",
@@ -513,6 +563,19 @@
         "size": 3000,
         "relations": [
             "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\JsonResponse"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\PokerController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\App\\Poker\\Game",
+            "\\Exception",
             "\\Symfony\\Component\\HttpFoundation\\JsonResponse"
         ]
     },

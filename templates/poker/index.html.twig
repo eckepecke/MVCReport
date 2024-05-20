@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Poker Challenge{% endblock %}
+
+
+{% block body %}
+    <div class="doc">
+
+    <h1>Project</h1>
+
+
+
+    <div class="input-container">
+    <form method="post" action="">
+        <input class="num-input" type="number" name="num_hands" min="2" max="100" value="2" step="2">
+        <input class="init-button" type="submit" name="do_it" value="Start playing">
+    </form>
+    </div>
+
+
+    <h2><a href="{{ path('game_doc') }}">Click here for documentation</a></h2>
+
+    </div>
+
+
+{% endblock %}
