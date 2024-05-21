@@ -14,7 +14,6 @@ class GameTest extends TestCase
 
     private Game $game;
 
-
     protected function setUp(): void
     {
         $this->game = new Game();

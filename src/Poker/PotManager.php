@@ -13,14 +13,24 @@ class PotManager
         $this->pot = 0;
     }
 
-public function addChipsToPot(int $chips): void
+public function addChipsToPot(array $state): void
     {
-        $this->potSize += $chips;
+        $players = $state["players"];
+
+        foreach ($players as $player) {
+            $chips = $player->getCurrentBet();
+            $this->pot += $chips;
+        }
     }
 
 
     public function getPotSize(): int
     {
-        return $this->potSize;
+        return $this->pot;
+    }
+
+    public function emptyPot(): void
+    {
+        $this->pot = 0;
     }
 }

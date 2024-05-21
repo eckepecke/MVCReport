@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2024-05-20 15:55:21        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2024-05-20 19:20:05        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -414,9 +414,24 @@
         "relations": []
     },
     {
+        "name": "\\App\\Poker\\CardManager",
+        "size": 3000,
+        "relations": [
+            "\\App\\Poker\\Dealer",
+            "\\App\\Cards\\CardHand"
+        ]
+    },
+    {
         "name": "\\App\\Poker\\Manager",
         "size": 3000,
-        "relations": []
+        "relations": [
+            "\\App\\Poker\\CommunityCardManager",
+            "\\App\\Poker\\PotManager",
+            "\\App\\Poker\\PositionManager",
+            "\\App\\Poker\\CardManager",
+            "\\App\\Poker\\BetManager",
+            "\\App\\Poker\\StreetManager"
+        ]
     },
     {
         "name": "\\App\\Poker\\Player",
@@ -436,12 +451,14 @@
         "relations": []
     },
     {
-        "name": "\\App\\Poker\\HoleCardManager",
+        "name": "\\App\\Poker\\BetManager",
         "size": 3000,
-        "relations": [
-            "\\App\\Poker\\Dealer",
-            "\\App\\Cards\\CardHand"
-        ]
+        "relations": []
+    },
+    {
+        "name": "\\App\\Poker\\StreetManager",
+        "size": 3000,
+        "relations": []
     },
     {
         "name": "\\App\\Cards\\CardHand",
@@ -449,11 +466,6 @@
         "relations": [
             "\\App\\Cards\\CardGraphic"
         ]
-    },
-    {
-        "name": "\\App\\Poker\\StreetStateManager",
-        "size": 3000,
-        "relations": []
     },
     {
         "name": "\\App\\Cards\\Card",

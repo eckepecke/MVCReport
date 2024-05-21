@@ -18,7 +18,7 @@ class PositionManager
      */
     public function assignPositions(array $players): void
     {   
-        $position = 1;
+        $position = 0;
         foreach ($players as $player) {
             $player->setPosition($position);
             $position++;
@@ -37,5 +37,24 @@ class PositionManager
         foreach ($players as $player) {
             $player->nextPosition();
         }
+    }
+
+
+    /**
+     * Arrange player array based on lowest position value
+     * 
+     * @param array $players The array of Player objects.
+     * 
+     * @return array
+     */
+    public function sortPlayersByPosition(array $players): array
+    {
+        $tempArray = [0,1,2];
+        foreach ($players as $player) {
+            $value = $player->getPosition();
+            $tempArray[$value] = $player;
+        }
+
+        return $tempArray;
     }
 }

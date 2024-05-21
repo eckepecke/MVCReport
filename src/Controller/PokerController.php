@@ -81,7 +81,7 @@ class PokerController extends AbstractController
 
         $game = $session->get("game");
         // $game->play($action);
-        $game->play();
+        $game->play("check");
 
 
         $data = $game->getTemplateData();

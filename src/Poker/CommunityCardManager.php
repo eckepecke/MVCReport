@@ -23,7 +23,7 @@ class CommunityCardManager
         return $this->board;
     }
 
-    public function cleanTable(): void
+    public function resetBoard(): void
     {
         $this->board = [];
     }

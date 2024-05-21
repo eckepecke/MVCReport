@@ -33,12 +33,14 @@ class BetManager
      * 
      * @return int The minimum amount required to raise.
      */
-    public function getMinimumRaiseAllowed(): int
+    public function getMinimumRaiseAllowed(array $state): int
     {
-        $amountOne = $this->bbPlayer->getCurrentBet();
-        $amountTwo = $this->sbPlayer->getCurrentBet();
+        $players = $state["players"];
+        $amountOne = $players[0]->getCurrentBet();
+        $amountTwo = $players[1]->getCurrentBet();
+        $amountThree = $players[2]->getCurrentBet();
 
-        $biggestAmount = max($amountOne, $amountTwo);
+        $biggestAmount = max($amountOne, $amountTwo, $amountThree);
         // If no bets have been placed, min bet = 50
         $biggestAmount = max($biggestAmount, 25);
         return 2 * $biggestAmount;

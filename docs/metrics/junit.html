@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2024-05-20 15:55:21        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2024-05-20 19:20:05        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -74,10 +74,10 @@
         <div class="bloc bloc-number">
             <div class="label">
                 classes never called by tests
-                <small>(82.61 %)</small>
+                <small>(83.33 %)</small>
             </div>
             <div class="number">
-                38            </div>
+                40            </div>
         </div>
     </div>
 </div>
@@ -340,8 +340,30 @@
                                         2                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.02);">
-                                        0.02                                        </span>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.01);">
+                                        0.01                                        </span>
+                                    </td>
+                                                            </tr>
+                                                        <tr>
+                                <td><span class="path">App\Poker\Manager</span></td>
+                                                                    <td>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.09);">
+                                        3                                        </span>
+                                    </td>
+                                                                    <td>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.07);">
+                                        0.07                                        </span>
+                                    </td>
+                                                            </tr>
+                                                        <tr>
+                                <td><span class="path">App\Poker\StreetManager</span></td>
+                                                                    <td>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.04);">
+                                        2                                        </span>
+                                    </td>
+                                                                    <td>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.03);">
+                                        0.03                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
@@ -356,14 +378,14 @@
                                     </td>
                                                             </tr>
                                                         <tr>
-                                <td><span class="path">App\Poker\StreetStateManager</span></td>
+                                <td><span class="path">App\Poker\BetManager</span></td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.04);">
-                                        2                                        </span>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0);">
+                                        1                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.02);">
-                                        0.02                                        </span>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.07);">
+                                        0.07                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
@@ -555,6 +577,23 @@
                         </thead>
                         <tbody id="contentAreaJunitCalled" class="clusterize-content">
                                                     <tr>
+                                <td valign="top"><span class="path">App\Poker\CardManagerTest</span></td>
+                                <td style="padding-bottom: 1em;">
+                                                                                                                    <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">PHPUnit\Framework\TestCase</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            8                                        </span>
+                                        <span class="path">App\Poker\CardManager</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            8                                        </span>
+                                        <span class="path">App\Cards\DeckOfCards</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            2                                        </span>
+                                        <span class="path">App\Poker\Player</span>
+                                                                    </td>
+                            </tr>
+                                                    <tr>
                                 <td valign="top"><span class="path">App\Poker\DealerTest</span></td>
                                 <td style="padding-bottom: 1em;">
                                                                                                                     <span class="badge" title="Cyclomatic complexity of class">
@@ -575,34 +614,17 @@
                                             -                                        </span>
                                         <span class="path">PHPUnit\Framework\TestCase</span>
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
-                                            2                                        </span>
+                                            3                                        </span>
                                         <span class="path">App\Poker\Game</span>
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
                                             2                                        </span>
                                         <span class="path">App\Poker\Player</span>
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
-                                            1                                        </span>
-                                        <span class="path">App\Poker\Dealer</span>
+                                            8                                        </span>
+                                        <span class="path">App\Poker\CardManager</span>
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
                                             8                                        </span>
                                         <span class="path">App\Cards\DeckOfCards</span>
-                                                                    </td>
-                            </tr>
-                                                    <tr>
-                                <td valign="top"><span class="path">App\Poker\HoleCardManagerTest</span></td>
-                                <td style="padding-bottom: 1em;">
-                                                                                                                    <span class="badge" title="Cyclomatic complexity of class">
-                                            -                                        </span>
-                                        <span class="path">PHPUnit\Framework\TestCase</span>
-                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
-                                            2                                        </span>
-                                        <span class="path">App\Poker\HoleCardManager</span>
-                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
-                                            8                                        </span>
-                                        <span class="path">App\Cards\DeckOfCards</span>
-                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
-                                            2                                        </span>
-                                        <span class="path">App\Poker\Player</span>
                                                                     </td>
                             </tr>
                                                     <tr>
@@ -880,7 +902,7 @@
 
 
             
-            var json = {"name":"Execution time","children":[{"name":"App\\Poker\\DealerTest","time":0.005581},{"name":"App\\Poker\\GameTest","time":0.001788},{"name":"App\\Poker\\HoleCardManagerTest","time":0.001586},{"name":"App\\Poker\\PlayerTest","time":0.000359},{"name":"App\\Poker\\PositionManagerTest","time":0.00237}]};
+            var json = {"name":"Execution time","children":[{"name":"App\\Poker\\CardManagerTest","time":0.006956},{"name":"App\\Poker\\DealerTest","time":0.000418},{"name":"App\\Poker\\GameTest","time":0.001303},{"name":"App\\Poker\\PlayerTest","time":0.000359},{"name":"App\\Poker\\PositionManagerTest","time":0.002492}]};
             root = json;
             var nodes = treemap.nodes(json)
                 .filter(function (d) {

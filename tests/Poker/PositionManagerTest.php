@@ -61,4 +61,33 @@ class PositionManagerTest extends TestCase
         $this->assertNotEquals($newP2Pos, $initP2Pos);
         $this->assertNotEquals($newP3Pos, $initP3Pos);
     }
+
+    /**
+     * Sort array on lowest position value.
+     */
+    public function testSortByPosition(): void
+    {
+        $player1 = new Player();
+        $player2 = new Player();
+        $player3 = new Player();
+
+        $playerArray = [$player1, $player2, $player3];
+        $this->manager->assignPositions($playerArray);
+        $this->manager->updatePositions($playerArray);
+        $this->manager->sortPlayersByPosition($playerArray);
+
+        $lowest = $playerArray[0]->getPosition();
+        $middle = $playerArray[1]->getPosition();
+        $highest = $playerArray[2]->getPosition();
+
+        $this->assertEquals(1, $lowest);
+        $this->assertEquals(2, $middle);
+        $this->assertEquals(3, $highest);
+
+
+        $this->assertLessThan($middle, $lowest, 'The first player should have the lowest position.');
+        $this->assertLessThan($highest, $middle, 'The second player should have a lower position than the third player.');
+        $this->assertGreaterThan($lowest, $middle, 'The second player should have a higher position than the first player.');
+        $this->assertGreaterThan($middle, $highest, 'The third player should have the highest position.');
+    }
 }

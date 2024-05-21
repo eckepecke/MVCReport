@@ -18,8 +18,18 @@ class CardManager extends Dealer
         }
     }
 
+
+
+    public function resetPlayerHands(array $players): void
+    {
+        foreach ($players as $player) {
+            $player->resetHand();
+        }
+    }
+
     public function dealCommunityCards(string $street, int $cardsDealt): array
     {
+        var_dump($street);
 
         switch ($street) {
             case "flop":
@@ -29,15 +39,15 @@ class CardManager extends Dealer
                 }
                 break;
             case "turn":
-                if ($this->cardsDealt() < 4) {
-                    $turn = $this->gameProperties['dealer']->dealOne();
-                    $this->gameProperties['table']->registerOne($turn);
+                if ($cardsDealt < 4) {
+                    $turn = $this->dealOne();
+                    return $turn;
                 }
                 break;
             case "river":
-                if ($this->cardsDealt() < 5) {
-                    $river = $this->gameProperties['dealer']->dealOne();
-                    $this->gameProperties['table']->registerOne($river);
+                if ($cardsDealt < 5) {
+                    $river->dealOne();
+                    return $river;
                 }
                 break;
         }

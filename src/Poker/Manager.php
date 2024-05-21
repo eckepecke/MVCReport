@@ -12,14 +12,23 @@ namespace App\Poker;
  */
 class Manager
 {
+    private object $game;
     private object $CCManager;
     private object $potManager;
     private object $positionManager;
     private object $cardManager;
     private object $betManager;
     private object $streetManager;
+    private object $heroActionManager;
+    private object $opponentActionManager;
+    private object $stateManager;
 
 
+
+    public function addGame(Game $game): void
+    {
+        $this->game = $game;
+    }
 
     public function addCCM(CommunityCardManager $manager): void
     {
@@ -51,6 +60,21 @@ class Manager
         $this->streetManager = $manager;
     }
 
+    public function addHeroActionManager(HeroActionManager $manager): void
+    {
+        $this->heroActionManager = $manager;
+    }
+
+    public function addOpponentActionManager(OpponentActionManager $manager): void
+    {
+        $this->opponentActionManager = $manager;
+    }
+
+    public function addStateManager(StateManager $manager): void
+    {
+        $this->stateManager = $manager;
+    }
+
     public function access(string $manager): object
     {
         return $this->$manager;
@@ -77,5 +101,60 @@ class Manager
             $cards = $this->cardManager->dealCommunityCards($street, $cardsDealt);
             $this->CCManager->register($cards);
         }
+    }
+
+    public function playersMove(mixed $action, array $players): void
+    {
+        $this->positionManager->sortPlayersByPosition($players);
+        foreach ($players as $player) {
+            if ($player->isHero()) {
+                $this->heroActionManager->heroMove($action, $player);
+            } else {
+                $priceToPlay = $this->betManager->getPriceToPlay($this->game->getGameState());
+                $this->opponentActionManager->move($priceToPlay, $player);
+            }
+        }
+    }
+
+    public function putChipsInPot(): void
+    {
+        $state = $this->game->getGameState();
+        $priceToPlay = $this->betManager->getPriceToPlay($state);
+        $activePlayers = $this->stateManager->getActivePlayers($state);
+
+        // Adding chips to pot when there is no uncalled bet
+        // or if there is only one active player (rest folded).
+        if ($priceToPlay === 0 || $activePlayers < 2) {
+            $this->potManager->addChipsToPot($state);
+        }
+    }
+
+    public function handIsOver(): bool
+    {
+        $state = $this->game->getGameState();
+        $activePlayers = $this->stateManager->getActivePlayers($state);
+
+        if ($activePlayers < 2) {
+            return true;
+        }
+        return false;
+    }
+
+    public function givePotToWinner(): void
+    {
+        $state = $this->game->getGameState();
+        $winner = $this->stateManager->getWinner($state);
+        $pot = $this->potManager->getPotSize();
+        $winner->takePot($pot);
+    }
+
+    public function resetTable(): void
+    {
+        $this->potManager->emptyPot();
+        // $players = $this->game->getPlayers();
+        // $this->cardManager->resetPlayerHands($players);
+        $this->CCManager->resetBoard();
+
+
     }
 }
