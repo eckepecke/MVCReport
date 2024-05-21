@@ -15,6 +15,8 @@ use App\Poker\StreetManager;
 use App\Poker\HeroActionManager;
 use App\Poker\OpponentActionManager;
 use App\Poker\StateManager;
+// use App\Poker\ShowdownManager;
+
 
 
 
@@ -154,6 +156,8 @@ class Game
         $heroActionManager = new HeroActionManager();
         $opponentActionManager = new OpponentActionManager();
         $stateManager = new StateManager();
+        // $showdownManager = new ShowdownManager();
+
 
 
         $PositionManager->assignPositions($pArray);
@@ -170,6 +174,8 @@ class Game
         $manager->addHeroActionManager($heroActionManager);
         $manager->addOpponentActionManager($opponentActionManager);
         $manager->addStateManager($stateManager);
+        // $manager->addShowdownManager($showdownManager);
+
 
         $manager->addGame($this);
 
@@ -184,14 +190,15 @@ class Game
 
     public function play($action): void
     {
-        // $this->updateNewHand($action);
+
+
         $this->manager->dealStartingHands($this->getGameState(), $action);
         $this->newHand = false;
         $this->manager->dealCommunityCards($this->getGameState());
         $this->manager->heroAction($action, $this->hero);
 
-        $this->manager->playersMoveTest($action, $this->getPlayers());
-        $this->manager->putChipsInPot();
+        $this->manager->playersMoveTest($action, $this->getGameState());
+        $this->manager->handleChips();
         $this->manager->updateStreet($action);
         $this->manager->dealCommunityCards($this->getGameState());
 
@@ -199,6 +206,11 @@ class Game
             $this->newHand = true;
             $this->manager->givePotToWinner();
             $this->manager->resetTable();
+        }
+
+        if ($this->manager->isShowdown()) {
+            echo "showdown!";
+            var_dump($sdcrash);
         }
     }
 

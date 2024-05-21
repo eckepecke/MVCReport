@@ -9,30 +9,51 @@ namespace App\Poker;
  */
 class OpponentActionManager
 {
-    public function move(int $price, object $player): void
+    public function move(int $price, object $player, int $potSize, int $bet): void
     {
+        echo "price is";
+        var_dump($price);
+
         if($price > 0) {
             $action = $player->responseToBet();
-            $action = "fold";
+            // $action = "call";
                 switch ($action) {
                     case "fold":
+                    echo "opponent folds";
+
                         $player->fold();
                         $player->deActivate();
                         break;
                     case "call":
-                        $player->call($price);
+                    echo "opponent calls";
+
+                        $player->call($bet);
+                        //this should be bet not price
                         break;
                     default:
-                        $player->raise($price, $player);
+                    echo "opponent raises";
+
+                        $player->raise($bet, $player);
                         break;
                     }
             // villain playvs check
         return;
         }
         $action = $player->actionVsCheck();
+        var_dump($action);
         // for debugging
-        $action = 'check';
-        $player->$action();
+        // $action = 'check';
+        switch ($action) {
+            case "bet":
+                $amount = $player->chooseBetSize($potSize);
+                echo "opponent bets";
+                $player->bet($amount);
+                break;
+            case "check":
+                echo "opponent bets";
+                $player->check();
+                break;
+        }
 
     }
 }

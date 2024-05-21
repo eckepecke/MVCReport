@@ -10,7 +10,7 @@ class HeroActionManager
     /**
      * Handles user input.
      */
-    public function heroMove(mixed $action, object $hero): void
+    public function heroMove(mixed $action, object $hero, int $priceToPlay): void
     {
         if ($action != null && $action != "next") {
             switch ($action) {
@@ -18,7 +18,7 @@ class HeroActionManager
                     $hero->check();
                     break;
                 case "call":
-                    $hero->call();
+                    $hero->call($priceToPlay);
                     break;
                 case "fold":
                     $hero->fold();

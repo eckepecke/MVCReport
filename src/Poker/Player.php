@@ -74,6 +74,11 @@ class Player
         return $this->currentBet;
     }
 
+    public function resetCurrentBet(): void
+    {
+        $this->currentBet = 0;
+    }
+
     public function getStack(): int
     {
 
@@ -132,6 +137,14 @@ class Player
         $this->currentBet = $amount;
     }
 
+    public function callTest(int $amount): void
+    {
+        $amount = min($amount, ($this->stack + $this->currentBet));
+        $this->stack -= $amount - $this->currentBet;
+        $this->lastAction = "call";
+        $this->currentBet = $amount;
+    }
+
     public function fold(): void
     {
         // $this->currentBet = 0;
@@ -169,5 +182,10 @@ class Player
     public function resetHand(): void
     {
         $this->hand = null;
+    }
+
+    public function chooseBetSize($potSize): int
+    {
+        return 0.75 * $potSize;
     }
 }

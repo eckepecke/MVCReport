@@ -22,6 +22,8 @@ class Manager
     private object $heroActionManager;
     private object $opponentActionManager;
     private object $stateManager;
+    // private object $showdownManager;
+
 
 
 
@@ -75,11 +77,15 @@ class Manager
         $this->stateManager = $manager;
     }
 
+    // public function addShowdownManager(ShowdownManager $manager): void
+    // {
+    //     $this->showdownManager = $manager;
+    // }
+
     public function access(string $manager): object
     {
         return $this->$manager;
     }
-
 
     public function dealStartingHands($state)
     {
@@ -102,46 +108,58 @@ class Manager
         }
     }
 
-    public function playersMoveTest(mixed $action, array $players): void
+    public function playersMoveTest(mixed $action, array $state): void
     {
-        echo "test";
-
-        var_dump($action);
+        $players = $state["players"];
         if ($action != null && $action != "next") {
-            echo "hello";
+            
             $this->positionManager->sortPlayersByPosition($players);
             foreach ($players as $player) {
                 if ($player->isHero()) {
                     continue;
                 }
-                $priceToPlay = $this->betManager->getPriceToPlay($this->game->getGameState());
-                $this->opponentActionManager->move($priceToPlay, $player);
+                if ($player->isActive()) {
+                    $priceToPlay = $this->betManager->getPriceToPlay($this->game->getGameState());
+                    $potSize = $this->potManager->getPotSize();
+                    $currentBiggestBet = $this->betManager->getBiggestBet($this->game->getGameState());
+
+    
+                    $this->opponentActionManager->move($priceToPlay, $player, $potSize, $currentBiggestBet);
+                }
+
             }
         }
         
     }
 
-    public function opponentsMove(mixed $action, array $players): void
-    {
-        $this->positionManager->sortPlayersByPosition($players);
+    // public function opponentsMove(mixed $action, array $players): void
+    // {
+    //     $this->positionManager->sortPlayersByPosition($players);
 
-        foreach ($players as $player) {
-            if ($player->isHero()) {
-                continue;
-            }
-            $priceToPlay = $this->betManager->getPriceToPlay($this->game->getGameState());
-            $this->opponentActionManager->move($priceToPlay, $player);
-        }
-    }
+    //     foreach ($players as $player) {
+    //         if ($player->isHero()) {
+    //             continue;
+    //         }
+    //         $priceToPlay = $this->betManager->getPriceToPlay($this->game->getGameState());
+    //         $potSize = $this->potManager->get($this->game->getGameState());
+
+    //         $this->opponentActionManager->move($priceToPlay, $player);
+    //     }
+    // }
 
     public function heroAction(mixed $action, object $player): void
     {
-        $this->heroActionManager->heroMove($action, $player);
+        // $priceToPlay = $this->betManager->getPriceToPlay($this->game->getGameState());
+        $currentBiggestBet = $this->betManager->getBiggestBet($this->game->getGameState());
+
+
+        $this->heroActionManager->heroMove($action, $player, $currentBiggestBet);
     }
 
-    public function putChipsInPot(): void
+    public function handleChips(): void
     {
         $state = $this->game->getGameState();
+        $players = $state["players"];
         $priceToPlay = $this->betManager->getPriceToPlay($state);
         $activePlayers = $this->stateManager->getActivePlayers($state);
 
@@ -149,6 +167,7 @@ class Manager
         // or if there is only one active player (rest folded).
         if ($priceToPlay === 0 || $activePlayers < 2) {
             $this->potManager->addChipsToPot($state);
+            $this->betManager->resetPlayerBets($players);
         }
     }
 
@@ -185,9 +204,13 @@ class Manager
         $activePlayers = $this->stateManager->getActivePlayers($state);
         $priceToPlay = $this->betManager->getPriceToPlay($state);
 
-
         if ($activePlayers > 1 && $action != null && $action != "next" && $priceToPlay === 0) {
             $this->streetManager->setNextStreet();
         }
+    }
+
+    public function isShowdown(): bool
+    {
+        return $this->streetManager->getShowdown();
     }
 }

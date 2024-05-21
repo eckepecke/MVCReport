@@ -15,6 +15,8 @@ class StreetManager
      * @var string
      */
     private string $street = "flop";
+    private bool $showdown = false;
+
 
     /**
      * Array containing all possible streets.
@@ -24,7 +26,8 @@ class StreetManager
     private array $streetArray = [
         "flop",
         "turn",
-        "river"
+        "river",
+        "showdown"
     ];
 
     /**
@@ -38,8 +41,12 @@ class StreetManager
         echo "setting next";
         $currentIndex = array_search($this->street, $this->streetArray);
         $nextIndex = $currentIndex + 1;
+        var_dump($nextIndex);
 
         if ($nextIndex === 3) {
+            echo "setting sd true";
+
+            $this->showdown = true;
             $nextIndex = 0;
         }
         $this->street = $this->streetArray[$nextIndex];
@@ -49,6 +56,23 @@ class StreetManager
     public function getStreet(): string
     {
         return $this->street;
+    }
+
+    public function getShowdown(): bool
+    {
+        echo"hej";
+        var_dump($this->showdown);
+        return $this->showdown;
+    }
+
+    public function setShowdownTrue(): void
+    {
+        $this->showdown = true;
+    }
+
+    public function setShowdownFalse(): void
+    {
+        $this->showdown = false;
     }
 
 

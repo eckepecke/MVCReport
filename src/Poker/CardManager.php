@@ -18,8 +18,6 @@ class CardManager extends Dealer
         }
     }
 
-
-
     public function resetPlayerHands(array $players): void
     {
         foreach ($players as $player) {

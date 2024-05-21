@@ -89,8 +89,8 @@ class PokerController extends AbstractController
     }
 
 
-    #[Route("/api/game", name: "api_game", methods: ["POST", "GET"])]
-    public function apiPoker(
+    #[Route("/api/poker", name: "api_poker", methods: ["POST", "GET"])]
+    public function apiPoject(
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
@@ -98,7 +98,7 @@ class PokerController extends AbstractController
         if (!$session->has("game")) {
             throw new Exception("No game in session!");
         }
-        $data = $game->getGameState();
+        $data = $game->getTemplateData();
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(

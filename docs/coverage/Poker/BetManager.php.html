@@ -51,7 +51,7 @@
        </div>
 </td>
        <td class="danger small"><div align="right">0.00%</div></td>
-       <td class="danger small"><div align="right">0&nbsp;/&nbsp;12</div></td>
+       <td class="danger small"><div align="right">0&nbsp;/&nbsp;14</div></td>
        <td class="danger big">       <div class="progress">
          <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="0.00" aria-valuemin="0" aria-valuemax="100" style="width: 0.00%">
            <span class="sr-only">0.00% covered (danger)</span>
@@ -80,7 +80,7 @@
        </div>
 </td>
        <td class="danger small"><div align="right">0.00%</div></td>
-       <td class="danger small"><div align="right">0&nbsp;/&nbsp;12</div></td>
+       <td class="danger small"><div align="right">0&nbsp;/&nbsp;14</div></td>
        <td class="danger big">       <div class="progress">
          <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="0.00" aria-valuemin="0" aria-valuemax="100" style="width: 0.00%">
            <span class="sr-only">0.00% covered (danger)</span>
@@ -123,7 +123,7 @@
       </tr>
 
       <tr>
-       <td class="danger">&nbsp;<a href="#36"><abbr title="getMinimumRaiseAllowed(): int">getMinimumRaiseAllowed</abbr></a></td>
+       <td class="danger">&nbsp;<a href="#36"><abbr title="getMinimumRaiseAllowed(array $state): int">getMinimumRaiseAllowed</abbr></a></td>
        <td class="danger big">       <div class="progress">
          <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="0.00" aria-valuemin="0" aria-valuemax="100" style="width: 0.00%">
            <span class="sr-only">0.00% covered (danger)</span>
@@ -131,7 +131,7 @@
        </div>
 </td>
        <td class="danger small"><div align="right">0.00%</div></td>
-       <td class="danger small"><div align="right">0&nbsp;/&nbsp;5</div></td>
+       <td class="danger small"><div align="right">0&nbsp;/&nbsp;7</div></td>
        <td class="danger big">       <div class="progress">
          <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="0.00" aria-valuemin="0" aria-valuemax="100" style="width: 0.00%">
            <span class="sr-only">0.00% covered (danger)</span>
@@ -185,17 +185,19 @@
     <tr class=" d-flex"><td  class="col-1 text-right"><a id="33" href="#33">33</a></td><td class="col-11 codeLine"><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></td></tr>
     <tr class=" d-flex"><td  class="col-1 text-right"><a id="34" href="#34">34</a></td><td class="col-11 codeLine"><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;int&nbsp;The&nbsp;minimum&nbsp;amount&nbsp;required&nbsp;to&nbsp;raise.</span></td></tr>
     <tr class=" d-flex"><td  class="col-1 text-right"><a id="35" href="#35">35</a></td><td class="col-11 codeLine"><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></td></tr>
-    <tr class=" d-flex"><td  class="col-1 text-right"><a id="36" href="#36">36</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">getMinimumRaiseAllowed</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">:</span><span class="default">&nbsp;</span><span class="default">int</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-right"><a id="36" href="#36">36</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">getMinimumRaiseAllowed</span><span class="keyword">(</span><span class="keyword">array</span><span class="default">&nbsp;</span><span class="default">$state</span><span class="keyword">)</span><span class="keyword">:</span><span class="default">&nbsp;</span><span class="default">int</span></td></tr>
     <tr class=" d-flex"><td  class="col-1 text-right"><a id="37" href="#37">37</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">{</span></td></tr>
-    <tr class="danger d-flex"><td  class="col-1 text-right"><a id="38" href="#38">38</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$amountOne</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">$this</span><span class="default">-&gt;</span><span class="default">bbPlayer</span><span class="default">-&gt;</span><span class="default">getCurrentBet</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
-    <tr class="danger d-flex"><td  class="col-1 text-right"><a id="39" href="#39">39</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$amountTwo</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">$this</span><span class="default">-&gt;</span><span class="default">sbPlayer</span><span class="default">-&gt;</span><span class="default">getCurrentBet</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
-    <tr class=" d-flex"><td  class="col-1 text-right"><a id="40" href="#40">40</a></td><td class="col-11 codeLine"></td></tr>
-    <tr class="danger d-flex"><td  class="col-1 text-right"><a id="41" href="#41">41</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$biggestAmount</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">max</span><span class="keyword">(</span><span class="default">$amountOne</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">$amountTwo</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
-    <tr class=" d-flex"><td  class="col-1 text-right"><a id="42" href="#42">42</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">//&nbsp;If&nbsp;no&nbsp;bets&nbsp;have&nbsp;been&nbsp;placed,&nbsp;min&nbsp;bet&nbsp;=&nbsp;50</span></td></tr>
-    <tr class="danger d-flex"><td  class="col-1 text-right"><a id="43" href="#43">43</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$biggestAmount</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">max</span><span class="keyword">(</span><span class="default">$biggestAmount</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">25</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
-    <tr class="danger d-flex"><td  class="col-1 text-right"><a id="44" href="#44">44</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">return</span><span class="default">&nbsp;</span><span class="default">2</span><span class="default">&nbsp;</span><span class="keyword">*</span><span class="default">&nbsp;</span><span class="default">$biggestAmount</span><span class="keyword">;</span></td></tr>
-    <tr class=" d-flex"><td  class="col-1 text-right"><a id="45" href="#45">45</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span></td></tr>
-    <tr class=" d-flex"><td  class="col-1 text-right"><a id="46" href="#46">46</a></td><td class="col-11 codeLine"><span class="keyword">}</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-right"><a id="38" href="#38">38</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$players</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">$state</span><span class="keyword">[</span><span class="default">&quot;players&quot;</span><span class="keyword">]</span><span class="keyword">;</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-right"><a id="39" href="#39">39</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$amountOne</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">$players</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">]</span><span class="default">-&gt;</span><span class="default">getCurrentBet</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-right"><a id="40" href="#40">40</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$amountTwo</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">$players</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">]</span><span class="default">-&gt;</span><span class="default">getCurrentBet</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-right"><a id="41" href="#41">41</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$amountThree</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">$players</span><span class="keyword">[</span><span class="default">2</span><span class="keyword">]</span><span class="default">-&gt;</span><span class="default">getCurrentBet</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-right"><a id="42" href="#42">42</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-right"><a id="43" href="#43">43</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$biggestAmount</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">max</span><span class="keyword">(</span><span class="default">$amountOne</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">$amountTwo</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">$amountThree</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-right"><a id="44" href="#44">44</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">//&nbsp;If&nbsp;no&nbsp;bets&nbsp;have&nbsp;been&nbsp;placed,&nbsp;min&nbsp;bet&nbsp;=&nbsp;50</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-right"><a id="45" href="#45">45</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$biggestAmount</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">max</span><span class="keyword">(</span><span class="default">$biggestAmount</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">25</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-right"><a id="46" href="#46">46</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">return</span><span class="default">&nbsp;</span><span class="default">2</span><span class="default">&nbsp;</span><span class="keyword">*</span><span class="default">&nbsp;</span><span class="default">$biggestAmount</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-right"><a id="47" href="#47">47</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-right"><a id="48" href="#48">48</a></td><td class="col-11 codeLine"><span class="keyword">}</span></td></tr>
 
 </tbody>
 </table>
@@ -206,7 +208,7 @@
     <h4>Legend</h4>
     <p><span class="legend covered-by-small-tests">Covered by small (and larger) tests</span><span class="legend covered-by-medium-tests">Covered by medium (and large) tests</span><span class="legend covered-by-large-tests">Covered by large tests (and tests of unknown size)</span><span class="legend not-covered">Not covered</span><span class="legend not-coverable">Not coverable</span></p>
     <p>
-     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 9.2.31</a> using <a href="https://secure.php.net/" target="_top">PHP 8.3.6</a> and <a href="https://phpunit.de/">PHPUnit 9.6.19</a> at Tue May 21 8:27:33 UTC 2024.</small>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 9.2.31</a> using <a href="https://secure.php.net/" target="_top">PHP 8.3.6</a> and <a href="https://phpunit.de/">PHPUnit 9.6.19</a> at Tue May 21 19:29:33 UTC 2024.</small>
     </p>
     <a title="Back to the top" id="toplink" href="#">
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M12 11L6 5l-6 6h12z"/></svg>
