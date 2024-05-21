@@ -80,10 +80,9 @@ class Manager
         return $this->$manager;
     }
 
+
     public function dealStartingHands($state)
     {
-        // if state says so:
-    
         if($state["newHand"] === true) {
             $this->cardManager->shuffleCards();
             $this->cardManager->dealStartHandToAllPlayers($state["players"]);
@@ -103,17 +102,41 @@ class Manager
         }
     }
 
-    public function playersMove(mixed $action, array $players): void
+    public function playersMoveTest(mixed $action, array $players): void
     {
-        $this->positionManager->sortPlayersByPosition($players);
-        foreach ($players as $player) {
-            if ($player->isHero()) {
-                $this->heroActionManager->heroMove($action, $player);
-            } else {
+        echo "test";
+
+        var_dump($action);
+        if ($action != null && $action != "next") {
+            echo "hello";
+            $this->positionManager->sortPlayersByPosition($players);
+            foreach ($players as $player) {
+                if ($player->isHero()) {
+                    continue;
+                }
                 $priceToPlay = $this->betManager->getPriceToPlay($this->game->getGameState());
                 $this->opponentActionManager->move($priceToPlay, $player);
             }
         }
+        
+    }
+
+    public function opponentsMove(mixed $action, array $players): void
+    {
+        $this->positionManager->sortPlayersByPosition($players);
+
+        foreach ($players as $player) {
+            if ($player->isHero()) {
+                continue;
+            }
+            $priceToPlay = $this->betManager->getPriceToPlay($this->game->getGameState());
+            $this->opponentActionManager->move($priceToPlay, $player);
+        }
+    }
+
+    public function heroAction(mixed $action, object $player): void
+    {
+        $this->heroActionManager->heroMove($action, $player);
     }
 
     public function putChipsInPot(): void
@@ -154,7 +177,17 @@ class Manager
         // $players = $this->game->getPlayers();
         // $this->cardManager->resetPlayerHands($players);
         $this->CCManager->resetBoard();
+    }
+
+    public function updateStreet($action): void
+    {
+        $state = $this->game->getGameState();
+        $activePlayers = $this->stateManager->getActivePlayers($state);
+        $priceToPlay = $this->betManager->getPriceToPlay($state);
 
 
+        if ($activePlayers > 1 && $action != null && $action != "next" && $priceToPlay === 0) {
+            $this->streetManager->setNextStreet();
+        }
     }
 }

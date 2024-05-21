@@ -49,6 +49,18 @@ class Player
         return $this->position;
     }
 
+    public function getPositionString(): string
+    {
+        $posArray = [
+            0 => "SB",
+            1 => "BB",
+            2 => "BTN"
+        ];
+
+        return $posArray[$this->position];
+    }
+
+
     public function nextPosition(): void
     {
         $this->position++;
@@ -91,6 +103,11 @@ class Player
     public function isActive(): bool
     {
         return $this->active;
+    }
+
+    public function check(): void
+    {
+        $this->lastAction = "check";
     }
 
     public function bet(int $amount): void

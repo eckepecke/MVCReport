@@ -10,21 +10,21 @@ class HeroActionManager
     /**
      * Handles user input.
      */
-    public function heroMove(mixed $action, object $player): void
+    public function heroMove(mixed $action, object $hero): void
     {
         if ($action != null && $action != "next") {
             switch ($action) {
                 case "check":
-                    $this->heroChecked();
+                    $hero->check();
                     break;
                 case "call":
-                    $this->heroCalled();
+                    $hero->call();
                     break;
                 case "fold":
-                    $this->heroFolded();
+                    $hero->fold();
                     break;
                 default:
-                    $this->heroBet(intval($action), $player);
+                    $hero->bet(intval($action));
                     break;
             }
         }
@@ -56,10 +56,10 @@ class HeroActionManager
         $this->incrementStreet();
     }
 
-    public function heroBet(int $amount, object $player): void
-    {
-        $player->bet($amount);
-    }
+    // public function heroBet(int $amount, object $player): void
+    // {
+    //     $player->bet($amount);
+    // }
 
     public function heroChecked(): void
     {

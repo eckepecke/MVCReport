@@ -35,13 +35,15 @@ class StreetManager
      */
     public function setNextStreet(): void
     {
-        $index = array_search($this->street, $this->streetArray);
+        echo "setting next";
+        $currentIndex = array_search($this->street, $this->streetArray);
+        $nextIndex = $currentIndex + 1;
 
-        if ($this->index === 2) {
-            $this->index = 0;
-            return;
+        if ($nextIndex === 3) {
+            $nextIndex = 0;
         }
-        $this->street = $streetArray[$index];
+        $this->street = $this->streetArray[$nextIndex];
+        var_dump($this->street);
     }
 
     public function getStreet(): string

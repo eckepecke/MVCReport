@@ -24,4 +24,16 @@ class Opponent extends Player
         $decision = $options[rand(0, 5)];
         return $decision;
     }
+
+
+    public function actionVsCheck()
+    {
+        $options = [
+            "check",
+            "bet",
+        ];
+
+        $decision = $options[rand(0, 1)];
+        return $decision;
+    }
 }

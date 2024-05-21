@@ -74,14 +74,14 @@ class PokerController extends AbstractController
         Request $request,
         SessionInterface $session
     ): Response {
-        // $action = $request->request->get('action');
-        // if ($action === null) {
-        //     $action = $request->request->get('bet');
-        // }
+        $action = $request->request->get('action');
+        if ($action === null) {
+            $action = $request->request->get('bet');
+        }
 
         $game = $session->get("game");
-        // $game->play($action);
-        $game->play("check");
+        $game->play($action);
+        // $game->play("100");
 
 
         $data = $game->getTemplateData();

@@ -66,7 +66,7 @@ class Game
     public function getGameState(): array
     {
         return [
-            "newHand" => true,
+            "newHand" => $this->newHand,
             "players" => $this->getPlayers(),
 
         ];
@@ -96,23 +96,31 @@ class Game
         $PM = $this->manager->access("potManager");
         $pot = $PM->getPotSize($state);
 
-
         return [
             "heroHand" => $heroHand->getImgNames(),
             "opponent1Hand" => $opponent1Hand->getImgNames(),
             "opponent2Hand" => $opponent2Hand->getImgNames(),
+
             "heroBet" => $this->hero->getCurrentBet(),
             "opponent1Bet" => $this->opponent1->getCurrentBet(),
             "opponent2Bet" => $this->opponent2->getCurrentBet(),
+
             "heroStack" => $this->hero->getStack(),
             "opponent1Stack" => $this->opponent1->getStack(),
-            "opponent2Stack" => $this->opponent2->getstack(),
+            "opponent2Stack" => $this->opponent2->getStack(),
+
+            "hero_pos" => $this->hero->getPositionString(),
+            "opp_1_pos" => $this->opponent1->getPositionString(),
+            "opp_2_pos" => $this->opponent2->getPositionString(),
+
             "hero_last_action" => $this->hero->getLastAction(),
             "opp_1_last_action" => $this->opponent1->getLastAction(),
             "opp_2_last_action" => $this->opponent2->getLastAction(),
+
             "hero_active" => $this->hero->isActive(),
             "opp_1_active" => $this->opponent1->isActive(),
             "opp_2_active" => $this->opponent2->isActive(),
+
             "board" => $boardImages,
             "price" => $price,
             "min_raise" => $minRaise,
@@ -176,17 +184,28 @@ class Game
 
     public function play($action): void
     {
-        $this->manager->dealStartingHands($this->getGameState());
+        // $this->updateNewHand($action);
+        $this->manager->dealStartingHands($this->getGameState(), $action);
         $this->newHand = false;
         $this->manager->dealCommunityCards($this->getGameState());
-        $this->manager->playersMove($action, $this->getPlayers(), $this->getGameState());
+        $this->manager->heroAction($action, $this->hero);
+
+        $this->manager->playersMoveTest($action, $this->getPlayers());
         $this->manager->putChipsInPot();
-        if($this->manager->handIsOver()) {
+        $this->manager->updateStreet($action);
+        $this->manager->dealCommunityCards($this->getGameState());
+
+        if ($this->manager->handIsOver()) {
             $this->newHand = true;
             $this->manager->givePotToWinner();
             $this->manager->resetTable();
         }
+    }
 
-
+    public function updateNewHand(): void
+    {
+        if($action === null || $action === "next") {
+            $this->newHand = true();
+        }
     }
 }

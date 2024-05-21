@@ -13,7 +13,7 @@ class OpponentActionManager
     {
         if($price > 0) {
             $action = $player->responseToBet();
-            // $action = "fold";
+            $action = "fold";
                 switch ($action) {
                     case "fold":
                         $player->fold();
@@ -27,8 +27,12 @@ class OpponentActionManager
                         break;
                     }
             // villain playvs check
-
+        return;
         }
+        $action = $player->actionVsCheck();
+        // for debugging
+        $action = 'check';
+        $player->$action();
 
     }
 }

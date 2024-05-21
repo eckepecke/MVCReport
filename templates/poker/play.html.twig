@@ -29,8 +29,10 @@
 
                 </div>
                 {# <h4 class="blind">{{teddy_pos}}</h4> #}
+                <h3>{{opponent1Stack}} USD</h3>
+                <h4 class="blind">{{opp_1_pos}}</h4>
             </div>
-            <h3>{{opponent1Stack}} USD</h3>
+
 
 
             <div class="player-box-small">
@@ -51,8 +53,11 @@
 
                 </div>
                 {# <h4 class="blind">{{teddy_pos}}</h4> #}
+                <h3>{{opponent2Stack}} USD</h3>
+                <h4 class="blind">{{opp_2_pos}}</h4>
             </div>
-            <h3>{{opponent2Stack}} USD</h3>
+
+
         </div>
 
         <div class="board-box">
@@ -78,9 +83,12 @@
             {% endfor %}
             </div>
             {# <h4 class="blind">{{teddy_pos}}</h4> #}
+            <h3>{{heroStack}} USD</h3>
+            <h4 class="blind">{{hero_pos}}</h4>
         </div>
 
-        <h3>{{heroStack}} USD</h3>
+
+
 
         <div class="options-box">
         {% if hero_active != 0 and new_hand == false %}
