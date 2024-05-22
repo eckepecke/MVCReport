@@ -139,52 +139,50 @@ class Manager
             // register that to stateManager.
             $this->managers["stateManager"]->everyoneMoved();
         } else {
-            $this->playUntilHeroTurn($state);
+            $this->opponentsInFrontMove($state);
         }
     }
 
-    public function playUntilHeroTurn(array $state)
+    public function opponentsInFrontMove(array $state)
     {    
-        echo "playUntilHeroTurn()";
+        echo "playsINfront()";
+        $hero = $state["hero"];
+        $heroPos = $hero->getPosition();
+
         $players = $state["players"];
-            $players = $this->managers["positionManager"]->sortPlayersByPosition($players);
-            foreach ($players as $player) {
-                if ($player->isHero() && $player->isActive()) {
-                    echo "HeroToAct";
+        $players = $this->managers["positionManager"]->sortPlayersByPosition($players);
+
+        foreach ($players as $player) {
+            $currentPosition = $player->getPosition();
+            // Player will act if still in the hand has position before hero.
+            if ($player->isActive() && $currentPosition < $heroPos) {
+                $priceToPlay = $this->managers["betManager"]->getPriceToPlay($this->game->getGameState());
+                $potSize = $this->managers["potManager"]->getPotSize();
+                $currentBiggestBet = $this->managers["betManager"]->getBiggestBet($this->game->getGameState());
+
+                $this->managers["opponentActionManager"]->move($priceToPlay, $player, $potSize, $currentBiggestBet);
+                // Return early if player closed the betting round.
+                if ($this->managers["betManager"]->playerClosedAction($player, $state)) {
                     return;
-                    }
-
                 }
-                if ($player->isActive()) {
-                    $priceToPlay = $this->managers["betManager"]->getPriceToPlay($this->game->getGameState());
-                    $potSize = $this->managers["potManager"]->getPotSize();
-                    $currentBiggestBet = $this->managers["betManager"]->getBiggestBet($this->game->getGameState());
+            }
 
-                    $this->managers["opponentActionManager"]->move($priceToPlay, $player, $potSize, $currentBiggestBet);
-                    // return early if player closed the betting round.
-                    if ($this->managers["betManager"]->playerClosedAction($player, $state)) {
-                        return;
-                    }
-                }
+            }
     }
 
 
     public function opponentsBehindMove(array $state): void
     {
-        echo "opponentsMove()";
+        echo "playersbehind()";
         $hero = $state["hero"];
         $heroPos = $hero->getPosition();
 
         // $this->positionManager->sortPlayersByPosition($players);
         $players = $state["players"];
         foreach ($players as $player) {
-            if ($player->isHero()) {
-                echo "skip";
-                continue;
-            }
             $currentPosition = $player->getPosition();
+            // Player will act if still in the hand has position after hero.
             if ($player->isActive() && $currentPosition > $heroPos) {
-                "echo IP PLayer makes move";
                 $priceToPlay = $this->managers["betManager"]->getPriceToPlay($this->game->getGameState());
                 $potSize = $this->managers["potManager"]->getPotSize();
                 $currentBiggestBet = $this->managers["betManager"]->getBiggestBet($this->game->getGameState());
