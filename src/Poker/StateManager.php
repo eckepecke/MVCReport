@@ -67,4 +67,13 @@ class StateManager
         }
         return array_values($players);
     }
+    public function heroAlreadyMoved($heroAction): bool 
+    {
+        $heroAlreadyMoved = false;
+        if ($heroAction != "next" && $heroAction != null) {
+            $heroAlreadyMoved = true;
+        }
+
+        return $heroAlreadyMoved;
+    }
 }

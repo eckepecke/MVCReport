@@ -15,6 +15,8 @@ use App\Poker\StreetManager;
 use App\Poker\HeroActionManager;
 use App\Poker\OpponentActionManager;
 use App\Poker\StateManager;
+
+
 // use App\Poker\ShowdownManager;
 
 
@@ -149,32 +151,44 @@ class Game
         $deck = new DeckOfCards();
         $manager = new Manager();
         $CCManager = new CommunityCardManager();
-        $PotManager = new PotManager();
-        $PositionManager = new PositionManager();
+        $potManager = new PotManager();
+        $positionManager = new PositionManager();
         $cardManager = new CardManager();
         $betManager = new BetManager();
         $streetManager = new StreetManager();
         $heroActionManager = new HeroActionManager();
         $opponentActionManager = new OpponentActionManager();
         $stateManager = new StateManager();
+
         // $showdownManager = new ShowdownManager();
 
 
 
-        $PositionManager->assignPositions($pArray);
+        $positionManager->assignPositions($pArray);
 
         // This is extended dealer class
         $cardManager->addDeck($deck);
 
-        $manager->addCCM($CCManager);
-        $manager->addPotManager($PotManager);
-        $manager->addPositionManager($PositionManager);
-        $manager->addCardManager($cardManager);
-        $manager->addBetManager($betManager);
-        $manager->addStreetManager($streetManager);
-        $manager->addHeroActionManager($heroActionManager);
-        $manager->addOpponentActionManager($opponentActionManager);
-        $manager->addStateManager($stateManager);
+        // $manager->addCCM($CCManager);
+        // $manager->addPotManager($PotManager);
+        // $manager->addPositionManager($PositionManager);
+        // $manager->addCardManager($cardManager);
+        // $manager->addBetManager($betManager);
+        // $manager->addStreetManager($streetManager);
+        // $manager->addHeroActionManager($heroActionManager);
+        // $manager->addOpponentActionManager($opponentActionManager);
+        // $manager->addStateManager($stateManager);
+
+        $manager->addManager('CCManager', $CCManager);
+        $manager->addManager('potManager', $potManager);
+        $manager->addManager('positionManager', $positionManager);
+        $manager->addManager('cardManager', $cardManager);
+        $manager->addManager('betManager', $betManager);
+        $manager->addManager('streetManager', $streetManager);
+        $manager->addManager('heroActionManager', $heroActionManager);
+        $manager->addManager('opponentActionManager', $opponentActionManager);
+        $manager->addManager('stateManager', $stateManager);
+
         // $manager->addShowdownManager($showdownManager);
 
 
@@ -208,8 +222,7 @@ class Game
         
 
         $this->manager->playersAct($heroAction, $this->getGameState());
-        ///Working here currently
-        // how to know if everyone moved?
+
         if ($this->manager->everyoneMoved($heroAction)) {
             $this->manager->handleChips();
             $this->manager->updateStreet($heroAction);
