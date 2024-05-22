@@ -1,8 +1,8 @@
 <?php
 
-namespace App\FlopAndGo;
+namespace App\Poker;
 
-class HandChecker
+class HandEvaluator
 {
     private array $handRanks;
     private array $rankMapping;
@@ -225,5 +225,16 @@ class HandChecker
     public function getStrengthArray(): array
     {
         return $this->strengthArray;
+    }
+
+    public function getCurrentStrength(): string
+    {
+        foreach ($this->strengthArray as $key => $value) {
+            if ($value === true) {
+                return $key;
+            }
+        }
+
+        return 'No strength found';
     }
 }

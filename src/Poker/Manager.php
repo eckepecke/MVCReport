@@ -222,7 +222,7 @@ class Manager
 
     }
 
-    public function handIsOver(): bool
+    public function handWonWithoutShowdown(): bool
     {
         $state = $this->game->getGameState();
         $activePlayers = $this->managers["stateManager"]->getActivePlayers($state);
@@ -273,6 +273,16 @@ class Manager
     public function everyoneMoved(): bool
     {
         return $this->managers["stateManager"]->didEveryoneMove();
+    }
+
+    public function showdown(): bool
+    {
+        $this->managers["CardManager"]->updateHandStrengths($players);
+        $this->managers["showdownManager"]->chipsToWinner($players);
+        $this->gameProperties['challenge']->setHandWinner($winner->getName());
+        $this->gameProperties['table']->setStreet(4);
+        $this->showdown = true;
+        $this->gameProperties['challenge']->incrementHandsPlayed();
     }
 
 

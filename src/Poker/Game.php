@@ -15,17 +15,7 @@ use App\Poker\StreetManager;
 use App\Poker\HeroActionManager;
 use App\Poker\OpponentActionManager;
 use App\Poker\StateManager;
-
-
-// use App\Poker\ShowdownManager;
-
-
-
-
-
-
-
-
+use App\Poker\ShowdownManager;
 
 class Game
 {
@@ -159,6 +149,8 @@ class Game
         $heroActionManager = new HeroActionManager();
         $opponentActionManager = new OpponentActionManager();
         $stateManager = new StateManager();
+        $showdownManager = new ShowdownManager();
+
 
         // $showdownManager = new ShowdownManager();
 
@@ -188,6 +180,8 @@ class Game
         $manager->addManager('heroActionManager', $heroActionManager);
         $manager->addManager('opponentActionManager', $opponentActionManager);
         $manager->addManager('stateManager', $stateManager);
+        $manager->addManager('showdownManager', $showdownManager);
+
 
         // $manager->addShowdownManager($showdownManager);
 
@@ -210,16 +204,17 @@ class Game
         //     var_dump($sdcrash);
         // }
 
-        if ($this->manager->handIsOver()) {
+        if ($this->manager->handWonWithoutShowdown()) {
             $this->newHand = true;
             $this->manager->givePotToWinner();
             $this->manager->resetTable();
         }
 
+        $this->manager->updatePlayersCurrentHandStrength();
+
         $this->manager->dealStartingHands($this->getGameState(), $heroAction);
         $this->newHand = false;
         $this->manager->dealCommunityCards($this->getGameState());
-        
 
         $this->manager->playersAct($heroAction, $this->getGameState());
 
@@ -227,8 +222,10 @@ class Game
             $this->manager->handleChips();
             $this->manager->updateStreet($heroAction);
             $this->manager->dealCommunityCards($this->getGameState());
+            $this->manager->updatePlayersCurrentHandStrength();
             if ($this->manager->isShowdown()) {
                 echo "showdown!";
+                $this->manager->showdown();
                 var_dump($sdcrash);
             }
         }
