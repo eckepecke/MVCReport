@@ -11,6 +11,23 @@ use Exception;
  */
 class StateManager
 {
+    private bool $everyoneMoved = false;
+
+    public function everyoneHasNotMoved(): void
+    {
+        $this->everyoneMoved = false;
+    }
+
+    public function everyoneMoved(): void
+    {
+        $this->everyoneMoved = true;
+    }
+
+    public function didEveryoneMove(): bool
+    {
+        return $this->everyoneMoved;
+    }
+
     public function getActivePlayers(array $state): int
     {
         $players = $state["players"];

@@ -81,4 +81,41 @@ class BetManager
             $player->resetLastAction();
         }
     }
+
+    // public function heroClosedAction($state): bool
+    // {
+    //     $heroClosedAction = false;
+
+    //     $hero = $state["hero"];
+    //     $heroLastAction = $hero->getLastAction();
+
+    //     $priceToPlay = $this->getPriceToPlay($state);
+
+    //     if ($heroLastAction === "call" && $priceToPlay === 0) {
+    //         $heroClosedAction = true;
+    //     }
+    //     var_dump($priceToPlay);
+
+    //     var_dump($heroClosedAction);
+
+    //     return $heroClosedAction;
+    // }
+    public function playerClosedAction(object $player, array $state): bool
+    {
+        $playerClosedAction = false;
+
+
+        $playerLastAction = $player->getLastAction();
+
+        $priceToPlay = $this->getPriceToPlay($state);
+
+        if ($playerLastAction === "call" && $priceToPlay === 0) {
+            $heroClosedAction = true;
+        }
+        var_dump($priceToPlay);
+
+        var_dump($playerClosedAction);
+
+        return $playerClosedAction;
+    }
 }

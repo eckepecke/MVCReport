@@ -22,6 +22,7 @@ class Manager
     private object $heroActionManager;
     private object $opponentActionManager;
     private object $stateManager;
+
     // private object $showdownManager;
 
 
@@ -139,48 +140,99 @@ class Manager
         
     }
 
-    public function playUntilHeroTurn(mixed $heroAction, array $state): void
+    public function playersAct(mixed $heroAction, array $state): void
     {
-        // Maybe someting like:
-        // I have to play on player per loop?
-        // and have next move button in template?
+        // either Hero has moved
+        if ($this->heroAlreadyMoved($heroAction)) {
+            $this->heroAction($heroAction, $state["hero"]);
+            // Prevent opponents from acting if hero closed the betting round.
+            if ($this->betManager->playerClosedAction($state["hero"], $state)) {
+                return;
+            }
+            $this->opponentsBehindMove($state);
+            $this->stateManager->everyoneMoved();
+        // Now everyone should have made a play
+        } else {
+            $this->playUntilHeroTurn($state);
+        }
+    //     $players = $state["players"];
+    //         $players = $this->positionManager->sortPlayersByPosition($players);
+    //         foreach ($players as $player) {
+    //             if ($player->isHero() && $player->isActive()) {
+    //                 if ($this->heroAlreadyMoved($heroAction)) {
+    //                     echo "HeroMoved Already";
+    //                     continue;
+    //                 } else {
+    //                     echo "HeroToAct";
+    //                     return;
+    //                 }
+
+    //             }
+    //             if ($player->isActive()) {
+    //                 $priceToPlay = $this->betManager->getPriceToPlay($this->game->getGameState());
+    //                 $potSize = $this->potManager->getPotSize();
+    //                 $currentBiggestBet = $this->betManager->getBiggestBet($this->game->getGameState());
+
+    //                 $this->opponentActionManager->move($priceToPlay, $player, $potSize, $currentBiggestBet);
+    //             }
+    //         }
+    }
+
+    public function playUntilHeroTurn(array $state)
+    {    
+        echo "playUntilHeroTurn()";
         $players = $state["players"];
-        if ($heroAction != null && $heroAction != "next") {
-            
             $players = $this->positionManager->sortPlayersByPosition($players);
             foreach ($players as $player) {
-                if ($player->isHero()) {
+                if ($player->isHero() && $player->isActive()) {
+                    echo "HeroToAct";
                     return;
+                    }
+
                 }
-                if ($player->isActive() && $heroAction != "call") {
+                if ($player->isActive()) {
                     $priceToPlay = $this->betManager->getPriceToPlay($this->game->getGameState());
                     $potSize = $this->potManager->getPotSize();
                     $currentBiggestBet = $this->betManager->getBiggestBet($this->game->getGameState());
 
-    
                     $this->opponentActionManager->move($priceToPlay, $player, $potSize, $currentBiggestBet);
+                    // return early if player closed the betting round.
+                    if ($this->betManager->playerClosedAction($player, $state)) {
+                        return;
+                    }
                 }
-
-            }
-        }
-
     }
 
 
-    // public function opponentsMove(mixed $action, array $players): void
-    // {
-    //     $this->positionManager->sortPlayersByPosition($players);
+    public function opponentsBehindMove(array $state): void
+    {
+        echo "opponentsMove()";
+        $hero = $state["hero"];
+        $heroPos = $hero->getPosition();
 
-    //     foreach ($players as $player) {
-    //         if ($player->isHero()) {
-    //             continue;
-    //         }
-    //         $priceToPlay = $this->betManager->getPriceToPlay($this->game->getGameState());
-    //         $potSize = $this->potManager->get($this->game->getGameState());
+        // $this->positionManager->sortPlayersByPosition($players);
+        $players = $state["players"];
+        foreach ($players as $player) {
+            if ($player->isHero()) {
+                echo "skip";
+                continue;
+            }
+            $currentPosition = $player->getPosition();
+            if ($player->isActive() && $currentPosition > $heroPos) {
+                "echo IP PLayer makes move";
+                $priceToPlay = $this->betManager->getPriceToPlay($this->game->getGameState());
+                $potSize = $this->potManager->getPotSize();
+                $currentBiggestBet = $this->betManager->getBiggestBet($this->game->getGameState());
 
-    //         $this->opponentActionManager->move($priceToPlay, $player);
-    //     }
-    // }
+                $this->opponentActionManager->move($priceToPlay, $player, $potSize, $currentBiggestBet);
+                // return early if player closed the betting round.
+                if ($this->betManager->playerClosedAction($player, $state)) {
+                    return;
+                }
+            }
+        }
+        // Now everyone should have made a play
+    }
 
     public function heroAction(mixed $action, object $player): void
     {
@@ -204,6 +256,7 @@ class Manager
             $this->potManager->addChipsToPot($state);
             $this->betManager->resetPlayerBets($players);
         }
+
     }
 
     public function handIsOver(): bool
@@ -239,9 +292,10 @@ class Manager
         $activePlayers = $this->stateManager->getActivePlayers($state);
         $priceToPlay = $this->betManager->getPriceToPlay($state);
 
-        if ($activePlayers > 1 && $action != null && $action != "next" && $priceToPlay === 0) {
+        if ($activePlayers > 1 && $priceToPlay === 0) {
             $this->streetManager->setNextStreet();
             $this->betManager->resetPlayerActions($state["players"]);
+            $this->everyoneMoved = false;
 
         }
     }
@@ -250,4 +304,21 @@ class Manager
     {
         return $this->streetManager->getShowdown();
     }
+
+    public function heroAlreadyMoved($heroAction): bool 
+    {
+        $heroAlreadyMoved = false;
+        if ($heroAction != "next" && $heroAction != null) {
+            $heroAlreadyMoved = true;
+        }
+
+        return $heroAlreadyMoved;
+    }
+
+    public function everyoneMoved(): bool
+    {
+        return $this->stateManager->didEveryoneMove();
+    }
+
+
 }

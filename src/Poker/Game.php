@@ -69,6 +69,7 @@ class Game
     {
         return [
             "newHand" => $this->newHand,
+            "hero" => $this->hero,
             "players" => $this->getPlayers(),
 
         ];
@@ -188,23 +189,12 @@ class Game
         
     }
 
-    public function play($action): void
+    public function play($heroAction): void
     {
-        $this->manager->dealStartingHands($this->getGameState(), $action);
-        $this->newHand = false;
-        $this->manager->dealCommunityCards($this->getGameState());
-        if ($manager->heroToAct()) {
-            return;
-        } else {
-            $this->manager->opponentsMove()
-        }
-        // om det är heros tur -> quitta till teplate
-        // annars fiende move
-        // hur vet jag att det är heros tur
-        $this->manager->playersMoveTest2($action, $this->getGameState());
-        $this->manager->handleChips();
-        $this->manager->updateStreet($action);
-        $this->manager->dealCommunityCards($this->getGameState());
+        // if ($this->manager->isShowdown()) {
+        //     echo "showdown!";
+        //     var_dump($sdcrash);
+        // }
 
         if ($this->manager->handIsOver()) {
             $this->newHand = true;
@@ -212,17 +202,28 @@ class Game
             $this->manager->resetTable();
         }
 
-        if ($this->manager->isShowdown()) {
-            echo "showdown!";
-            var_dump($sdcrash);
+        $this->manager->dealStartingHands($this->getGameState(), $heroAction);
+        $this->newHand = false;
+        $this->manager->dealCommunityCards($this->getGameState());
+        
+
+        $this->manager->playersAct($heroAction, $this->getGameState());
+        ///Working here currently
+        // how to know if everyone moved?
+        if ($this->manager->everyoneMoved($heroAction)) {
+            $this->manager->handleChips();
+            $this->manager->updateStreet($heroAction);
+            $this->manager->dealCommunityCards($this->getGameState());
+            if ($this->manager->isShowdown()) {
+                echo "showdown!";
+                var_dump($sdcrash);
+            }
         }
     }
 
-    public function updateNewHand(): void
+    public function resetNewHand(): void
     {
-        if($action === null || $action === "next") {
-            $this->newHand = true();
-        }
+        $this->newHand = true;
     }
 
     public function heroInput($action) {
