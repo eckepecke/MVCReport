@@ -35,4 +35,19 @@ class StateManager
 
         throw new Exception("No active player!");
     }
+
+    public function removeInactive(array $state): array
+    {
+        $players = $state["players"];
+
+        $index = 0;
+        foreach($players as $player) {
+            $keep = $player->isActive();
+            if (!$keep) {
+                unset($players[$index]);
+            }
+            $index++;
+        }
+        return array_values($players);
+    }
 }

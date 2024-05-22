@@ -150,7 +150,7 @@ class Player
         // $this->currentBet = 0;
         $this->active = false;
         $this->currentStrength = "";
-        $this->lastAction = "fold";
+        $this->lastAction = "";
     }
 
     public function raise(int $bet): void
@@ -172,6 +172,11 @@ class Player
     public function getLastAction(): string
     {
         return $this->lastAction;
+    }
+
+    public function resetLastAction(): void
+    {
+        $this->lastAction = "";
     }
 
     public function takePot(int $chips): void

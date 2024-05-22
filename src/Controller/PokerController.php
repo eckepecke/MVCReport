@@ -79,7 +79,11 @@ class PokerController extends AbstractController
             $action = $request->request->get('bet');
         }
 
+
+
         $game = $session->get("game");
+
+        
         $game->play($action);
         // $game->play("100");
 

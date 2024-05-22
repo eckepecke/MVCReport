@@ -190,14 +190,18 @@ class Game
 
     public function play($action): void
     {
-
-
         $this->manager->dealStartingHands($this->getGameState(), $action);
         $this->newHand = false;
         $this->manager->dealCommunityCards($this->getGameState());
-        $this->manager->heroAction($action, $this->hero);
-
-        $this->manager->playersMoveTest($action, $this->getGameState());
+        if ($manager->heroToAct()) {
+            return;
+        } else {
+            $this->manager->opponentsMove()
+        }
+        // om det är heros tur -> quitta till teplate
+        // annars fiende move
+        // hur vet jag att det är heros tur
+        $this->manager->playersMoveTest2($action, $this->getGameState());
         $this->manager->handleChips();
         $this->manager->updateStreet($action);
         $this->manager->dealCommunityCards($this->getGameState());
@@ -219,5 +223,9 @@ class Game
         if($action === null || $action === "next") {
             $this->newHand = true();
         }
+    }
+
+    public function heroInput($action) {
+        $this->manager->heroAction($action, $this->hero);
     }
 }

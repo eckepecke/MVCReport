@@ -20,6 +20,7 @@ class BetManager
         $players = $state["players"];
         $activeBetsArray = [];
         foreach ($players as $player) {
+
             if ($player->isActive()) {
                 $activeBetsArray[] = $player->getCurrentBet();
             }
@@ -69,9 +70,15 @@ class BetManager
 
     public function resetPlayerBets(array $players): void
     {
-        echo "ResettingcureentbetS";
         foreach ($players as $player) {
             $player->resetCurrentBet();
+        }
+    }
+
+    public function resetPlayerActions(array $players): void
+    {
+        foreach ($players as $player) {
+            $player->resetLastAction();
         }
     }
 }
