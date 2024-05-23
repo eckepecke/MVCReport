@@ -1,12 +1,16 @@
 <?php
 
 namespace App\Poker;
-use App\Cards\CardHand;
+use App\Poker\CardHand;
 use App\Poker\Dealer;
+use App\Poker\HandEvaluatorTrait;
+
 
 
 class CardManager extends Dealer
 {
+    private object $evaluator;
+
     public function dealStartHandToAllPlayers(array $players): void
     {
         foreach ($players as $player) {
@@ -47,7 +51,30 @@ class CardManager extends Dealer
                 }
                 break;
         }
-        var_dump(count($cards));
         return $cards;
+    }
+
+    public function addEvaluator(HandEvaluator $evaluator): void
+    {
+        $this->evaluator = $evaluator;
+    }
+
+    public function assignStrength(array $players, array $board): void 
+    {
+        foreach ($players as $player) {
+            $hand = $player->getHand();
+            $cardsInHand = $hand->getCardArray();
+            $fullHand = $this->fuseHandAndBoard($cardsInHand, $board);
+            $strengthArray = $this->evaluator->evaluateHand($fullHand);
+            $strength = $this->evaluator->getCurrentStrength($strengthArray);
+            $hand->setStrengthString($strength);
+            $strengthAsInt = $this->evaluator->getStrengthAsInt($strength);
+            $hand->setStrengthInt($strengthAsInt);
+        }
+    }
+
+    public function fuseHandAndBoard(array $holeCards, array $board): array
+    {
+        return array_merge($holeCards, $board);
     }
 }

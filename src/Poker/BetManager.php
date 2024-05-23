@@ -108,13 +108,15 @@ class BetManager
         $playerLastAction = $player->getLastAction();
 
         $priceToPlay = $this->getPriceToPlay($state);
+        echo "RUFFYYY";
+        var_dump($priceToPlay, $playerLastAction);
 
         if ($playerLastAction === "call" && $priceToPlay === 0) {
-            $heroClosedAction = true;
-        }
-        var_dump($priceToPlay);
+            echo "LORENOR";
 
-        var_dump($playerClosedAction);
+            $playerClosedAction = true;
+        }
+
 
         return $playerClosedAction;
     }

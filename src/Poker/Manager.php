@@ -13,24 +13,7 @@ namespace App\Poker;
 class Manager
 {
     private object $game;
-    // private object $CCManager;
-    // private object $potManager;
-    // private object $positionManager;
-    // private object $cardManager;
-    // private object $betManager;
-    // private object $streetManager;
-    // private object $heroActionManager;
-    // private object $opponentActionManager;
-    // private object $stateManager;
-
     private array $managers = [];
-
-
-
-    // private object $showdownManager;
-
-
-
 
     public function addGame(Game $game): void
     {
@@ -41,57 +24,6 @@ class Manager
     {
         $this->managers[$key] = $manager;
     }
-
-    // public function addCCM(CommunityCardManager $manager): void
-    // {
-    //     $this->CCManager = $manager;
-    // }
-
-    // public function addPotManager(PotManager $manager): void
-    // {
-    //     $this->potManager = $manager;
-    // }
-
-    // public function addPositionManager(PositionManager $manager): void
-    // {
-    //     $this->positionManager = $manager;
-    // }
-
-    // public function addCardManager(CardManager $manager): void
-    // {
-    //     $this->cardManager = $manager;
-    // }
-
-    // public function addBetManager(BetManager $manager): void
-    // {
-    //     $this->betManager = $manager;
-    // }
-
-    // public function addStreetManager(StreetManager $manager): void
-    // {
-    //     $this->streetManager = $manager;
-    // }
-
-    // public function addHeroActionManager(HeroActionManager $manager): void
-    // {
-    //     $this->heroActionManager = $manager;
-    // }
-
-    // public function addOpponentActionManager(OpponentActionManager $manager): void
-    // {
-    //     $this->opponentActionManager = $manager;
-    // }
-
-    // public function addStateManager(StateManager $manager): void
-    // {
-    //     $this->stateManager = $manager;
-    // }
-
-
-    // public function addShowdownManager(ShowdownManager $manager): void
-    // {
-    //     $this->showdownManager = $manager;
-    // }
 
     public function access(string $manager): object
     {
@@ -108,11 +40,8 @@ class Manager
 
     public function dealCommunityCards($state)
     {
-        // Will price check be enough in the future?
-        // ?????????????????????????????????????
-        $players = $this->game->getPlayers();
-        // $activePlayers = $this->stateManager->removeInactive($state);
 
+        $players = $this->game->getPlayers();
         $priceToPlay = $this->managers["betManager"]->getPriceToPlay($state);
         if ($priceToPlay === 0) {
             $street = $this->managers["streetManager"]->getStreet();
@@ -129,10 +58,14 @@ class Manager
         // until hero' turn.
         if ($this->managers["stateManager"]->heroAlreadyMoved($heroAction)) {
             $this->heroAction($heroAction, $state["hero"]);
+            echo "NaMIII";
+
             // Prevent opponents from acting if hero closed the betting round.
             if ($this->managers["betManager"]->playerClosedAction($state["hero"], $state)) {
+                echo "SANJIII";
                 return;
             }
+            echo "FOXYYY";
 
             $this->opponentsBehindMove($state);
             // Now everyone should have made a play,
@@ -145,7 +78,6 @@ class Manager
 
     public function opponentsInFrontMove(array $state)
     {    
-        echo "playsINfront()";
         $hero = $state["hero"];
         $heroPos = $hero->getPosition();
 
@@ -167,7 +99,7 @@ class Manager
                 }
             }
 
-            }
+        }
     }
 
 
@@ -201,8 +133,6 @@ class Manager
     {
         // $priceToPlay = $this->betManager->getPriceToPlay($this->game->getGameState());
         $currentBiggestBet = $this->managers["betManager"]->getBiggestBet($this->game->getGameState());
-
-
         $this->managers["heroActionManager"]->heroMove($action, $player, $currentBiggestBet);
     }
 
@@ -275,14 +205,20 @@ class Manager
         return $this->managers["stateManager"]->didEveryoneMove();
     }
 
-    public function showdown(): bool
+    public function showdown(array $players): void
     {
-        $this->managers["CardManager"]->updateHandStrengths($players);
+        $this->managers["cardManager"]->updateHandStrengths($players);
         $this->managers["showdownManager"]->chipsToWinner($players);
         $this->gameProperties['challenge']->setHandWinner($winner->getName());
         $this->gameProperties['table']->setStreet(4);
         $this->showdown = true;
         $this->gameProperties['challenge']->incrementHandsPlayed();
+    }
+
+    public function updatePlayersCurrentHandStrength(array $players): void
+    {
+        $board = $this->managers["CCManager"]->getBoard();
+        $strength = $this->managers["cardManager"]->assignStrength($players, $board);
     }
 
 

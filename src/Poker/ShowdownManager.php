@@ -7,12 +7,16 @@ namespace App\Poker;
  * 
  * Manages betting logic in a poker game.
  */
-class ShowDownManager
+class ShowdownManager extends HandEvaluator
 {
-    public function chipsToWinner(): void
+    public function chipsToWinner(array $players): void
     {
-        $this->assignHandStrengths();
-        $winner = $this->gameProperties['handChecker']->compareStrength($this->gameProperties['hero'], $this->gameProperties['villain']);
+        foreach ($players as $player) {
+            $hand = $player->getHand();
+            $hand->getHandStrength();
+        }
+        $winner = $this->compareStrength($players);
+
         $winner->takePot($this->gameProperties['table']->getPotSize());
 
     }

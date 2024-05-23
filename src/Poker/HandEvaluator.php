@@ -207,7 +207,7 @@ class HandEvaluator
         ];
     }
 
-    public function compareStrength($hero, $villain): object
+    public function compareStrength(array $players): object
     {
         $heroStrength = $hero->getStrength();
         $villainStrength = $villain->getStrength();
@@ -220,6 +220,13 @@ class HandEvaluator
         }
 
         return $heroValue < $villainValue ? $hero : $villain;
+    }
+
+    public function getStrengthAsInt(string $strength): int
+    {
+        $valueAsInt = $this->strengthMapping[$strength] ?? 10;
+
+        return $valueAsInt;
     }
 
     public function getStrengthArray(): array

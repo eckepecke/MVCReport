@@ -4,7 +4,7 @@ namespace App\Poker;
 
 use App\Poker\Player;
 use App\Cards\DeckOfCards;
-use App\Cards\CardHand;
+use App\Poker\CardHand;
 use App\Poker\Manager;
 use App\Poker\CommunityCardManager;
 use App\Poker\PotManager;
@@ -16,6 +16,7 @@ use App\Poker\HeroActionManager;
 use App\Poker\OpponentActionManager;
 use App\Poker\StateManager;
 use App\Poker\ShowdownManager;
+use App\Poker\HandEvaluator;
 
 class Game
 {
@@ -63,7 +64,6 @@ class Game
             "newHand" => $this->newHand,
             "hero" => $this->hero,
             "players" => $this->getPlayers(),
-
         ];
     }
 
@@ -150,26 +150,14 @@ class Game
         $opponentActionManager = new OpponentActionManager();
         $stateManager = new StateManager();
         $showdownManager = new ShowdownManager();
-
-
-        // $showdownManager = new ShowdownManager();
-
+        $handEvaluator = new HandEvaluator();
 
 
         $positionManager->assignPositions($pArray);
 
         // This is extended dealer class
         $cardManager->addDeck($deck);
-
-        // $manager->addCCM($CCManager);
-        // $manager->addPotManager($PotManager);
-        // $manager->addPositionManager($PositionManager);
-        // $manager->addCardManager($cardManager);
-        // $manager->addBetManager($betManager);
-        // $manager->addStreetManager($streetManager);
-        // $manager->addHeroActionManager($heroActionManager);
-        // $manager->addOpponentActionManager($opponentActionManager);
-        // $manager->addStateManager($stateManager);
+        $cardManager->addEvaluator($handEvaluator);
 
         $manager->addManager('CCManager', $CCManager);
         $manager->addManager('potManager', $potManager);
@@ -181,15 +169,7 @@ class Game
         $manager->addManager('opponentActionManager', $opponentActionManager);
         $manager->addManager('stateManager', $stateManager);
         $manager->addManager('showdownManager', $showdownManager);
-
-
-        // $manager->addShowdownManager($showdownManager);
-
-
         $manager->addGame($this);
-
-
-
 
         $this->addPlayers($pArray);
         $this->addDealer($cardManager);
@@ -199,10 +179,6 @@ class Game
 
     public function play($heroAction): void
     {
-        // if ($this->manager->isShowdown()) {
-        //     echo "showdown!";
-        //     var_dump($sdcrash);
-        // }
 
         if ($this->manager->handWonWithoutShowdown()) {
             $this->newHand = true;
@@ -210,11 +186,14 @@ class Game
             $this->manager->resetTable();
         }
 
-        $this->manager->updatePlayersCurrentHandStrength();
 
         $this->manager->dealStartingHands($this->getGameState(), $heroAction);
+        $this->manager->updatePlayersCurrentHandStrength($this->players);
+        
         $this->newHand = false;
         $this->manager->dealCommunityCards($this->getGameState());
+        //$this->manager->updatePlayersCurrentHandStrength($this->players);
+
 
         $this->manager->playersAct($heroAction, $this->getGameState());
 
@@ -222,10 +201,10 @@ class Game
             $this->manager->handleChips();
             $this->manager->updateStreet($heroAction);
             $this->manager->dealCommunityCards($this->getGameState());
-            $this->manager->updatePlayersCurrentHandStrength();
+            $this->manager->updatePlayersCurrentHandStrength($this->players);
             if ($this->manager->isShowdown()) {
                 echo "showdown!";
-                $this->manager->showdown();
+                $this->manager->showdown($players);
                 var_dump($sdcrash);
             }
         }

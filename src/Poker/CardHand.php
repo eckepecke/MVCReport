@@ -11,6 +11,10 @@ class CardHand
 use TexasHandTrait;
 
     private array $hand = [];
+    private string $strengthString = "";
+    private int $strengthInt = 99;
+
+
 
     public function add(CardGraphic $card): void
     {
@@ -40,13 +44,33 @@ use TexasHandTrait;
         return $values;
     }
 
-    public function getCards(): array
+    public function getCardArray(): array
     {
         return $this->hand;
     }
 
-    public function fuseWithCommunityCards(array $board): void
+    // public function fuseWithCommunityCards(array $board): void
+    // {
+    //     $this->hand = array_merge($this->hand, $board);
+    // }
+
+    public function getStrengthString(): string
     {
-        $this->hand = array_merge($this->hand, $board);
+        return $this->strengthString;
+    }
+
+    public function setStrengthString(string $strength): void
+    {
+        $this->strengthString = $strength;
+    }
+
+    public function getStrengthInt(): int
+    {
+        return $this->strengthInt;
+    }
+
+    public function setStrengthInt(int $strength): void
+    {
+        $this->strengthInt = $strength;
     }
 }

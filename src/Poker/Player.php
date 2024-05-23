@@ -2,7 +2,7 @@
 
 namespace App\Poker;
 
-use App\Cards\CardHand;
+use App\Poker\CardHand;
 
 class Player
 {
@@ -26,6 +26,7 @@ class Player
         $this->allIn = false;
         $this->isHero = false;
         $this->active = true;
+
     }
 
     public function addHand(CardHand $hand): void

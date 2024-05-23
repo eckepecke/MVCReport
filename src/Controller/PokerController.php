@@ -23,7 +23,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PokerController extends AbstractController
 {
-    #[Route("/poker", name: "game_init_get", methods: ['GET'])]
+    #[Route("/poker", name: "poker_init_get", methods: ['GET'])]
     public function init(): Response
     {
         return $this->render('poker/index.html.twig');
