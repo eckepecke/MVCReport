@@ -98,4 +98,28 @@ class BetManager
 
         return $playerClosedAction;
     }
+
+    public function playerClosedActionPreflop(object $player, array $state): bool
+    {
+        $playerClosedAction = false;
+
+
+        $playerLastAction = $player->getLastAction();
+        $playerPos = $player->getLastAction();
+
+
+        $priceToPlay = $this->getPriceToPlay($state);
+
+        if ($playerLastAction === "call" && $priceToPlay === 0) {
+            $playerClosedAction = true;
+        }
+
+        // If big blind check backs action is closed despit price not 0.
+        if ($playerLastAction === "check" && $playerPos === 1) {
+            $playerClosedAction = true;
+        }
+
+
+        return $playerClosedAction;
+    }
 }

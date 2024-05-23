@@ -242,7 +242,7 @@ class Manager
 
     public function isPreflop(): bool
     {
-        return $this->managers["streetManager"]->getStreet();
+        return $this->managers["streetManager"]->isPreflop();
     }
 
     public function playersActPreflop(mixed $heroAction, array $state): void
@@ -259,7 +259,9 @@ class Manager
             $this->heroAction($heroAction, $state["hero"]);
 
             // Prevent opponents from acting if hero closed the betting round.
-            if ($this->managers["betManager"]->playerClosedAction($state["hero"], $state)) {
+            if ($this->managers["betManager"]->playerClosedActionPreflop($state["hero"], $state)) {
+                $this->managers["streetManager"]->isPostflop();
+
 
                 return;
             }
@@ -298,7 +300,11 @@ class Manager
 
                 $this->managers["opponentActionManager"]->move($priceToPlay, $player, $potSize, $currentBiggestBet);
                 // return early if player closed the betting round.
-                if ($this->managers["betManager"]->playerClosedAction($player, $state)) {
+                if ($this->managers["betManager"]->playerClosedActionPreflop($player, $state)) {
+                    if ($this->managers["streetManager"]->isPreflop()) {
+                        $this->managers["streetManager"]->isPostflop();
+                        // $this->managers["streetManager"]->setNextStreet();
+                    }
                     return;
                 }
             }

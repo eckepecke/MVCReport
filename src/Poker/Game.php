@@ -202,7 +202,9 @@ class Game
         }
 
         if ($this->manager->isPreflop()) {
+            echo"PREFLOPACTION";
             $this->manager->playersActPreflop($heroAction, $this->getGameState());
+
         }
 
         $this->manager->dealStartingHands($this->getGameState(), $heroAction);
@@ -212,8 +214,9 @@ class Game
         //$this->manager->updatePlayersCurrentHandStrength($this->players);
 
         $this->manager->dealCommunityCards($this->getGameState());
-        if ($this->manager->isPreflop() === false) {
-        $this->manager->playersActPostFlop($heroAction, $this->getGameState());
+        if (!$this->manager->isPreflop()) {
+            echo"POSTFLOPACTION";
+            $this->manager->playersActPostFlop($heroAction, $this->getGameState());
         }
         // NEed all in check here
 

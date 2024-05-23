@@ -16,6 +16,8 @@ class StreetManager
      */
     private string $street = "preflop";
     private bool $showdown = false;
+    private bool $preflop = true;
+
 
 
     /**
@@ -75,5 +77,14 @@ class StreetManager
         $this->street = "preflop";
     }
 
+    public function isPreflop(): bool
+    {
+        return $this->preflop;
+    }
 
+    public function isPostflop(): void
+    {
+        echo"changing prop to false";
+        $this->preflop = false;
+    }
 }
