@@ -4,7 +4,7 @@ namespace App\Poker;
 
 /**
  * Class StreetManager
- * 
+ *
  * Manages the positions of players in a poker game.
  */
 class StreetManager
@@ -14,7 +14,7 @@ class StreetManager
      *
      * @var string
      */
-    private string $street = "flop";
+    private string $street = "preflop";
     private bool $showdown = false;
 
 
@@ -24,6 +24,7 @@ class StreetManager
      * @var array
      */
     private array $streetArray = [
+        "preflop",
         "flop",
         "turn",
         "river",
@@ -38,19 +39,15 @@ class StreetManager
      */
     public function setNextStreet(): void
     {
-        echo "setting next";
         $currentIndex = array_search($this->street, $this->streetArray);
         $nextIndex = $currentIndex + 1;
-        var_dump($nextIndex);
 
-        if ($nextIndex === 3) {
-            echo "setting sd true";
+        if ($nextIndex === 4) {
 
             $this->showdown = true;
             $nextIndex = 0;
         }
         $this->street = $this->streetArray[$nextIndex];
-        var_dump($this->street);
     }
 
     public function getStreet(): string
@@ -60,8 +57,6 @@ class StreetManager
 
     public function getShowdown(): bool
     {
-        echo"hej";
-        var_dump($this->showdown);
         return $this->showdown;
     }
 
@@ -73,6 +68,11 @@ class StreetManager
     public function setShowdownFalse(): void
     {
         $this->showdown = false;
+    }
+
+    public function resetStreet(): void
+    {
+        $this->street = "preflop";
     }
 
 

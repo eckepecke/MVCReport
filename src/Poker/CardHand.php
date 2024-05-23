@@ -5,14 +5,13 @@ namespace App\Poker;
 use App\Cards\CardGraphic;
 use App\Poker\TexasHandTrait;
 
-
 class CardHand
 {
-use TexasHandTrait;
+    use TexasHandTrait;
 
     private array $hand = [];
     private string $strengthString = "";
-    private int $strengthInt = 99;
+    private int $strengthInt = 0;
 
 
 

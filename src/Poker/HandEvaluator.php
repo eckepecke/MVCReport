@@ -54,16 +54,16 @@ class HandEvaluator
         ];
 
         $this->strengthMapping = [
-            'Royal flush' => 0,
-            'Straight flush' => 1,
-            'Four of a kind' => 2,
-            'Full house' => 3,
-            'Flush' => 4,
+            'Royal flush' => 10,
+            'Straight flush' => 9,
+            'Four of a kind' => 8,
+            'Full house' => 7,
+            'Flush' => 6,
             'Straight' => 5,
-            'Three of a kind' => 6,
-            'Two pair' => 7,
-            'One pair' => 8,
-            'High card' => 9
+            'Three of a kind' => 4,
+            'Two pair' => 3,
+            'One pair' => 2,
+            'High card' => 1
         ];
     }
 

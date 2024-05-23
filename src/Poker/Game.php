@@ -91,8 +91,14 @@ class Game
         $PM = $this->manager->access("potManager");
         $pot = $PM->getPotSize($state);
 
+        $SDM = $this->manager->access("showdownManager");
+        $winner = $SDM->getWinner();
+        $winnerName = null;
+        if($winner != null) {
+            $winnerName = $winner->getName();
+        }
         return [
-            "heroHand" => $heroHand->getImgNames(),
+            "hero_hand" => $heroHand->getImgNames(),
             "opponent1Hand" => $opponent1Hand->getImgNames(),
             "opponent2Hand" => $opponent2Hand->getImgNames(),
 
@@ -100,9 +106,9 @@ class Game
             "opponent1Bet" => $this->opponent1->getCurrentBet(),
             "opponent2Bet" => $this->opponent2->getCurrentBet(),
 
-            "heroStack" => $this->hero->getStack(),
-            "opponent1Stack" => $this->opponent1->getStack(),
-            "opponent2Stack" => $this->opponent2->getStack(),
+            "hero_stack" => $this->hero->getStack(),
+            "opponent_1_stack" => $this->opponent1->getStack(),
+            "opponent_2_stack" => $this->opponent2->getStack(),
 
             "hero_pos" => $this->hero->getPositionString(),
             "opp_1_pos" => $this->opponent1->getPositionString(),
@@ -116,12 +122,18 @@ class Game
             "opp_1_active" => $this->opponent1->isActive(),
             "opp_2_active" => $this->opponent2->isActive(),
 
+            "hero_strength" => $heroHand->getStrengthString(),
+            "opp_1_strength" => $opponent1Hand->getStrengthString(),
+            "opp_2_strength" => $opponent2Hand->getStrengthString(),
+
+
             "board" => $boardImages,
             "price" => $price,
             "min_raise" => $minRaise,
             "pot" => $pot,
             "new_hand" => $this->newHand,
-
+            "showdown" => $this->manager->isShowdown(),
+            "winner" => $winnerName,
         ];
     }
 
@@ -129,9 +141,12 @@ class Game
     {
 
         $player1 = new Player();
+        $player1->setName("Hero");
         $player1->setHero();
         $player2 = new Opponent();
+        $player2->setName("Isildur1");
         $player3 = new Opponent();
+        $player3->setName("Phil");
         $pArray = [
             $player1,
             $player2,
@@ -174,28 +189,33 @@ class Game
         $this->addPlayers($pArray);
         $this->addDealer($cardManager);
         $this->addManager($manager);
-        
+
     }
 
     public function play($heroAction): void
     {
-
-        if ($this->manager->handWonWithoutShowdown()) {
+        if ($this->manager->newHandStarting($heroAction)) {
+            echo "NEW HAND STARTING";
             $this->newHand = true;
             $this->manager->givePotToWinner();
-            $this->manager->resetTable();
+            $this->manager->resetTable($this->players);
         }
 
+        // if ($this->manager->isPreflop()) {
+        //     $this->manager->playersActPreflop($heroAction, $this->getGameState());
+        // }
 
         $this->manager->dealStartingHands($this->getGameState(), $heroAction);
         $this->manager->updatePlayersCurrentHandStrength($this->players);
-        
+
         $this->newHand = false;
-        $this->manager->dealCommunityCards($this->getGameState());
         //$this->manager->updatePlayersCurrentHandStrength($this->players);
 
-
-        $this->manager->playersAct($heroAction, $this->getGameState());
+        $this->manager->dealCommunityCards($this->getGameState());
+        if ($this->manager->isPreflop() === false) {
+        $this->manager->playersActPostFlop($heroAction, $this->getGameState());
+        }
+        // NEed all in check here
 
         if ($this->manager->everyoneMoved($heroAction)) {
             $this->manager->handleChips();
@@ -204,8 +224,7 @@ class Game
             $this->manager->updatePlayersCurrentHandStrength($this->players);
             if ($this->manager->isShowdown()) {
                 echo "showdown!";
-                $this->manager->showdown($players);
-                var_dump($sdcrash);
+                $this->manager->showdown($this->players);
             }
         }
     }
@@ -215,7 +234,8 @@ class Game
         $this->newHand = true;
     }
 
-    public function heroInput($action) {
+    public function heroInput($action)
+    {
         $this->manager->heroAction($action, $this->hero);
     }
 }

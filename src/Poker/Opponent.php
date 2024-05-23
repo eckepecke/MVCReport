@@ -2,7 +2,6 @@
 
 namespace App\Poker;
 
-
 class Opponent extends Player
 {
     public function __construct()

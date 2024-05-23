@@ -26,6 +26,8 @@ class Player
         $this->allIn = false;
         $this->isHero = false;
         $this->active = true;
+        $this->name = "";
+
 
     }
 
@@ -61,15 +63,6 @@ class Player
         return $posArray[$this->position];
     }
 
-
-    public function nextPosition(): void
-    {
-        $this->position++;
-        if ($this->position > 3) {
-            $this->position = 1;
-        }
-    }
-
     public function getCurrentBet(): int
     {
         return $this->currentBet;
@@ -78,6 +71,13 @@ class Player
     public function resetCurrentBet(): void
     {
         $this->currentBet = 0;
+    }
+
+    public function payBlind(int $blind): void
+    {
+        $this->currentBet = $blind;
+        $this->stack -= $blind;
+
     }
 
     public function getStack(): int
@@ -193,5 +193,15 @@ class Player
     public function chooseBetSize($potSize): int
     {
         return 0.75 * $potSize;
+    }
+
+    public function setName($name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 }

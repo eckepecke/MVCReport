@@ -6,7 +6,7 @@ use Exception;
 
 /**
  * Class StateManagerManager
- * 
+ *
  * Manages state variables in a poker game.
  */
 class StateManager
@@ -53,9 +53,23 @@ class StateManager
         throw new Exception("No active player!");
     }
 
-    public function removeInactive(array $state): array
+    // public function removeInactive(array $state): array
+    // {
+    //     $players = $state["players"];
+
+    //     $index = 0;
+    //     foreach($players as $player) {
+    //         $keep = $player->isActive();
+    //         if (!$keep) {
+    //             unset($players[$index]);
+    //         }
+    //         $index++;
+    //     }
+    //     return array_values($players);
+    // }
+
+    public function removeInactive(array $players): array
     {
-        $players = $state["players"];
 
         $index = 0;
         foreach($players as $player) {
@@ -67,7 +81,8 @@ class StateManager
         }
         return array_values($players);
     }
-    public function heroAlreadyMoved($heroAction): bool 
+
+    public function heroAlreadyMoved($heroAction): bool
     {
         $heroAlreadyMoved = false;
         if ($heroAction != "next" && $heroAction != null) {

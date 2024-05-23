@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 // use App\Poker\Dealer;
 use App\Poker\Game;
 // use App\Poker\Player;
@@ -83,7 +84,7 @@ class PokerController extends AbstractController
 
         $game = $session->get("game");
 
-        
+
         $game->play($action);
         // $game->play("100");
 

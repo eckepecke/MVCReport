@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Poker;
+
 use App\Poker\CardHand;
 use App\Poker\Dealer;
 use App\Poker\HandEvaluatorTrait;
-
-
 
 class CardManager extends Dealer
 {
@@ -31,7 +30,6 @@ class CardManager extends Dealer
 
     public function dealCommunityCards(string $street, int $cardsDealt): array
     {
-        var_dump($street);
         $cards = [];
 
         switch ($street) {
@@ -59,7 +57,7 @@ class CardManager extends Dealer
         $this->evaluator = $evaluator;
     }
 
-    public function assignStrength(array $players, array $board): void 
+    public function updateHandStrengths(array $players, array $board): void
     {
         foreach ($players as $player) {
             $hand = $player->getHand();

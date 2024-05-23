@@ -4,33 +4,61 @@ namespace App\Poker;
 
 /**
  * Class ShowDownManager
- * 
+ *
  * Manages betting logic in a poker game.
  */
 class ShowdownManager extends HandEvaluator
 {
-    public function chipsToWinner(array $players): void
+    private ?object $showdownWinner = null;
+
+    public function findWinner(array $players): object
     {
-        foreach ($players as $player) {
-            $hand = $player->getHand();
-            $hand->getHandStrength();
+        $winner = $this->compare($players);
+
+        $multipleWinners = false;
+        if(count($winner) > 1) {
+            $multipleWinners = true;
+            var_dump($needMoreComparison);
         }
-        $winner = $this->compareStrength($players);
-
-        $winner->takePot($this->gameProperties['table']->getPotSize());
-
+        $this->setShowdownWinner($winner[0]);
+        return $winner[0];
     }
 
-    public function assignHandStrengths(): void
+    public function setShowdownWinner(object $winner): void
     {
-        $board = $this->gameProperties['table']->getBoard();
-        $fullHeroHand = array_merge($this->gameProperties['hero']->getHand(), $board);
+        $this->showdownWinner = $winner;
+    }
+    public function nullShowdownWinner(): void
+    {
+        $this->showdownWinner = null;
+    }
 
-        $heroStrength = $this->gameProperties['handChecker']->evaluateHand($fullHeroHand);
-        $this->gameProperties['hero']->updateStrength($heroStrength);
-        $this->gameProperties['handChecker']->resetStrengthArray();
-        $fullVillainHand = array_merge($this->gameProperties['villain']->getHand(), $board);
-        $villainStrength = $this->gameProperties['handChecker']->evaluateHand($fullVillainHand);
-        $this->gameProperties['villain']->updateStrength($villainStrength);
+    public function getWinner(): ?object
+    {
+        return $this->showdownWinner;
+    }
+
+    public function compare(array $players): array
+    {
+        $toBeat = 0;
+        $winners = [];
+
+        foreach ($players as $player) {
+            $hand = $player->getHand();
+            $score = $hand->getStrengthInt();
+
+            if ($score === $toBeat) {
+                $winners[] = $player;
+            }
+
+            if ($score > $toBeat) {
+                $winners = [];
+                $winners[] = $player;
+                $toBeat = $score;
+            }
+
+        }
+
+        return $winners;
     }
 }

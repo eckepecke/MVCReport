@@ -4,12 +4,11 @@ namespace App\Poker;
 
 /**
  * Class BetManager
- * 
+ *
  * Manages betting logic in a poker game.
  */
 class BetManager
 {
-
     /**
      * Gets the price to play for the current betting round.
      *
@@ -52,7 +51,7 @@ class BetManager
 
     /**
      * Gets the minimum raise allowed for the current betting round.
-     * 
+     *
      * @return int The minimum amount required to raise.
      */
     public function getMinimumRaiseAllowed(array $state): int
@@ -82,24 +81,6 @@ class BetManager
         }
     }
 
-    // public function heroClosedAction($state): bool
-    // {
-    //     $heroClosedAction = false;
-
-    //     $hero = $state["hero"];
-    //     $heroLastAction = $hero->getLastAction();
-
-    //     $priceToPlay = $this->getPriceToPlay($state);
-
-    //     if ($heroLastAction === "call" && $priceToPlay === 0) {
-    //         $heroClosedAction = true;
-    //     }
-    //     var_dump($priceToPlay);
-
-    //     var_dump($heroClosedAction);
-
-    //     return $heroClosedAction;
-    // }
     public function playerClosedAction(object $player, array $state): bool
     {
         $playerClosedAction = false;
@@ -108,11 +89,8 @@ class BetManager
         $playerLastAction = $player->getLastAction();
 
         $priceToPlay = $this->getPriceToPlay($state);
-        echo "RUFFYYY";
-        var_dump($priceToPlay, $playerLastAction);
 
         if ($playerLastAction === "call" && $priceToPlay === 0) {
-            echo "LORENOR";
 
             $playerClosedAction = true;
         }

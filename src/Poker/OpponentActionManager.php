@@ -2,17 +2,17 @@
 
 namespace App\Poker;
 
+use Exception;
+
 /**
  * Class OpponentManager
- * 
+ *
  * Manages player action logic in a poker game.
  */
 class OpponentActionManager
 {
     public function move(int $price, object $player, int $potSize, int $bet): void
     {
-        echo "price is";
-        var_dump($price);
         $priceIs0 = true;
 
         if($price > 0) {
@@ -26,7 +26,7 @@ class OpponentActionManager
                 $this->villainVsPrice($player, $potSize, $bet);
                 break;
             default:
-                var_dump($failcrasch);
+                throw new Exception("PriceIsO not true or false");
                 break;
         }
 
@@ -36,32 +36,30 @@ class OpponentActionManager
     {
         $action = $player->responseToBet();
         // $action = "call";
-            switch ($action) {
-                case "fold":
-                    $player->fold();
-                    $player->deActivate();
-                    break;
+        switch ($action) {
+            case "fold":
+                $player->fold();
+                $player->deActivate();
+                break;
 
-                case "call":
-                    $player->call($bet);
+            case "call":
+                $player->call($bet);
 
-                    break;
+                break;
 
-                default:
-                echo "ORAISE!";
+            default:
 
-                    $player->raise($bet, $player);
-                    break;
-                }
+                $player->raise($bet, $player);
+                break;
+        }
 
     }
 
     public function villainActionVsNoPrice(object $player, int $potSize): void
     {
         $action = $player->actionVsCheck();
-        var_dump($action);
         // for debugging
-        // $action = 'check';
+        $action = 'check';
         switch ($action) {
             case "bet":
                 $amount = $player->chooseBetSize($potSize);

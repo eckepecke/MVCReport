@@ -5,7 +5,6 @@ namespace App\Poker;
 use App\Cards\DeckOfCards;
 use App\Cards\CardHand;
 
-
 class Dealer
 {
     protected object $deck;

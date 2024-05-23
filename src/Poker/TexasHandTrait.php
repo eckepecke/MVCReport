@@ -7,7 +7,6 @@ namespace App\Poker;
  */
 trait TexasHandTrait
 {
-
     private array $strengthArray  = [
         'Royal flush' => false,
         'Straight flush' => false,
