@@ -49,13 +49,11 @@ class PositionManager
      */
     public function sortPlayersByPosition(array $players): array
     {
-        $tempArray = [0,1,2];
-        foreach ($players as $player) {
-            $value = $player->getPosition();
-            $tempArray[$value] = $player;
-        }
-
-        return $tempArray;
+        usort($players, function($a, $b) {
+            return $a->getPosition() <=> $b->getPosition();
+        });
+    
+        return $players;
     }
 
     public function nextPosition($player): void

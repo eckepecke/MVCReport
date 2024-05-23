@@ -201,9 +201,9 @@ class Game
             $this->manager->resetTable($this->players);
         }
 
-        // if ($this->manager->isPreflop()) {
-        //     $this->manager->playersActPreflop($heroAction, $this->getGameState());
-        // }
+        if ($this->manager->isPreflop()) {
+            $this->manager->playersActPreflop($heroAction, $this->getGameState());
+        }
 
         $this->manager->dealStartingHands($this->getGameState(), $heroAction);
         $this->manager->updatePlayersCurrentHandStrength($this->players);

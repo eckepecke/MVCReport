@@ -75,8 +75,8 @@ class Manager
         $hero = $state["hero"];
         $heroPos = $hero->getPosition();
 
-        $players = $state["players"];
-        // $players = $this->managers["positionManager"]->sortPlayersByPosition($players);
+        $players = $this->managers["positionManager"]->sortPlayersByPosition($state["players"]);
+
         foreach ($players as $player) {
             $currentPosition = $player->getPosition();
             // Player will act if still in the hand has position before hero.
@@ -101,7 +101,7 @@ class Manager
         $hero = $state["hero"];
         $heroPos = $hero->getPosition();
 
-        // $this->positionManager->sortPlayersByPosition($players);
+        $players = $this->managers["positionManager"]->sortPlayersByPosition($state["players"]);
         $players = $state["players"];
         foreach ($players as $player) {
             $currentPosition = $player->getPosition();
@@ -247,9 +247,15 @@ class Manager
 
     public function playersActPreflop(mixed $heroAction, array $state): void
     {
+        echo"pAP";
+        // if btn player is hero->quit
+        // if btn player is active
+        // player->move
+        // else
+        // play until hero turn
 
-        if ($this->$button)
         if ($this->managers["stateManager"]->heroAlreadyMoved($heroAction)) {
+            echo"NAmi";
             $this->heroAction($heroAction, $state["hero"]);
 
             // Prevent opponents from acting if hero closed the betting round.
@@ -257,14 +263,45 @@ class Manager
 
                 return;
             }
-            $this->opponentsBehindMove($state);
+            $this->playUntilHeroTurn($state);
 
 
             // Now everyone should have made a play,
             // register that to stateManager.
             $this->managers["stateManager"]->everyoneMoved();
-        } else {
-            $this->opponentsInFrontMove($state);
+        }
+
+        //this means hero has opportunity to open button
+        if ($state["hero"]->getPosition() === 2) {
+            return;
+        }
+
+        //
+        echo "USOOP";
+        $this->playUntilHeroTurn($state);
+    }
+
+    public function playUntilHeroTurn(array $state) {
+        $players = $this->managers["positionManager"]->sortPlayersByPosition($state["players"]);
+        foreach ($players as $player) {
+            // Player will act if still in the hand has position after hero.
+            if ($player->isHero()) {
+                echo"Ruffy";
+            return;
+            }
+            echo"Zorro";
+
+            if ($player->isActive()) {
+                $priceToPlay = $this->managers["betManager"]->getPriceToPlay($this->game->getGameState());
+                $potSize = $this->managers["potManager"]->getPotSize();
+                $currentBiggestBet = $this->managers["betManager"]->getBiggestBet($this->game->getGameState());
+
+                $this->managers["opponentActionManager"]->move($priceToPlay, $player, $potSize, $currentBiggestBet);
+                // return early if player closed the betting round.
+                if ($this->managers["betManager"]->playerClosedAction($player, $state)) {
+                    return;
+                }
+            }
         }
     }
 

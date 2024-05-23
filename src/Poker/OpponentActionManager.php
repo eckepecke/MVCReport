@@ -38,16 +38,20 @@ class OpponentActionManager
         // $action = "call";
         switch ($action) {
             case "fold":
+                echo "fold";
+
                 $player->fold();
                 $player->deActivate();
                 break;
 
             case "call":
+                echo "call";
                 $player->call($bet);
 
                 break;
 
             default:
+                echo "raise";
 
                 $player->raise($bet, $player);
                 break;
@@ -59,14 +63,16 @@ class OpponentActionManager
     {
         $action = $player->actionVsCheck();
         // for debugging
-        $action = 'check';
+        // $action = 'check';
         switch ($action) {
             case "bet":
+                echo "bet";
                 $amount = $player->chooseBetSize($potSize);
 
                 $player->bet($amount);
                 break;
             case "check":
+                echo "check";
                 $player->check();
                 break;
         }

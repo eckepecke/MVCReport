@@ -9,7 +9,7 @@ class PotManager
 
     public function __construct()
     {
-        $this->pot = 0;
+        $this->pot = 200;
     }
 
     public function addChipsToPot(array $state): void
