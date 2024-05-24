@@ -84,7 +84,6 @@ class PokerController extends AbstractController
 
         $game = $session->get("game");
 
-
         $game->play($action);
         // $game->play("100");
 
@@ -110,11 +109,5 @@ class PokerController extends AbstractController
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
-    }
-
-    #[Route("/game/doc", name: "game_doc")]
-    public function home(): Response
-    {
-        return $this->render('game/doc.html.twig');
     }
 }

@@ -20,6 +20,7 @@ class StreetManager
 
 
 
+
     /**
      * Array containing all possible streets.
      *
@@ -49,6 +50,8 @@ class StreetManager
             $this->showdown = true;
             $nextIndex = 0;
         }
+        echo"settingNextStreet";
+        var_dump($this->streetArray[$nextIndex]);
         $this->street = $this->streetArray[$nextIndex];
     }
 
@@ -56,6 +59,17 @@ class StreetManager
     {
         return $this->street;
     }
+
+    public function getPhase(): string
+    {
+        $phase = "preflop";
+        if ($this->street != "preflop") {
+            $phase = "postflop";
+        }
+
+        return $phase;
+    }
+
 
     public function getShowdown(): bool
     {

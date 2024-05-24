@@ -83,43 +83,69 @@ class BetManager
 
     public function playerClosedAction(object $player, array $state): bool
     {
+        echo"RUFFY";
         $playerClosedAction = false;
 
-
+        $phase = $state["phase"];
+        var_dump($phase);
         $playerLastAction = $player->getLastAction();
-
         $priceToPlay = $this->getPriceToPlay($state);
+        $playerPos = $player->getPosition();
 
+
+        if ($phase === "preflop") {
+            // When big blind check backs action is closed despite price not 0.
+            if ($playerLastAction === "check" && $playerPos === 1) {
+                echo"AAA";
+                $playerClosedAction = true;
+            }
+            // When big blind folds backs action is closed despite price not 0.
+            if ($playerLastAction === "fold" && $playerPos === 1) {
+                echo"BBB";
+
+                $playerClosedAction = true;
+            }
+        }
+
+        if ($phase === "postflop") {
+            // When button checks back postflop the betting round is over.
+            if ($playerLastAction === "check" && $playerPos === 2) {
+                echo"CCC";
+
+                $playerClosedAction = true;
+            }
+        }
+        
+        // This is true for both preflop and postflop.
         if ($playerLastAction === "call" && $priceToPlay === 0) {
+            echo"DDD";
 
             $playerClosedAction = true;
         }
-
 
         return $playerClosedAction;
     }
 
-    public function playerClosedActionPreflop(object $player, array $state): bool
-    {
-        $playerClosedAction = false;
+    // public function playerClosedActionPreflop(object $player, array $state): bool
+    // {
+    //     $playerClosedAction = false;
 
 
-        $playerLastAction = $player->getLastAction();
-        $playerPos = $player->getLastAction();
+    //     $playerLastAction = $player->getLastAction();
+    //     $playerPos = $player->getPosition();
 
 
-        $priceToPlay = $this->getPriceToPlay($state);
-
-        if ($playerLastAction === "call" && $priceToPlay === 0) {
-            $playerClosedAction = true;
-        }
-
-        // If big blind check backs action is closed despit price not 0.
-        if ($playerLastAction === "check" && $playerPos === 1) {
-            $playerClosedAction = true;
-        }
+    //     $priceToPlay = $this->getPriceToPlay($state);
+    //     echo"PRICE";
+    //     var_dump($priceToPlay);
 
 
-        return $playerClosedAction;
-    }
+    //     if ($playerLastAction === "call" && $priceToPlay === 0) {
+    //         $playerClosedAction = true;
+    //     }
+
+
+
+    //     return $playerClosedAction;
+    // }
 }

@@ -75,8 +75,9 @@ class Player
 
     public function payBlind(int $blind): void
     {
-        $this->currentBet = $blind;
         $this->stack -= $blind;
+        $this->currentBet = $blind;
+
 
     }
 

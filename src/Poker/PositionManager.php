@@ -66,4 +66,20 @@ class PositionManager
         $player->setPosition($pos);
 
     }
+
+    public function playerIsLast(object $player, array $players): bool
+    {
+        $pos = $player->getPosition();
+        $last = true;
+        foreach($players as $other) {
+            if($other->isActive()) {
+                $comparisonPos = $other->getPosition();
+                if ($comparisonPos > $pos) {
+                    $last = false;
+                }
+            }
+
+        }
+        return $last;
+    }
 }

@@ -13,6 +13,7 @@ class StateManager
 {
     private bool $everyoneMoved = false;
 
+
     public function everyoneHasNotMoved(): void
     {
         $this->everyoneMoved = false;
@@ -20,6 +21,7 @@ class StateManager
 
     public function everyoneMoved(): void
     {
+        echo"ÖPÖPÖPÖ";
         $this->everyoneMoved = true;
     }
 
