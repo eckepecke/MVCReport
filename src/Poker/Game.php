@@ -273,20 +273,12 @@ class Game
     {
         echo"POSTFLOPSTART";
 
-        $this->manager->dealCommunityCards($this->getGameState());
         $this->manager->postFlopRevised($heroAction, $this->getGameState());
-
-        // if ($this->manager->access("stateManager")->didEveryoneMove()) {
-        //     $this->manager->updateStreet($this->getGameState());
-        //     $this->manager->dealCommunityCards($this->getGameState());
-        // }
-
-        // $this->manager->updatePlayersCurrentHandStrength($this->players);
 
         if ($this->manager->isShowdown()) {
             echo "showdown!";
             $this->manager->showdown($this->players);
-            $this->manager->givePotToWinner();
+            $this->manager->givePotToShowdownWinner();
 
             return;
         }
