@@ -18,16 +18,19 @@ use App\Poker\StateManager;
 use App\Poker\ShowdownManager;
 use App\Poker\HandEvaluator;
 
+
 class Game
 {
     private array $players;
     private object $dealer;
     private object $manager;
     private bool $newHand = true;
+    private bool $preflop = true;
+
+
     private object $hero;
     private object $opponent1;
     private object $opponent2;
-    private string $phase = "preflop";
 
 
 
@@ -64,9 +67,13 @@ class Game
     {
         return [
             "newHand" => $this->newHand,
+            "preflop" => $this->preflop,
+
             "hero" => $this->hero,
             "players" => $this->getPlayers(),
-            "phase" => $this->phase,
+            "active" => $this->manager->access("stateManager")->removeInactive($this->players),
+
+            // "phase" => $this->phase,
 
         ];
     }
@@ -154,8 +161,11 @@ class Game
         $pArray = [
             $player1,
             $player2,
-            $player3
+            $player3,
+
         ];
+
+
 
         $deck = new DeckOfCards();
         $manager = new Manager();
@@ -169,6 +179,7 @@ class Game
         $opponentActionManager = new OpponentActionManager();
         $stateManager = new StateManager();
         $showdownManager = new ShowdownManager();
+
         $handEvaluator = new HandEvaluator();
 
 
@@ -188,121 +199,96 @@ class Game
         $manager->addManager('opponentActionManager', $opponentActionManager);
         $manager->addManager('stateManager', $stateManager);
         $manager->addManager('showdownManager', $showdownManager);
+
         $manager->addGame($this);
 
         $this->addPlayers($pArray);
         $this->addDealer($cardManager);
         $this->addManager($manager);
-
+        //debug
+        $this->manager->access("positionManager")->updatePositions($this->players);
     }
 
     public function play($heroAction): void
     {
-        $phase = $this->manager->access("streetManager")->getPhase();
-        // either preflop or postflop
-        echo "Play()START";
-        var_dump($phase);
-        $this->phase = $phase;
-        $this->$phase($heroAction);
-    }
-
-    public function preflop($heroAction): void
-    {
         if ($this->manager->newHandStarting($heroAction)) {
+                        // FOR DEBUGGING
+            $this->manager->access("positionManager")->updatePositions($this->players);
+        // $this->manager->access("positionManager")->updatePositions($this->players);
+
+ 
+
+
+        //
+
             echo "NEW HAND STARTING";
             $this->newHand = true;
-            $this->manager->givePotToWinner();
+            // $this->manager->givePotToWinner();
             $this->manager->resetTable($this->players);
+            $this->manager->dealStartingHands($this->getGameState(), $heroAction);
+            $this->manager->updatePlayersCurrentHandStrength($this->players);
+            $this->newHand = false;
         }
+        $this->postflop($heroAction);
+    }
 
-        $this->manager->dealStartingHands($this->getGameState(), $heroAction);
-        $this->manager->updatePlayersCurrentHandStrength($this->players);
-        $this->newHand = false;
+    // public function preflop($heroAction): void
+    // {
+    //     // if ($this->manager->newHandStarting($heroAction)) {
+    //     //     echo "NEW HAND STARTING";
+    //     //     $this->newHand = true;
+    //     //     $this->manager->givePotToWinner();
+    //     //     $this->manager->resetTable($this->players);
+    //     // }
 
 
-        echo"PREFLOPACTION";
-        $this->manager->playersActPreflop($heroAction, $this->getGameState());
 
-        if (!$this->manager->access("streetManager")->isPreflop()) {
-            echo"PREFLOP ENDS!";
-            $this->manager->access("potManager")->addChipsToPot($this->getGameState());
-            $this->manager->access("betManager")->resetPlayerBets($this->players);
-            $this->manager->access("streetManager")->setNextStreet();
-            $this->manager->access("streetManager")->isPostFlop();
-            $heroAction = null;
-            $this->postflop($heroAction);
+    //     echo"PREFLOPACTION";
+    //     $this->manager->preflopRevised($heroAction, $this->getGameState());
+
+        // if (!$this->manager->access("streetManager")->isPreflop()) {
+        //     echo"PREFLOP ENDS!";
+        //     $this->manager->access("potManager")->addChipsToPot($this->getGameState());
+        //     $this->manager->access("betManager")->resetPlayerBets($this->players);
+        //     $this->manager->access("streetManager")->setNextStreet();
+        //     $heroAction = null;
+        //     $this->postflop($heroAction);
 
 
             // $this->manager->handleChips($this->getGameState());
-        }
+        // }
 
 
         //$this->manager->updatePlayersCurrentHandStrength($this->players);
 
 
-    }
+    // }
 
     public function resetNewHand(): void
     {
         $this->newHand = true;
     }
 
-    public function heroInput($heroAction)
-    {
-        $this->manager->heroAction($action, $this->hero);
-    }
-
     public function postflop($heroAction)
     {
-        $this->phase = "postflop";
-
-
         echo"POSTFLOPSTART";
-        var_dump($this->manager->access("streetManager")->getPhase());
 
         $this->manager->dealCommunityCards($this->getGameState());
-        $this->manager->playersActPostFlop($heroAction, $this->getGameState());
+        $this->manager->postFlopRevised($heroAction, $this->getGameState());
 
-
-        $this->manager->handleChips($this->getGameState());
-        
-        if ($this->manager->access("stateManager")->didEveryoneMove()) {
-            echo"EVERYONEMOVED GAME";
-            // maybe put extra ifront roud here?
-            $this->manager->updateStreet($this->getGameState());
-            $this->manager->dealCommunityCards($this->getGameState());
-            $this->manager->updatePlayersCurrentHandStrength($this->players);
-            if ($this->manager->isShowdown()) {
-                echo "showdown!";
-                $this->manager->showdown($this->players);
-                return;
-            }
-            $this->manager->opponentsInFrontMove($this->getGameState());
-        }
-
-
-
-
-        // if ($this->manager->access("stateManager")->everyoneMoved() && $this->manager->access("positionManager")->playerIsLast($this->hero)) {
-        //     echo"AGAIN";
-        //     $this->manager->opponentsInfrontMove();
+        // if ($this->manager->access("stateManager")->didEveryoneMove()) {
+        //     $this->manager->updateStreet($this->getGameState());
+        //     $this->manager->dealCommunityCards($this->getGameState());
         // }
 
+        // $this->manager->updatePlayersCurrentHandStrength($this->players);
 
-        // $this->manager->playersActPostFlop($heroAction, $this->getGameState());
+        if ($this->manager->isShowdown()) {
+            echo "showdown!";
+            $this->manager->showdown($this->players);
+            $this->manager->givePotToWinner();
 
-        // echo"AGAIN";
-        // $this->manager->access("stateManager")->everyoneHasNotMoved();
-
-        // $heroAction = null;
-
-        // $this->manager->playersActPostFlop($heroAction, $this->getGameState());
-
-
-
-        // $heroAction = null;
-        // echo"play again";
-        // $this->manager->playersActPostFlop($heroAction, $this->getGameState());
-
+            return;
+        }
     }
 }

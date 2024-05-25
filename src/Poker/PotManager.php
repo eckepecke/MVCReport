@@ -9,7 +9,7 @@ class PotManager
 
     public function __construct()
     {
-        $this->pot = 0;
+        $this->pot = 500;
     }
 
     public function addChipsToPot(array $state): void
@@ -28,22 +28,21 @@ class PotManager
         return $this->pot;
     }
 
-    public function emptyPot(): void
+    public function resetPot(): void
     {
-        $this->pot = 0;
+        $this->pot = 500;
     }
 
-    public function chargeBlinds(array $players): void
-    {
-        $blindArray = [
-            0 => 25,
-            1 => 50,
-            2 => 0
-        ];
-        foreach ($players as $player) {
-            $pos = $player->getPosition();
-            $player->payBlind($blindArray[$pos]);
-        }
-        $this->pot = 75;
-    }
+    // public function chargeBlinds(array $players): void
+    // {
+    //     $blindArray = [
+    //         0 => 25,
+    //         1 => 50,
+    //         2 => 0
+    //     ];
+    //     foreach ($players as $player) {
+    //         $pos = $player->getPosition();
+    //         $player->payBlind($blindArray[$pos]);
+    //     }
+    // }
 }

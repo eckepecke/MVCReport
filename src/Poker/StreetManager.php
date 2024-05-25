@@ -14,9 +14,11 @@ class StreetManager
      *
      * @var string
      */
-    private string $street = "preflop";
+    private string $street = "flop";
     private bool $showdown = false;
     private bool $preflop = true;
+
+
 
 
 
@@ -46,7 +48,6 @@ class StreetManager
         $nextIndex = $currentIndex + 1;
 
         if ($nextIndex === 4) {
-
             $this->showdown = true;
             $nextIndex = 0;
         }
@@ -59,17 +60,6 @@ class StreetManager
     {
         return $this->street;
     }
-
-    public function getPhase(): string
-    {
-        $phase = "preflop";
-        if ($this->street != "preflop") {
-            $phase = "postflop";
-        }
-
-        return $phase;
-    }
-
 
     public function getShowdown(): bool
     {
@@ -100,5 +90,11 @@ class StreetManager
     {
         echo"changing prop to false";
         $this->preflop = false;
+    }
+
+    public function setPreflop(): void
+    {
+        echo"changing prop to true";
+        $this->preflop = true;
     }
 }

@@ -82,4 +82,17 @@ class PositionManager
         }
         return $last;
     }
+
+
+    public function findButtonPlayer(array $players): object
+    {
+        $btnPlayer = null;
+        foreach($players as $player) {
+            if($player->getPosition() === 2) {
+                $btnPlayer = $player;
+            }
+
+        }
+        return $btnPlayer;
+    }
 }

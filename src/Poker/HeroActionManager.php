@@ -12,7 +12,11 @@ class HeroActionManager
      */
     public function heroMove(mixed $action, object $hero, int $priceToPlay): void
     {
+        echo "RRUUUUFFFFYYY";
+
         if ($action != null && $action != "next") {
+            echo "heroMove()";
+            var_dump($action);
             switch ($action) {
                 case "check":
                     $hero->check();
@@ -30,44 +34,7 @@ class HeroActionManager
         }
     }
 
-    public function heroFolded(): void
-    {
-        $this->gameProperties['table']->addChipsToPot($this->gameProperties['villain']->getCurrentBet());
-        $this->gameProperties['table']->addChipsToPot($this->gameProperties['hero']->getCurrentBet());
-        $this->gameProperties['hero']->fold();
-        $this->gameProperties['villain']->takePot($this->gameProperties['table']->getPotSize());
-        $this->gameProperties['villain']->fold();
-        $this->gameProperties['table']->cleanTable();
-        $this->gameProperties['challenge']->incrementHandsPlayed();
-        $this->setNewHandTrue();
-    }
 
-    public function heroCalled(): void
-    {
-        ///Denna route har int prövats
-        $villainBet = $this->gameProperties['villain']->getCurrentBet();
-        $this->gameProperties['hero']->call($villainBet);
-        $this->gameProperties['table']->addChipsToPot($villainBet);
-        $this->gameProperties['table']->addChipsToPot($this->gameProperties['hero']->getCurrentBet());
-        $this->gameProperties['villain']->resetCurrentBet();
-        $this->gameProperties['hero']->resetCurrentBet();
-        $this->allInCheck($this->gameProperties['villain']);
-        $this->allInCheck($this->gameProperties['hero']);
-        $this->incrementStreet();
-    }
-
-    // public function heroBet(int $amount, object $player): void
-    // {
-    //     $player->bet($amount);
-    // }
-
-    public function heroChecked(): void
-    {
-        $this->gameProperties['hero']->check();
-        if ($this->gameProperties['hero']->getPosition() === "SB") {
-            $this->incrementStreet();
-        }
-    }
 
     public function heroBetSize(int $amount, int $maxBet): int
     {

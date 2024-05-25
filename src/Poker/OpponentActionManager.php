@@ -11,9 +11,15 @@ use Exception;
  */
 class OpponentActionManager
 {
-    public function move(int $price, object $player, int $potSize, int $bet): void
+    public function move(object $player, array $data): void
     {
         $priceIs0 = true;
+        echo"move() PRICE:";
+        $price = $data["price"];
+        $potSize = $data["pot"];
+        $bet = $data["currentBiggestBet"];
+
+        var_dump($price);
 
         if($price > 0) {
             $priceIs0 = false;
@@ -35,7 +41,7 @@ class OpponentActionManager
     public function villainVsPrice(object $player, int $potSize, int $bet): void
     {
         $action = $player->responseToBet();
-        // $action = "call";
+        $action = "call";
         switch ($action) {
             case "fold":
                 echo "fold";
@@ -63,7 +69,7 @@ class OpponentActionManager
     {
         $action = $player->actionVsCheck();
         // for debugging
-        // $action = 'check';
+        $action = 'check';
         switch ($action) {
             case "bet":
                 echo "bet";

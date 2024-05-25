@@ -9,6 +9,17 @@ namespace App\Poker;
  */
 class BetManager
 {
+    private bool $actionIsClosed = false;
+
+    public function getActionIsClosed(): bool
+    {
+        return $this->actionIsClosed;
+    }
+
+    public function setActionIsClosed(bool $actionIsClosed): void
+    {
+        $this->actionIsClosed = $actionIsClosed;
+    }
     /**
      * Gets the price to play for the current betting round.
      *
@@ -83,38 +94,24 @@ class BetManager
 
     public function playerClosedAction(object $player, array $state): bool
     {
-        echo"RUFFY";
+        echo"playerClosedAction()";
         $playerClosedAction = false;
 
-        $phase = $state["phase"];
-        var_dump($phase);
         $playerLastAction = $player->getLastAction();
         $priceToPlay = $this->getPriceToPlay($state);
         $playerPos = $player->getPosition();
+        var_dump($priceToPlay);
+        var_dump($playerLastAction);
+
+        var_dump($playerPos);
 
 
-        if ($phase === "preflop") {
-            // When big blind check backs action is closed despite price not 0.
-            if ($playerLastAction === "check" && $playerPos === 1) {
-                echo"AAA";
-                $playerClosedAction = true;
-            }
-            // When big blind folds backs action is closed despite price not 0.
-            if ($playerLastAction === "fold" && $playerPos === 1) {
-                echo"BBB";
+        if ($playerLastAction === "check" && $playerPos === 2) {
+            echo"CCC";
 
-                $playerClosedAction = true;
-            }
+            $playerClosedAction = true;
         }
-
-        if ($phase === "postflop") {
-            // When button checks back postflop the betting round is over.
-            if ($playerLastAction === "check" && $playerPos === 2) {
-                echo"CCC";
-
-                $playerClosedAction = true;
-            }
-        }
+        // }
         
         // This is true for both preflop and postflop.
         if ($playerLastAction === "call" && $priceToPlay === 0) {
@@ -124,6 +121,7 @@ class BetManager
         }
 
         return $playerClosedAction;
+        }
     }
 
     // public function playerClosedActionPreflop(object $player, array $state): bool
@@ -134,13 +132,30 @@ class BetManager
     //     $playerLastAction = $player->getLastAction();
     //     $playerPos = $player->getPosition();
 
+    //     $activePlayers = $state["active"];
+
+    //     $preflop = $state["preflop"];
+
 
     //     $priceToPlay = $this->getPriceToPlay($state);
     //     echo"PRICE";
     //     var_dump($priceToPlay);
 
 
+
     //     if ($playerLastAction === "call" && $priceToPlay === 0) {
+    //         // Handles the case where small blind completes but
+    //         // big blind is left to act.
+    //         $playerClosedAction = true;
+
+    //         if ($activePlayers > 2 && $playerPos === 0) {
+    //             $playerClosedAction = true;
+    //         }
+    //     }
+
+    //     if ($playerLastAction === "check" && $priceToPlay === 0) {
+    //         echo"DDD";
+
     //         $playerClosedAction = true;
     //     }
 
@@ -148,4 +163,4 @@ class BetManager
 
     //     return $playerClosedAction;
     // }
-}
+
