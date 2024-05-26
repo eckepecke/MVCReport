@@ -99,7 +99,7 @@ class Player
 
     public function activate(): void
     {
-        $this->active = $true;
+        $this->active = true;
     }
 
     public function deActivate(): void

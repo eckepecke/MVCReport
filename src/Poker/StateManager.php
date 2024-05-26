@@ -12,6 +12,8 @@ use Exception;
 class StateManager
 {
     private bool $everyoneMoved = false;
+    private bool $newHand = true;
+
 
 
     public function everyoneHasNotMoved(): void
@@ -28,6 +30,16 @@ class StateManager
     public function didEveryoneMove(): bool
     {
         return $this->everyoneMoved;
+    }
+
+    public function getNewHand(): bool
+    {
+        return $this->newHand;
+    }
+
+    public function setNewHand(bool $bool): void
+    {
+        $this->newHand = $bool;
     }
 
     public function getActivePlayers(array $state): int

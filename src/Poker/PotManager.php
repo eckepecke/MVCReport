@@ -14,6 +14,7 @@ class PotManager
 
     public function addChipsToPot(array $state): void
     {
+        echo"ADDINGBETSTO POT";
         $players = $state["players"];
 
         foreach ($players as $player) {

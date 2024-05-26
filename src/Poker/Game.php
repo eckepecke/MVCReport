@@ -24,7 +24,7 @@ class Game
     private array $players;
     private object $dealer;
     private object $manager;
-    private bool $newHand = true;
+    // private bool $newHand = true;
     private bool $preflop = true;
 
 
@@ -66,7 +66,7 @@ class Game
     public function getGameState(): array
     {
         return [
-            "newHand" => $this->newHand,
+            // "newHand" => $this->newHand,
             "preflop" => $this->preflop,
 
             "hero" => $this->hero,
@@ -80,6 +80,7 @@ class Game
 
     public function getTemplateData(): array
     {
+        $newHand = $this->manager->access("stateManager")->getNewHand();
         $players = $this->getPlayers();
 
         $heroHand = $this->hero->getHand();
@@ -142,7 +143,7 @@ class Game
             "price" => $price,
             "min_raise" => $minRaise,
             "pot" => $pot,
-            "new_hand" => $this->newHand,
+            "new_hand" => $newHand,
             "showdown" => $this->manager->isShowdown(),
             "winner" => $winnerName,
         ];
@@ -211,25 +212,20 @@ class Game
 
     public function play($heroAction): void
     {
-        if ($this->manager->newHandStarting($heroAction)) {
+        var_dump($this->manager->access("stateManager")->getNewHand());
+        if ($this->manager->access("stateManager")->getNewHand()) {
                         // FOR DEBUGGING
-            $this->manager->access("positionManager")->updatePositions($this->players);
-        // $this->manager->access("positionManager")->updatePositions($this->players);
-
- 
-
-
-        //
+            // $this->manager->access("positionManager")->updatePositions($this->players);
 
             echo "NEW HAND STARTING";
-            $this->newHand = true;
-            // $this->manager->givePotToWinner();
             $this->manager->resetTable($this->players);
             $this->manager->dealStartingHands($this->getGameState(), $heroAction);
             $this->manager->updatePlayersCurrentHandStrength($this->players);
-            $this->newHand = false;
+            $this->manager->access("stateManager")->setNewHand(false);
         }
+
         $this->postflop($heroAction);
+
     }
 
     // public function preflop($heroAction): void

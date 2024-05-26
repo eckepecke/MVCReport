@@ -28,6 +28,13 @@ class CardManager extends Dealer
         }
     }
 
+    public function activatePlayers(array $players): void
+    {
+        foreach ($players as $player) {
+            $player->activate();
+        }
+    }
+
     public function dealCommunityCards(string $street, int $cardsDealt): array
     {
         $cards = [];
