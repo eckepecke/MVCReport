@@ -9,10 +9,9 @@ class SameHandEvaluator extends HandEvaluator
 
         $allHandsSorted = [];
         foreach ($hands as $hand) {
-            $ranksAndSuits = $this->extractRanksAndSuits($hand->getCardArray());
+            $ranksAndSuits = $this->extractRanksAndSuits($hand);
             $ranks = $ranksAndSuits[0];
             sort($ranks);
-        
             $allHandsSorted[] = $ranks;
         }
 
@@ -46,8 +45,6 @@ class SameHandEvaluator extends HandEvaluator
                 }
             }
         }
-
-        echo "Winning array index is: $winningIndex";
 
         return $winningIndex;
     }

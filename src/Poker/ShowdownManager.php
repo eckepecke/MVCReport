@@ -17,7 +17,7 @@ class ShowdownManager extends HandEvaluator
         $this->evaluator = $evaluator;
     }
 
-    public function findWinner(array $players): object
+    public function findWinner(array $players, array $board): object
     {
         $winners = $this->compare($players);
 
@@ -26,7 +26,7 @@ class ShowdownManager extends HandEvaluator
         if(count($winners) > 1) {
             $multipleWinners = true;
             $strength = $this->getWinningStrength($winners);
-            $winner = $this->compareSameHands($winners, $strength);
+            $winner = $this->compareSameHands($winners, $strength, $board);
             return $winner;
 
         }
@@ -72,25 +72,22 @@ class ShowdownManager extends HandEvaluator
         return $winners;
     }
 
-    public function compareSameHands(array $players, $strength): object
+    public function compareSameHands(array $players, string $strength, array $board): object
     {
 
         $playerHands = [];
         foreach ($players as $player) {
-            $playerHands[] = $player->getHand();
+            $handObj = $player->getHand();
+            $fullHand = array_merge($handObj->getCardArray(), $board);
+            $playerHands[] = $fullHand;
         }
         switch ($strength) {
             case "High Card":
                 $winnerIndex = $this->evaluator->compareHighCard($playerHands);
                 $winner = $players[$winnerIndex];
             default:
-            //debug
                 $winnerIndex = $this->evaluator->compareHighCard($playerHands);
                 $winner = $players[$winnerIndex];
-                var_dump($winnerIndex);
-                var_dump($winner->getName());
-
-                var_dump($crash);
         }
         return $winner;
     }
@@ -102,4 +99,5 @@ class ShowdownManager extends HandEvaluator
         $winningStrength = $temp->getStrengthString();
         return $winningStrength;
     }
+
 }

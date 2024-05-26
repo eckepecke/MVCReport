@@ -92,7 +92,7 @@ class Manager
         $this->managers["cardManager"]->updateHandStrengths($players, $board);
         $activePlayers = $this->managers["stateManager"]->removeInactive($players);
 
-        $winner = $this->managers["showdownManager"]->findWinner($activePlayers);
+        $winner = $this->managers["showdownManager"]->findWinner($activePlayers, $board);
         $pot = $this->managers["potManager"]->getPotSize();
         $winner->takePot($pot);
 
@@ -295,9 +295,7 @@ class Manager
             echo"Robin";
             $this->OBM($state);
             $this->wonWithNoShowdown($state);
-
         }
-
 
         $actionIsClosed = $this->managers["betManager"]->getActionIsClosed();
         $newHand = $this->managers["stateManager"]->getNewHand();
@@ -319,25 +317,17 @@ class Manager
         // we deal and play until it is heros's turn to act.
         if ($actionIsClosed && !$newHand) {
             echo"Zorro";
-
             $this->deal($state);
             $this->OIM($state);
         }
     }
 
 
-
     public function wonWithNoShowdown(array $state): void
     {
-        echo"Tjena!";
-
         $activePlayers = $this->managers["stateManager"]->getActivePlayers($state);
         if ($activePlayers < 2) {
             echo"WIN!";
-            // $winner = $this->managers["stateManager"]->getWinner($state);
-            // $this->managers["potManager"]->addChipsToPot($state);
-            // $pot = $this->managers["potManager"]->getPotSize();
-            // $winner->takePot($pot);
             $this->managers["stateManager"]->setNewHand(true);
         }
     }

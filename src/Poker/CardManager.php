@@ -4,7 +4,7 @@ namespace App\Poker;
 
 use App\Poker\CardHand;
 use App\Poker\Dealer;
-use App\Poker\HandEvaluatorTrait;
+// use App\Poker\HandEvaluatorTrait;
 
 class CardManager extends Dealer
 {
@@ -68,14 +68,9 @@ class CardManager extends Dealer
     {
         foreach ($players as $player) {
             $hand = $player->getHand();
-
-            // $cardsInHand = $hand->getCardArray();
-            $this->fuseHandAndBoard($hand, $board);
-
+            $cardsInHand = $hand->getCardArray();
+            $fullHand = $this->fuseHandAndBoard($cardsInHand, $board);
             // $this->addBoardToHand($player, $fullHand);
-            $fullHand = $hand->getCardArray();
-            var_dump(count($fullHand));
-            echo"COUNT";
 
             $strengthArray = $this->evaluator->evaluateHand($fullHand);
             $strength = $this->evaluator->getCurrentStrength($strengthArray);
@@ -85,10 +80,14 @@ class CardManager extends Dealer
         }
     }
 
-    public function fuseHandAndBoard(object $hand, array $board): void
+    public function fuseHandAndBoard(array $holeCards, array $board): array
     {
-        foreach($board as $card) {
-            $hand->add($card);
-        }
+        return array_merge($holeCards, $board);
     }
+
+    // public function addBoardToHand(object $player, $cardHand): array
+    // {
+
+    //     $player->setHandFromArray($cardHand);
+    // }
 }
