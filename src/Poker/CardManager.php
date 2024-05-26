@@ -68,8 +68,15 @@ class CardManager extends Dealer
     {
         foreach ($players as $player) {
             $hand = $player->getHand();
-            $cardsInHand = $hand->getCardArray();
-            $fullHand = $this->fuseHandAndBoard($cardsInHand, $board);
+
+            // $cardsInHand = $hand->getCardArray();
+            $this->fuseHandAndBoard($hand, $board);
+
+            // $this->addBoardToHand($player, $fullHand);
+            $fullHand = $hand->getCardArray();
+            var_dump(count($fullHand));
+            echo"COUNT";
+
             $strengthArray = $this->evaluator->evaluateHand($fullHand);
             $strength = $this->evaluator->getCurrentStrength($strengthArray);
             $hand->setStrengthString($strength);
@@ -78,8 +85,10 @@ class CardManager extends Dealer
         }
     }
 
-    public function fuseHandAndBoard(array $holeCards, array $board): array
+    public function fuseHandAndBoard(object $hand, array $board): void
     {
-        return array_merge($holeCards, $board);
+        foreach($board as $card) {
+            $hand->add($card);
+        }
     }
 }

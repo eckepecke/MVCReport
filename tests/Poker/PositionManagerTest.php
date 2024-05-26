@@ -74,15 +74,15 @@ class PositionManagerTest extends TestCase
         $playerArray = [$player1, $player2, $player3];
         $this->manager->assignPositions($playerArray);
         $this->manager->updatePositions($playerArray);
-        $this->manager->sortPlayersByPosition($playerArray);
+        $sortedPlayers = $this->manager->sortPlayersByPosition($playerArray);
 
-        $lowest = $playerArray[0]->getPosition();
-        $middle = $playerArray[1]->getPosition();
-        $highest = $playerArray[2]->getPosition();
+        $lowest = $sortedPlayers[0]->getPosition();
+        $middle = $sortedPlayers[1]->getPosition();
+        $highest = $sortedPlayers[2]->getPosition();
 
-        $this->assertEquals(1, $lowest);
-        $this->assertEquals(2, $middle);
-        $this->assertEquals(3, $highest);
+        $this->assertEquals(0, $lowest);
+        $this->assertEquals(1, $middle);
+        $this->assertEquals(2, $highest);
 
 
         $this->assertLessThan($middle, $lowest, 'The first player should have the lowest position.');

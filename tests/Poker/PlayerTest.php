@@ -4,7 +4,7 @@ namespace App\Poker;
 
 use PHPUnit\Framework\TestCase;
 use App\Cards\DeckOfCards;
-use App\Cards\CardHand;
+use App\Poker\CardHand;
 use App\Cards\CardGraphic;
 
 
@@ -50,9 +50,9 @@ class PlayerTest extends TestCase
 
         $hand = $this->player->addHand($hand);
         $hand = $this->player->getHand();
-        $cards = $hand->getCards();
+        $cards = $hand->getCardArray();
 
-        $this->assertInstanceOf("\App\Cards\CardHand", $hand);
+        $this->assertInstanceOf("\App\Poker\CardHand", $hand);
         $this->assertInstanceOf("\App\Cards\CardGraphic", $cards[0]);
         $this->assertInstanceOf("\App\Cards\CardGraphic", $cards[1]);
     }

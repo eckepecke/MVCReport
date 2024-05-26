@@ -56,8 +56,8 @@ class CardManagerTest extends TestCase
         $hand2 = $playerArray[1]->getHand();
         $hand3 = $playerArray[2]->getHand();
 
-        $this->assertInstanceOf("\App\Cards\CardHand", $hand1);
-        $this->assertInstanceOf("\App\Cards\CardHand", $hand2);
-        $this->assertInstanceOf("\App\Cards\CardHand", $hand3);
+        $this->assertInstanceOf("\App\Poker\CardHand", $hand1);
+        $this->assertInstanceOf("\App\Poker\CardHand", $hand2);
+        $this->assertInstanceOf("\App\Poker\CardHand", $hand3);
     }
 }

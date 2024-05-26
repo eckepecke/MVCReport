@@ -10,17 +10,28 @@ namespace App\Poker;
 class ShowdownManager extends HandEvaluator
 {
     private ?object $showdownWinner = null;
+    private ?object $evaluator = null;
+
+    public function add(SameHandEvaluator $evaluator): void
+    {
+        $this->evaluator = $evaluator;
+    }
 
     public function findWinner(array $players): object
     {
-        $winner = $this->compare($players);
+        $winners = $this->compare($players);
+
+
         $multipleWinners = false;
-        if(count($winner) > 1) {
+        if(count($winners) > 1) {
             $multipleWinners = true;
-            var_dump($needMoreComparison);
+            $strength = $this->getWinningStrength($winners);
+            $winner = $this->compareSameHands($winners, $strength);
+            return $winner;
+
         }
-        $this->setShowdownWinner($winner[0]);
-        return $winner[0];
+        $this->setShowdownWinner($winners[0]);
+        return $winners[0];
     }
 
     public function setShowdownWinner(object $winner): void
@@ -59,5 +70,36 @@ class ShowdownManager extends HandEvaluator
         }
 
         return $winners;
+    }
+
+    public function compareSameHands(array $players, $strength): object
+    {
+
+        $playerHands = [];
+        foreach ($players as $player) {
+            $playerHands[] = $player->getHand();
+        }
+        switch ($strength) {
+            case "High Card":
+                $winnerIndex = $this->evaluator->compareHighCard($playerHands);
+                $winner = $players[$winnerIndex];
+            default:
+            //debug
+                $winnerIndex = $this->evaluator->compareHighCard($playerHands);
+                $winner = $players[$winnerIndex];
+                var_dump($winnerIndex);
+                var_dump($winner->getName());
+
+                var_dump($crash);
+        }
+        return $winner;
+    }
+
+
+    public function getWinningStrength(array $players): string
+    {
+        $temp = $players[0]->getHand();
+        $winningStrength = $temp->getStrengthString();
+        return $winningStrength;
     }
 }

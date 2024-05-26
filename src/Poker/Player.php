@@ -14,6 +14,8 @@ class Player
     protected bool $allIn;
     protected bool $isHero;
     protected bool $active;
+    protected string $name;
+
 
 
     public function __construct()
@@ -27,8 +29,6 @@ class Player
         $this->isHero = false;
         $this->active = true;
         $this->name = "";
-
-
     }
 
     public function addHand(CardHand $hand): void

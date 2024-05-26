@@ -275,30 +275,10 @@ class Manager
     //     }
     // }
 ///////////////////////////////////////////////////////////////////////////////
-    public function postflopRevised(mixed $heroAction, array $state): void
+    public function opponentsPlay(mixed $heroAction, array $state): void
     {
-        // echo"postflopRevised()";
-
-        // $priceToPlay = $this->managers["betManager"]->getPriceToPlay($state);
-
-        // // Hero will move here if input was a move.
-        // $this->managers["heroActionManager"]->heroMove($heroAction, $state["hero"], $priceToPlay);
-        // if ($this->managers["betManager"]->playerClosedAction($state["hero"], $state)) {
-        //     echo"Hero closed action";
-        //     $this->managers["betManager"]->setActionIsClosed(true);
-        // }
-
-        // // Gather info on the state.
-        // $actionIsClosed = $this->managers["betManager"]->getActionIsClosed();
-        // $heroMoved = $this->managers["stateManager"]->heroAlreadyMoved($heroAction);
-        // // $heroPos = $state["hero"]->getPosition();
-        // $this->wonWithNoShowdown($state);
-
-/////////////////////////////////////////////////////////////////////////////////
-
         $actionIsClosed = $this->managers["betManager"]->getActionIsClosed();
         $newHand = $this->managers["stateManager"]->getNewHand();
-
         $heroMoved = $this->managers["stateManager"]->heroAlreadyMoved($heroAction);
         // If hero closed hte action we deal and let
         // opponents in front move, return since action is 
@@ -309,7 +289,6 @@ class Manager
             $this->OIM($state);
             return;
         }
-
 
         // If hero made a move Opponents behind move.
         if ($heroMoved && !$newHand) {

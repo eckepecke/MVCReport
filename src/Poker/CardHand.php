@@ -34,6 +34,15 @@ class CardHand
         return $values;
     }
 
+    public function getValueArray(): array
+    {
+        $values = [];
+        foreach ($this->hand as $card) {
+            $values[] = $card->getCardString();
+        }
+        return $values;
+    }
+
     public function getImgNames(): array
     {
         $values = [];

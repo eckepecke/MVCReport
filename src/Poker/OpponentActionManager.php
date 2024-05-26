@@ -69,7 +69,7 @@ class OpponentActionManager
     {
         $action = $player->actionVsCheck();
         // for debugging
-        // $action = 'bet';
+        $action = 'check';
         switch ($action) {
             case "bet":
                 echo "bet";

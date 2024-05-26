@@ -87,7 +87,7 @@ class HandEvaluator
         return $this->getStrengthArray();
     }
 
-    private function extractRanksAndSuits(array $cards): array
+    public function extractRanksAndSuits(array $cards): array
     {
         $ranks = [];
         $suits = [];

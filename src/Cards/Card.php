@@ -39,6 +39,7 @@ class Card
     {
         return (string) $this->value;
     }
+
     public function getsuit(): string
     {
         return $this->suit;

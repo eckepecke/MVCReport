@@ -17,7 +17,7 @@ use App\Poker\OpponentActionManager;
 use App\Poker\StateManager;
 use App\Poker\ShowdownManager;
 use App\Poker\HandEvaluator;
-
+use App\Poker\SameHandEvaluator;
 
 class Game
 {
@@ -182,6 +182,9 @@ class Game
         $showdownManager = new ShowdownManager();
 
         $handEvaluator = new HandEvaluator();
+        $sameHandEvaluator = new SameHandEvaluator();
+
+        $showdownManager->add($sameHandEvaluator);
 
 
         $positionManager->assignPositions($pArray);
@@ -200,6 +203,8 @@ class Game
         $manager->addManager('opponentActionManager', $opponentActionManager);
         $manager->addManager('stateManager', $stateManager);
         $manager->addManager('showdownManager', $showdownManager);
+
+
 
         $manager->addGame($this);
 
@@ -277,7 +282,7 @@ class Game
 
         // $this->manager->postFlopRevised($heroAction, $this->getGameState());
         $this->manager->heroMakesAPlay($heroAction, $this->getGameState());
-        $this->manager->postFlopRevised($heroAction, $this->getGameState());
+        $this->manager->opponentsPlay($heroAction, $this->getGameState());
         $handEndedBeforeSHowdown = $this->manager->access("stateManager")->getNewHand();
 
         if ($handEndedBeforeSHowdown) {
@@ -288,11 +293,6 @@ class Game
             echo "showdown!";
             $this->manager->showdown($this->players);
             $this->manager->access("stateManager")->setNewHand(true);
-
-
-
-
-            return;
         }
     }
 }
