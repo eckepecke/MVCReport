@@ -41,7 +41,7 @@ class OpponentActionManager
     public function villainVsPrice(object $player, int $potSize, int $bet): void
     {
         $action = $player->responseToBet();
-        $action = "fold";
+        // $action = "fold";
         switch ($action) {
             case "fold":
                 echo "fold";
@@ -69,7 +69,7 @@ class OpponentActionManager
     {
         $action = $player->actionVsCheck();
         // for debugging
-        $action = 'bet';
+        // $action = 'bet';
         switch ($action) {
             case "bet":
                 echo "bet";

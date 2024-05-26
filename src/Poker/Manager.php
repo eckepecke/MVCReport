@@ -58,6 +58,7 @@ class Manager
         $state = $this->game->getGameState();
         // broken
         //need seperate sd and non sd dealings after all
+        $pot = $this->managers["potManager"]->addChipsToPot($state);
         $winner = $this->managers["stateManager"]->getWinner($state);
         $pot = $this->managers["potManager"]->getPotSize();
         $winner->takePot($pot);
@@ -92,8 +93,8 @@ class Manager
         $activePlayers = $this->managers["stateManager"]->removeInactive($players);
 
         $winner = $this->managers["showdownManager"]->findWinner($activePlayers);
-        // $pot = $this->managers["potManager"]->getPotSize();
-        // $winner->takePot($pot);
+        $pot = $this->managers["potManager"]->getPotSize();
+        $winner->takePot($pot);
 
         $this->managers["streetManager"]->setShowdownTrue();
         ///increment hands
@@ -243,10 +244,7 @@ class Manager
                 // Return early if player closed the betting round.
                 if ($this->managers["betManager"]->playerClosedAction($player, $state)) {
                     $this->managers["betManager"]->setActionIsClosed(true);
-
                     echo"Player closed action OIM!";
-                    // $this->managers["stateManager"]->everyoneMoved();
-                    $this->updatePhase();
                     return;
                 }
             }
@@ -279,40 +277,42 @@ class Manager
 ///////////////////////////////////////////////////////////////////////////////
     public function postflopRevised(mixed $heroAction, array $state): void
     {
-        echo"postflopRevised()";
+        // echo"postflopRevised()";
 
-        $priceToPlay = $this->managers["betManager"]->getPriceToPlay($state);
+        // $priceToPlay = $this->managers["betManager"]->getPriceToPlay($state);
 
-        // Hero will move here if input was a move.
-        $this->managers["heroActionManager"]->heroMove($heroAction, $state["hero"], $priceToPlay);
-        if ($this->managers["betManager"]->playerClosedAction($state["hero"], $state)) {
-            echo"Hero closed action";
-            $this->managers["betManager"]->setActionIsClosed(true);
-        }
+        // // Hero will move here if input was a move.
+        // $this->managers["heroActionManager"]->heroMove($heroAction, $state["hero"], $priceToPlay);
+        // if ($this->managers["betManager"]->playerClosedAction($state["hero"], $state)) {
+        //     echo"Hero closed action";
+        //     $this->managers["betManager"]->setActionIsClosed(true);
+        // }
 
-        // Gather info on the state.
+        // // Gather info on the state.
+        // $actionIsClosed = $this->managers["betManager"]->getActionIsClosed();
+        // $heroMoved = $this->managers["stateManager"]->heroAlreadyMoved($heroAction);
+        // // $heroPos = $state["hero"]->getPosition();
+        // $this->wonWithNoShowdown($state);
+
+/////////////////////////////////////////////////////////////////////////////////
+
         $actionIsClosed = $this->managers["betManager"]->getActionIsClosed();
+        $newHand = $this->managers["stateManager"]->getNewHand();
+
         $heroMoved = $this->managers["stateManager"]->heroAlreadyMoved($heroAction);
-        $heroPos = $state["hero"]->getPosition();
-        $this->wonWithNoShowdown($state);
-
-
-
         // If hero closed hte action we deal and let
         // opponents in front move, return since action is 
         // now back on hero.
-        if ($actionIsClosed) {
+        if ($actionIsClosed && !$newHand) {
             echo"Nami";
             $this->deal($state);
             $this->OIM($state);
-            $this->wonWithNoShowdown($state);
-
             return;
         }
 
 
         // If hero made a move Opponents behind move.
-        if ($heroMoved) {
+        if ($heroMoved && !$newHand) {
             echo"Robin";
             $this->OBM($state);
             $this->wonWithNoShowdown($state);
@@ -326,32 +326,19 @@ class Manager
 
         // If action now is closed we deal first
         // and let opponents infront move.
-        if ($actionIsClosed) {
+        if ($actionIsClosed && !$newHand) {
             $this->deal($state);
         }
 
         $this->OIM($state);
         $this->wonWithNoShowdown($state);
 
-
-        // switch ($actionIsClosed) {
-        //         case true:
-        //             echo"Sankji";
-
-        //             $this->deal($state);
-        //             $this->OIM($state);
-        //             break;
-        // // Otherwise 
-        //         case false:
-        //             echo"Chopper";
-        //             $this->OIM($state);
-        //             break;
-        //     }
-
         $actionIsClosed = $this->managers["betManager"]->getActionIsClosed();
+        $newHand = $this->managers["stateManager"]->getNewHand();
+
         // If players infront closed the action
         // we deal and play until it is heros's turn to act.
-        if ($actionIsClosed) {
+        if ($actionIsClosed && !$newHand) {
             echo"Zorro";
 
             $this->deal($state);
@@ -368,12 +355,31 @@ class Manager
         $activePlayers = $this->managers["stateManager"]->getActivePlayers($state);
         if ($activePlayers < 2) {
             echo"WIN!";
-            $winner = $this->managers["stateManager"]->getWinner($state);
-            $this->managers["potManager"]->addChipsToPot($state);
-            $pot = $this->managers["potManager"]->getPotSize();
-            $winner->takePot($pot);
+            // $winner = $this->managers["stateManager"]->getWinner($state);
+            // $this->managers["potManager"]->addChipsToPot($state);
+            // $pot = $this->managers["potManager"]->getPotSize();
+            // $winner->takePot($pot);
             $this->managers["stateManager"]->setNewHand(true);
         }
     }
+
+
+    public function heroMakesAPlay(mixed $heroAction, array $state): void
+    {
+        $priceToPlay = $this->managers["betManager"]->getPriceToPlay($state);
+
+        // Hero will move here if input was a move.
+        $this->managers["heroActionManager"]->heroMove($heroAction, $state["hero"], $priceToPlay);
+        if ($this->managers["betManager"]->playerClosedAction($state["hero"], $state)) {
+            echo"Hero closed action";
+            $this->managers["betManager"]->setActionIsClosed(true);
+        }
+
+        // Gather info on the state.
+
+        $this->wonWithNoShowdown($state);
+    }
+
+
 }
 

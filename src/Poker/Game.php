@@ -222,6 +222,12 @@ class Game
             $this->manager->dealStartingHands($this->getGameState(), $heroAction);
             $this->manager->updatePlayersCurrentHandStrength($this->players);
             $this->manager->access("stateManager")->setNewHand(false);
+            $this->manager->access("streetManager")->setShowdownFalse();
+
+                        // $winner = $this->managers["stateManager"]->getWinner($state);
+            // $this->managers["potManager"]->addChipsToPot($state);
+            // $pot = $this->managers["potManager"]->getPotSize();
+            // $winner->takePot($pot);
         }
 
         $this->postflop($heroAction);
@@ -269,12 +275,22 @@ class Game
     {
         echo"POSTFLOPSTART";
 
+        // $this->manager->postFlopRevised($heroAction, $this->getGameState());
+        $this->manager->heroMakesAPlay($heroAction, $this->getGameState());
         $this->manager->postFlopRevised($heroAction, $this->getGameState());
+        $handEndedBeforeSHowdown = $this->manager->access("stateManager")->getNewHand();
+
+        if ($handEndedBeforeSHowdown) {
+            $this->manager->givePotToWinner();
+        }
 
         if ($this->manager->isShowdown()) {
             echo "showdown!";
             $this->manager->showdown($this->players);
-            $this->manager->givePotToShowdownWinner();
+            $this->manager->access("stateManager")->setNewHand(true);
+
+
+
 
             return;
         }

@@ -99,14 +99,26 @@ class BetManager
 
         $playerLastAction = $player->getLastAction();
         $priceToPlay = $this->getPriceToPlay($state);
-        $playerPos = $player->getPosition();
+        // $playerPos = $player->getPosition();
+        $activePlayers = $state["active"];
+        // $lastToActIndex = count($activePlayers) - 1;
+        $lastToAct = $this->LastToAct($state["players"]);
         var_dump($priceToPlay);
         var_dump($playerLastAction);
+        echo"lastToAct:";
+        var_dump($lastToAct->getName());
+        var_dump($lastToAct->getPosition());
 
-        var_dump($playerPos);
 
 
-        if ($playerLastAction === "check" && $playerPos === 2) {
+        // var_dump($playerPos);
+        if ($priceToPlay === 0 && $activePlayers === 2) {
+            echo"AAA";
+
+            $playerClosedAction = true;
+        }
+
+        if ($playerLastAction === "check" && $player === $lastToAct) {
             echo"CCC";
 
             $playerClosedAction = true;
@@ -120,47 +132,28 @@ class BetManager
             $playerClosedAction = true;
         }
 
+        if ($playerLastAction === "fold" && $priceToPlay === 0) {
+            echo"FFF";
+
+            $playerClosedAction = true;
+        }
+
         return $playerClosedAction;
         }
+
+    public function LastToAct( array $players): object
+    {
+        $last = null;
+        $biggestNumber = -1;
+        foreach ($players as $player) {
+            if ($player->isActive()) {
+                $pos = $player->getPosition();
+                if ($pos > $biggestNumber) {
+                    $biggestNumber = $pos;
+                    $last = $player;
+                }
+            }
+        }
+        return $last;
     }
-
-    // public function playerClosedActionPreflop(object $player, array $state): bool
-    // {
-    //     $playerClosedAction = false;
-
-
-    //     $playerLastAction = $player->getLastAction();
-    //     $playerPos = $player->getPosition();
-
-    //     $activePlayers = $state["active"];
-
-    //     $preflop = $state["preflop"];
-
-
-    //     $priceToPlay = $this->getPriceToPlay($state);
-    //     echo"PRICE";
-    //     var_dump($priceToPlay);
-
-
-
-    //     if ($playerLastAction === "call" && $priceToPlay === 0) {
-    //         // Handles the case where small blind completes but
-    //         // big blind is left to act.
-    //         $playerClosedAction = true;
-
-    //         if ($activePlayers > 2 && $playerPos === 0) {
-    //             $playerClosedAction = true;
-    //         }
-    //     }
-
-    //     if ($playerLastAction === "check" && $priceToPlay === 0) {
-    //         echo"DDD";
-
-    //         $playerClosedAction = true;
-    //     }
-
-
-
-    //     return $playerClosedAction;
-    // }
-
+    }

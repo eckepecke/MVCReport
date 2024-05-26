@@ -131,12 +131,20 @@ class Player
         }
     }
 
+    // public function call(int $amount): void
+    // {
+    //     $amount = min($amount, ($this->stack + $this->currentBet));
+    //     $this->stack -= $amount - $this->currentBet;
+    //     $this->lastAction = "call";
+    //     $this->currentBet = $amount;
+    // }
+
     public function call(int $amount): void
     {
         $amount = min($amount, ($this->stack + $this->currentBet));
         $this->stack -= $amount - $this->currentBet;
         $this->lastAction = "call";
-        $this->currentBet = $amount;
+        $this->currentBet = $amount + $this->currentBet;
     }
 
     public function callTest(int $amount): void
@@ -152,7 +160,7 @@ class Player
         // $this->currentBet = 0;
         $this->active = false;
         $this->currentStrength = "";
-        $this->lastAction = "";
+        $this->lastAction = "fold";
     }
 
     public function raise(int $bet): void

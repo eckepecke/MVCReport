@@ -14,7 +14,6 @@ class ShowdownManager extends HandEvaluator
     public function findWinner(array $players): object
     {
         $winner = $this->compare($players);
-
         $multipleWinners = false;
         if(count($winner) > 1) {
             $multipleWinners = true;
