@@ -9,7 +9,7 @@ class PotManager
 
     public function __construct()
     {
-        $this->pot = 500;
+        $this->pot = 200;
     }
 
     public function addChipsToPot(array $state): void
@@ -31,7 +31,7 @@ class PotManager
 
     public function resetPot(): void
     {
-        $this->pot = 500;
+        $this->pot = 200;
     }
 
     // public function chargeBlinds(array $players): void

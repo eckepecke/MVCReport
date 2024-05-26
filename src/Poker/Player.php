@@ -76,7 +76,7 @@ class Player
     public function payBlind(int $blind): void
     {
         $this->stack -= $blind;
-        $this->currentBet = $blind;
+        // $this->currentBet = $blind;
 
 
     }
@@ -142,9 +142,10 @@ class Player
     public function call(int $amount): void
     {
         $amount = min($amount, ($this->stack + $this->currentBet));
-        $this->stack -= $amount - $this->currentBet;
+        $this->stack -= $amount;
         $this->lastAction = "call";
         $this->currentBet = $amount + $this->currentBet;
+
     }
 
     public function callTest(int $amount): void
@@ -169,7 +170,7 @@ class Player
         $allChipsPlayerHas = $this->stack + $this->currentBet;
         $raise = min($minRaise, $allChipsPlayerHas);
 
-        $this->stack -= $raise;
+        $this->stack -= $raise - $this->currentBet;
         $this->currentBet = $raise;
         $this->lastAction = "raise";
 
