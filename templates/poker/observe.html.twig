@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Poker Project{% endblock %}
+
+
+{% block body %}
+
+
+    <div class="table-three">
+
+            <div class="player-box-small">
+                <h4> {{ opp_1_strength }}</h4>
+            {#
+            
+                <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me"> #}
+                <div class="card-box-small">
+                {% if opp_1_active %}
+                    {% for img in opponent1Hand %}
+                        <img class="card-img-small" src="{{ asset('build/images/' ~ img) }}" alt="card">    
+                    {% endfor %}
+                {% endif %}
+
+                </div>
+                {# <h4 class="blind">{{teddy_pos}}</h4> #}
+                <h3>{{opponent_1_stack}} USD</h3>
+                <h4 class="blind">{{opp_1_pos}}</h4>
+            </div>
+
+{# //////////////////////////////////////////////// #}
+
+            <div class="player-box-small">
+                <h4> {{ opp_2_strength }}</h4>
+            {#
+            
+                <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me"> #}
+                <div class="card-box-small">
+                {% if opp_2_active %}
+                    {% for img in opponent2Hand %}
+                        <img class="card-img-small" src="{{ asset('build/images/' ~ img) }}" alt="card">    
+                    {% endfor %}
+                {% endif %}
+
+                </div>
+                {# <h4 class="blind">{{teddy_pos}}</h4> #}
+                <h3>{{opponent_2_stack}} USD</h3>
+                <h4 class="blind">{{opp_2_pos}}</h4>
+            </div>
+
+{# //////////////////////////////////////////////// #}
+
+                <div class="board-box">
+                    {% for img in board %}
+                        <img class="community-card" src="{{ asset('build/images/' ~ img) }}" alt="card">
+                    {% endfor %}
+                </div>
+
+
+{# //////////////////////////////////////////////// #}
+
+                <h4>{{hero_strength}}</h4>
+                <div class="player-box">
+
+                    <div class="card-box">
+                    {% for img in hero_hand %}
+                        <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
+                    </div>
+                <h4 class="blind">{{hero_pos}}</h4>
+                </div>
+                <h3>{{hero_stack}} USD</h3>
+{# //////////////////////////////////////////////// #}
+
+
+        <div class="options-box">
+            <form method="post" action="{{ path('poker_play') }}">
+                <input type="hidden" name="action" value="observe">
+                <input type="submit" value="Observe" class="fold-button">
+            </form>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+{% endblock %}

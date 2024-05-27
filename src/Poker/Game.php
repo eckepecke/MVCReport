@@ -149,6 +149,9 @@ class Game
             "new_hand" => $newHand,
             "showdown" => $this->manager->access("streetManager")->getShowdown(),
             "winner" => $winnerName,
+
+            "allin" => $this->hero->isAllin(),
+
         ];
     }
 
@@ -186,7 +189,7 @@ class Game
 
         $handEvaluator = new HandEvaluator();
         $sameHandEvaluator = new SameHandEvaluator();
-        $gameOverTracker = new GameOverTracker();
+        $gameOverTracker = new GameOverTracker(5);
 
         $showdownManager->add($sameHandEvaluator);
 
@@ -223,10 +226,9 @@ class Game
 
     public function prepare($heroAction): void
     {
-        $heroIsBroke = $this->manager->access("gameOverTracker")->checkHeroBroke($this->hero->getStack());
-        $this->manager->access("gameOverTracker")->incrementHands();
+        $this->manager->access("gameOverTracker")->checkHeroBroke($this->hero->getStack());
         $gameOver = $this->manager->access("gameOverTracker")->getGameOver();
-        if ($gameOver > 5) {
+        if ($gameOver) {
             $this->gameOver = true;
             var_dump($crash);
         }
@@ -265,6 +267,8 @@ class Game
 
         if ($endBeforeSHowdown) {
             $this->manager->givePotToWinner($this->getGameState());
+            $this->manager->access("gameOverTracker")->incrementHands();
+
         }
 
         $activePlayers = $this->manager->access("stateManager")->removeInactive($this->players);
@@ -279,6 +283,8 @@ class Game
             echo "showdown!";
             $this->manager->showdown($this->players);
             $this->manager->access("stateManager")->setNewHand(true);
+            $this->manager->access("gameOverTracker")->incrementHands();
+
         }
     }
 }

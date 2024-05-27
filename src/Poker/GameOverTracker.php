@@ -9,11 +9,19 @@ namespace App\Poker;
  */
 class GameOverTracker
 {
-    private bool $allHandsPlayed = false;
-    private int $handsToPlay = 5;
+    private bool $allHandsPlayed;
+    private int $handsToPlay;
+    private int $hand;
+    private bool $heroIsBroke;
 
-    private int $hand = 0;
-    private bool $heroIsBroke = false;
+    public function __construct($hands) 
+    {
+        $this->allHandsPlayed = false;
+        $this->handsToPlay = $hands;
+        $this->hand = 0;
+        $this->heroIsBroke = false;
+    }
+
 
 
     public function getHandsPlayed(): int
@@ -24,6 +32,7 @@ class GameOverTracker
     public function getGameOver(): bool
     {
         $gameOver = false;
+        var_dump($this->hand);
         if ($this->hand >= 6 || $this->heroIsBroke) {
             $gameOver = true;
         }
@@ -41,6 +50,7 @@ class GameOverTracker
 
     public function checkHeroBroke($stack): void
     {
+        var_dump($stack);
         if ($stack <= 0) {
             $this->heroIsBroke = true;
         }

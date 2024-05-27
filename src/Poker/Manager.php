@@ -67,7 +67,6 @@ class Manager
         $this->managers["positionManager"]->updatePositions($players);
         $this->managers["potManager"]->chargeBlinds($players);
         $this->managers["betManager"]->resetAllIns($players);
-
     }
 
     public function showdown(array $players): void
@@ -147,7 +146,7 @@ class Manager
         foreach ($players as $player) {
             $currentPosition = $player->getPosition();
             var_dump($currentPosition);
-            var_dump($player->IsHero());
+
 
 
             // Player will act if still in the hand has position before hero.
