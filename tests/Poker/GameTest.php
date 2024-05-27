@@ -29,8 +29,6 @@ class GameTest extends TestCase
         $playerArray = [$player1, $player2, $player3];
         $this->game->addPlayers($playerArray);
         $this->game->addDealer($dealer);
-
-
     }
     /**
      * Construct object and verify that the object has the expected

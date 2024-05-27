@@ -25,14 +25,6 @@ class Manager
         return $this->managers[$manager];
     }
 
-    public function dealStartingHands($state)
-    {
-        $this->managers["cardManager"]->shuffleCards();
-        $this->managers["cardManager"]->dealStartHandToAllPlayers($state["players"]);
-
-    }
-
-
     public function newHandStarting(mixed $action): bool
     {
         $state = $this->game->getGameState();
@@ -53,11 +45,8 @@ class Manager
         return $newHand;
     }
 
-    public function givePotToWinner(): void
+    public function givePotToWinner(array $state): void
     {
-        $state = $this->game->getGameState();
-        // broken
-        //need seperate sd and non sd dealings after all
         $pot = $this->managers["potManager"]->addChipsToPot($state);
         $winner = $this->managers["stateManager"]->getWinner($state);
         $pot = $this->managers["potManager"]->getPotSize();
@@ -77,14 +66,9 @@ class Manager
         $this->managers["cardManager"]->activatePlayers($players);
         $this->managers["positionManager"]->updatePositions($players);
         $this->managers["potManager"]->chargeBlinds($players);
+        $this->managers["betManager"]->resetAllIns($players);
+
     }
-
-
-    public function isShowdown(): bool
-    {
-        return $this->managers["streetManager"]->getShowdown();
-    }
-
 
     public function showdown(array $players): void
     {
@@ -106,32 +90,6 @@ class Manager
         $this->managers["cardManager"]->updateHandStrengths($players, $board);
     }
 
-    public function getShowdownWinnerName(): object
-    {
-        $winner = $this->managers["showdownManager"]->getWinner();
-
-        return $winner->getName();
-    }
-
-    // public function preflopRevised(mixed $heroAction, array $state): void
-    // {
-    //     echo"preflopRevised()";
-
-    //     $priceToPlay = $this->managers["betManager"]->getPriceToPlay($state);
-    //     $this->managers["heroActionManager"]->heroMove($heroAction, $state["hero"], $priceToPlay);
-    //     if ($this->managers["betManager"]->playerClosedActionPreflop($state["hero"], $state)) {
-    //         $this->managers["bettManager"]->setActionIsClosed(true);
-    //     }
-
-    //     $actionIsClosed = $this->managers["betManager"]->getActionIsClosed();
-    //     if ($actionIsClosed) {
-    //         $this->deal($state);
-    //         return;
-    //     }
-
-    //     $this->opponentsPlayPreflop($heroAction, $state);
-    // }
-
     public function deal(array $state): void
     {
         echo"deal()";
@@ -148,38 +106,11 @@ class Manager
         $this->managers["CCManager"]->register($cards);
     }
 
-    // public function opponentsPlayPreflop(mixed $heroAction, array $state): void
-    // {
-    //     echo"opponentsPlayPreflop()";
-    //     $heroMoved = $this->managers["stateManager"]->heroAlreadyMoved($heroAction);
-    //     $hero = $state["hero"];
-    //     $heroPos = $hero->getPosition();
-    //     switch ($heroPos) {
-    //         case 2:
-
-    //             $this->OIM($heroPos, $state);
-    //             break;
-    //         case 0:
-    //             $this->buttonPlayerMove($state);
-    //             if ($heroMoved) {
-    //                 $this->OBM($heroPos, $state);
-    //             }
-    //         case 1:
-                
-    //             $this->buttonPlayerMove($state);
-    //             $this->playUntilHero($state);
-    //             if ($heroMoved) {
-    //                 $this->OBM($heroPos, $state);
-    //             }
-    //             break;
-    //     }
-    // }
-
-
     public function opponentsBehindMove(array $state): void
     {
         echo"OBM";
-        $heroPos = $state["hero"]->getPosition();
+        $hero = $state["hero"];
+        $heroPos = $hero->getPosition();
         $players = $state["players"];
         $players = $this->managers["positionManager"]->sortPlayersByPosition($state["players"]);
 
@@ -189,7 +120,7 @@ class Manager
             if ($player->isActive() && $currentPosition > $heroPos) {
                 var_dump($player->getName());
                 $chipData = $this->getDataBeforeaction();
-                $this->managers["opponentActionManager"]->move($player, $chipData);
+                $this->managers["opponentActionManager"]->move($player, $chipData, $hero);
                 // return early if player closed the betting round.
                 if ($this->managers["betManager"]->playerClosedAction($player, $state)) {
                     $this->managers["betManager"]->setActionIsClosed(true);
@@ -210,7 +141,8 @@ class Manager
         echo "hello";
         $players = $state["players"];
         $players = $this->managers["positionManager"]->sortPlayersByPosition($state["players"]);
-        $heroPos = $state["hero"]->getPosition();
+        $hero = $state["hero"];
+        $heroPos = $hero->getPosition();
         var_dump($heroPos);
         foreach ($players as $player) {
             $currentPosition = $player->getPosition();
@@ -226,7 +158,7 @@ class Manager
                 var_dump($heroPos);
 
                 $chipData = $this->getDataBeforeaction();
-                $this->managers["opponentActionManager"]->move($player, $chipData);
+                $this->managers["opponentActionManager"]->move($player, $chipData, $hero);
                 // Return early if player closed the betting round.
                 if ($this->managers["betManager"]->playerClosedAction($player, $state)) {
                     $this->managers["betManager"]->setActionIsClosed(true);
@@ -252,20 +184,17 @@ class Manager
         return $chipData;
     }
 
-    // public function buttonPlayerMove($state): void
-    // {
-    //     $btnPlayer = $this->managers["positionManager"]->findButtonPlayer($state["players"]);
-    //     if ($btnPlayer->isActive() && $btnPlayer->getCurrentBet() === 0) {
-    //         $chipData = $this->getDataBeforeaction();
-    //         $this->managers["opponentActionManager"]->move($btnPlayer, $chipData);
-    //     }
-    // }
-///////////////////////////////////////////////////////////////////////////////
     public function opponentsPlay(mixed $heroAction, array $state): void
     {
         $actionIsClosed = $this->managers["betManager"]->getActionIsClosed();
         $newHand = $this->managers["stateManager"]->getNewHand();
         $heroMoved = $this->managers["stateManager"]->heroAlreadyMoved($heroAction);
+
+        if ($state["hero"]->isAllIn()) {
+            $this->opponentsBehindMove($state);
+            $this->opponentsInFrontMove($state);
+            return;
+        }
         // If hero closed hte action we deal and let
         // opponents in front move, return since action is 
         // now back on hero.
@@ -280,7 +209,8 @@ class Manager
         if ($heroMoved && !$newHand) {
             echo"Robin";
             $this->opponentsBehindMove($state);
-            $this->wonWithNoShowdown($state);
+            $this->managers["stateManager"]->wonWithNoShowdown($state);
+
         }
 
         $actionIsClosed = $this->managers["betManager"]->getActionIsClosed();
@@ -294,7 +224,7 @@ class Manager
         }
 
         $this->opponentsInFrontMove($state);
-        $this->wonWithNoShowdown($state);
+        $this->managers["stateManager"]->wonWithNoShowdown($state);
 
         $actionIsClosed = $this->managers["betManager"]->getActionIsClosed();
         $newHand = $this->managers["stateManager"]->getNewHand();
@@ -308,17 +238,6 @@ class Manager
         }
     }
 
-
-    public function wonWithNoShowdown(array $state): void
-    {
-        $activePlayers = $this->managers["stateManager"]->getActivePlayers($state);
-        if ($activePlayers < 2) {
-            echo"WIN!";
-            $this->managers["stateManager"]->setNewHand(true);
-        }
-    }
-
-
     public function heroMakesAPlay(mixed $heroAction, array $state): void
     {
         $priceToPlay = $this->managers["betManager"]->getPriceToPlay($state);
@@ -330,9 +249,14 @@ class Manager
             $this->managers["betManager"]->setActionIsClosed(true);
         }
 
-        // Gather info on the state.
+        $this->managers["stateManager"]->wonWithNoShowdown($state);
+    }
 
-        $this->wonWithNoShowdown($state);
+    public function dealToShowDown(): void
+    {
+        $board = $this->managers["CCManager"]->getBoard();
+        $newCards = $this->managers["cardManager"]->dealRemaining($board);
+        $this->managers["CCManager"]->register($newCards);
     }
 
 

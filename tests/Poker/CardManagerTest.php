@@ -50,7 +50,7 @@ class CardManagerTest extends TestCase
 
         $playerArray = [$player1, $player2, $player3];
 
-        $this->manager->dealStartHandToAllPlayers($playerArray);
+        $this->manager->dealStartingHands($playerArray);
 
         $hand1 = $playerArray[0]->getHand();
         $hand2 = $playerArray[1]->getHand();

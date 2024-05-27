@@ -92,6 +92,13 @@ class BetManager
         }
     }
 
+    public function resetAllIns(array $players): void
+    {
+        foreach ($players as $player) {
+            $player->resetAllIn();
+        }
+    }
+
     public function playerClosedAction(object $player, array $state): bool
     {
         echo"playerClosedAction()";

@@ -11,13 +11,18 @@ use Exception;
  */
 class OpponentActionManager
 {
-    public function move(object $player, array $data): void
+    public function move(object $player, array $data, object $hero): void
     {
         $priceIs0 = true;
         echo"move() PRICE:";
         $price = $data["price"];
         $potSize = $data["pot"];
         $bet = $data["currentBiggestBet"];
+
+        if ($hero->isAllin()) {
+            $this->oppFacingAllIn($player, $price);
+            return;
+        }
 
         var_dump($price);
 
@@ -69,7 +74,7 @@ class OpponentActionManager
     {
         $action = $player->actionVsCheck();
         // for debugging
-        $action = 'check';
+        // $action = 'check';
         switch ($action) {
             case "bet":
                 echo "bet";
@@ -80,6 +85,23 @@ class OpponentActionManager
             case "check":
                 echo "check";
                 $player->check();
+                break;
+        }
+    }
+
+    public function oppFacingAllIn(object $player, int $price): void
+    {
+        $action = $player->actionVsShove();
+        // for debugging
+        $action = 'call';
+        switch ($action) {
+            case "call":
+                echo "call";
+                $player->call($price);
+                break;
+            case "fold":
+                echo "fold";
+                $player->fold();
                 break;
         }
     }

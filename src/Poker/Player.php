@@ -6,13 +6,9 @@ use App\Poker\CardHand;
 
 class Player extends PlayerBase
 {
-    protected int $stack;
-    protected ?object $hand;
+
     protected int $position;
-    protected int $currentBet;
-    protected string $lastAction;
     protected bool $allIn;
-    protected bool $isHero;
     protected bool $active;
     protected string $name;
 
@@ -21,7 +17,7 @@ class Player extends PlayerBase
         parent::__construct();
         $this->position = 0;
         $this->allIn = false;
-        $this->isHero = false;
+
         $this->active = true;
         $this->name = "";
     }
@@ -53,16 +49,6 @@ class Player extends PlayerBase
         $this->currentBet = $blind;
     }
 
-    public function isHero(): bool
-    {
-        return $this->isHero;
-    }
-
-    public function setHero(): void
-    {
-        $this->isHero = true;
-    }
-
     public function activate(): void
     {
         $this->active = true;
@@ -92,4 +78,18 @@ class Player extends PlayerBase
     {
         return $this->name;
     }
+
+    public function isAllin(): string
+    {
+        if ($this->stack < 0) {
+            $this->allIn = true;
+        }
+        return $this->allIn;
+    }
+
+    public function resetAllin(): void
+    {
+        $this->allIn = false;
+    }
+
 }

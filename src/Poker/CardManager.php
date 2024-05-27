@@ -10,8 +10,9 @@ class CardManager extends Dealer
 {
     private object $evaluator;
 
-    public function dealStartHandToAllPlayers(array $players): void
+    public function dealStartingHands(array $players): void
     {
+        $this->shuffleCards();
         foreach ($players as $player) {
             $cards = $this->dealStartHand();
             $hand = new CardHand();
@@ -85,9 +86,10 @@ class CardManager extends Dealer
         return array_merge($holeCards, $board);
     }
 
-    // public function addBoardToHand(object $player, $cardHand): array
-    // {
-
-    //     $player->setHandFromArray($cardHand);
-    // }
+    public function dealRemaining(array $board): array
+    {
+        $remaining = 5 - count($board);
+        $cards = $this->deck->drawMany($remaining);
+        return $cards;
+    }
 }

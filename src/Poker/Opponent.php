@@ -7,6 +7,7 @@ class Opponent extends Player
     public function __construct()
     {
         parent::__construct();
+        $this->stack = 10000;
     }
 
     public function responseToBet()
@@ -40,5 +41,16 @@ class Opponent extends Player
     public function chooseBetSize($potSize): int
     {
         return 0.75 * $potSize;
+    }
+
+    public function actionVsShove(): string
+    {
+        $options = [
+            "fold",
+            "call",
+        ];
+
+        $decision = $options[rand(0, 1)];
+        return $decision;
     }
 }

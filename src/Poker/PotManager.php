@@ -31,7 +31,7 @@ class PotManager
 
     public function resetPot(): void
     {
-        $this->pot = 200;
+        $this->pot = 0;
     }
 
     public function chargeBlinds(array $players): void

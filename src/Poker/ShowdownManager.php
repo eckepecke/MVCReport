@@ -2,6 +2,7 @@
 
 namespace App\Poker;
 
+use Exception;
 /**
  * Class ShowDownManager
  *
@@ -84,13 +85,55 @@ class ShowdownManager extends HandEvaluator
             $fullHand = array_merge($handObj->getCardArray(), $board);
             $playerHands[] = $fullHand;
         }
+
+        $playerHandRanks = [];
+        $playerHandSuits = [];
+
+
+        foreach ($playerHands as $hand) {
+            list($ranks, $suits) = $this->extractRanksAndSuits($hand);
+            $playerHandRanks[] = $ranks;
+            $playerHandSuits[] = $suits;
+        }
+        echo"lets see";
+        var_dump($playerHandRanks);
+
         switch ($strength) {
-            case "High Card":
-                $winnerIndex = $this->evaluator->compareHighCard($playerHands);
+            case "High card":
+                $winnerIndex = $this->evaluator->compareHighCard($playerHandRanks);
                 $winner = $players[$winnerIndex];
+                break;
+            case "One pair":
+                $winnerIndex = $this->evaluator->compareOnePair($playerHandRanks);
+                $winner = $players[$winnerIndex];
+                break;
+            case "Two pair":
+                $winnerIndex = $this->evaluator->compareTwoPair($playerHandRanks);
+                $winner = $players[$winnerIndex];
+                break;
+            case "Trips":
+                $winnerIndex = $this->evaluator->compareTrips($playerHandRanks);
+                $winner = $players[$winnerIndex];
+                break;
+            case "Straight":
+                $winnerIndex = $this->evaluator->compareTrips($playerHandRanks);
+                $winner = $players[$winnerIndex];
+                break;
+            case "Flush":
+                $winnerIndex = $this->evaluator->compareFlushes($playerHandRanks, $playerHandSuits);
+                $winner = $players[$winnerIndex];
+                break;
+            case "Full house":
+                $winnerIndex = $this->evaluator->compareFullHouses($playerHandRanks);
+                $winner = $players[$winnerIndex];
+                break;
+            case "Four of a kind":
+                $winnerIndex = $this->evaluator->compareQuads($playerHandRanks);
+                $winner = $players[$winnerIndex];
+                break;
             default:
-                $winnerIndex = $this->evaluator->compareHighCard($playerHands);
-                $winner = $players[$winnerIndex];
+                throw new Exception("No such Handstrength $strength");
+                break;
         }
         return $winner;
     }

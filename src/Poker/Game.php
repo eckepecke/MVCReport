@@ -3,6 +3,8 @@
 namespace App\Poker;
 
 use App\Poker\Player;
+use App\Poker\Hero;
+
 use App\Cards\DeckOfCards;
 use App\Poker\CardHand;
 use App\Poker\Manager;
@@ -18,14 +20,15 @@ use App\Poker\StateManager;
 use App\Poker\ShowdownManager;
 use App\Poker\HandEvaluator;
 use App\Poker\SameHandEvaluator;
+use App\Poker\GameOverTracker;
+
 
 class Game
 {
     private array $players;
     private object $dealer;
     private object $manager;
-    // private bool $newHand = true;
-    private bool $preflop = true;
+    private bool $gameOver = true;
 
 
     private object $hero;
@@ -66,12 +69,13 @@ class Game
     public function getGameState(): array
     {
         return [
-            // "newHand" => $this->newHand,
-            "preflop" => $this->preflop,
-
             "hero" => $this->hero,
             "players" => $this->getPlayers(),
             "active" => $this->manager->access("stateManager")->removeInactive($this->players),
+            "game_over" => $this->gameOver,
+
+            // "price" => $this->manager->access("betManager")->getPriceToPlay($this->getGameState()),
+
 
             // "phase" => $this->phase,
 
@@ -103,7 +107,7 @@ class Game
         $pot = $potManager->getPotSize($state);
 
         $showdownManager = $this->manager->access("showdownManager");
-        $winner = $showdownManager->getWinner();
+        $winner = $this->manager->access("showdownManager")->getWinner();
         $winnerName = null;
         if($winner != null) {
             $winnerName = $winner->getName();
@@ -143,7 +147,7 @@ class Game
             "min_raise" => $minRaise,
             "pot" => $pot,
             "new_hand" => $newHand,
-            "showdown" => $this->manager->isShowdown(),
+            "showdown" => $this->manager->access("streetManager")->getShowdown(),
             "winner" => $winnerName,
         ];
     }
@@ -151,9 +155,9 @@ class Game
     public function init(): void
     {
 
-        $player1 = new Player();
+        $player1 = new Hero();
         $player1->setName("Hero");
-        $player1->setHero();
+        $this->hero = $player1;
         $player2 = new Opponent();
         $player2->setName("Isildur1");
         $player3 = new Opponent();
@@ -169,7 +173,7 @@ class Game
 
         $deck = new DeckOfCards();
         $manager = new Manager();
-        $CCManager = new CommunityCardManager();
+        $cCManager = new CommunityCardManager();
         $potManager = new PotManager();
         $positionManager = new PositionManager();
         $cardManager = new CardManager();
@@ -182,6 +186,7 @@ class Game
 
         $handEvaluator = new HandEvaluator();
         $sameHandEvaluator = new SameHandEvaluator();
+        $gameOverTracker = new GameOverTracker();
 
         $showdownManager->add($sameHandEvaluator);
 
@@ -192,7 +197,7 @@ class Game
         $cardManager->addDeck($deck);
         $cardManager->addEvaluator($handEvaluator);
 
-        $manager->addManager('CCManager', $CCManager);
+        $manager->addManager('CCManager', $cCManager);
         $manager->addManager('potManager', $potManager);
         $manager->addManager('positionManager', $positionManager);
         $manager->addManager('cardManager', $cardManager);
@@ -202,6 +207,8 @@ class Game
         $manager->addManager('opponentActionManager', $opponentActionManager);
         $manager->addManager('stateManager', $stateManager);
         $manager->addManager('showdownManager', $showdownManager);
+        $manager->addManager('gameOverTracker', $gameOverTracker);
+
 
 
 
@@ -216,52 +223,32 @@ class Game
 
     public function prepare($heroAction): void
     {
+        $heroIsBroke = $this->manager->access("gameOverTracker")->checkHeroBroke($this->hero->getStack());
+        $this->manager->access("gameOverTracker")->incrementHands();
+        $gameOver = $this->manager->access("gameOverTracker")->getGameOver();
+        if ($gameOver > 5) {
+            $this->gameOver = true;
+            var_dump($crash);
+        }
 
         if ($this->manager->access("stateManager")->getNewHand()) {
-
             echo "NEW HAND STARTING";
             $this->manager->resetTable($this->players);
-            $this->manager->dealStartingHands($this->getGameState(), $heroAction);
+            $this->manager->access("cardManager")->dealStartingHands($this->players);
             $this->manager->updatePlayersCurrentHandStrength($this->players);
             $this->manager->access("stateManager")->setNewHand(false);
             $this->manager->access("streetManager")->setShowdownFalse();
+            $this->manager->access("streetManager")->resetStreet();
+            $this->manager->access("betManager")->setActionIsClosed(false);
+            $this->hero->resetAllin();
+
+
+
         }
 
         $this->play($heroAction);
 
     }
-
-    // public function preflop($heroAction): void
-    // {
-    //     // if ($this->manager->newHandStarting($heroAction)) {
-    //     //     echo "NEW HAND STARTING";
-    //     //     $this->newHand = true;
-    //     //     $this->manager->givePotToWinner();
-    //     //     $this->manager->resetTable($this->players);
-    //     // }
-
-
-
-    //     echo"PREFLOPACTION";
-    //     $this->manager->preflopRevised($heroAction, $this->getGameState());
-
-        // if (!$this->manager->access("streetManager")->isPreflop()) {
-        //     echo"PREFLOP ENDS!";
-        //     $this->manager->access("potManager")->addChipsToPot($this->getGameState());
-        //     $this->manager->access("betManager")->resetPlayerBets($this->players);
-        //     $this->manager->access("streetManager")->setNextStreet();
-        //     $heroAction = null;
-        //     $this->postflop($heroAction);
-
-
-            // $this->manager->handleChips($this->getGameState());
-        // }
-
-
-        //$this->manager->updatePlayersCurrentHandStrength($this->players);
-
-
-    // }
 
     public function resetNewHand(): void
     {
@@ -274,13 +261,21 @@ class Game
 
         $this->manager->heroMakesAPlay($heroAction, $this->getGameState());
         $this->manager->opponentsPlay($heroAction, $this->getGameState());
-        $handEndedBeforeSHowdown = $this->manager->access("stateManager")->getNewHand();
+        $endBeforeSHowdown = $this->manager->access("stateManager")->getNewHand();
 
-        if ($handEndedBeforeSHowdown) {
-            $this->manager->givePotToWinner();
+        if ($endBeforeSHowdown) {
+            $this->manager->givePotToWinner($this->getGameState());
         }
 
-        if ($this->manager->isShowdown()) {
+        $activePlayers = $this->manager->access("stateManager")->removeInactive($this->players);
+        if ($this->hero->isAllin() && $activePlayers > 1) {
+            $this->manager->access("potManager")->addChipsToPot($this->getGameState());
+            $this->manager->dealToShowDown();
+            $this->manager->access("streetManager")->setShowdownTrue();
+        }
+
+
+        if ($this->manager->access("streetManager")->getShowdown()) {
             echo "showdown!";
             $this->manager->showdown($this->players);
             $this->manager->access("stateManager")->setNewHand(true);

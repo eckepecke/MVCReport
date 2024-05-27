@@ -105,4 +105,13 @@ class StateManager
 
         return $heroAlreadyMoved;
     }
+
+    public function wonWithNoShowdown(array $state): void
+    {
+        $activePlayers = $this->getActivePlayers($state);
+        if ($activePlayers < 2) {
+            echo"WIN!";
+            $this->newHand = true;
+        }
+    }
 }
