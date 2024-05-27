@@ -104,8 +104,7 @@ class CardHandTest extends TestCase
         $this->cardHand->add($stub1);
         $this->cardHand->add($stub2);
 
-        // Call the getHand method
-        $hand = $this->cardHand->getHand();
+        $hand = $this->cardHand->getCards();
 
         // Assert that the hand contains the same objects that were added
         $this->assertCount(2, $hand);

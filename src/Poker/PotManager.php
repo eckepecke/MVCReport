@@ -34,16 +34,16 @@ class PotManager
         $this->pot = 200;
     }
 
-    // public function chargeBlinds(array $players): void
-    // {
-    //     $blindArray = [
-    //         0 => 25,
-    //         1 => 50,
-    //         2 => 0
-    //     ];
-    //     foreach ($players as $player) {
-    //         $pos = $player->getPosition();
-    //         $player->payBlind($blindArray[$pos]);
-    //     }
-    // }
+    public function chargeBlinds(array $players): void
+    {
+        $blindArray = [
+            0 => 10,
+            1 => 20,
+            2 => 40
+        ];
+        foreach ($players as $player) {
+            $pos = $player->getPosition();
+            $player->payBlind($blindArray[$pos]);
+        }
+    }
 }

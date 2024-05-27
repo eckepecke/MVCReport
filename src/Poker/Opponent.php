@@ -35,4 +35,10 @@ class Opponent extends Player
         $decision = $options[rand(0, 1)];
         return $decision;
     }
+
+
+    public function chooseBetSize($potSize): int
+    {
+        return 0.75 * $potSize;
+    }
 }

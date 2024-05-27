@@ -81,7 +81,6 @@ class Game
     public function getTemplateData(): array
     {
         $newHand = $this->manager->access("stateManager")->getNewHand();
-        $players = $this->getPlayers();
 
         $heroHand = $this->hero->getHand();
         $opponent1Hand = $this->opponent1->getHand();
@@ -89,22 +88,22 @@ class Game
 
         $state = $this->getGameState();
 
-        $CCM = $this->manager->access("CCManager");
-        $board = $CCM->getBoard();
+        $cCManager = $this->manager->access("CCManager");
+        $board = $cCManager->getBoard();
         $boardImages = [];
         foreach ($board as $card) {
             $boardImages[] = $card->getImgName();
         }
 
-        $BM = $this->manager->access("betManager");
-        $price = $BM->getPriceToPlay($state);
-        $minRaise = $BM->getMinimumRaiseAllowed($state);
+        $betManager = $this->manager->access("betManager");
+        $price = $betManager->getPriceToPlay($state);
+        $minRaise = $betManager->getMinimumRaiseAllowed($state);
 
-        $PM = $this->manager->access("potManager");
-        $pot = $PM->getPotSize($state);
+        $potManager = $this->manager->access("potManager");
+        $pot = $potManager->getPotSize($state);
 
-        $SDM = $this->manager->access("showdownManager");
-        $winner = $SDM->getWinner();
+        $showdownManager = $this->manager->access("showdownManager");
+        $winner = $showdownManager->getWinner();
         $winnerName = null;
         if($winner != null) {
             $winnerName = $winner->getName();
@@ -215,12 +214,10 @@ class Game
         $this->manager->access("positionManager")->updatePositions($this->players);
     }
 
-    public function play($heroAction): void
+    public function prepare($heroAction): void
     {
-        var_dump($this->manager->access("stateManager")->getNewHand());
+
         if ($this->manager->access("stateManager")->getNewHand()) {
-                        // FOR DEBUGGING
-            // $this->manager->access("positionManager")->updatePositions($this->players);
 
             echo "NEW HAND STARTING";
             $this->manager->resetTable($this->players);
@@ -228,14 +225,9 @@ class Game
             $this->manager->updatePlayersCurrentHandStrength($this->players);
             $this->manager->access("stateManager")->setNewHand(false);
             $this->manager->access("streetManager")->setShowdownFalse();
-
-                        // $winner = $this->managers["stateManager"]->getWinner($state);
-            // $this->managers["potManager"]->addChipsToPot($state);
-            // $pot = $this->managers["potManager"]->getPotSize();
-            // $winner->takePot($pot);
         }
 
-        $this->postflop($heroAction);
+        $this->play($heroAction);
 
     }
 
@@ -276,11 +268,10 @@ class Game
         $this->newHand = true;
     }
 
-    public function postflop($heroAction)
+    public function play($heroAction)
     {
         echo"POSTFLOPSTART";
 
-        // $this->manager->postFlopRevised($heroAction, $this->getGameState());
         $this->manager->heroMakesAPlay($heroAction, $this->getGameState());
         $this->manager->opponentsPlay($heroAction, $this->getGameState());
         $handEndedBeforeSHowdown = $this->manager->access("stateManager")->getNewHand();

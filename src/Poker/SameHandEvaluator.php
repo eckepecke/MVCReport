@@ -16,9 +16,12 @@ class SameHandEvaluator extends HandEvaluator
         }
 
         $numPlayers = count($allHandsSorted);
+        $amountOfCards = count($allHandsSorted[0]);
         if ($numPlayers == 2) {
+        echo"2PlayersCompared";
+
             // Compare the two hands directly
-            for ($i = 0; $i < count($allHandsSorted[0]); $i++) {
+            for ($i = 0; $i < $amountOfCards; $i++) {
                 if ($allHandsSorted[0][$i] > $allHandsSorted[1][$i]) {
                     $winningIndex = 0;
                     break;
@@ -27,8 +30,11 @@ class SameHandEvaluator extends HandEvaluator
                     break;
                 }
             }
+    
 
-        } else {
+        } 
+        if ($numPlayers > 2) {
+            echo"3PlayersCompared";
             // Comparing sorted arrays index by index
             $winningIndex = null;
             

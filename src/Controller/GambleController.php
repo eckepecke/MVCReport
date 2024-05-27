@@ -60,8 +60,6 @@ class GambleController extends AbstractController
         $manager->addGame($game);
         $manager->addGameProperties();
 
-
-
         $session->set("game", $game);
 
         return $this->redirectToRoute('gamble_play');

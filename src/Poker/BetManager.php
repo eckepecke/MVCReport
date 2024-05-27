@@ -99,22 +99,17 @@ class BetManager
 
         $playerLastAction = $player->getLastAction();
         $priceToPlay = $this->getPriceToPlay($state);
-        // $playerPos = $player->getPosition();
         $activePlayers = $state["active"];
-        // $lastToActIndex = count($activePlayers) - 1;
-        $lastToAct = $this->LastToAct($state["players"]);
+        $lastToAct = $this->lastToAct($state["players"]);
+
         var_dump($priceToPlay);
         var_dump($playerLastAction);
         echo"lastToAct:";
         var_dump($lastToAct->getName());
         var_dump($lastToAct->getPosition());
 
-
-
-        // var_dump($playerPos);
         if ($priceToPlay === 0 && $activePlayers === 2) {
             echo"AAA";
-
             $playerClosedAction = true;
         }
 
@@ -141,7 +136,7 @@ class BetManager
         return $playerClosedAction;
         }
 
-    public function LastToAct( array $players): object
+    public function lastToAct( array $players): object
     {
         $last = null;
         $biggestNumber = -1;

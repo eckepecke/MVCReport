@@ -39,30 +39,6 @@ class PokerController extends AbstractController
 
         $game = new Game();
         $game->init();
-        // $player1 = new Player();
-        // $player2 = new Player();
-        // $player3 = new Player();
-        // $pArray = [
-        //     $player1,
-        //     $player2,
-        //     $player3
-        // ];
-        // $dealer = new Dealer();
-        // $deck = new DeckOfCards();
-        // $manager = new Manager();
-        // $manager = new CommunityCardManager();
-        // $manager = new PotManager();
-        // $manager = new PositionManager();
-
-
-
-
-
-        // $dealer->addDeck($deck);
-        // $game->addPlayers($pArray);
-        // $game->addDealer($dealer);
-
-
 
         $session->set("game", $game);
 
@@ -84,7 +60,7 @@ class PokerController extends AbstractController
 
         $game = $session->get("game");
 
-        $game->play($action);
+        $game->prepare($action);
         // $game->play("100");
 
 

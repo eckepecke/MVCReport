@@ -76,7 +76,7 @@ class Manager
         $this->managers["streetManager"]->resetStreet();
         $this->managers["cardManager"]->activatePlayers($players);
         $this->managers["positionManager"]->updatePositions($players);
-        // $this->managers["potManager"]->chargeBlinds($players);
+        $this->managers["potManager"]->chargeBlinds($players);
     }
 
 
@@ -103,7 +103,7 @@ class Manager
     public function updatePlayersCurrentHandStrength(array $players): void
     {
         $board = $this->managers["CCManager"]->getBoard();
-        $strength = $this->managers["cardManager"]->updateHandStrengths($players, $board);
+        $this->managers["cardManager"]->updateHandStrengths($players, $board);
     }
 
     public function getShowdownWinnerName(): object
@@ -112,20 +112,6 @@ class Manager
 
         return $winner->getName();
     }
-
-    // public function isPreflop(): bool
-    // {
-    //     return $this->managers["streetManager"]->isPreflop();
-    // }
-
-
-    // public function updatePhase(): void
-    // {
-    //     if ($this->managers["streetManager"]->isPreflop()) {
-    //         $this->managers["streetManager"]->isPostflop();
-    //     }
-    // }
-
 
     // public function preflopRevised(mixed $heroAction, array $state): void
     // {
@@ -190,7 +176,7 @@ class Manager
     // }
 
 
-    public function OBM(array $state): void
+    public function opponentsBehindMove(array $state): void
     {
         echo"OBM";
         $heroPos = $state["hero"]->getPosition();
@@ -219,7 +205,7 @@ class Manager
     }
 
 
-    public function OIM(array $state): void
+    public function opponentsInFrontMove(array $state): void
     {
         echo "hello";
         $players = $state["players"];
@@ -286,14 +272,14 @@ class Manager
         if ($actionIsClosed && !$newHand) {
             echo"Nami";
             $this->deal($state);
-            $this->OIM($state);
+            $this->opponentsInFrontMove($state);
             return;
         }
 
         // If hero made a move Opponents behind move.
         if ($heroMoved && !$newHand) {
             echo"Robin";
-            $this->OBM($state);
+            $this->opponentsBehindMove($state);
             $this->wonWithNoShowdown($state);
         }
 
@@ -307,7 +293,7 @@ class Manager
             $this->deal($state);
         }
 
-        $this->OIM($state);
+        $this->opponentsInFrontMove($state);
         $this->wonWithNoShowdown($state);
 
         $actionIsClosed = $this->managers["betManager"]->getActionIsClosed();
@@ -318,7 +304,7 @@ class Manager
         if ($actionIsClosed && !$newHand) {
             echo"Zorro";
             $this->deal($state);
-            $this->OIM($state);
+            $this->opponentsInFrontMove($state);
         }
     }
 

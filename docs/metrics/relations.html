@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2024-05-20 19:20:05        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2024-05-26 20:44:53        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -93,7 +93,7 @@
                             <path d="M0 0h24v24H0z" fill="none">
                             <path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z">
                         </svg>
-                        Violations (7)
+                        Violations (12)
                     </a>
                 </li>
                                     <li>
@@ -418,26 +418,29 @@
         "size": 3000,
         "relations": [
             "\\App\\Poker\\Dealer",
-            "\\App\\Cards\\CardHand"
+            "\\App\\Poker\\CardHand",
+            "\\App\\Poker\\HandEvaluator"
         ]
     },
     {
         "name": "\\App\\Poker\\Manager",
         "size": 3000,
         "relations": [
-            "\\App\\Poker\\CommunityCardManager",
-            "\\App\\Poker\\PotManager",
-            "\\App\\Poker\\PositionManager",
-            "\\App\\Poker\\CardManager",
-            "\\App\\Poker\\BetManager",
-            "\\App\\Poker\\StreetManager"
+            "\\App\\Poker\\Game"
         ]
     },
     {
         "name": "\\App\\Poker\\Player",
         "size": 3000,
         "relations": [
-            "\\App\\Cards\\CardHand"
+            "\\App\\Poker\\CardHand"
+        ]
+    },
+    {
+        "name": "\\App\\Poker\\Opponent",
+        "size": 3000,
+        "relations": [
+            "\\App\\Poker\\Player"
         ]
     },
     {
@@ -461,16 +464,68 @@
         "relations": []
     },
     {
-        "name": "\\App\\Cards\\CardHand",
+        "name": "\\App\\Poker\\HeroActionManager",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Poker\\OpponentActionManager",
         "size": 3000,
         "relations": [
-            "\\App\\Cards\\CardGraphic"
+            "\\Exception"
         ]
+    },
+    {
+        "name": "\\App\\Poker\\StateManager",
+        "size": 3000,
+        "relations": [
+            "\\Exception"
+        ]
+    },
+    {
+        "name": "\\App\\Poker\\ShowdownManager",
+        "size": 3000,
+        "relations": [
+            "\\App\\Poker\\HandEvaluator",
+            "\\App\\Poker\\SameHandEvaluator"
+        ]
+    },
+    {
+        "name": "\\App\\Poker\\HandEvaluator",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Poker\\SameHandEvaluator",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Exception",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Poker\\CardHand",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Poker\\TexasHandTrait",
+        "size": 3000,
+        "relations": []
     },
     {
         "name": "\\App\\Cards\\Card",
         "size": 3000,
         "relations": []
+    },
+    {
+        "name": "\\App\\Cards\\CardHand",
+        "size": 3000,
+        "relations": [
+            "\\App\\Cards\\CardGraphic"
+        ]
     },
     {
         "name": "\\App\\Dice\\DiceHand",
@@ -551,11 +606,6 @@
             "\\Exception",
             "\\Symfony\\Component\\HttpFoundation\\JsonResponse"
         ]
-    },
-    {
-        "name": "\\Exception",
-        "size": 3000,
-        "relations": []
     },
     {
         "name": "\\Symfony\\Component\\HttpFoundation\\JsonResponse",

@@ -29,7 +29,7 @@ class OpponentActionManager
                 $this->villainActionVsNoPrice($player, $potSize);
                 break;
             case false:
-                $this->villainVsPrice($player, $potSize, $bet, $price);
+                $this->villainVsPrice($player, $bet, $price);
                 break;
             default:
                 throw new Exception("PriceIsO not true or false");
@@ -38,7 +38,7 @@ class OpponentActionManager
 
     }
 
-    public function villainVsPrice(object $player, int $potSize, int $bet, int $price): void
+    public function villainVsPrice(object $player, int $bet, int $price): void
     {
         $action = $player->responseToBet();
         // $action = "fold";

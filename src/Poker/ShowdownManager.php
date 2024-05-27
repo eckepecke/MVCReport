@@ -21,16 +21,19 @@ class ShowdownManager extends HandEvaluator
     {
         $winners = $this->compare($players);
 
-
-        $multipleWinners = false;
         if(count($winners) > 1) {
-            $multipleWinners = true;
             $strength = $this->getWinningStrength($winners);
             $winner = $this->compareSameHands($winners, $strength, $board);
+            echo"multiplewinner";
+            $this->setShowdownWinner($winner);
+
+            var_dump($winner->getName());
             return $winner;
 
         }
         $this->setShowdownWinner($winners[0]);
+        echo"singleWinner";
+
         return $winners[0];
     }
 
