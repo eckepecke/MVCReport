@@ -12,10 +12,10 @@
     <div class="table-three">
 
         {# Showdown view #}
-        {% if showdown %}
+        {# {% if showdown %} #}
 {# //////////////////////////////////////////////// #}
 
-            <div class="player-box-small">
+            {# <div class="player-box-small">
             {% if opp_1_active %}
                 <h4> {{ opp_1_strength }}</h4>
             {% endif %}
@@ -27,15 +27,15 @@
                     {% endfor %}
                 {% endif %}
 
-                </div>
+                </div> #}
                 {# <h4 class="blind">{{teddy_pos}}</h4> #}
-                <h3>{{opponent_1_stack}} USD</h3>
+                {# <h3>{{opponent_1_stack}} USD</h3>
                 <h4 class="blind">{{opp_1_pos}}</h4>
-            </div>
+            </div> #}
 
 {# //////////////////////////////////////////////// #}
 
-            <div class="player-box-small">
+            {# <div class="player-box-small">
                 <h4> {{ opp_2_strength }}</h4>
                 <img class="player-img-small" src="{{ asset('build/images/teddy.jpg') }}" alt="me">
                 <div class="card-box-small">
@@ -47,13 +47,13 @@
 
                 </div>
                 {# <h4 class="blind">{{teddy_pos}}</h4> #}
-                <h3>{{opponent_2_stack}} USD</h3>
+                {# <h3>{{opponent_2_stack}} USD</h3>
                 <h4 class="blind">{{opp_2_pos}}</h4>
-            </div>
+            </div> #}
 
 {# //////////////////////////////////////////////// #}
 
-                <div class="board-box">
+                {# <div class="board-box">
                     {% for img in board %}
                         <img class="community-card" src="{{ asset('build/images/' ~ img) }}" alt="card">
                     {% endfor %}
@@ -65,7 +65,7 @@
 
 {# //////////////////////////////////////////////// #}
 
-                <h4>{{hero_strength}}</h4>
+                {# <h4>{{hero_strength}}</h4>
                 <div class="player-box">
                 <img class="player-img-small" src="{{ asset('build/images/teddy.jpg') }}" alt="me">
 
@@ -83,12 +83,12 @@
                     <input type="submit" value="Next Hand" class="fold-button">
                 </form>
 
-                </div>
+                </div> #}
 {# //////////////////////////////////////////////// #}
 
-            </div>
-        {% endif %}
-        {% if not showdown %}
+            {# </div>
+        {% endif %} #}
+        {# {% if not showdown %} #}
 
         <div class="opponents-box">
             <div class="player-box-small">
@@ -97,7 +97,7 @@
                     <h3>{{opponent_1_stack}} USD</h3>
                 </div>
 
-                <h4> {{ opp_1_last_action }}</h4>
+
 
             
                  <div class="card-box-small">
@@ -108,7 +108,7 @@
                                 <img class="card-img-small" src="{{ asset('build/images/card_back.svg') }}" alt="card"> 
                             {% else %}
                             {% for img in opponent1Hand %}
-                                <img class="community-card" src="{{ asset('build/images/' ~ img) }}" alt="card">
+                                <img class="card-img-small" src="{{ asset('build/images/' ~ img) }}" alt="card">
                             {% endfor %}
                             {% endif %}
                         {% endif %}
@@ -116,7 +116,7 @@
                 </div>
                 {# <h4 class="blind">{{teddy_pos}}</h4> #}
 
-
+                <h4> {{ opp_1_last_action }}</h4>
                 {% if opponent1Bet != 0 %}
                     <h4>{{ opponent1Bet }}</h4>
                 {% endif %}
@@ -141,7 +141,7 @@
                         <img class="card-img-small" src="{{ asset('build/images/card_back.svg') }}" alt="card"> 
                     {% else %}
                     {% for img in opponent2Hand %}
-                        <img class="community-card" src="{{ asset('build/images/' ~ img) }}" alt="card">
+                        <img class="card-img-small" src="{{ asset('build/images/' ~ img) }}" alt="card">
                     {% endfor %}
                     {% endif %}
                 {% endif %}
@@ -162,9 +162,18 @@
                 <img class="community-card" src="{{ asset('build/images/' ~ img) }}" alt="card">
             {% endfor %}
         </div>
+
+        {% if not showdown %}
             <div class="pot-box">
                 <h3>{{ pot }}dollars is in the pot</h3>
             </div>
+        {% else %}
+
+            <div class="pot-box">
+                <h3>{{ winner }} takes the {{ pot }} pot </h3>
+            </div>
+        {% endif %}
+
 
         <div class="hero-box">
             <h4> {{ hero_last_action }}</h4>
@@ -244,7 +253,7 @@
 
 
             </div>
-        {% endif %}
+        {# {% endif %} #}
 
 
 

@@ -14,7 +14,7 @@ class StreetManager
      *
      * @var string
      */
-    private string $street = "flop";
+    private string $street = "preflop";
     private bool $showdown = false;
     private bool $preflop = true;
 
