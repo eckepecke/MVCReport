@@ -104,26 +104,12 @@ class PositionManagerTest extends TestCase
         $playerArray = [$player1, $player2, $player3];
         $this->manager->assignPositions($playerArray);
 
-        $initP1Pos = $playerArray[0]->getPosition();
-        $initP2Pos = $playerArray[1]->getPosition();
-        $initP3Pos = $playerArray[2]->getPosition();
+        $res1 = $this->manager->playerIsLast($player1);
+        $res2 = $this->manager->playerIsLast($player2);
+        $res3 = $this->manager->playerIsLast($player3);
 
-        $this->assertNotEquals($initP1Pos, $initP2Pos);
-        $this->assertNotEquals($initP1Pos, $initP3Pos);
-        $this->assertNotEquals($initP2Pos, $initP3Pos);
-
-        $this->manager->updatePositions($playerArray);
-
-        $newP1Pos = $playerArray[0]->getPosition();
-        $newP2Pos = $playerArray[1]->getPosition();
-        $newP3Pos = $playerArray[2]->getPosition();
-
-        $this->assertNotEquals($newP1Pos, $newP2Pos);
-        $this->assertNotEquals($newP1Pos, $newP3Pos);
-        $this->assertNotEquals($newP2Pos, $newP3Pos);
-
-        $this->assertNotEquals($newP1Pos, $initP1Pos);
-        $this->assertNotEquals($newP2Pos, $initP2Pos);
-        $this->assertNotEquals($newP3Pos, $initP3Pos);
+        $this->assertFalse($res2);
+        $this->assertFalse($res2);
+        $this->assertTrue($res3);
     }
 }
