@@ -22,7 +22,7 @@ class BetManager
     }
     /**
      * Gets the price to play for the current betting round.
-     *
+     * @param array{players: Player[]} $state
      * @return int The difference between the highest and lowest current bets.
      */
     public function getPriceToPlay(array $state): int

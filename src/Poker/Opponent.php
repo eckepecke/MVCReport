@@ -38,7 +38,7 @@ class Opponent extends Player
     }
 
 
-    public function chooseBetSize($potSize): int
+    public function chooseBetSize($potSize): float
     {
         return 0.75 * $potSize;
     }

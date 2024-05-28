@@ -14,8 +14,6 @@ class StateManager
     private bool $everyoneMoved = false;
     private bool $newHand = true;
 
-
-
     public function everyoneHasNotMoved(): void
     {
         $this->everyoneMoved = false;

@@ -102,6 +102,10 @@ class Game
             "opponent1Hand" => $opponent1Hand->getImgNames(),
             "opponent2Hand" => $opponent2Hand->getImgNames(),
 
+            "hero_name" => $this->hero->getName(),
+            "opp_1_name" => $this->opponent1->getName(),
+            "opp_2_name" => $this->opponent2->getName(),
+
             "heroBet" => $this->hero->getCurrentBet(),
             "opponent1Bet" => $this->opponent1->getCurrentBet(),
             "opponent2Bet" => $this->opponent2->getCurrentBet(),
@@ -174,7 +178,7 @@ class Game
 
         $handEvaluator = new HandEvaluator();
         $sameHandEvaluator = new SameHandEvaluator();
-        $gameOverTracker = new GameOverTracker(5);
+        $gameOverTracker = new GameOverTracker(1);
 
         $showdownManager->add($sameHandEvaluator);
 

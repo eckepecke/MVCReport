@@ -4,25 +4,12 @@ namespace App\Poker;
 
 class HandEvaluator
 {
-    private array $handRanks;
     private array $rankMapping;
     private array $strengthArray;
     private array $strengthMapping;
 
     public function __construct()
     {
-        $this->handRanks = [
-            'Royal flush' => false,
-            'Straight flush' => false,
-            'Four of a kind' => false,
-            'Full House' => false,
-            'flush' => false,
-            'Straight' => false,
-            'Three of a kind' => false,
-            'Two pair' => false,
-            'One pair' => false,
-            'High card' => true,
-        ];
 
         $this->rankMapping = [
             '2' => 2,

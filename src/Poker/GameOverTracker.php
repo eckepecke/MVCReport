@@ -14,19 +14,15 @@ class GameOverTracker
     private int $hand = 0;
     private bool $heroIsBroke;
 
-    public function __construct($hands)
+    public function __construct(int $hands)
     {
         $this->allHandsPlayed = false;
         $this->handsToPlay = $hands;
         $this->hand = 0;
         $this->heroIsBroke = false;
-        $this->gameOver = false;
-
     }
 
-
-
-    public function allHandsPlayed(): int
+    public function allHandsPlayed(): bool
     {
         if ($this->hand >= $this->handsToPlay) {
             echo"2";
@@ -35,12 +31,6 @@ class GameOverTracker
         return $this->allHandsPlayed;
     }
 
-    public function getGameOver(): int
-    {
-        return $this->gameOver;
-    }
-
-
     public function incrementHands(): void
     {
         $this->hand++;
@@ -48,16 +38,6 @@ class GameOverTracker
 
     public function getHeroIsBroke(): bool
     {
-        return $this->heroIsBroke;
-    }
-
-    public function checkHeroBroke($stack): bool
-    {
-        var_dump($stack);
-        if ($stack <= 0) {
-            $this->heroIsBroke = true;
-        }
-
         return $this->heroIsBroke;
     }
 }
