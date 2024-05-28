@@ -22,13 +22,11 @@ use App\Poker\HandEvaluator;
 use App\Poker\SameHandEvaluator;
 use App\Poker\GameOverTracker;
 
-
 class Game
 {
     private array $players;
-    private object $dealer;
     private object $manager;
-    private bool $gameOver = true;
+    private bool $gameOver = false;
 
 
     private object $hero;
@@ -47,19 +45,12 @@ class Game
         $this->hero = $players[0];
         $this->opponent1 = $players[1];
         $this->opponent2 = $players[2];
-
-    }
-
-    public function addDealer(cardManager $dealer): void
-    {
-        $this->dealer = $dealer;
     }
 
     public function addManager(Manager $manager): void
     {
         $this->manager = $manager;
     }
-
 
     public function getPlayers(): array
     {
@@ -73,12 +64,6 @@ class Game
             "players" => $this->getPlayers(),
             "active" => $this->manager->access("stateManager")->removeInactive($this->players),
             "game_over" => $this->gameOver,
-
-            // "price" => $this->manager->access("betManager")->getPriceToPlay($this->getGameState()),
-
-
-            // "phase" => $this->phase,
-
         ];
     }
 
@@ -212,13 +197,9 @@ class Game
         $manager->addManager('showdownManager', $showdownManager);
         $manager->addManager('gameOverTracker', $gameOverTracker);
 
-
-
-
-        $manager->addGame($this);
+        // $manager->addGame($this);
 
         $this->addPlayers($pArray);
-        $this->addDealer($cardManager);
         $this->addManager($manager);
         //debug
         $this->manager->access("positionManager")->updatePositions($this->players);
@@ -227,7 +208,7 @@ class Game
     public function prepare($heroAction): void
     {
 
- 
+
 
 
 
@@ -239,11 +220,12 @@ class Game
 
             $this->manager->resetTable($this->players);
             $allHandsPlayed = $this->manager->access("gameOverTracker")->allHandsPlayed();
-            if (($this->hero->getStack() < 0) || $allHandsPlayed) {
+            if (($this->hero->getStack() <= 0) || $allHandsPlayed) {
                 $this->gameOver = true;
                 var_dump($crash);
             }
 
+            $this->manager->access("potManager")->chargeBlinds($this->players);
 
             $this->manager->access("cardManager")->dealStartingHands($this->players);
             $this->manager->updatePlayersCurrentHandStrength($this->players);
@@ -251,6 +233,7 @@ class Game
             $this->manager->access("streetManager")->setShowdownFalse();
             $this->manager->access("streetManager")->resetStreet();
             $this->manager->access("betManager")->setActionIsClosed(false);
+
 
         }
 

@@ -67,7 +67,7 @@ class Manager
         $this->managers["streetManager"]->resetStreet();
         $this->managers["cardManager"]->activatePlayers($players);
         $this->managers["positionManager"]->updatePositions($players);
-        $this->managers["potManager"]->chargeBlinds($players);
+        // $this->managers["potManager"]->chargeBlinds($players);
         $this->managers["betManager"]->resetAllIns($players);
     }
 
@@ -120,7 +120,7 @@ class Manager
             // Player will act if still in the hand has position after hero.
             if ($player->isActive() && $currentPosition > $heroPos) {
                 var_dump($player->getName());
-                $chipData = $this->getDataBeforeaction();
+                $chipData = $this->getDataBeforeaction($state);
                 $this->managers["opponentActionManager"]->move($player, $chipData, $hero);
                 // return early if player closed the betting round.
                 if ($this->managers["betManager"]->playerClosedAction($player, $state)) {
@@ -158,7 +158,7 @@ class Manager
 
                 var_dump($heroPos);
 
-                $chipData = $this->getDataBeforeaction();
+                $chipData = $this->getDataBeforeaction($state);
                 $this->managers["opponentActionManager"]->move($player, $chipData, $hero);
                 // Return early if player closed the betting round.
                 if ($this->managers["betManager"]->playerClosedAction($player, $state)) {
@@ -171,11 +171,11 @@ class Manager
         }
     }
 
-    public function getDataBeforeAction(): array
+    public function getDataBeforeAction(array $state): array
     {
-        $priceToPlay = $this->managers["betManager"]->getPriceToPlay($this->game->getGameState());
+        $priceToPlay = $this->managers["betManager"]->getPriceToPlay($state);
         $potSize = $this->managers["potManager"]->getPotSize();
-        $currentBiggestBet = $this->managers["betManager"]->getBiggestBet($this->game->getGameState());
+        $currentBiggestBet = $this->managers["betManager"]->getBiggestBet($state);
         $chipData = [
             "price" => $priceToPlay,
             "pot" => $potSize,
@@ -197,7 +197,7 @@ class Manager
             return;
         }
         // If hero closed hte action we deal and let
-        // opponents in front move, return since action is 
+        // opponents in front move, return since action is
         // now back on hero.
         if ($actionIsClosed && !$newHand) {
             echo"Nami";
@@ -262,4 +262,3 @@ class Manager
 
 
 }
-

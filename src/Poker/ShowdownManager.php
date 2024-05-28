@@ -3,6 +3,7 @@
 namespace App\Poker;
 
 use Exception;
+
 /**
  * Class ShowDownManager
  *

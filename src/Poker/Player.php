@@ -6,7 +6,6 @@ use App\Poker\CardHand;
 
 class Player extends PlayerBase
 {
-
     protected int $position;
     protected bool $allIn;
     protected bool $active;

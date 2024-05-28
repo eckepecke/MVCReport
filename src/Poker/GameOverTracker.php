@@ -14,7 +14,7 @@ class GameOverTracker
     private int $hand = 0;
     private bool $heroIsBroke;
 
-    public function __construct($hands) 
+    public function __construct($hands)
     {
         $this->allHandsPlayed = false;
         $this->handsToPlay = $hands;

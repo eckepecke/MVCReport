@@ -4,6 +4,7 @@ namespace App\Poker;
 
 use App\Poker\CardHand;
 use App\Poker\Dealer;
+
 // use App\Poker\HandEvaluatorTrait;
 
 class CardManager extends Dealer

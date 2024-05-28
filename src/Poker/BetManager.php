@@ -126,7 +126,7 @@ class BetManager
             $playerClosedAction = true;
         }
         // }
-        
+
         // This is true for both preflop and postflop.
         if ($playerLastAction === "call" && $priceToPlay === 0) {
             echo"DDD";
@@ -141,9 +141,9 @@ class BetManager
         }
 
         return $playerClosedAction;
-        }
+    }
 
-    public function lastToAct( array $players): object
+    public function lastToAct(array $players): object
     {
         $last = null;
         $biggestNumber = -1;
@@ -158,4 +158,4 @@ class BetManager
         }
         return $last;
     }
-    }
+}

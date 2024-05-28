@@ -87,16 +87,16 @@ class SameHandEvaluator extends HandEvaluator
         $bestHandIndex = -1;
         $highestPairRanks = [-1, -1];
         $bestHandKicker = -1;
-    
+
         foreach ($hands as $index => $hand) {
             // Sort hand in descending order
             rsort($hand);
-    
+
             // Extract pairs and kicker
             $pair1 = $hand[0];
             $pair2 = $hand[2];
             $kicker = $hand[4];
-    
+
             // Compare pairs and kicker to the best hand found so far
             if ($pair1 > $highestPairRanks[0] || ($pair1 == $highestPairRanks[0] && $pair2 > $highestPairRanks[1]) ||
                 ($pair1 == $highestPairRanks[0] && $pair2 == $highestPairRanks[1] && $kicker > $bestHandKicker)) {
@@ -105,95 +105,95 @@ class SameHandEvaluator extends HandEvaluator
                 $bestHandIndex = $index;
             }
         }
-    
+
         return $bestHandIndex;
     }
 
     public function compareTrips(array $hands): int
     {
-    $bestHandIndex = -1;
-    $highestTripRank = -1;
-    $bestHandKickers = [];
+        $bestHandIndex = -1;
+        $highestTripRank = -1;
+        $bestHandKickers = [];
 
-    foreach ($hands as $index => $hand) {
-        // Sort hand in descending order
-        rsort($hand);
+        foreach ($hands as $index => $hand) {
+            // Sort hand in descending order
+            rsort($hand);
 
-        // Extract trip rank and kickers
-        $tripRank = $hand[0];
-        $kickers = [$hand[3], $hand[4]];
+            // Extract trip rank and kickers
+            $tripRank = $hand[0];
+            $kickers = [$hand[3], $hand[4]];
 
-        // Compare trip rank and kickers to the best hand found so far
-        if ($tripRank > $highestTripRank || ($tripRank == $highestTripRank && $kickers > $bestHandKickers)) {
-            $highestTripRank = $tripRank;
-            $bestHandKickers = $kickers;
-            $bestHandIndex = $index;
+            // Compare trip rank and kickers to the best hand found so far
+            if ($tripRank > $highestTripRank || ($tripRank == $highestTripRank && $kickers > $bestHandKickers)) {
+                $highestTripRank = $tripRank;
+                $bestHandKickers = $kickers;
+                $bestHandIndex = $index;
+            }
         }
-    }
 
-    return $bestHandIndex;
+        return $bestHandIndex;
     }
 
     public function compareQuads(array $hands): int
     {
-    $bestHandIndex = -1;
-    $highestQuadRank = -1;
-    $bestHandKicker = -1;
+        $bestHandIndex = -1;
+        $highestQuadRank = -1;
+        $bestHandKicker = -1;
 
-    foreach ($hands as $index => $hand) {
-        // Sort hand in descending order
-        rsort($hand);
+        foreach ($hands as $index => $hand) {
+            // Sort hand in descending order
+            rsort($hand);
 
-        // Extract quad rank and kicker
-        $quadRank = $hand[0];
-        $kicker = $hand[4];
+            // Extract quad rank and kicker
+            $quadRank = $hand[0];
+            $kicker = $hand[4];
 
-        // Compare quad rank and kicker to the best hand found so far
-        if ($quadRank > $highestQuadRank || ($quadRank == $highestQuadRank && $kicker > $bestHandKicker)) {
-            $highestQuadRank = $quadRank;
-            $bestHandKicker = $kicker;
-            $bestHandIndex = $index;
+            // Compare quad rank and kicker to the best hand found so far
+            if ($quadRank > $highestQuadRank || ($quadRank == $highestQuadRank && $kicker > $bestHandKicker)) {
+                $highestQuadRank = $quadRank;
+                $bestHandKicker = $kicker;
+                $bestHandIndex = $index;
+            }
         }
-    }
 
-    return $bestHandIndex;
+        return $bestHandIndex;
     }
 
     public function compareFullHouses(array $hands): int
     {
-    $bestHandIndex = -1;
-    $highestTripRank = -1;
-    $highestPairRank = -1;
+        $bestHandIndex = -1;
+        $highestTripRank = -1;
+        $highestPairRank = -1;
 
-    foreach ($hands as $index => $hand) {
-        $rankCounts = array_count_values($hand);
-        
-        $tripRank = -1;
-        $pairRank = -1;
+        foreach ($hands as $index => $hand) {
+            $rankCounts = array_count_values($hand);
 
-        // Identify the trip and pair ranks
-        foreach ($rankCounts as $rank => $count) {
-            if ($count == 3) {
-                $tripRank = $rank;
-            } elseif ($count == 2) {
-                $pairRank = $rank;
+            $tripRank = -1;
+            $pairRank = -1;
+
+            // Identify the trip and pair ranks
+            foreach ($rankCounts as $rank => $count) {
+                if ($count == 3) {
+                    $tripRank = $rank;
+                } elseif ($count == 2) {
+                    $pairRank = $rank;
+                }
+            }
+
+            // If there's no valid full house, continue to the next hand
+            if ($tripRank == -1 || $pairRank == -1) {
+                continue;
+            }
+
+            // Compare current hand's trips and pair to the best hand found so far
+            if ($tripRank > $highestTripRank || ($tripRank == $highestTripRank && $pairRank > $highestPairRank)) {
+                $highestTripRank = $tripRank;
+                $highestPairRank = $pairRank;
+                $bestHandIndex = $index;
             }
         }
 
-        // If there's no valid full house, continue to the next hand
-        if ($tripRank == -1 || $pairRank == -1) {
-            continue;
-        }
-
-        // Compare current hand's trips and pair to the best hand found so far
-        if ($tripRank > $highestTripRank || ($tripRank == $highestTripRank && $pairRank > $highestPairRank)) {
-            $highestTripRank = $tripRank;
-            $highestPairRank = $pairRank;
-            $bestHandIndex = $index;
-        }
-    }
-
-    return $bestHandIndex;
+        return $bestHandIndex;
     }
 
     public function compareStraights(array $handRanks): int
@@ -233,19 +233,19 @@ class SameHandEvaluator extends HandEvaluator
 
         return $bestHandIndex;
     }
-    
+
     public function compareFlushes(array $handRanks, array $suitRanks): int
     {
         $flushCardsList = [];
         foreach ($handRanks as $index => $handRank) {
             $flushCardsList[] = $this->getFlushCards($handRank, $suitRanks[$index]);
         }
-    
+
         // Debug output
         foreach ($flushCardsList as $index => $flushCards) {
             echo "Flush Cards " . ($index + 1) . ": " . implode(", ", $flushCards) . PHP_EOL;
         }
-    
+
         // Compare flushes
         $bestIndex = 0;
         for ($i = 1; $i < count($flushCardsList); $i++) {
@@ -258,19 +258,19 @@ class SameHandEvaluator extends HandEvaluator
                 }
             }
         }
-    
+
         return $bestIndex;
     }
-    
+
     public function getFlushCards(array $handRanks, array $suitRanks): array
     {
         $suitsCount = array_count_values($suitRanks);
         $maxSameSuitCount = max($suitsCount);
         $mostFrequentSuit = array_search($maxSameSuitCount, $suitsCount);
-    
+
         // Debug output
         echo "Most Frequent Suit: " . $mostFrequentSuit . PHP_EOL;
-    
+
         // Get all cards of the most frequent suit
         $flushCards = [];
         foreach ($suitRanks as $index => $suit) {

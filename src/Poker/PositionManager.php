@@ -49,10 +49,10 @@ class PositionManager
      */
     public function sortPlayersByPosition(array $players): array
     {
-        usort($players, function($a, $b) {
+        usort($players, function ($a, $b) {
             return $a->getPosition() <=> $b->getPosition();
         });
-    
+
         return $players;
     }
 

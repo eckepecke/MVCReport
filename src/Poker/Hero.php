@@ -6,7 +6,6 @@ use App\Poker\CardHand;
 
 class Hero extends Player
 {
-
     protected bool $isHero = true;
 
 
