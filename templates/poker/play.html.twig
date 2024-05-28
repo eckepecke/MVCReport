@@ -16,10 +16,10 @@
 {# //////////////////////////////////////////////// #}
 
             <div class="player-box-small">
+            {% if opp_1_active %}
                 <h4> {{ opp_1_strength }}</h4>
-            {#
-            
-                <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me"> #}
+            {% endif %}
+            <img class="player-img-small" src="{{ asset('build/images/teddy.jpg') }}" alt="me">
                 <div class="card-box-small">
                 {% if opp_1_active %}
                     {% for img in opponent1Hand %}
@@ -37,9 +37,7 @@
 
             <div class="player-box-small">
                 <h4> {{ opp_2_strength }}</h4>
-            {#
-            
-                <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me"> #}
+                <img class="player-img-small" src="{{ asset('build/images/teddy.jpg') }}" alt="me">
                 <div class="card-box-small">
                 {% if opp_2_active %}
                     {% for img in opponent2Hand %}
@@ -69,8 +67,9 @@
 
                 <h4>{{hero_strength}}</h4>
                 <div class="player-box">
+                <img class="player-img-small" src="{{ asset('build/images/teddy.jpg') }}" alt="me">
 
-                    <div class="card-box">
+                <div class="card-box-small">
                     {% for img in hero_hand %}
                         <img class="card-img" src="{{ asset('build/images/' ~ img) }}" alt="card">    {% endfor %}
                     </div>
@@ -93,53 +92,71 @@
 
         <div class="opponents-box">
             <div class="player-box-small">
+                <div class="pic-stack-box">
+                    <img class="player-img-small" src="{{ asset('build/images/teddy.jpg') }}" alt="me">
+                    <h3>{{opponent_1_stack}} USD</h3>
+                </div>
+
                 <h4> {{ opp_1_last_action }}</h4>
 
-            {% if opponent1Bet != 0 %}
-                <h4>{{ opponent1Bet }}</h4>
-            {% endif %}
-            {# 
-                <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me"> #}
-                <div class="card-box-small">
-                {% if opp_1_active %}
-                    {% for img in opponent1Hand %}
-                        <img class="card-img-small" src="{{ asset('build/images/' ~ img) }}" alt="card">    
-                    {% endfor %}
-                {% endif %}
+            
+                 <div class="card-box-small">
+                        {% if opp_1_active %}
+
+                            {% if not showdown %}
+                                <img class="card-img-small" src="{{ asset('build/images/card_back.svg') }}" alt="card">
+                                <img class="card-img-small" src="{{ asset('build/images/card_back.svg') }}" alt="card"> 
+                            {% else %}
+                            {% for img in opponent1Hand %}
+                                <img class="community-card" src="{{ asset('build/images/' ~ img) }}" alt="card">
+                            {% endfor %}
+                            {% endif %}
+                        {% endif %}
 
                 </div>
                 {# <h4 class="blind">{{teddy_pos}}</h4> #}
-                <h3>{{opponent_1_stack}} USD</h3>
+
+
+                {% if opponent1Bet != 0 %}
+                    <h4>{{ opponent1Bet }}</h4>
+                {% endif %}
                 <h4 class="blind">{{opp_1_pos}}</h4>
             </div>
 
-
-
+{# ///////////////////////////////////////////////////////////////////// #}
             <div class="player-box-small">
-                <h4> {{ opp_2_last_action }}</h4>
 
+            <h4> {{ opp_2_last_action }}</h4>
             {% if opponent2Bet != 0 %}
                 <h4>{{ opponent2Bet }}</h4>
             {% endif %}
-            {#
-            
-                <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me"> #}
+
+                <h4 class="blind">{{opp_2_pos}}</h4>
+
                 <div class="card-box-small">
                 {% if opp_2_active %}
+
+                    {% if not showdown %}
+                        <img class="card-img-small" src="{{ asset('build/images/card_back.svg') }}" alt="card">
+                        <img class="card-img-small" src="{{ asset('build/images/card_back.svg') }}" alt="card"> 
+                    {% else %}
                     {% for img in opponent2Hand %}
-                        <img class="card-img-small" src="{{ asset('build/images/' ~ img) }}" alt="card">    
+                        <img class="community-card" src="{{ asset('build/images/' ~ img) }}" alt="card">
                     {% endfor %}
+                    {% endif %}
                 {% endif %}
 
                 </div>
                 {# <h4 class="blind">{{teddy_pos}}</h4> #}
-                <h3>{{opponent_2_stack}} USD</h3>
-                <h4 class="blind">{{opp_2_pos}}</h4>
+
+                <div class="pic-stack-box">
+                    <img class="player-img-small" src="{{ asset('build/images/teddy.jpg') }}" alt="me">
+                    <h3>{{opponent_2_stack}} USD</h3>
+                </div>
             </div>
 
-
         </div>
-
+{# ///////////////////////////////////////////////////////////////////// #}
         <div class="board-box">
             {% for img in board %}
                 <img class="community-card" src="{{ asset('build/images/' ~ img) }}" alt="card">
@@ -155,8 +172,8 @@
             {% if heroBet != 0 %}
                 <h4>{{ heroBet }}</h4>
             {% endif %}
-        {# 
-            <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me"> #}
+        
+            <img class="player-img-small" src="{{ asset('build/images/teddy.jpg') }}" alt="me">
             <div class="card-box-small">
             {% for img in hero_hand %}
                 <img class="card-img-small" src="{{ asset('build/images/' ~ img) }}" alt="card">    
@@ -171,7 +188,7 @@
 
 
         <div class="options-box">
-        {% if hero_active and new_hand == false %}
+        {% if hero_active and new_hand == false and not allin %}
 
                     <!-- Fold Button -->
                 <form method="post" action="{{ path('poker_play') }}">
@@ -198,12 +215,33 @@
                                 onClick="this.form.action='{{ path('poker_play') }}';">Bet/Raise</button>
                         <input type="number" name="bet" value="0" min={{min_raise}} class="bet-input">
                     </form>
-            {% else %}
+        {% endif %}
+
+        {% if showdown or new_hand %}
                 <form method="post" action="{{ path('poker_play') }}">
                     <input type="hidden" name="action" value="next">
                     <input type="submit" value="Next Hand" class="fold-button">
                 </form>
         {% endif %}
+
+        {% if not hero_active and not showdown and not new_hand %}
+        <div class="options-box">
+            <form method="post" action="{{ path('poker_play') }}">
+                <input type="hidden" name="action" value="observe">
+                <input type="submit" value="Observe" class="fold-button">
+            </form>
+        </div>
+        {% endif %}
+
+        {% if allin and not showdown %}
+        <div class="options-box">
+            <form method="post" action="{{ path('poker_play') }}">
+                <input type="hidden" name="action" value="observe">
+                <input type="submit" value="Observe" class="fold-button">
+            </form>
+        </div>
+        {% endif %}
+
 
             </div>
         {% endif %}

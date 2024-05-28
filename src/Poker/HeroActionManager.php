@@ -14,7 +14,7 @@ class HeroActionManager
     {
         echo "RRUUUUFFFFYYY";
 
-        if ($action != null && $action != "next") {
+        if ($action != null && $action != "next" && $action != "observe") {
             echo "heroMove()";
             var_dump($action);
             switch ($action) {

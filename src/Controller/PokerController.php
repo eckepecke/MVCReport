@@ -65,9 +65,9 @@ class PokerController extends AbstractController
 
 
         $data = $game->getTemplateData();
-        if (!$data["hero_active"]) {
-            return $this->render('poker/observe.html.twig', $data);
-        }
+        // if (!$data["hero_active"]) {
+        //     return $this->render('poker/observe.html.twig', $data);
+        // }
         return $this->render('poker/play.html.twig', $data);
     }
 

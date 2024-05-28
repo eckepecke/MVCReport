@@ -111,7 +111,7 @@ class ShowdownManager extends HandEvaluator
                 $winnerIndex = $this->evaluator->compareTwoPair($playerHandRanks);
                 $winner = $players[$winnerIndex];
                 break;
-            case "Trips":
+            case "Three of a kind":
                 $winnerIndex = $this->evaluator->compareTrips($playerHandRanks);
                 $winner = $players[$winnerIndex];
                 break;

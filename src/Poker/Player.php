@@ -79,9 +79,9 @@ class Player extends PlayerBase
         return $this->name;
     }
 
-    public function isAllin(): string
+    public function isAllin(): bool
     {
-        if ($this->stack < 0) {
+        if ($this->stack <= 0) {
             $this->allIn = true;
         }
         return $this->allIn;
@@ -90,6 +90,7 @@ class Player extends PlayerBase
     public function resetAllin(): void
     {
         $this->allIn = false;
+        var_dump($this->allIn);
     }
 
 }

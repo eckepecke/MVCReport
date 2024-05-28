@@ -11,6 +11,11 @@
 
             <div class="player-box-small">
                 <h4> {{ opp_1_strength }}</h4>
+            <h4> {{ opp_1_last_action }}</h4>
+
+            {% if opponent1Bet != 0 %}
+                <h4>{{ opponent1Bet }}</h4>
+            {% endif %}
             {#
             
                 <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me"> #}
@@ -31,6 +36,11 @@
 
             <div class="player-box-small">
                 <h4> {{ opp_2_strength }}</h4>
+            <h4> {{ opp_2_last_action }}</h4>
+
+            {% if opponent2Bet != 0 %}
+                <h4>{{ opponent2Bet }}</h4>
+            {% endif %}
             {#
             
                 <img class="player-img" src="{{ asset('build/images/teddy.jpg') }}" alt="me"> #}

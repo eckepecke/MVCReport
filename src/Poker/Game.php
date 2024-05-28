@@ -226,27 +226,41 @@ class Game
 
     public function prepare($heroAction): void
     {
-        $this->manager->access("gameOverTracker")->checkHeroBroke($this->hero->getStack());
-        $gameOver = $this->manager->access("gameOverTracker")->getGameOver();
-        if ($gameOver) {
-            $this->gameOver = true;
-            var_dump($crash);
-        }
+
+ 
+
+
+
 
         if ($this->manager->access("stateManager")->getNewHand()) {
+
+
             echo "NEW HAND STARTING";
+
             $this->manager->resetTable($this->players);
+            $allHandsPlayed = $this->manager->access("gameOverTracker")->allHandsPlayed();
+            if (($this->hero->getStack() < 0) || $allHandsPlayed) {
+                $this->gameOver = true;
+                var_dump($crash);
+            }
+
+
             $this->manager->access("cardManager")->dealStartingHands($this->players);
             $this->manager->updatePlayersCurrentHandStrength($this->players);
             $this->manager->access("stateManager")->setNewHand(false);
             $this->manager->access("streetManager")->setShowdownFalse();
             $this->manager->access("streetManager")->resetStreet();
             $this->manager->access("betManager")->setActionIsClosed(false);
-            $this->hero->resetAllin();
-
-
 
         }
+
+
+
+
+
+
+
+
 
         $this->play($heroAction);
 
@@ -268,6 +282,7 @@ class Game
         if ($endBeforeSHowdown) {
             $this->manager->givePotToWinner($this->getGameState());
             $this->manager->access("gameOverTracker")->incrementHands();
+            $this->manager->access("stateManager")->setNewHand(true);
 
         }
 
@@ -278,13 +293,11 @@ class Game
             $this->manager->access("streetManager")->setShowdownTrue();
         }
 
-
         if ($this->manager->access("streetManager")->getShowdown()) {
             echo "showdown!";
             $this->manager->showdown($this->players);
             $this->manager->access("stateManager")->setNewHand(true);
             $this->manager->access("gameOverTracker")->incrementHands();
-
         }
     }
 }

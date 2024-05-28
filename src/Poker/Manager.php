@@ -50,6 +50,8 @@ class Manager
         $pot = $this->managers["potManager"]->addChipsToPot($state);
         $winner = $this->managers["stateManager"]->getWinner($state);
         $pot = $this->managers["potManager"]->getPotSize();
+        var_dump($winner->getName());
+        echo"takes pot";
         $winner->takePot($pot);
     }
 

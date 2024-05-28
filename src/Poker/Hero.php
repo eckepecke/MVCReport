@@ -14,7 +14,7 @@ class Hero extends Player
     {
         parent::__construct();
         $this->isHero = false;
-        $this->stack = 500;
+        $this->stack = 200;
     }
 
     public function isHero(): bool
