@@ -51,8 +51,6 @@ class StreetManager
             $this->showdown = true;
             $nextIndex = 0;
         }
-        echo"settingNextStreet";
-        var_dump($this->streetArray[$nextIndex]);
         $this->street = $this->streetArray[$nextIndex];
     }
 
@@ -79,22 +77,5 @@ class StreetManager
     public function resetStreet(): void
     {
         $this->street = "preflop";
-    }
-
-    public function isPreflop(): bool
-    {
-        return $this->preflop;
-    }
-
-    public function isPostflop(): void
-    {
-        echo"changing prop to false";
-        $this->preflop = false;
-    }
-
-    public function setPreflop(): void
-    {
-        echo"changing prop to true";
-        $this->preflop = true;
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1716926991">
-  <project timestamp="1716926991">
+<coverage generated="1716928227">
+  <project timestamp="1716928227">
     <file name="/Users/erik/dbwebb-kurser/mvc/me/report/src/Cards/Card.php">
       <class name="App\Cards\Card" namespace="global">
         <metrics complexity="4" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="15" elements="20" coveredelements="18"/>
@@ -1667,25 +1667,25 @@
     </file>
     <file name="/Users/erik/dbwebb-kurser/mvc/me/report/src/Poker/CommunityCardManager.php">
       <class name="App\Poker\CommunityCardManager" namespace="global">
-        <metrics complexity="6" methods="5" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="1" elements="12" coveredelements="2"/>
+        <metrics complexity="6" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="12" coveredelements="12"/>
       </class>
-      <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="11" type="stmt" count="1"/>
-      <line num="14" type="method" name="register" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="16" type="stmt" count="0"/>
-      <line num="17" type="stmt" count="0"/>
-      <line num="21" type="method" name="getBoard" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="23" type="stmt" count="0"/>
-      <line num="26" type="method" name="resetBoard" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="31" type="method" name="cardsDealt" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <metrics loc="37" ncloc="37" classes="1" methods="5" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="1" elements="12" coveredelements="2"/>
+      <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="11" type="stmt" count="2"/>
+      <line num="14" type="method" name="register" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="16" type="stmt" count="1"/>
+      <line num="17" type="stmt" count="1"/>
+      <line num="21" type="method" name="getBoard" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="26" type="method" name="resetBoard" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="28" type="stmt" count="1"/>
+      <line num="31" type="method" name="cardsDealt" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="33" type="stmt" count="1"/>
+      <line num="34" type="stmt" count="1"/>
+      <metrics loc="37" ncloc="37" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="12" coveredelements="12"/>
     </file>
     <file name="/Users/erik/dbwebb-kurser/mvc/me/report/src/Poker/Dealer.php">
       <class name="App\Poker\Dealer" namespace="global">
-        <metrics complexity="6" methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="9" elements="18" coveredelements="14"/>
+        <metrics complexity="5" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="14" coveredelements="14"/>
       </class>
       <line num="14" type="method" name="addDeck" visibility="public" complexity="1" crap="1" count="9"/>
       <line num="16" type="stmt" count="9"/>
@@ -1695,17 +1695,13 @@
       <line num="25" type="method" name="dealOne" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="27" type="stmt" count="1"/>
       <line num="28" type="stmt" count="1"/>
-      <line num="31" type="method" name="dealRemaining" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="38" type="method" name="shuffleCards" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="40" type="stmt" count="1"/>
-      <line num="41" type="stmt" count="1"/>
-      <line num="44" type="method" name="dealStartHand" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="46" type="stmt" count="2"/>
-      <line num="47" type="stmt" count="2"/>
-      <metrics loc="50" ncloc="50" classes="1" methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="9" elements="18" coveredelements="14"/>
+      <line num="31" type="method" name="shuffleCards" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="33" type="stmt" count="1"/>
+      <line num="34" type="stmt" count="1"/>
+      <line num="37" type="method" name="dealStartHand" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="39" type="stmt" count="2"/>
+      <line num="40" type="stmt" count="2"/>
+      <metrics loc="43" ncloc="43" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="14" coveredelements="14"/>
     </file>
     <file name="/Users/erik/dbwebb-kurser/mvc/me/report/src/Poker/Game.php">
       <class name="App\Poker\Game" namespace="global">
@@ -2756,36 +2752,26 @@
     </file>
     <file name="/Users/erik/dbwebb-kurser/mvc/me/report/src/Poker/StreetManager.php">
       <class name="App\Poker\StreetManager" namespace="global">
-        <metrics complexity="10" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="0" elements="27" coveredelements="0"/>
+        <metrics complexity="7" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="17" coveredelements="17"/>
       </class>
-      <line num="45" type="method" name="setNextStreet" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="47" type="stmt" count="0"/>
-      <line num="48" type="stmt" count="0"/>
-      <line num="50" type="stmt" count="0"/>
-      <line num="51" type="stmt" count="0"/>
-      <line num="52" type="stmt" count="0"/>
-      <line num="54" type="stmt" count="0"/>
-      <line num="55" type="stmt" count="0"/>
-      <line num="56" type="stmt" count="0"/>
-      <line num="59" type="method" name="getStreet" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="61" type="stmt" count="0"/>
-      <line num="64" type="method" name="getShowdown" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="66" type="stmt" count="0"/>
-      <line num="69" type="method" name="setShowdownTrue" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="71" type="stmt" count="0"/>
-      <line num="74" type="method" name="setShowdownFalse" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="76" type="stmt" count="0"/>
-      <line num="79" type="method" name="resetStreet" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="81" type="stmt" count="0"/>
-      <line num="84" type="method" name="isPreflop" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="86" type="stmt" count="0"/>
-      <line num="89" type="method" name="isPostflop" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="91" type="stmt" count="0"/>
-      <line num="92" type="stmt" count="0"/>
-      <line num="95" type="method" name="setPreflop" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="97" type="stmt" count="0"/>
-      <line num="98" type="stmt" count="0"/>
-      <metrics loc="101" ncloc="80" classes="1" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="0" elements="27" coveredelements="0"/>
+      <line num="45" type="method" name="setNextStreet" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="47" type="stmt" count="1"/>
+      <line num="48" type="stmt" count="1"/>
+      <line num="50" type="stmt" count="1"/>
+      <line num="51" type="stmt" count="1"/>
+      <line num="52" type="stmt" count="1"/>
+      <line num="54" type="stmt" count="1"/>
+      <line num="57" type="method" name="getStreet" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="59" type="stmt" count="1"/>
+      <line num="62" type="method" name="getShowdown" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="64" type="stmt" count="1"/>
+      <line num="67" type="method" name="setShowdownTrue" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="69" type="stmt" count="1"/>
+      <line num="72" type="method" name="setShowdownFalse" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="74" type="stmt" count="1"/>
+      <line num="77" type="method" name="resetStreet" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="79" type="stmt" count="1"/>
+      <metrics loc="82" ncloc="61" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="17" coveredelements="17"/>
     </file>
     <file name="/Users/erik/dbwebb-kurser/mvc/me/report/src/Poker/TexasHandTrait.php">
       <class name="App\Poker\TexasHandTrait" namespace="global">
@@ -2851,6 +2837,6 @@
       <line num="85" type="stmt" count="0"/>
       <metrics loc="88" ncloc="67" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="34" coveredelements="0"/>
     </file>
-    <metrics files="60" loc="5670" ncloc="5282" classes="59" methods="386" coveredmethods="89" conditionals="0" coveredconditionals="0" statements="2104" coveredstatements="478" elements="2490" coveredelements="567"/>
+    <metrics files="60" loc="5644" ncloc="5256" classes="59" methods="382" coveredmethods="99" conditionals="0" coveredconditionals="0" statements="2094" coveredstatements="495" elements="2476" coveredelements="594"/>
   </project>
 </coverage>

@@ -28,13 +28,6 @@ class Dealer
         return [$card];
     }
 
-    public function dealRemaining(array $board): array
-    {
-        $remaining = 5 - count($board);
-        $cards = $this->deck->drawMany($remaining);
-        return $cards;
-    }
-
     public function shuffleCards(): void
     {
         $this->deck->initializeCards();

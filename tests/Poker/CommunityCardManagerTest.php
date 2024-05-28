@@ -22,7 +22,7 @@ class CommunityCardManagerTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties, use no arguments.
      */
-    public function testCreateBetManager()
+    public function testCreateCCManager()
     {
         $this->assertInstanceOf("\App\Poker\CommunityCardManager", $this->manager);
     }
@@ -30,5 +30,24 @@ class CommunityCardManagerTest extends TestCase
     /**
      * Test the actionIsClosed methods.
      */
+
+    public function testCCMMethods()
+    {
+        $board = $this->manager->getBoard();
+        $this->assertEmpty($board);
+
+        $cards = ["card", "card", "card"];
+        $this->manager->register($cards);
+        $board = $this->manager->getBoard();
+        $count = $this->manager->cardsDealt();
+
+        $this->assertCount(3, $board);
+        $this->assertEquals(3, $count);
+
+        $this->manager->resetBoard();
+
+        $board = $this->manager->getBoard();
+        $this->assertEmpty($board);
+    }
 
 }
