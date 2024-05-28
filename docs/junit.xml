@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="41" assertions="122" errors="0" warnings="1" failures="0" skipped="0" time="0.039011">
-    <testsuite name="Project Test Suite" tests="41" assertions="122" errors="0" warnings="1" failures="0" skipped="0" time="0.039011">
-      <testsuite name="App\Poker\BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" tests="7" assertions="19" errors="0" warnings="0" failures="0" skipped="0" time="0.010089">
-        <testcase name="testCreateBetManager" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="28" assertions="1" time="0.005585"/>
-        <testcase name="testActionIsClosed" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="36" assertions="2" time="0.000601"/>
-        <testcase name="testGetPrice" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="50" assertions="1" time="0.000487"/>
-        <testcase name="testGetBiggestBet" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="64" assertions="1" time="0.000173"/>
-        <testcase name="testGetMinimumRaiseAllowed" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="80" assertions="1" time="0.000166"/>
-        <testcase name="testResetMethods" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="95" assertions="6" time="0.000191"/>
-        <testcase name="testPlayerClosedAction" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="126" assertions="7" time="0.002887">
+  <testsuite name="" tests="47" assertions="132" errors="0" warnings="1" failures="0" skipped="0" time="0.039778">
+    <testsuite name="Project Test Suite" tests="47" assertions="132" errors="0" warnings="1" failures="0" skipped="0" time="0.039778">
+      <testsuite name="App\Poker\BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" tests="7" assertions="19" errors="0" warnings="0" failures="0" skipped="0" time="0.010317">
+        <testcase name="testCreateBetManager" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="28" assertions="1" time="0.005516"/>
+        <testcase name="testActionIsClosed" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="36" assertions="2" time="0.000645"/>
+        <testcase name="testGetPrice" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="50" assertions="1" time="0.000530"/>
+        <testcase name="testGetBiggestBet" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="64" assertions="1" time="0.000175"/>
+        <testcase name="testGetMinimumRaiseAllowed" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="80" assertions="1" time="0.000175"/>
+        <testcase name="testResetMethods" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="95" assertions="6" time="0.000197"/>
+        <testcase name="testPlayerClosedAction" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="126" assertions="7" time="0.003080">
           <system-out>playerClosedAction()int(1000)
 string(3) "bet"
 lastToAct:string(0) ""
@@ -41,61 +41,61 @@ int(2)
 </system-out>
         </testcase>
       </testsuite>
-      <testsuite name="App\Poker\CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" tests="4" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.012952">
-        <testcase name="testGetNumberCards" class="App\Poker\CardHandTest" classname="App.Poker.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" line="27" assertions="2" time="0.002050"/>
-        <testcase name="testGetValues" class="App\Poker\CardHandTest" classname="App.Poker.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" line="48" assertions="1" time="0.009937"/>
-        <testcase name="testGetImgNames" class="App\Poker\CardHandTest" classname="App.Poker.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" line="72" assertions="1" time="0.000336"/>
-        <testcase name="testGetHand" class="App\Poker\CardHandTest" classname="App.Poker.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" line="96" assertions="3" time="0.000629"/>
+      <testsuite name="App\Poker\CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" tests="4" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.012039">
+        <testcase name="testGetNumberCards" class="App\Poker\CardHandTest" classname="App.Poker.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" line="27" assertions="2" time="0.001281"/>
+        <testcase name="testGetValues" class="App\Poker\CardHandTest" classname="App.Poker.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" line="48" assertions="1" time="0.009811"/>
+        <testcase name="testGetImgNames" class="App\Poker\CardHandTest" classname="App.Poker.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" line="72" assertions="1" time="0.000329"/>
+        <testcase name="testGetHand" class="App\Poker\CardHandTest" classname="App.Poker.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" line="96" assertions="3" time="0.000617"/>
       </testsuite>
-      <testsuite name="App\Poker\CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" tests="6" assertions="36" errors="0" warnings="0" failures="0" skipped="0" time="0.005858">
-        <testcase name="testCreateCardManager" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="40" assertions="1" time="0.001392"/>
-        <testcase name="testDealCardsToAllPlayers" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="49" assertions="3" time="0.000730"/>
-        <testcase name="testDealCommunityCards" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="72" assertions="8" time="0.000486"/>
-        <testcase name="testUpdateHandStrengths" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="95" assertions="6" time="0.001127"/>
-        <testcase name="testDealRemaining" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="144" assertions="6" time="0.000539"/>
-        <testcase name="testResetMethods" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="172" assertions="12" time="0.001585"/>
+      <testsuite name="App\Poker\CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" tests="6" assertions="36" errors="0" warnings="0" failures="0" skipped="0" time="0.005866">
+        <testcase name="testCreateCardManager" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="40" assertions="1" time="0.001463"/>
+        <testcase name="testDealCardsToAllPlayers" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="49" assertions="3" time="0.000725"/>
+        <testcase name="testDealCommunityCards" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="72" assertions="8" time="0.000479"/>
+        <testcase name="testUpdateHandStrengths" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="95" assertions="6" time="0.001149"/>
+        <testcase name="testDealRemaining" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="144" assertions="6" time="0.000511"/>
+        <testcase name="testResetMethods" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="172" assertions="12" time="0.001538"/>
       </testsuite>
-      <testsuite name="App\Poker\CommunityCardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CommunityCardManagerTest.php" tests="2" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.001059">
-        <testcase name="testCreateCCManager" class="App\Poker\CommunityCardManagerTest" classname="App.Poker.CommunityCardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CommunityCardManagerTest.php" line="25" assertions="1" time="0.000528"/>
-        <testcase name="testCCMMethods" class="App\Poker\CommunityCardManagerTest" classname="App.Poker.CommunityCardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CommunityCardManagerTest.php" line="34" assertions="4" time="0.000530"/>
+      <testsuite name="App\Poker\CommunityCardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CommunityCardManagerTest.php" tests="2" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.001022">
+        <testcase name="testCreateCCManager" class="App\Poker\CommunityCardManagerTest" classname="App.Poker.CommunityCardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CommunityCardManagerTest.php" line="25" assertions="1" time="0.000504"/>
+        <testcase name="testCCMMethods" class="App\Poker\CommunityCardManagerTest" classname="App.Poker.CommunityCardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CommunityCardManagerTest.php" line="34" assertions="4" time="0.000518"/>
       </testsuite>
       <testsuite name="App\Poker\DealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/DealerTest.php" tests="1" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.000426">
         <testcase name="testDealHoleCards" class="App\Poker\DealerTest" classname="App.Poker.DealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/DealerTest.php" line="38" assertions="2" time="0.000426"/>
       </testsuite>
-      <testsuite name="App\Poker\GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/GameTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.001411">
-        <testcase name="testCreateGame" class="App\Poker\GameTest" classname="App.Poker.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/GameTest.php" line="36" assertions="1" time="0.000959"/>
-        <testcase name="testGetPlayers" class="App\Poker\GameTest" classname="App.Poker.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/GameTest.php" line="43" assertions="3" time="0.000452"/>
+      <testsuite name="App\Poker\GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/GameTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.001449">
+        <testcase name="testCreateGame" class="App\Poker\GameTest" classname="App.Poker.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/GameTest.php" line="36" assertions="1" time="0.000964"/>
+        <testcase name="testGetPlayers" class="App\Poker\GameTest" classname="App.Poker.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/GameTest.php" line="43" assertions="3" time="0.000485"/>
       </testsuite>
-      <testsuite name="App\Poker\ManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ManagerTest.php" tests="1" assertions="0" errors="0" warnings="1" failures="0" skipped="0" time="0.000486">
-        <testcase name="Warning" assertions="0" time="0.000486">
+      <testsuite name="App\Poker\ManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ManagerTest.php" tests="1" assertions="0" errors="0" warnings="1" failures="0" skipped="0" time="0.000515">
+        <testcase name="Warning" assertions="0" time="0.000515">
           <warning type="PHPUnit\Framework\Warning">Warning
 No tests found in class "App\Poker\ManagerTest".</warning>
         </testcase>
       </testsuite>
-      <testsuite name="App\Poker\PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PlayerTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.000371">
-        <testcase name="testCreatePlayer" class="App\Poker\PlayerTest" classname="App.Poker.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PlayerTest.php" line="37" assertions="1" time="0.000171"/>
-        <testcase name="testReceiveCards" class="App\Poker\PlayerTest" classname="App.Poker.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PlayerTest.php" line="45" assertions="3" time="0.000201"/>
+      <testsuite name="App\Poker\PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PlayerTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.000357">
+        <testcase name="testCreatePlayer" class="App\Poker\PlayerTest" classname="App.Poker.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PlayerTest.php" line="37" assertions="1" time="0.000164"/>
+        <testcase name="testReceiveCards" class="App\Poker\PlayerTest" classname="App.Poker.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PlayerTest.php" line="45" assertions="3" time="0.000193"/>
       </testsuite>
-      <testsuite name="App\Poker\PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" tests="4" assertions="20" errors="0" warnings="0" failures="0" skipped="0" time="0.002532">
-        <testcase name="testCreatePositionManager" class="App\Poker\PositionManagerTest" classname="App.Poker.PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" line="25" assertions="1" time="0.000756"/>
-        <testcase name="testPositionsInitAndUpdate" class="App\Poker\PositionManagerTest" classname="App.Poker.PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" line="33" assertions="9" time="0.000939"/>
-        <testcase name="testSortByPosition" class="App\Poker\PositionManagerTest" classname="App.Poker.PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" line="68" assertions="7" time="0.000625"/>
-        <testcase name="testPlayerIsLast" class="App\Poker\PositionManagerTest" classname="App.Poker.PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" line="98" assertions="3" time="0.000212"/>
+      <testsuite name="App\Poker\PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" tests="4" assertions="20" errors="0" warnings="0" failures="0" skipped="0" time="0.002564">
+        <testcase name="testCreatePositionManager" class="App\Poker\PositionManagerTest" classname="App.Poker.PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" line="25" assertions="1" time="0.000726"/>
+        <testcase name="testPositionsInitAndUpdate" class="App\Poker\PositionManagerTest" classname="App.Poker.PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" line="33" assertions="9" time="0.000964"/>
+        <testcase name="testSortByPosition" class="App\Poker\PositionManagerTest" classname="App.Poker.PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" line="68" assertions="7" time="0.000661"/>
+        <testcase name="testPlayerIsLast" class="App\Poker\PositionManagerTest" classname="App.Poker.PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" line="98" assertions="3" time="0.000213"/>
       </testsuite>
-      <testsuite name="App\Poker\PotManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PotManagerTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.000837">
-        <testcase name="testCreatePotManager" class="App\Poker\PotManagerTest" classname="App.Poker.PotManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PotManagerTest.php" line="29" assertions="1" time="0.000505"/>
-        <testcase name="testPotMethods" class="App\Poker\PotManagerTest" classname="App.Poker.PotManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PotManagerTest.php" line="37" assertions="3" time="0.000332">
+      <testsuite name="App\Poker\PotManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PotManagerTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.000834">
+        <testcase name="testCreatePotManager" class="App\Poker\PotManagerTest" classname="App.Poker.PotManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PotManagerTest.php" line="29" assertions="1" time="0.000499"/>
+        <testcase name="testPotMethods" class="App\Poker\PotManagerTest" classname="App.Poker.PotManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PotManagerTest.php" line="37" assertions="3" time="0.000335">
           <system-out>ADDINGBETSTO POT</system-out>
         </testcase>
       </testsuite>
-      <testsuite name="App\Poker\SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" tests="8" assertions="15" errors="0" warnings="0" failures="0" skipped="0" time="0.002032">
-        <testcase name="testCreateGame" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="27" assertions="1" time="0.000719"/>
-        <testcase name="testOnePairComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="35" assertions="2" time="0.000219"/>
-        <testcase name="testTwoPairComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="64" assertions="2" time="0.000180"/>
-        <testcase name="testTripComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="92" assertions="2" time="0.000175"/>
-        <testcase name="testQuadsComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="120" assertions="2" time="0.000167"/>
-        <testcase name="testFullHousesComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="149" assertions="2" time="0.000177"/>
-        <testcase name="testFlushesComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="177" assertions="3" time="0.000215">
+      <testsuite name="App\Poker\SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" tests="8" assertions="15" errors="0" warnings="0" failures="0" skipped="0" time="0.002080">
+        <testcase name="testCreateGame" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="27" assertions="1" time="0.000722"/>
+        <testcase name="testOnePairComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="35" assertions="2" time="0.000240"/>
+        <testcase name="testTwoPairComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="64" assertions="2" time="0.000197"/>
+        <testcase name="testTripComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="92" assertions="2" time="0.000178"/>
+        <testcase name="testQuadsComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="120" assertions="2" time="0.000171"/>
+        <testcase name="testFullHousesComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="149" assertions="2" time="0.000176"/>
+        <testcase name="testFlushesComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="177" assertions="3" time="0.000219">
           <system-out>Most Frequent Suit: hearts
 Most Frequent Suit: hearts
 Flush Cards 1: 7, 6, 5, 4, 3, 2, 1
@@ -112,11 +112,21 @@ Flush Cards 2: 8, 6, 5, 4, 3, 2, 1
 Flush Cards 3: 9, 7, 6, 5, 4, 3, 2
 </system-out>
         </testcase>
-        <testcase name="testStraightsComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="235" assertions="1" time="0.000180"/>
+        <testcase name="testStraightsComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="235" assertions="1" time="0.000176"/>
       </testsuite>
-      <testsuite name="App\Poker\StreetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StreetManagerTest.php" tests="2" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.000956">
-        <testcase name="testCreateCCManager" class="App\Poker\StreetManagerTest" classname="App.Poker.StreetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StreetManagerTest.php" line="25" assertions="1" time="0.000726"/>
-        <testcase name="testSetNextStreet" class="App\Poker\StreetManagerTest" classname="App.Poker.StreetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StreetManagerTest.php" line="33" assertions="5" time="0.000230"/>
+      <testsuite name="App\Poker\StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" tests="6" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.001534">
+        <testcase name="testCreateStateManager" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="29" assertions="1" time="0.000593"/>
+        <testcase name="testGetActivePlayers" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="37" assertions="2" time="0.000207"/>
+        <testcase name="testFindWinner" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="56" assertions="1" time="0.000187"/>
+        <testcase name="testRemoveInactivePlayers" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="71" assertions="1" time="0.000184"/>
+        <testcase name="testHeroAlreadyMoved" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="86" assertions="3" time="0.000180"/>
+        <testcase name="testWonWithNoShowdown" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="105" assertions="2" time="0.000183">
+          <system-out>WIN!</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Poker\StreetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StreetManagerTest.php" tests="2" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.000776">
+        <testcase name="testCreateStreetanager" class="App\Poker\StreetManagerTest" classname="App.Poker.StreetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StreetManagerTest.php" line="25" assertions="1" time="0.000569"/>
+        <testcase name="testSetNextStreet" class="App\Poker\StreetManagerTest" classname="App.Poker.StreetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StreetManagerTest.php" line="33" assertions="5" time="0.000207"/>
       </testsuite>
     </testsuite>
   </testsuite>

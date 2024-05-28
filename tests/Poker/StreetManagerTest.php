@@ -22,7 +22,7 @@ class StreetManagerTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties, use no arguments.
      */
-    public function testCreateCCManager()
+    public function testCreateStreetanager()
     {
         $this->assertInstanceOf("\App\Poker\StreetManager", $this->manager);
     }
@@ -60,7 +60,6 @@ class StreetManagerTest extends TestCase
         $this->manager->setShowdownTrue();
         $showdown = $this->manager->getShowdown();
         $this->assertTrue($showdown);
-
     }
 
 }
