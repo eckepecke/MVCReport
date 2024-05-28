@@ -25,7 +25,7 @@ class BetManagerTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties, use no arguments.
      */
-    public function testCreateCardManager()
+    public function testCreateBetManager()
     {
         $this->assertInstanceOf("\App\Poker\BetManager", $this->manager);
     }

@@ -104,9 +104,9 @@ class PositionManagerTest extends TestCase
         $playerArray = [$player1, $player2, $player3];
         $this->manager->assignPositions($playerArray);
 
-        $res1 = $this->manager->playerIsLast($player1);
-        $res2 = $this->manager->playerIsLast($player2);
-        $res3 = $this->manager->playerIsLast($player3);
+        $res1 = $this->manager->playerIsLast($player1, $playerArray);
+        $res2 = $this->manager->playerIsLast($player2, $playerArray);
+        $res3 = $this->manager->playerIsLast($player3, $playerArray);
 
         $this->assertFalse($res2);
         $this->assertFalse($res2);
