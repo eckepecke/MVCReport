@@ -32,10 +32,9 @@ class PotManagerTest extends TestCase
     }
 
     /**
-     * Construct object and verify that the object has the expected
-     * properties, use no arguments.
+     * Test pot methods.
      */
-    public function testPotMethids()
+    public function testPotMethods()
     {
         $players = $this->state["players"];
         $player1 = $players[0];

@@ -14,6 +14,7 @@ use App\Cards\DeckOfCards;
 class CardManagerTest extends TestCase
 {
     private CardManager $manager;
+    private array $players;
     
     /**
      * Set up.
@@ -23,6 +24,13 @@ class CardManagerTest extends TestCase
         $this->manager = new CardManager();
         $deck = new DeckOfCards();
         $this->manager->addDeck($deck);
+
+        $player1 = new Player();
+        $player2 = new Player();
+        $player3 = new Player();
+
+        $playerArray = [$player1, $player2, $player3];
+        $this->players = $playerArray;
     }
     /**
      * Construct object and verify that the object has the expected
@@ -40,13 +48,13 @@ class CardManagerTest extends TestCase
     public function testDealCardsToAllPlayers(): void
     {
 
-        $player1 = new Player();
-        $player2 = new Player();
-        $player3 = new Player();
+        // $player1 = new Player();
+        // $player2 = new Player();
+        // $player3 = new Player();
 
-        $playerArray = [$player1, $player2, $player3];
+        // $playerArray = [$player1, $player2, $player3];
 
-        $this->manager->dealStartingHands($playerArray);
+        $this->manager->dealStartingHands($this->players);
 
         $hand1 = $playerArray[0]->getHand();
         $hand2 = $playerArray[1]->getHand();
@@ -56,4 +64,27 @@ class CardManagerTest extends TestCase
         $this->assertInstanceOf("\App\Poker\CardHand", $hand2);
         $this->assertInstanceOf("\App\Poker\CardHand", $hand3);
     }
+
+    /**
+     * Give cards to everyone.
+     */
+    // public function testDealCardsToAllPlayers(): void
+    // {
+
+    //     // $player1 = new Player();
+    //     // $player2 = new Player();
+    //     // $player3 = new Player();
+
+    //     // $playerArray = [$player1, $player2, $player3];
+
+    //     $this->manager->dealStartingHands($this->players);
+
+    //     $hand1 = $playerArray[0]->getHand();
+    //     $hand2 = $playerArray[1]->getHand();
+    //     $hand3 = $playerArray[2]->getHand();
+
+    //     $this->assertInstanceOf("\App\Poker\CardHand", $hand1);
+    //     $this->assertInstanceOf("\App\Poker\CardHand", $hand2);
+    //     $this->assertInstanceOf("\App\Poker\CardHand", $hand3);
+    // }
 }
