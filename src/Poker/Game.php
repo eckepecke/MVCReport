@@ -158,7 +158,6 @@ class Game
             $player1,
             $player2,
             $player3,
-
         ];
 
 

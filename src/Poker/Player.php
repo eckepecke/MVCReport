@@ -86,10 +86,9 @@ class Player extends PlayerBase
         return $this->allIn;
     }
 
-    public function resetAllin(): void
+    public function resetAllIn(): void
     {
         $this->allIn = false;
-        var_dump($this->allIn);
     }
 
 }

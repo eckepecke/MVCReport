@@ -68,7 +68,7 @@ class Manager
         $this->managers["cardManager"]->activatePlayers($players);
         $this->managers["positionManager"]->updatePositions($players);
         // $this->managers["potManager"]->chargeBlinds($players);
-        $this->managers["betManager"]->resetAllIns($players);
+        // $this->managers["betManager"]->resetAllIns($players);
     }
 
     public function showdown(array $players): void

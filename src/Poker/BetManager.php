@@ -92,13 +92,6 @@ class BetManager
         }
     }
 
-    public function resetAllIns(array $players): void
-    {
-        foreach ($players as $player) {
-            $player->resetAllIn();
-        }
-    }
-
     public function playerClosedAction(object $player, array $state): bool
     {
         echo"playerClosedAction()";
@@ -115,10 +108,10 @@ class BetManager
         var_dump($lastToAct->getName());
         var_dump($lastToAct->getPosition());
 
-        if ($priceToPlay === 0 && $activePlayers === 2) {
-            echo"AAA";
-            $playerClosedAction = true;
-        }
+        // if ($priceToPlay === 0 && $activePlayers === 2) {
+        //     echo"AAA";
+        //     $playerClosedAction = true;
+        // }
 
         if ($playerLastAction === "check" && $player === $lastToAct) {
             echo"CCC";

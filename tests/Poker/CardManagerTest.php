@@ -21,12 +21,8 @@ class CardManagerTest extends TestCase
     protected function setUp(): void
     {
         $this->manager = new CardManager();
-
-
         $deck = new DeckOfCards();
         $this->manager->addDeck($deck);
-
-
     }
     /**
      * Construct object and verify that the object has the expected
