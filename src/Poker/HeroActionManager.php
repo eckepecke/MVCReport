@@ -8,7 +8,12 @@ namespace App\Poker;
 class HeroActionManager
 {
     /**
-     * Handles user input.
+     * Represents the hero player's move during the game.
+     *
+     * @param mixed $action The action to be performed by the hero player.
+     * @param Player $hero The hero player object.
+     * @param int $priceToPlay The price to play for the hero player.
+     * @return void
      */
     public function heroMove(mixed $action, object $hero, int $priceToPlay): void
     {
@@ -34,8 +39,13 @@ class HeroActionManager
         }
     }
 
-
-
+    /**
+     * Calculates the hero player's bet size based on the given amount and maximum bet allowed.
+     *
+     * @param int $amount The amount the hero player intends to bet.
+     * @param int $maxBet The maximum bet allowed in the current game round.
+     * @return int The calculated bet size for the hero player.
+     */
     public function heroBetSize(int $amount, int $maxBet): int
     {
         return min($amount, $maxBet);

@@ -78,6 +78,12 @@ class BetManager
         return 2 * $biggestAmount;
     }
 
+    /**
+     * Resets the current bet for each player in the given array.
+     *
+     * @param array $players An array of player objects with a resetCurrentBet method.
+     * @return void
+     */
     public function resetPlayerBets(array $players): void
     {
         foreach ($players as $player) {
@@ -85,6 +91,12 @@ class BetManager
         }
     }
 
+    /**
+     * Resets the last action for each player in the given array.
+     *
+     * @param array $players An array of player objects with a resetLastAction method.
+     * @return void
+     */
     public function resetPlayerActions(array $players): void
     {
         foreach ($players as $player) {
@@ -92,9 +104,15 @@ class BetManager
         }
     }
 
+    /**
+     * Determines if a player's action has closed the current round of betting.
+     *
+     * @param object $player The player object with methods to get their last action.
+     * @param array $state The current game state, including active players and other details.
+     * @return bool True if the player's action closed the round, false otherwise.
+     */
     public function playerClosedAction(object $player, array $state): bool
     {
-        echo"playerClosedAction()";
         $playerClosedAction = false;
 
         $playerLastAction = $player->getLastAction();
@@ -102,40 +120,27 @@ class BetManager
         $activePlayers = $state["active"];
         $lastToAct = $this->lastToAct($state["players"]);
 
-        var_dump($priceToPlay);
-        var_dump($playerLastAction);
-        echo"lastToAct:";
-        var_dump($lastToAct->getName());
-        var_dump($lastToAct->getPosition());
-
-        // if ($priceToPlay === 0 && $activePlayers === 2) {
-        //     echo"AAA";
-        //     $playerClosedAction = true;
-        // }
-
         if ($playerLastAction === "check" && $player === $lastToAct) {
-            echo"CCC";
-
             $playerClosedAction = true;
         }
-        // }
 
-        // This is true for both preflop and postflop.
         if ($playerLastAction === "call" && $priceToPlay === 0) {
-            echo"DDD";
-
             $playerClosedAction = true;
         }
 
         if ($playerLastAction === "fold" && $priceToPlay === 0) {
-            echo"FFF";
-
             $playerClosedAction = true;
         }
 
         return $playerClosedAction;
     }
 
+    /**
+     * Determines the last active player to act based on their position.
+     *
+     * @param array $players An array of player objects with methods to check activity and get position.
+     * @return object The last active player to act.
+     */
     public function lastToAct(array $players): object
     {
         $last = null;

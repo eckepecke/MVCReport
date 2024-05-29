@@ -5,13 +5,20 @@ namespace App\Poker;
 /**
  * Class GameOverTracker
  *
- * Manages betting logic in a poker game.
+ * Tracks the status of the game.
  */
 class GameOverTracker
 {
+    /** @var bool Indicates whether all hands have been played. */
     private bool $allHandsPlayed;
+
+    /** @var int The total number of hands to play in the game. */
     private int $handsToPlay;
+
+    /** @var int The current hand being played. */
     private int $hand = 0;
+
+    /** @var bool Indicates whether the hero player is broke. */
     private bool $heroIsBroke;
 
     public function __construct(int $hands)
@@ -23,6 +30,11 @@ class GameOverTracker
         $this->gameOver = false;
     }
 
+    /**
+     * Checks if all hands have been played in the game.
+     *
+     * @return bool True if all hands have been played, false otherwise.
+     */
     public function allHandsPlayed(): bool
     {
         if ($this->hand >= $this->handsToPlay) {
@@ -32,11 +44,21 @@ class GameOverTracker
         return $this->allHandsPlayed;
     }
 
+    /**
+     * Increments the current hand being played.
+     *
+     * @return void
+     */
     public function incrementHands(): void
     {
         $this->hand++;
     }
 
+    /**
+     * Checks if the hero player is broke.
+     *
+     * @return bool True if the hero player is broke, false otherwise.
+     */
     public function getHeroIsBroke(): bool
     {
         return $this->heroIsBroke;

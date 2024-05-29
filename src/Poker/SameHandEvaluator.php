@@ -2,8 +2,19 @@
 
 namespace App\Poker;
 
+/**
+ * Class SameHandEvaluator
+ *
+ * Evaluates poker hands of the same strength.
+ */
 class SameHandEvaluator extends HandEvaluator
 {
+    /**
+     * Compares high cards of multiple hands to determine the winner.
+     *
+     * @param array $hands An array of CardHand objects representing the hands to compare.
+     * @return int The index of the winning hand in the $hands array.
+     */
     public function compareHighCard(array $hands): int
     {
 
@@ -43,6 +54,12 @@ class SameHandEvaluator extends HandEvaluator
         return $winningIndex;
     }
 
+    /**
+     * Compares hands with one pair to determine the winner.
+     *
+     * @param array $hands An array of CardHand objects representing the hands to compare.
+     * @return int The index of the winning hand in the $hands array. If there's a tie, returns -1.
+     */
     public function compareOnePair(array $hands): int
     {
 
@@ -109,6 +126,12 @@ class SameHandEvaluator extends HandEvaluator
         return $bestHandIndex;
     }
 
+    /**
+     * Compares hands with two pairs to determine the winner.
+     *
+     * @param array $hands An array of CardHand objects representing the hands to compare.
+     * @return int The index of the winning hand in the $hands array. If there's a tie, returns -1.
+     */
     public function compareTrips(array $hands): int
     {
         $bestHandIndex = -1;
@@ -134,6 +157,12 @@ class SameHandEvaluator extends HandEvaluator
         return $bestHandIndex;
     }
 
+    /**
+     * Compares hands with four of a kind to determine the winner.
+     *
+     * @param array $hands An array of CardHand objects representing the hands to compare.
+     * @return int The index of the winning hand in the $hands array. If there's a tie, returns -1.
+     */
     public function compareQuads(array $hands): int
     {
         $bestHandIndex = -1;
@@ -159,6 +188,12 @@ class SameHandEvaluator extends HandEvaluator
         return $bestHandIndex;
     }
 
+    /**
+ * Compares hands with full house determine the winner.
+ *
+ * @param array $hands An array of CardHand objects representing the hands to compare.
+ * @return int The index of the winning hand in the $hands array. If there's a tie, returns -1.
+ */
     public function compareFullHouses(array $hands): int
     {
         $bestHandIndex = -1;
@@ -196,6 +231,12 @@ class SameHandEvaluator extends HandEvaluator
         return $bestHandIndex;
     }
 
+    /**
+     * Compares hands with straight to determine the winner.
+     *
+     * @param array $hands An array of CardHand objects representing the hands to compare.
+     * @return int The index of the winning hand in the $hands array. If there's a tie, returns -1.
+     */
     public function compareStraights(array $handRanks): int
     {
         foreach ($handRanks as $index => $hand) {
@@ -234,6 +275,12 @@ class SameHandEvaluator extends HandEvaluator
         return $bestHandIndex;
     }
 
+    /**
+     * Compares hands with flush to determine the winner.
+     *
+     * @param array $hands An array of CardHand objects representing the hands to compare.
+     * @return int The index of the winning hand in the $hands array. If there's a tie, returns -1.
+     */
     public function compareFlushes(array $handRanks, array $suitRanks): int
     {
         $flushCardsList = [];
@@ -262,6 +309,13 @@ class SameHandEvaluator extends HandEvaluator
         return $bestIndex;
     }
 
+    /**
+     * Gets the cards forming a flush from the hand.
+     *
+     * @param array $handRanks An array containing the ranks of the cards in the hand.
+     * @param array $suitRanks An array containing the count of each suit in the hand.
+     * @return array An array containing the cards forming a flush, if any.
+     */
     public function getFlushCards(array $handRanks, array $suitRanks): array
     {
         $suitsCount = array_count_values($suitRanks);

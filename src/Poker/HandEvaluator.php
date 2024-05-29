@@ -1,11 +1,20 @@
 <?php
 
 namespace App\Poker;
-
+/**
+ * Class HandEvaluator
+ *
+ * Evaluates the strength of poker hands.
+ */
 class HandEvaluator
 {
+    /** @var array Mapping of hand ranks to their corresponding strength values. */
     private array $rankMapping;
+
+    /** @var array The strength array containing the strength of each hand. */
     private array $strengthArray;
+
+    /** @var array Mapping of hand strengths to their corresponding string representations. */
     private array $strengthMapping;
 
     public function __construct()
@@ -54,6 +63,12 @@ class HandEvaluator
         ];
     }
 
+    /**
+     * Evaluates the strength of a poker hand.
+     *
+     * @param array $cards An array of CardGraphic objects representing the hand to be evaluated.
+     * @return array An array containing the strength of the evaluated hand.
+     */
     public function evaluateHand(array $cards): array
     {
         list($ranks, $suits) = $this->extractRanksAndSuits($cards);
@@ -65,7 +80,7 @@ class HandEvaluator
         $this->resetStrengthArray();
         $this->checkForFlush($maxSameSuitCount);
         $this->checkForStraight($ranks);
-        $this->checkForStraightFlush();
+        // $this->checkForStraightFlush();
         $this->checkForQuads($rankCounts);
         $this->checkForFullHouse($rankCounts);
         $this->checkForTrips($rankCounts);
@@ -74,6 +89,12 @@ class HandEvaluator
         return $this->getStrengthArray();
     }
 
+    /**
+     * Extracts ranks and suits from an array of cards.
+     *
+     * @param CardGraphic[] $cards An array of CardGraphic objects representing the cards.
+     * @return array An array containing two arrays: one for ranks and one for suits.
+     */
     public function extractRanksAndSuits(array $cards): array
     {
         $ranks = [];
@@ -87,6 +108,12 @@ class HandEvaluator
         return [$ranks, $suits];
     }
 
+    /**
+     * Checks if the hand contains a straight.
+     *
+     * @param array $ranks An array of integers representing the ranks of the cards.
+     * @return void
+     */
     public function checkForStraight(array $ranks): void
     {
         $this->strengthArray['Straight'] = false;
@@ -123,13 +150,19 @@ class HandEvaluator
         }
     }
 
-    public function checkForStraightFlush(): void
-    {
-        if (($this->strengthArray['Flush'] === true) && ($this->strengthArray['Straight'] === true)) {
-            $this->strengthArray['Straight flush'] = true;
-        }
-    }
+    // public function checkForStraightFlush(): void
+    // {
+    //     if (($this->strengthArray['Flush'] === true) && ($this->strengthArray['Straight'] === true)) {
+    //         $this->strengthArray['Straight flush'] = true;
+    //     }
+    // }
 
+    /**
+     * Checks if the hand contains a flush.
+     *
+     * @param int $maxSameSuitCount The maximum count of cards with the same suit.
+     * @return void
+     */
     public function checkForFlush(int $maxSameSuitCount): void
     {
 
@@ -138,6 +171,12 @@ class HandEvaluator
         }
     }
 
+    /**
+     * Checks if the hand contains four of a kind.
+     *
+     * @param array $rankCounts An array containing the count of each rank in the hand.
+     * @return void
+     */
     public function checkForQuads(array $rankCounts): void
     {
         if (in_array(4, $rankCounts) || in_array(5, $rankCounts)) {
@@ -145,6 +184,12 @@ class HandEvaluator
         }
     }
 
+    /**
+     * Checks if the hand contains a full house.
+     *
+     * @param array $rankCounts An array containing the count of each rank in the hand.
+     * @return void
+     */
     public function checkForFullHouse(array $rankCounts): void
     {
         if (in_array(3, $rankCounts) && in_array(2, $rankCounts)) {
@@ -152,6 +197,12 @@ class HandEvaluator
         }
     }
 
+    /**
+     * Checks if the hand contains three of a kind.
+     *
+     * @param array $rankCounts An array containing the count of each rank in the hand.
+     * @return void
+     */
     public function checkForTrips(array $rankCounts): void
     {
         if (in_array(3, $rankCounts)) {
@@ -159,6 +210,12 @@ class HandEvaluator
         }
     }
 
+    /**
+     * Checks if the hand contains pairs.
+     *
+     * @param array $rankCounts An array containing the count of each rank in the hand.
+     * @return void
+     */
     public function checkForPairs(array $rankCounts): void
     {
         $pairCount = 0;
@@ -178,6 +235,11 @@ class HandEvaluator
         }
     }
 
+    /**
+     * Resets the strength array to its initial state.
+     *
+     * @return void
+     */
     public function resetStrengthArray(): void
     {
         $this->strengthArray = [
@@ -194,18 +256,34 @@ class HandEvaluator
         ];
     }
 
+    /**
+     * Gets the integer representation of a hand strength.
+     *
+     * @param string $strength The string representation of the hand strength.
+     * @return int The integer representation of the hand strength.
+     */
     public function getStrengthAsInt(string $strength): int
     {
-        $valueAsInt = $this->strengthMapping[$strength] ?? 10;
+        $valueAsInt = $this->strengthMapping[$strength] ?? 1;
 
         return $valueAsInt;
     }
 
+    /**
+     * Gets the strength array representing the evaluated hand.
+     *
+     * @return array The strength array representing the evaluated hand.
+     */
     public function getStrengthArray(): array
     {
         return $this->strengthArray;
     }
 
+    /**
+     * Gets the current strength of the evaluated hand.
+     *
+     * @return string The current strength of the evaluated hand.
+     */
     public function getCurrentStrength(): string
     {
         foreach ($this->strengthArray as $key => $value) {
