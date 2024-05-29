@@ -7,18 +7,21 @@ class PotManager
     protected int $pot;
 
 
-    public function __construct()
+    public function __construct($chips)
     {
-        $this->pot = 0;
+        $this->pot = $chips;
     }
 
     public function addChipsToPot(array $state): void
     {
         echo"ADDINGBETSTO POT";
         $players = $state["players"];
+        var_dump(count($players));
 
         foreach ($players as $player) {
             $chips = $player->getCurrentBet();
+            var_dump($player->getName());
+            echo"Adding $chips";
             $this->pot += $chips;
         }
     }

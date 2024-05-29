@@ -133,7 +133,9 @@ class ShowdownManager extends HandEvaluator
                 $winner = $players[$winnerIndex];
                 break;
             default:
-                throw new Exception("No such Handstrength $strength");
+                var_dump($strength);
+                echo"ovan";
+                throw new Exception("No such Handstrength " . $strength);
                 break;
         }
         return $winner;

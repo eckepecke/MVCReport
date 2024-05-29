@@ -7,13 +7,7 @@ namespace App\Poker;
  */
 class Manager
 {
-    private object $game;
     private array $managers = [];
-
-    public function addGame(Game $game): void
-    {
-        $this->game = $game;
-    }
 
     public function addManager(string $key, object $manager): void
     {
@@ -25,29 +19,9 @@ class Manager
         return $this->managers[$manager];
     }
 
-    public function newHandStarting(mixed $action): bool
-    {
-        $state = $this->game->getGameState();
-        $activePlayers = $this->managers["stateManager"]->getActivePlayers($state);
-        $newHand = false;
-        if ($activePlayers < 2) {
-            $newHand = true;
-        }
-
-        if ($this->managers["streetManager"]->getShowdown()) {
-            $newHand = true;
-        }
-
-        if ($action === null) {
-            $newHand = true;
-        }
-
-        return $newHand;
-    }
-
     public function givePotToWinner(array $state): void
     {
-        $pot = $this->managers["potManager"]->addChipsToPot($state);
+        $this->managers["potManager"]->addChipsToPot($state);
         $winner = $this->managers["stateManager"]->getWinner($state);
         $pot = $this->managers["potManager"]->getPotSize();
         var_dump($winner->getName());
@@ -71,24 +45,26 @@ class Manager
         // $this->managers["betManager"]->resetAllIns($players);
     }
 
-    public function showdown(array $players): void
+    public function showdown(array $state): void
     {
-        $board = $this->managers["CCManager"]->getBoard();
-        $this->managers["cardManager"]->updateHandStrengths($players, $board);
-        $activePlayers = $this->managers["stateManager"]->removeInactive($players);
+        // $board = $this->managers["CCManager"]->getBoard();
+        $this->managers["cardManager"]->updateHandStrengths($state["players"], $state["board"]);
+        // $activePlayers = $this->managers["stateManager"]->removeInactive($state["players"]);
 
-        $winner = $this->managers["showdownManager"]->findWinner($activePlayers, $board);
+        $winner = $this->managers["showdownManager"]->findWinner($state["active"], $state["board"]);
         $pot = $this->managers["potManager"]->getPotSize();
+        var_dump($pot);
+        var_dump($winner->getName());
         $winner->takePot($pot);
 
         $this->managers["streetManager"]->setShowdownTrue();
         ///increment hands
     }
 
-    public function updatePlayersCurrentHandStrength(array $players): void
+    public function updatePlayersCurrentHandStrength(array $state): void
     {
-        $board = $this->managers["CCManager"]->getBoard();
-        $this->managers["cardManager"]->updateHandStrengths($players, $board);
+        // $board = $this->managers["CCManager"]->getBoard();
+        $this->managers["cardManager"]->updateHandStrengths($state["players"], $state["board"]);
     }
 
     public function deal(array $state): void

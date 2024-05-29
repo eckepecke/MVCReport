@@ -48,13 +48,6 @@ class CardManagerTest extends TestCase
      */
     public function testDealCardsToAllPlayers(): void
     {
-
-        // $player1 = new Player();
-        // $player2 = new Player();
-        // $player3 = new Player();
-
-        // $playerArray = [$player1, $player2, $player3];
-
         $this->manager->dealStartingHands($this->players);
 
         $hand1 = $this->players[0]->getHand();

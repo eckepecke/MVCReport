@@ -16,7 +16,6 @@ class Player extends PlayerBase
         parent::__construct();
         $this->position = 0;
         $this->allIn = false;
-
         $this->active = true;
         $this->name = "";
     }

@@ -17,7 +17,7 @@ class PotManagerTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->manager = new PotManager();
+        $this->manager = new PotManager(0);
         $this->state = ["players" => [new Player(), new Player(), new Player()]];
         
     }
