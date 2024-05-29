@@ -51,7 +51,7 @@ class ManagerTest extends TestCase
         $this->manager = new Manager();
         $player1 = new Hero();
         $player1->setName("Hero");
-        // $this->hero = $player1;
+        // $this->state["hero"] = $player1;
         $player2 = new Opponent();
         $player2->setName("Isildur1");
         $player3 = new Opponent();
@@ -102,7 +102,8 @@ class ManagerTest extends TestCase
         $this->state = [
             "players" => $this->players,
             "active" => $this->manager->access("stateManager")->removeInactive($this->players),
-            "board" => $this->manager->access("CCManager")->getBoard()
+            "board" => $this->manager->access("CCManager")->getBoard(),
+            "hero" => $player1,
             ];
     
     }
@@ -206,9 +207,132 @@ class ManagerTest extends TestCase
         $this->assertNotSame($initialPot, $afterPot);
         $this->assertEquals(1150, $afterPot);
         $this->assertNotSame($initialCards, $afterCards);
+    }
 
+    /**
+     * Test that opponents move in correct order.
+     */
+    public function testOpponentsMove(): void
+    {
+        $heroPos = $this->state["hero"]->getPosition();
+        $this->assertEquals(0,$heroPos);
 
+        $firstOpponent = $this->state["players"][1];
+        $secondOpponent = $this->state["players"][2];
 
+        $actionBefore1 = $firstOpponent->getLastAction();
+        $actionBefore2 = $secondOpponent->getLastAction();
 
+        $this->manager->opponentsInFrontMove($this->state);
+
+        $action1 = $firstOpponent->getLastAction();
+        $action2 = $secondOpponent->getLastAction();
+        // Since hero has position zero we expect action not to update.
+        $initial = "";
+        $this->assertEquals($initial, $actionBefore1);
+        $this->assertEquals($initial, $actionBefore1);
+        $this->assertEquals($initial, $action1);
+        $this->assertEquals($initial, $action2);
+
+        $this->manager->opponentsBehindMove($this->state);
+
+        // Now opponents should have updated moves.
+        $action1 = $firstOpponent->getLastAction();
+        $action2 = $secondOpponent->getLastAction();
+        $this->assertNotSame($initial, $action1);
+        $this->assertNotSame($initial, $action2);
+
+        $this->manager->access("positionManager")->updatePositions($this->state["players"]);
+        $this->manager->access("betManager")->resetPlayerActions($this->state["players"]);
+
+        // Now Hero is last to act.
+        $heroPos = $this->state["hero"]->getPosition();
+        $this->assertEquals(2,$heroPos);
+
+        $actionBefore1 = $firstOpponent->getLastAction();
+        $actionBefore2 = $secondOpponent->getLastAction();
+
+        $this->manager->opponentsBehindMove($this->state);
+
+        $action1 = $firstOpponent->getLastAction();
+        $action2 = $secondOpponent->getLastAction();
+        // Since hero has position 2 we expect action not to update
+        // when behind players move (there are none).
+        $initial = "";
+        $this->assertEquals($initial, $actionBefore1);
+        $this->assertEquals($initial, $actionBefore1);
+        $this->assertEquals($initial, $action1);
+        $this->assertEquals($initial, $action2);
+
+        $this->manager->opponentsInFrontMove($this->state);
+
+        // Now opponents should have updated moves.
+        $action1 = $firstOpponent->getLastAction();
+        $action2 = $secondOpponent->getLastAction();
+        $this->assertNotSame($initial, $action1);
+        $this->assertNotSame($initial, $action2);
+    }
+
+    /**
+     * Test that both opponents move when hero is allin.
+     */
+    public function testOpponentsPlayVAllIn(): void
+    {
+        // Put hero allin.
+        $this->state["hero"]->bet(5000);
+        $firstOpponent = $this->state["players"][1];
+        $secondOpponent = $this->state["players"][2];
+
+        $actionBefore1 = $firstOpponent->getLastAction();
+        $actionBefore2 = $secondOpponent->getLastAction();
+
+        $this->manager->opponentsPlay("5000", $this->state);
+
+        $action1 = $firstOpponent->getLastAction();
+        $action2 = $secondOpponent->getLastAction();
+        $initial = "";
+        // Both players should have made a move.
+        $this->assertEquals($initial, $actionBefore1);
+        $this->assertEquals($initial, $actionBefore1);
+        $this->assertNotSame($initial, $action1);
+        $this->assertNotSame($initial, $action2);
+    }
+
+    /**
+     * Test that only opponents infront move when hero closes action.
+     */
+    public function testOpponentsPlayVsActionClose(): void
+    {
+        // Put hero allin.
+        $this->state["hero"]->call(1);
+        $firstOpponent = $this->state["players"][1];
+        $secondOpponent = $this->state["players"][2];
+
+        $actionBefore1 = $firstOpponent->getLastAction();
+        $actionBefore2 = $secondOpponent->getLastAction();
+        $this->manager->access("stateManager")->setNewHand(false);
+        $this->manager->access("betManager")->setActionIsClosed(true);
+
+        $this->manager->opponentsPlay("call", $this->state);
+
+        $action1 = $firstOpponent->getLastAction();
+        $action2 = $secondOpponent->getLastAction();
+        $initial = "";
+        // Nobody should move since hero has position 0.
+        $this->assertEquals($initial, $actionBefore1);
+        $this->assertEquals($initial, $actionBefore1);
+        $this->assertSame($initial, $action1);
+        $this->assertSame($initial, $action2);
+
+        $this->manager->access("betManager")->setActionIsClosed(false);
+        $this->manager->opponentsPlay("bet", $this->state);
+
+        $action1 = $firstOpponent->getLastAction();
+        $action2 = $secondOpponent->getLastAction();
+        $initial = "";
+        // Now both opponents should move since they
+        // action is not closed and hero acts first.
+        $this->assertNotSame($initial, $action1);
+        $this->assertNotSame($initial, $action2);
     }
 }

@@ -17,17 +17,18 @@ class GameTest extends TestCase
     protected function setUp(): void
     {
         $this->game = new Game();
+        $this->game->init();
 
-        $player1 = new Player();
-        $player2 = new Player();
-        $player3 = new Player();
+        // $player1 = new Hero();
+        // $player2 = new Player();
+        // $player3 = new Player();
 
-        $dealer = new CardManager();
-        $deck = new DeckOfCards();
-        $dealer->addDeck($deck);
+        // $dealer = new CardManager();
+        // $deck = new DeckOfCards();
+        // $dealer->addDeck($deck);
 
-        $playerArray = [$player1, $player2, $player3];
-        $this->game->addPlayers($playerArray);
+        // $playerArray = [$player1, $player2, $player3];
+        // $this->game->addPlayers($playerArray);
     }
     /**
      * Construct object and verify that the object has the expected
@@ -48,5 +49,16 @@ class GameTest extends TestCase
         $this->assertInstanceOf("\App\Poker\Player", $res[0]);
         $this->assertInstanceOf("\App\Poker\Player", $res[1]);
         $this->assertInstanceOf("\App\Poker\Player", $res[2]);
+    }
+
+    /**
+     * Test that we reach showdown when hero allin.
+     */
+    public function testReachShowdownWhenAllIn()
+    {
+        $this->game->prepare(5000);
+        $data = $this->game->getTemplateData();
+        $showdown = $data["showdown"];
+        $this->assertTrue($showdown);
     }
 }

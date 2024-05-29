@@ -150,6 +150,7 @@ class Game
 
         $player1 = new Hero();
         $player1->setName("Hero");
+        var_dump($player1->getName());
         $this->hero = $player1;
         $player2 = new Opponent();
         $player2->setName("Isildur1");

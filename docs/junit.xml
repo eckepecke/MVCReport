@@ -1,127 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="139" assertions="362" errors="0" warnings="0" failures="0" skipped="0" time="0.103245">
-    <testsuite name="Project Test Suite" tests="139" assertions="362" errors="0" warnings="0" failures="0" skipped="0" time="0.103245">
-      <testsuite name="App\Card\CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Cards/CardHandTest.php" tests="4" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.015691">
-        <testcase name="testGetNumberCards" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Cards/CardHandTest.php" line="29" assertions="2" time="0.004947"/>
-        <testcase name="testGetValues" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Cards/CardHandTest.php" line="50" assertions="1" time="0.009789"/>
-        <testcase name="testGetImgNames" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Cards/CardHandTest.php" line="74" assertions="1" time="0.000340"/>
-        <testcase name="testGetHand" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Cards/CardHandTest.php" line="98" assertions="3" time="0.000615"/>
+  <testsuite name="" tests="145" assertions="392" errors="0" warnings="0" failures="0" skipped="0" time="0.106893">
+    <testsuite name="Project Test Suite" tests="145" assertions="392" errors="0" warnings="0" failures="0" skipped="0" time="0.106893">
+      <testsuite name="App\Card\CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Cards/CardHandTest.php" tests="4" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.015818">
+        <testcase name="testGetNumberCards" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Cards/CardHandTest.php" line="29" assertions="2" time="0.005132"/>
+        <testcase name="testGetValues" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Cards/CardHandTest.php" line="50" assertions="1" time="0.009743"/>
+        <testcase name="testGetImgNames" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Cards/CardHandTest.php" line="74" assertions="1" time="0.000332"/>
+        <testcase name="testGetHand" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Cards/CardHandTest.php" line="98" assertions="3" time="0.000610"/>
       </testsuite>
-      <testsuite name="App\Dice\DiceHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceHandTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.002005">
-        <testcase name="testAddStubbedDices" class="App\Dice\DiceHandTest" classname="App.Dice.DiceHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceHandTest.php" line="15" assertions="1" time="0.001491"/>
-        <testcase name="testGetNumberDices" class="App\Dice\DiceHandTest" classname="App.Dice.DiceHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceHandTest.php" line="37" assertions="3" time="0.000194"/>
-        <testcase name="testGetString" class="App\Dice\DiceHandTest" classname="App.Dice.DiceHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceHandTest.php" line="61" assertions="1" time="0.000320"/>
+      <testsuite name="App\Dice\DiceHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceHandTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.001984">
+        <testcase name="testAddStubbedDices" class="App\Dice\DiceHandTest" classname="App.Dice.DiceHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceHandTest.php" line="15" assertions="1" time="0.001476"/>
+        <testcase name="testGetNumberDices" class="App\Dice\DiceHandTest" classname="App.Dice.DiceHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceHandTest.php" line="37" assertions="3" time="0.000195"/>
+        <testcase name="testGetString" class="App\Dice\DiceHandTest" classname="App.Dice.DiceHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceHandTest.php" line="61" assertions="1" time="0.000312"/>
       </testsuite>
-      <testsuite name="App\Dice\DiceTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" tests="4" assertions="54" errors="0" warnings="0" failures="0" skipped="0" time="0.003868">
-        <testcase name="testCreateDice" class="App\Dice\DiceTest" classname="App.Dice.DiceTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" line="16" assertions="2" time="0.001371"/>
-        <testcase name="testStubRollDiceLastRoll" class="App\Dice\DiceTest" classname="App.Dice.DiceTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" line="28" assertions="1" time="0.000255"/>
-        <testcase name="testRoll" class="App\Dice\DiceTest" classname="App.Dice.DiceTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" line="45" assertions="50" time="0.002080"/>
-        <testcase name="testGetValue" class="App\Dice\DiceTest" classname="App.Dice.DiceTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" line="60" assertions="1" time="0.000162"/>
+      <testsuite name="App\Dice\DiceTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" tests="4" assertions="54" errors="0" warnings="0" failures="0" skipped="0" time="0.003942">
+        <testcase name="testCreateDice" class="App\Dice\DiceTest" classname="App.Dice.DiceTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" line="16" assertions="2" time="0.001368"/>
+        <testcase name="testStubRollDiceLastRoll" class="App\Dice\DiceTest" classname="App.Dice.DiceTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" line="28" assertions="1" time="0.000252"/>
+        <testcase name="testRoll" class="App\Dice\DiceTest" classname="App.Dice.DiceTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" line="45" assertions="50" time="0.002159"/>
+        <testcase name="testGetValue" class="App\Dice\DiceTest" classname="App.Dice.DiceTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" line="60" assertions="1" time="0.000163"/>
       </testsuite>
-      <testsuite name="App\Entity\BookTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Entity/BookTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.000832">
-        <testcase name="testGetAttributesAsArray" class="App\Entity\BookTest" classname="App.Entity.BookTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Entity/BookTest.php" line="15" assertions="1" time="0.000832"/>
+      <testsuite name="App\Entity\BookTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Entity/BookTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.000765">
+        <testcase name="testGetAttributesAsArray" class="App\Entity\BookTest" classname="App.Entity.BookTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Entity/BookTest.php" line="15" assertions="1" time="0.000765"/>
       </testsuite>
-      <testsuite name="App\FlopAndGo\ChallengeTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/ChallengeTest.php" tests="5" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.002046">
-        <testcase name="testCreateChallenge" class="App\FlopAndGo\ChallengeTest" classname="App.FlopAndGo.ChallengeTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/ChallengeTest.php" line="29" assertions="1" time="0.000973"/>
-        <testcase name="testIncrementHandsPlayed" class="App\FlopAndGo\ChallengeTest" classname="App.FlopAndGo.ChallengeTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/ChallengeTest.php" line="38" assertions="1" time="0.000181"/>
-        <testcase name="testChallengeComplete" class="App\FlopAndGo\ChallengeTest" classname="App.FlopAndGo.ChallengeTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/ChallengeTest.php" line="47" assertions="2" time="0.000557"/>
-        <testcase name="testDuration" class="App\FlopAndGo\ChallengeTest" classname="App.FlopAndGo.ChallengeTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/ChallengeTest.php" line="61" assertions="1" time="0.000172"/>
+      <testsuite name="App\FlopAndGo\ChallengeTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/ChallengeTest.php" tests="5" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.002098">
+        <testcase name="testCreateChallenge" class="App\FlopAndGo\ChallengeTest" classname="App.FlopAndGo.ChallengeTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/ChallengeTest.php" line="29" assertions="1" time="0.001028"/>
+        <testcase name="testIncrementHandsPlayed" class="App\FlopAndGo\ChallengeTest" classname="App.FlopAndGo.ChallengeTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/ChallengeTest.php" line="38" assertions="1" time="0.000179"/>
+        <testcase name="testChallengeComplete" class="App\FlopAndGo\ChallengeTest" classname="App.FlopAndGo.ChallengeTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/ChallengeTest.php" line="47" assertions="2" time="0.000561"/>
+        <testcase name="testDuration" class="App\FlopAndGo\ChallengeTest" classname="App.FlopAndGo.ChallengeTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/ChallengeTest.php" line="61" assertions="1" time="0.000167"/>
         <testcase name="testHandWinner" class="App\FlopAndGo\ChallengeTest" classname="App.FlopAndGo.ChallengeTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/ChallengeTest.php" line="70" assertions="1" time="0.000163"/>
       </testsuite>
-      <testsuite name="App\FlopAndGo\DealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/DealerTest.php" tests="2" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.003145">
-        <testcase name="testCreateDealer" class="App\FlopAndGo\DealerTest" classname="App.FlopAndGo.DealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/DealerTest.php" line="34" assertions="1" time="0.001131"/>
-        <testcase name="testDealingAndShuffling" class="App\FlopAndGo\DealerTest" classname="App.FlopAndGo.DealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/DealerTest.php" line="42" assertions="6" time="0.002015"/>
+      <testsuite name="App\FlopAndGo\DealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/DealerTest.php" tests="2" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.003001">
+        <testcase name="testCreateDealer" class="App\FlopAndGo\DealerTest" classname="App.FlopAndGo.DealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/DealerTest.php" line="34" assertions="1" time="0.001152"/>
+        <testcase name="testDealingAndShuffling" class="App\FlopAndGo\DealerTest" classname="App.FlopAndGo.DealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/DealerTest.php" line="42" assertions="6" time="0.001848"/>
       </testsuite>
-      <testsuite name="App\FlopAndGo\GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" tests="11" assertions="34" errors="0" warnings="0" failures="0" skipped="0" time="0.011947">
-        <testcase name="testCreateGame" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="63" assertions="1" time="0.005983"/>
+      <testsuite name="App\FlopAndGo\GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" tests="11" assertions="34" errors="0" warnings="0" failures="0" skipped="0" time="0.012855">
+        <testcase name="testCreateGame" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="63" assertions="1" time="0.006822"/>
         <testcase name="testMaxBet" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="72" assertions="3" time="0.000559"/>
-        <testcase name="testShowdownCheck" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="95" assertions="2" time="0.000480"/>
-        <testcase name="testAlHandsPlayedCheck" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="109" assertions="2" time="0.000466"/>
-        <testcase name="testIsSomeoneBroke" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="124" assertions="2" time="0.000476"/>
-        <testcase name="testHeroBetSize" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="139" assertions="2" time="0.000452"/>
-        <testcase name="testGameStateVariables" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="158" assertions="11" time="0.001000"/>
-        <testcase name="testAllInCheck" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="187" assertions="2" time="0.000620"/>
-        <testcase name="testDealCorrectStreet" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="200" assertions="4" time="0.000532"/>
-        <testcase name="testHeroActions" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="228" assertions="3" time="0.000549"/>
-        <testcase name="testNewHandVariable" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="258" assertions="2" time="0.000830"/>
+        <testcase name="testShowdownCheck" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="95" assertions="2" time="0.000476"/>
+        <testcase name="testAlHandsPlayedCheck" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="109" assertions="2" time="0.000469"/>
+        <testcase name="testIsSomeoneBroke" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="124" assertions="2" time="0.000474"/>
+        <testcase name="testHeroBetSize" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="139" assertions="2" time="0.000473"/>
+        <testcase name="testGameStateVariables" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="158" assertions="11" time="0.001017"/>
+        <testcase name="testAllInCheck" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="187" assertions="2" time="0.000633"/>
+        <testcase name="testDealCorrectStreet" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="200" assertions="4" time="0.000541"/>
+        <testcase name="testHeroActions" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="228" assertions="3" time="0.000554"/>
+        <testcase name="testNewHandVariable" class="App\FlopAndGo\GameTest" classname="App.FlopAndGo.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/GameTest.php" line="258" assertions="2" time="0.000837"/>
       </testsuite>
-      <testsuite name="App\FlopAndGo\HandCheckerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HandCheckerTest.php" tests="7" assertions="18" errors="0" warnings="0" failures="0" skipped="0" time="0.001134">
-        <testcase name="testCreateChallenge" class="App\FlopAndGo\HandCheckerTest" classname="App.FlopAndGo.HandCheckerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HandCheckerTest.php" line="26" assertions="1" time="0.000155"/>
-        <testcase name="testCheckForTrips" class="App\FlopAndGo\HandCheckerTest" classname="App.FlopAndGo.HandCheckerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HandCheckerTest.php" line="34" assertions="2" time="0.000158"/>
-        <testcase name="testCheckWheelStraight" class="App\FlopAndGo\HandCheckerTest" classname="App.FlopAndGo.HandCheckerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HandCheckerTest.php" line="66" assertions="2" time="0.000166"/>
+      <testsuite name="App\FlopAndGo\HandCheckerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HandCheckerTest.php" tests="7" assertions="18" errors="0" warnings="0" failures="0" skipped="0" time="0.001141">
+        <testcase name="testCreateChallenge" class="App\FlopAndGo\HandCheckerTest" classname="App.FlopAndGo.HandCheckerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HandCheckerTest.php" line="26" assertions="1" time="0.000156"/>
+        <testcase name="testCheckForTrips" class="App\FlopAndGo\HandCheckerTest" classname="App.FlopAndGo.HandCheckerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HandCheckerTest.php" line="34" assertions="2" time="0.000162"/>
+        <testcase name="testCheckWheelStraight" class="App\FlopAndGo\HandCheckerTest" classname="App.FlopAndGo.HandCheckerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HandCheckerTest.php" line="66" assertions="2" time="0.000165"/>
         <testcase name="testCheckForFull" class="App\FlopAndGo\HandCheckerTest" classname="App.FlopAndGo.HandCheckerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HandCheckerTest.php" line="88" assertions="2" time="0.000160"/>
-        <testcase name="testCheckQuads" class="App\FlopAndGo\HandCheckerTest" classname="App.FlopAndGo.HandCheckerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HandCheckerTest.php" line="117" assertions="3" time="0.000163"/>
-        <testcase name="testCheckForPairs" class="App\FlopAndGo\HandCheckerTest" classname="App.FlopAndGo.HandCheckerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HandCheckerTest.php" line="157" assertions="5" time="0.000172"/>
-        <testcase name="testCheckForFlush" class="App\FlopAndGo\HandCheckerTest" classname="App.FlopAndGo.HandCheckerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HandCheckerTest.php" line="207" assertions="3" time="0.000159"/>
+        <testcase name="testCheckQuads" class="App\FlopAndGo\HandCheckerTest" classname="App.FlopAndGo.HandCheckerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HandCheckerTest.php" line="117" assertions="3" time="0.000162"/>
+        <testcase name="testCheckForPairs" class="App\FlopAndGo\HandCheckerTest" classname="App.FlopAndGo.HandCheckerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HandCheckerTest.php" line="157" assertions="5" time="0.000173"/>
+        <testcase name="testCheckForFlush" class="App\FlopAndGo\HandCheckerTest" classname="App.FlopAndGo.HandCheckerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HandCheckerTest.php" line="207" assertions="3" time="0.000162"/>
       </testsuite>
-      <testsuite name="App\FlopAndGo\HeroTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HeroTest.php" tests="4" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.000633">
-        <testcase name="testCreateDealer" class="App\FlopAndGo\HeroTest" classname="App.FlopAndGo.HeroTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HeroTest.php" line="30" assertions="1" time="0.000157"/>
+      <testsuite name="App\FlopAndGo\HeroTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HeroTest.php" tests="4" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.000638">
+        <testcase name="testCreateDealer" class="App\FlopAndGo\HeroTest" classname="App.FlopAndGo.HeroTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HeroTest.php" line="30" assertions="1" time="0.000164"/>
         <testcase name="testGetName" class="App\FlopAndGo\HeroTest" classname="App.FlopAndGo.HeroTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HeroTest.php" line="38" assertions="1" time="0.000150"/>
-        <testcase name="testGetStack" class="App\FlopAndGo\HeroTest" classname="App.FlopAndGo.HeroTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HeroTest.php" line="49" assertions="3" time="0.000161"/>
-        <testcase name="testGetStrengthAfterUpdate" class="App\FlopAndGo\HeroTest" classname="App.FlopAndGo.HeroTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HeroTest.php" line="67" assertions="1" time="0.000165"/>
+        <testcase name="testGetStack" class="App\FlopAndGo\HeroTest" classname="App.FlopAndGo.HeroTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HeroTest.php" line="49" assertions="3" time="0.000160"/>
+        <testcase name="testGetStrengthAfterUpdate" class="App\FlopAndGo\HeroTest" classname="App.FlopAndGo.HeroTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/HeroTest.php" line="67" assertions="1" time="0.000163"/>
       </testsuite>
-      <testsuite name="App\FlopAndGo\PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" tests="9" assertions="14" errors="0" warnings="0" failures="0" skipped="0" time="0.001640">
-        <testcase name="testCreateDealer" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="33" assertions="1" time="0.000150"/>
-        <testcase name="testCheckLastAction" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="41" assertions="1" time="0.000149"/>
-        <testcase name="testTakePot" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="53" assertions="1" time="0.000150"/>
-        <testcase name="testPosition" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="66" assertions="1" time="0.000147"/>
-        <testcase name="testCurrentBet" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="78" assertions="4" time="0.000167"/>
-        <testcase name="testResetLastAction" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="107" assertions="1" time="0.000148"/>
-        <testcase name="testAllin" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="120" assertions="3" time="0.000164"/>
-        <testcase name="testPayAnte" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="139" assertions="1" time="0.000149"/>
-        <testcase name="testGetImagePaths" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="152" assertions="1" time="0.000417"/>
+      <testsuite name="App\FlopAndGo\PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" tests="9" assertions="14" errors="0" warnings="0" failures="0" skipped="0" time="0.001658">
+        <testcase name="testCreateDealer" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="33" assertions="1" time="0.000153"/>
+        <testcase name="testCheckLastAction" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="41" assertions="1" time="0.000151"/>
+        <testcase name="testTakePot" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="53" assertions="1" time="0.000146"/>
+        <testcase name="testPosition" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="66" assertions="1" time="0.000157"/>
+        <testcase name="testCurrentBet" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="78" assertions="4" time="0.000166"/>
+        <testcase name="testResetLastAction" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="107" assertions="1" time="0.000153"/>
+        <testcase name="testAllin" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="120" assertions="3" time="0.000161"/>
+        <testcase name="testPayAnte" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="139" assertions="1" time="0.000146"/>
+        <testcase name="testGetImagePaths" class="App\FlopAndGo\PlayerTest" classname="App.FlopAndGo.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/PlayerTest.php" line="152" assertions="1" time="0.000425"/>
       </testsuite>
-      <testsuite name="App\FlopAndGo\SpecialDealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialDealerTest.php" tests="7" assertions="15" errors="0" warnings="0" failures="0" skipped="0" time="0.003128">
-        <testcase name="testCreateDealer" class="App\FlopAndGo\SpecialDealerTest" classname="App.FlopAndGo.SpecialDealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialDealerTest.php" line="54" assertions="1" time="0.000419"/>
-        <testcase name="testDealHoleCards" class="App\FlopAndGo\SpecialDealerTest" classname="App.FlopAndGo.SpecialDealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialDealerTest.php" line="62" assertions="3" time="0.000476"/>
-        <testcase name="testPlayersAllIn" class="App\FlopAndGo\SpecialDealerTest" classname="App.FlopAndGo.SpecialDealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialDealerTest.php" line="80" assertions="2" time="0.000432"/>
-        <testcase name="testResetForNextHand" class="App\FlopAndGo\SpecialDealerTest" classname="App.FlopAndGo.SpecialDealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialDealerTest.php" line="98" assertions="3" time="0.000469"/>
-        <testcase name="testDealToShowdown" class="App\FlopAndGo\SpecialDealerTest" classname="App.FlopAndGo.SpecialDealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialDealerTest.php" line="123" assertions="2" time="0.000449"/>
+      <testsuite name="App\FlopAndGo\SpecialDealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialDealerTest.php" tests="7" assertions="15" errors="0" warnings="0" failures="0" skipped="0" time="0.003189">
+        <testcase name="testCreateDealer" class="App\FlopAndGo\SpecialDealerTest" classname="App.FlopAndGo.SpecialDealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialDealerTest.php" line="54" assertions="1" time="0.000430"/>
+        <testcase name="testDealHoleCards" class="App\FlopAndGo\SpecialDealerTest" classname="App.FlopAndGo.SpecialDealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialDealerTest.php" line="62" assertions="3" time="0.000448"/>
+        <testcase name="testPlayersAllIn" class="App\FlopAndGo\SpecialDealerTest" classname="App.FlopAndGo.SpecialDealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialDealerTest.php" line="80" assertions="2" time="0.000430"/>
+        <testcase name="testResetForNextHand" class="App\FlopAndGo\SpecialDealerTest" classname="App.FlopAndGo.SpecialDealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialDealerTest.php" line="98" assertions="3" time="0.000473"/>
+        <testcase name="testDealToShowdown" class="App\FlopAndGo\SpecialDealerTest" classname="App.FlopAndGo.SpecialDealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialDealerTest.php" line="123" assertions="2" time="0.000453"/>
         <testcase name="testMoveChips" class="App\FlopAndGo\SpecialDealerTest" classname="App.FlopAndGo.SpecialDealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialDealerTest.php" line="137" assertions="2" time="0.000438"/>
-        <testcase name="testGetFlop" class="App\FlopAndGo\SpecialDealerTest" classname="App.FlopAndGo.SpecialDealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialDealerTest.php" line="159" assertions="2" time="0.000446"/>
+        <testcase name="testGetFlop" class="App\FlopAndGo\SpecialDealerTest" classname="App.FlopAndGo.SpecialDealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialDealerTest.php" line="159" assertions="2" time="0.000518"/>
       </testsuite>
-      <testsuite name="App\FlopAndGo\SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" tests="9" assertions="20" errors="0" warnings="0" failures="0" skipped="0" time="0.001986">
-        <testcase name="testCreateSpecialTable" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="38" assertions="1" time="0.000179"/>
-        <testcase name="testMoveButton" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="46" assertions="4" time="0.000236"/>
-        <testcase name="testGetPlayers" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="66" assertions="5" time="0.000194"/>
-        <testcase name="testGetPriceToPlay" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="88" assertions="3" time="0.000190"/>
+      <testsuite name="App\FlopAndGo\SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" tests="9" assertions="20" errors="0" warnings="0" failures="0" skipped="0" time="0.002047">
+        <testcase name="testCreateSpecialTable" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="38" assertions="1" time="0.000182"/>
+        <testcase name="testMoveButton" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="46" assertions="4" time="0.000250"/>
+        <testcase name="testGetPlayers" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="66" assertions="5" time="0.000199"/>
+        <testcase name="testGetPriceToPlay" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="88" assertions="3" time="0.000194"/>
         <testcase name="testMinRaiseTracker" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="108" assertions="2" time="0.000188"/>
-        <testcase name="testBoardFunctionality" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="123" assertions="2" time="0.000435"/>
-        <testcase name="testBombPotCollection" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="144" assertions="1" time="0.000172"/>
-        <testcase name="testSetStreet" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="156" assertions="1" time="0.000183"/>
-        <testcase name="testSeatPlayers" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="170" assertions="1" time="0.000208"/>
+        <testcase name="testBoardFunctionality" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="123" assertions="2" time="0.000451"/>
+        <testcase name="testBombPotCollection" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="144" assertions="1" time="0.000178"/>
+        <testcase name="testSetStreet" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="156" assertions="1" time="0.000181"/>
+        <testcase name="testSeatPlayers" class="App\FlopAndGo\SpecialTableTest" classname="App.FlopAndGo.SpecialTableTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/SpecialTableTest.php" line="170" assertions="1" time="0.000224"/>
       </testsuite>
-      <testsuite name="App\FlopAndGo\StrategyTraitTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/StrategyTraitTest.php" tests="5" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.001316">
-        <testcase name="testRandbetSize" class="App\FlopAndGo\StrategyTraitTest" classname="App.FlopAndGo.StrategyTraitTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/StrategyTraitTest.php" line="29" assertions="1" time="0.000667"/>
-        <testcase name="testRandActionFacingBet" class="App\FlopAndGo\StrategyTraitTest" classname="App.FlopAndGo.StrategyTraitTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/StrategyTraitTest.php" line="48" assertions="1" time="0.000167"/>
-        <testcase name="testBetVsCheck" class="App\FlopAndGo\StrategyTraitTest" classname="App.FlopAndGo.StrategyTraitTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/StrategyTraitTest.php" line="65" assertions="1" time="0.000163"/>
-        <testcase name="testActionFacingCheck" class="App\FlopAndGo\StrategyTraitTest" classname="App.FlopAndGo.StrategyTraitTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/StrategyTraitTest.php" line="78" assertions="1" time="0.000158"/>
+      <testsuite name="App\FlopAndGo\StrategyTraitTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/StrategyTraitTest.php" tests="5" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.001378">
+        <testcase name="testRandbetSize" class="App\FlopAndGo\StrategyTraitTest" classname="App.FlopAndGo.StrategyTraitTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/StrategyTraitTest.php" line="29" assertions="1" time="0.000721"/>
+        <testcase name="testRandActionFacingBet" class="App\FlopAndGo\StrategyTraitTest" classname="App.FlopAndGo.StrategyTraitTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/StrategyTraitTest.php" line="48" assertions="1" time="0.000169"/>
+        <testcase name="testBetVsCheck" class="App\FlopAndGo\StrategyTraitTest" classname="App.FlopAndGo.StrategyTraitTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/StrategyTraitTest.php" line="65" assertions="1" time="0.000165"/>
+        <testcase name="testActionFacingCheck" class="App\FlopAndGo\StrategyTraitTest" classname="App.FlopAndGo.StrategyTraitTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/StrategyTraitTest.php" line="78" assertions="1" time="0.000163"/>
         <testcase name="testBetOpportunity" class="App\FlopAndGo\StrategyTraitTest" classname="App.FlopAndGo.StrategyTraitTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/StrategyTraitTest.php" line="94" assertions="1" time="0.000161"/>
       </testsuite>
-      <testsuite name="App\FlopAndGo\VillainActionManager" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainActionManagerTest.php" tests="6" assertions="9" errors="0" warnings="0" failures="0" skipped="0" time="0.003109">
-        <testcase name="testVillainWaitsHisTurnIP" class="App\FlopAndGo\VillainActionManager" classname="App.FlopAndGo.VillainActionManager" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainActionManagerTest.php" line="60" assertions="2" time="0.000502"/>
-        <testcase name="testVillainMakesMoveOnHisTurnIP" class="App\FlopAndGo\VillainActionManager" classname="App.FlopAndGo.VillainActionManager" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainActionManagerTest.php" line="83" assertions="1" time="0.000493"/>
+      <testsuite name="App\FlopAndGo\VillainActionManager" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainActionManagerTest.php" tests="6" assertions="9" errors="0" warnings="0" failures="0" skipped="0" time="0.003123">
+        <testcase name="testVillainWaitsHisTurnIP" class="App\FlopAndGo\VillainActionManager" classname="App.FlopAndGo.VillainActionManager" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainActionManagerTest.php" line="60" assertions="2" time="0.000509"/>
+        <testcase name="testVillainMakesMoveOnHisTurnIP" class="App\FlopAndGo\VillainActionManager" classname="App.FlopAndGo.VillainActionManager" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainActionManagerTest.php" line="83" assertions="1" time="0.000491"/>
         <testcase name="testVillainMakesMoveOnHisTurnOOP" class="App\FlopAndGo\VillainActionManager" classname="App.FlopAndGo.VillainActionManager" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainActionManagerTest.php" line="101" assertions="1" time="0.000484"/>
-        <testcase name="testVillainFoldOk" class="App\FlopAndGo\VillainActionManager" classname="App.FlopAndGo.VillainActionManager" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainActionManagerTest.php" line="119" assertions="2" time="0.000481"/>
-        <testcase name="testVillaiRaiseVsBetOk" class="App\FlopAndGo\VillainActionManager" classname="App.FlopAndGo.VillainActionManager" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainActionManagerTest.php" line="138" assertions="1" time="0.000618"/>
-        <testcase name="testVillainCalledVsBetOk" class="App\FlopAndGo\VillainActionManager" classname="App.FlopAndGo.VillainActionManager" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainActionManagerTest.php" line="154" assertions="2" time="0.000531"/>
+        <testcase name="testVillainFoldOk" class="App\FlopAndGo\VillainActionManager" classname="App.FlopAndGo.VillainActionManager" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainActionManagerTest.php" line="119" assertions="2" time="0.000483"/>
+        <testcase name="testVillaiRaiseVsBetOk" class="App\FlopAndGo\VillainActionManager" classname="App.FlopAndGo.VillainActionManager" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainActionManagerTest.php" line="138" assertions="1" time="0.000622"/>
+        <testcase name="testVillainCalledVsBetOk" class="App\FlopAndGo\VillainActionManager" classname="App.FlopAndGo.VillainActionManager" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainActionManagerTest.php" line="154" assertions="2" time="0.000534"/>
       </testsuite>
-      <testsuite name="App\FlopAndGo\VillainTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainTest.php" tests="5" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.000836">
-        <testcase name="testCreateDealer" class="App\FlopAndGo\VillainTest" classname="App.FlopAndGo.VillainTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainTest.php" line="30" assertions="1" time="0.000167"/>
-        <testcase name="testGetName" class="App\FlopAndGo\VillainTest" classname="App.FlopAndGo.VillainTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainTest.php" line="38" assertions="1" time="0.000164"/>
-        <testcase name="testRaiseNoCurrentBet" class="App\FlopAndGo\VillainTest" classname="App.FlopAndGo.VillainTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainTest.php" line="49" assertions="1" time="0.000155"/>
-        <testcase name="testRaiseWithCurrentBet" class="App\FlopAndGo\VillainTest" classname="App.FlopAndGo.VillainTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainTest.php" line="61" assertions="1" time="0.000157"/>
-        <testcase name="testRaiseWithNotEnoughChips" class="App\FlopAndGo\VillainTest" classname="App.FlopAndGo.VillainTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainTest.php" line="74" assertions="2" time="0.000194"/>
+      <testsuite name="App\FlopAndGo\VillainTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainTest.php" tests="5" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.000831">
+        <testcase name="testCreateDealer" class="App\FlopAndGo\VillainTest" classname="App.FlopAndGo.VillainTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainTest.php" line="30" assertions="1" time="0.000158"/>
+        <testcase name="testGetName" class="App\FlopAndGo\VillainTest" classname="App.FlopAndGo.VillainTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainTest.php" line="38" assertions="1" time="0.000158"/>
+        <testcase name="testRaiseNoCurrentBet" class="App\FlopAndGo\VillainTest" classname="App.FlopAndGo.VillainTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainTest.php" line="49" assertions="1" time="0.000159"/>
+        <testcase name="testRaiseWithCurrentBet" class="App\FlopAndGo\VillainTest" classname="App.FlopAndGo.VillainTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainTest.php" line="61" assertions="1" time="0.000155"/>
+        <testcase name="testRaiseWithNotEnoughChips" class="App\FlopAndGo\VillainTest" classname="App.FlopAndGo.VillainTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/FlopAndGo/VillainTest.php" line="74" assertions="2" time="0.000201"/>
       </testsuite>
-      <testsuite name="App\Poker\BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" tests="7" assertions="19" errors="0" warnings="0" failures="0" skipped="0" time="0.008390">
-        <testcase name="testCreateBetManager" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="28" assertions="1" time="0.002608"/>
-        <testcase name="testActionIsClosed" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="36" assertions="2" time="0.000278"/>
-        <testcase name="testGetPrice" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="50" assertions="1" time="0.000206"/>
+      <testsuite name="App\Poker\BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" tests="7" assertions="19" errors="0" warnings="0" failures="0" skipped="0" time="0.006805">
+        <testcase name="testCreateBetManager" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="28" assertions="1" time="0.002734"/>
+        <testcase name="testActionIsClosed" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="36" assertions="2" time="0.000269"/>
+        <testcase name="testGetPrice" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="50" assertions="1" time="0.000194"/>
         <testcase name="testGetBiggestBet" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="64" assertions="1" time="0.000189"/>
-        <testcase name="testGetMinimumRaiseAllowed" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="80" assertions="1" time="0.000184"/>
-        <testcase name="testResetMethods" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="95" assertions="6" time="0.000211"/>
-        <testcase name="testPlayerClosedAction" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="126" assertions="7" time="0.004714">
+        <testcase name="testGetMinimumRaiseAllowed" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="80" assertions="1" time="0.000179"/>
+        <testcase name="testResetMethods" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="95" assertions="6" time="0.000208"/>
+        <testcase name="testPlayerClosedAction" class="App\Poker\BetManagerTest" classname="App.Poker.BetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/BetManagerTest.php" line="126" assertions="7" time="0.003033">
           <system-out>playerClosedAction()int(1000)
 string(3) "bet"
 lastToAct:string(0) ""
@@ -153,34 +153,80 @@ int(2)
 </system-out>
         </testcase>
       </testsuite>
-      <testsuite name="App\Poker\CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" tests="4" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.001811">
-        <testcase name="testGetNumberCards" class="App\Poker\CardHandTest" classname="App.Poker.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" line="27" assertions="2" time="0.000870"/>
-        <testcase name="testGetValues" class="App\Poker\CardHandTest" classname="App.Poker.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" line="48" assertions="1" time="0.000368"/>
-        <testcase name="testGetImgNames" class="App\Poker\CardHandTest" classname="App.Poker.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" line="72" assertions="1" time="0.000335"/>
-        <testcase name="testGetHand" class="App\Poker\CardHandTest" classname="App.Poker.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" line="96" assertions="3" time="0.000237"/>
+      <testsuite name="App\Poker\CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" tests="4" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.001858">
+        <testcase name="testGetNumberCards" class="App\Poker\CardHandTest" classname="App.Poker.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" line="27" assertions="2" time="0.000904"/>
+        <testcase name="testGetValues" class="App\Poker\CardHandTest" classname="App.Poker.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" line="48" assertions="1" time="0.000369"/>
+        <testcase name="testGetImgNames" class="App\Poker\CardHandTest" classname="App.Poker.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" line="72" assertions="1" time="0.000330"/>
+        <testcase name="testGetHand" class="App\Poker\CardHandTest" classname="App.Poker.CardHandTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardHandTest.php" line="96" assertions="3" time="0.000255"/>
       </testsuite>
-      <testsuite name="App\Poker\CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" tests="6" assertions="36" errors="0" warnings="0" failures="0" skipped="0" time="0.004864">
-        <testcase name="testCreateCardManager" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="40" assertions="1" time="0.001392"/>
-        <testcase name="testDealCardsToAllPlayers" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="49" assertions="3" time="0.000712"/>
-        <testcase name="testDealCommunityCards" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="65" assertions="8" time="0.000464"/>
-        <testcase name="testUpdateHandStrengths" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="88" assertions="6" time="0.001260"/>
-        <testcase name="testDealRemaining" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="137" assertions="6" time="0.000530"/>
-        <testcase name="testResetMethods" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="165" assertions="12" time="0.000506"/>
+      <testsuite name="App\Poker\CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" tests="6" assertions="36" errors="0" warnings="0" failures="0" skipped="0" time="0.004741">
+        <testcase name="testCreateCardManager" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="40" assertions="1" time="0.001192"/>
+        <testcase name="testDealCardsToAllPlayers" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="49" assertions="3" time="0.000727"/>
+        <testcase name="testDealCommunityCards" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="65" assertions="8" time="0.000484"/>
+        <testcase name="testUpdateHandStrengths" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="88" assertions="6" time="0.001299"/>
+        <testcase name="testDealRemaining" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="137" assertions="6" time="0.000535"/>
+        <testcase name="testResetMethods" class="App\Poker\CardManagerTest" classname="App.Poker.CardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CardManagerTest.php" line="165" assertions="12" time="0.000504"/>
       </testsuite>
-      <testsuite name="App\Poker\CommunityCardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CommunityCardManagerTest.php" tests="2" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.000916">
-        <testcase name="testCreateCCManager" class="App\Poker\CommunityCardManagerTest" classname="App.Poker.CommunityCardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CommunityCardManagerTest.php" line="25" assertions="1" time="0.000723"/>
-        <testcase name="testCCMMethods" class="App\Poker\CommunityCardManagerTest" classname="App.Poker.CommunityCardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CommunityCardManagerTest.php" line="34" assertions="4" time="0.000193"/>
+      <testsuite name="App\Poker\CommunityCardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CommunityCardManagerTest.php" tests="2" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.000852">
+        <testcase name="testCreateCCManager" class="App\Poker\CommunityCardManagerTest" classname="App.Poker.CommunityCardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CommunityCardManagerTest.php" line="25" assertions="1" time="0.000652"/>
+        <testcase name="testCCMMethods" class="App\Poker\CommunityCardManagerTest" classname="App.Poker.CommunityCardManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/CommunityCardManagerTest.php" line="34" assertions="4" time="0.000200"/>
       </testsuite>
-      <testsuite name="App\Poker\DealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/DealerTest.php" tests="1" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.000423">
-        <testcase name="testDealHoleCards" class="App\Poker\DealerTest" classname="App.Poker.DealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/DealerTest.php" line="38" assertions="2" time="0.000423"/>
+      <testsuite name="App\Poker\DealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/DealerTest.php" tests="1" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.000419">
+        <testcase name="testDealHoleCards" class="App\Poker\DealerTest" classname="App.Poker.DealerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/DealerTest.php" line="38" assertions="2" time="0.000419"/>
       </testsuite>
-      <testsuite name="App\Poker\GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/GameTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.001554">
-        <testcase name="testCreateGame" class="App\Poker\GameTest" classname="App.Poker.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/GameTest.php" line="36" assertions="1" time="0.001088"/>
-        <testcase name="testGetPlayers" class="App\Poker\GameTest" classname="App.Poker.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/GameTest.php" line="43" assertions="3" time="0.000467"/>
+      <testsuite name="App\Poker\GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/GameTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.008141">
+        <testcase name="testCreateGame" class="App\Poker\GameTest" classname="App.Poker.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/GameTest.php" line="37" assertions="1" time="0.006103">
+          <system-out>string(4) "Hero"
+</system-out>
+        </testcase>
+        <testcase name="testGetPlayers" class="App\Poker\GameTest" classname="App.Poker.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/GameTest.php" line="44" assertions="3" time="0.000611">
+          <system-out>string(4) "Hero"
+</system-out>
+        </testcase>
+        <testcase name="testReachShowdownWhenAllIn" class="App\Poker\GameTest" classname="App.Poker.GameTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/GameTest.php" line="57" assertions="1" time="0.001428">
+          <system-out>string(4) "Hero"
+NEW HAND STARTINGPOSTFLOPSTARTRRUUUUFFFFYYYheroMove()int(5000)
+playerClosedAction()int(190)
+string(3) "bet"
+lastToAct:string(8) "Isildur1"
+int(2)
+OBMstring(8) "Isildur1"
+move() PRICE:callplayerClosedAction()int(220)
+string(4) "call"
+lastToAct:string(8) "Isildur1"
+int(2)
+helloint(1)
+int(0)
+string(4) "Phil"
+int(1)
+move() PRICE:callplayerClosedAction()int(30)
+string(4) "call"
+lastToAct:string(8) "Isildur1"
+int(2)
+int(1)
+int(2)
+ADDINGBETSTO POTint(3)
+string(4) "Hero"
+Adding 200string(8) "Isildur1"
+Adding 230string(4) "Phil"
+Adding 230showdown!singleWinnerint(660)
+string(4) "Phil"
+</system-out>
+        </testcase>
       </testsuite>
-      <testsuite name="App\Poker\ManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ManagerTest.php" tests="4" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.008996">
-        <testcase name="testCreateManager" class="App\Poker\ManagerTest" classname="App.Poker.ManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ManagerTest.php" line="114" assertions="1" time="0.005774"/>
-        <testcase name="testGivePotToWinner" class="App\Poker\ManagerTest" classname="App.Poker.ManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ManagerTest.php" line="122" assertions="3" time="0.000652">
+      <testsuite name="App\Poker\HeroActionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/HeroActionManagerTest.php" tests="2" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.000507">
+        <testcase name="testCreateHeroActionManager" class="App\Poker\HeroActionManagerTest" classname="App.Poker.HeroActionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/HeroActionManagerTest.php" line="28" assertions="1" time="0.000168"/>
+        <testcase name="testHeroActions" class="App\Poker\HeroActionManagerTest" classname="App.Poker.HeroActionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/HeroActionManagerTest.php" line="36" assertions="4" time="0.000339">
+          <system-out>RRUUUUFFFFYYYheroMove()string(4) "call"
+RRUUUUFFFFYYYheroMove()string(5) "check"
+RRUUUUFFFFYYYheroMove()string(2) "50"
+RRUUUUFFFFYYYheroMove()string(4) "fold"
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Poker\ManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ManagerTest.php" tests="7" assertions="34" errors="0" warnings="0" failures="0" skipped="0" time="0.005843">
+        <testcase name="testCreateManager" class="App\Poker\ManagerTest" classname="App.Poker.ManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ManagerTest.php" line="115" assertions="1" time="0.000501"/>
+        <testcase name="testGivePotToWinner" class="App\Poker\ManagerTest" classname="App.Poker.ManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ManagerTest.php" line="123" assertions="3" time="0.000567">
           <system-out>ADDINGBETSTO POTint(3)
 string(4) "Hero"
 Adding 0string(8) "Isildur1"
@@ -188,32 +234,113 @@ Adding 0string(4) "Phil"
 Adding 0string(4) "Phil"
 takes pot</system-out>
         </testcase>
-        <testcase name="testShowdown" class="App\Poker\ManagerTest" classname="App.Poker.ManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ManagerTest.php" line="144" assertions="2" time="0.001962">
+        <testcase name="testShowdown" class="App\Poker\ManagerTest" classname="App.Poker.ManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ManagerTest.php" line="145" assertions="2" time="0.001941">
           <system-out>singleWinnerint(1000)
 string(4) "Phil"
 </system-out>
         </testcase>
-        <testcase name="testDeal" class="App\Poker\ManagerTest" classname="App.Poker.ManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ManagerTest.php" line="189" assertions="4" time="0.000608">
+        <testcase name="testDeal" class="App\Poker\ManagerTest" classname="App.Poker.ManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ManagerTest.php" line="190" assertions="4" time="0.000572">
           <system-out>deal()ADDINGBETSTO POTint(3)
 string(4) "Hero"
 Adding 50string(8) "Isildur1"
 Adding 50string(4) "Phil"
 Adding 50OpenActionAgain</system-out>
         </testcase>
+        <testcase name="testOpponentsMove" class="App\Poker\ManagerTest" classname="App.Poker.ManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ManagerTest.php" line="215" assertions="14" time="0.000784">
+          <system-out>helloint(0)
+int(0)
+int(1)
+int(2)
+OBMstring(8) "Isildur1"
+move() PRICE:int(0)
+checkplayerClosedAction()int(0)
+string(5) "check"
+lastToAct:string(4) "Phil"
+int(2)
+string(4) "Phil"
+move() PRICE:int(0)
+checkplayerClosedAction()int(0)
+string(5) "check"
+lastToAct:string(4) "Phil"
+int(2)
+CCCPlayer closed action OBM!OBMhelloint(2)
+int(0)
+string(8) "Isildur1"
+int(2)
+move() PRICE:int(0)
+betplayerClosedAction()int(750)
+string(3) "bet"
+lastToAct:string(4) "Hero"
+int(2)
+int(1)
+string(4) "Phil"
+int(2)
+move() PRICE:int(750)
+raiseplayerClosedAction()int(1500)
+string(5) "raise"
+lastToAct:string(4) "Hero"
+int(2)
+int(2)
+</system-out>
+        </testcase>
+        <testcase name="testOpponentsPlayVAllIn" class="App\Poker\ManagerTest" classname="App.Poker.ManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ManagerTest.php" line="279" assertions="4" time="0.000639">
+          <system-out>OBMstring(8) "Isildur1"
+move() PRICE:callplayerClosedAction()int(200)
+string(4) "call"
+lastToAct:string(4) "Phil"
+int(2)
+string(4) "Phil"
+move() PRICE:callplayerClosedAction()int(0)
+string(4) "call"
+lastToAct:string(4) "Phil"
+int(2)
+DDDPlayer closed action OBM!helloint(0)
+int(0)
+int(1)
+int(2)
+</system-out>
+        </testcase>
+        <testcase name="testOpponentsPlayVsActionClose" class="App\Poker\ManagerTest" classname="App.Poker.ManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ManagerTest.php" line="304" assertions="6" time="0.000839">
+          <system-out>Namideal()ADDINGBETSTO POTint(3)
+string(4) "Hero"
+Adding 1string(8) "Isildur1"
+Adding 0string(4) "Phil"
+Adding 0OpenActionAgainhelloint(0)
+int(0)
+int(1)
+int(2)
+RobinOBMstring(8) "Isildur1"
+move() PRICE:int(0)
+checkplayerClosedAction()int(0)
+string(5) "check"
+lastToAct:string(4) "Phil"
+int(2)
+string(4) "Phil"
+move() PRICE:int(0)
+betplayerClosedAction()int(750)
+string(3) "bet"
+lastToAct:string(4) "Phil"
+int(2)
+helloint(0)
+int(0)
+int(1)
+int(2)
+</system-out>
+        </testcase>
       </testsuite>
-      <testsuite name="App\Poker\PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PlayerTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.000374">
-        <testcase name="testCreatePlayer" class="App\Poker\PlayerTest" classname="App.Poker.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PlayerTest.php" line="37" assertions="1" time="0.000171"/>
-        <testcase name="testReceiveCards" class="App\Poker\PlayerTest" classname="App.Poker.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PlayerTest.php" line="45" assertions="3" time="0.000203"/>
+      <testsuite name="App\Poker\PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PlayerTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.000351">
+        <testcase name="testCreatePlayer" class="App\Poker\PlayerTest" classname="App.Poker.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PlayerTest.php" line="37" assertions="1" time="0.000161"/>
+        <testcase name="testReceiveCards" class="App\Poker\PlayerTest" classname="App.Poker.PlayerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PlayerTest.php" line="45" assertions="3" time="0.000190"/>
       </testsuite>
-      <testsuite name="App\Poker\PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" tests="4" assertions="20" errors="0" warnings="0" failures="0" skipped="0" time="0.000957">
-        <testcase name="testCreatePositionManager" class="App\Poker\PositionManagerTest" classname="App.Poker.PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" line="25" assertions="1" time="0.000161"/>
-        <testcase name="testPositionsInitAndUpdate" class="App\Poker\PositionManagerTest" classname="App.Poker.PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" line="33" assertions="9" time="0.000392"/>
-        <testcase name="testSortByPosition" class="App\Poker\PositionManagerTest" classname="App.Poker.PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" line="68" assertions="7" time="0.000212"/>
-        <testcase name="testPlayerIsLast" class="App\Poker\PositionManagerTest" classname="App.Poker.PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" line="98" assertions="3" time="0.000193"/>
+      <testsuite name="App\Poker\PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" tests="4" assertions="20" errors="0" warnings="0" failures="0" skipped="0" time="0.000940">
+        <testcase name="testCreatePositionManager" class="App\Poker\PositionManagerTest" classname="App.Poker.PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" line="25" assertions="1" time="0.000145"/>
+        <testcase name="testPositionsInitAndUpdate" class="App\Poker\PositionManagerTest" classname="App.Poker.PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" line="33" assertions="9" time="0.000391"/>
+        <testcase name="testSortByPosition" class="App\Poker\PositionManagerTest" classname="App.Poker.PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" line="68" assertions="7" time="0.000210"/>
+        <testcase name="testPlayerIsLast" class="App\Poker\PositionManagerTest" classname="App.Poker.PositionManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PositionManagerTest.php" line="98" assertions="3" time="0.000195"/>
       </testsuite>
-      <testsuite name="App\Poker\PotManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PotManagerTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.000480">
-        <testcase name="testCreatePotManager" class="App\Poker\PotManagerTest" classname="App.Poker.PotManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PotManagerTest.php" line="29" assertions="1" time="0.000165"/>
-        <testcase name="testPotMethods" class="App\Poker\PotManagerTest" classname="App.Poker.PotManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PotManagerTest.php" line="37" assertions="3" time="0.000315">
+      <testsuite name="App\Poker\PotManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PotManagerTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.000478">
+        <testcase name="testCreatePotManager" class="App\Poker\PotManagerTest" classname="App.Poker.PotManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PotManagerTest.php" line="29" assertions="1" time="0.000169"/>
+        <testcase name="testPotMethods" class="App\Poker\PotManagerTest" classname="App.Poker.PotManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/PotManagerTest.php" line="37" assertions="3" time="0.000309">
           <system-out>ADDINGBETSTO POTint(3)
 string(0) ""
 Adding 1000string(0) ""
@@ -221,14 +348,14 @@ Adding 1000string(0) ""
 Adding 0</system-out>
         </testcase>
       </testsuite>
-      <testsuite name="App\Poker\SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" tests="8" assertions="15" errors="0" warnings="0" failures="0" skipped="0" time="0.001410">
+      <testsuite name="App\Poker\SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" tests="8" assertions="15" errors="0" warnings="0" failures="0" skipped="0" time="0.001417">
         <testcase name="testCreateGame" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="27" assertions="1" time="0.000151"/>
-        <testcase name="testOnePairComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="35" assertions="2" time="0.000190"/>
-        <testcase name="testTwoPairComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="64" assertions="2" time="0.000167"/>
-        <testcase name="testTripComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="92" assertions="2" time="0.000169"/>
-        <testcase name="testQuadsComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="120" assertions="2" time="0.000166"/>
-        <testcase name="testFullHousesComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="149" assertions="2" time="0.000172"/>
-        <testcase name="testFlushesComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="177" assertions="3" time="0.000218">
+        <testcase name="testOnePairComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="35" assertions="2" time="0.000187"/>
+        <testcase name="testTwoPairComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="64" assertions="2" time="0.000170"/>
+        <testcase name="testTripComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="92" assertions="2" time="0.000166"/>
+        <testcase name="testQuadsComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="120" assertions="2" time="0.000169"/>
+        <testcase name="testFullHousesComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="149" assertions="2" time="0.000177"/>
+        <testcase name="testFlushesComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="177" assertions="3" time="0.000219">
           <system-out>Most Frequent Suit: hearts
 Most Frequent Suit: hearts
 Flush Cards 1: 7, 6, 5, 4, 3, 2, 1
@@ -245,11 +372,11 @@ Flush Cards 2: 8, 6, 5, 4, 3, 2, 1
 Flush Cards 3: 9, 7, 6, 5, 4, 3, 2
 </system-out>
         </testcase>
-        <testcase name="testStraightsComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="235" assertions="1" time="0.000178"/>
+        <testcase name="testStraightsComparison" class="App\Poker\SameHandEvaluatorTest" classname="App.Poker.SameHandEvaluatorTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/SameHandEvaluatorTest.php" line="235" assertions="1" time="0.000179"/>
       </testsuite>
-      <testsuite name="App\Poker\ShowdownManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ShowdownManagerTest.php" tests="6" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.003091">
-        <testcase name="testCreateShowdownManager" class="App\Poker\ShowdownManagerTest" classname="App.Poker.ShowdownManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ShowdownManagerTest.php" line="85" assertions="1" time="0.000251"/>
-        <testcase name="testFindOneWinner" class="App\Poker\ShowdownManagerTest" classname="App.Poker.ShowdownManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ShowdownManagerTest.php" line="93" assertions="2" time="0.000773">
+      <testsuite name="App\Poker\ShowdownManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ShowdownManagerTest.php" tests="6" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.003155">
+        <testcase name="testCreateShowdownManager" class="App\Poker\ShowdownManagerTest" classname="App.Poker.ShowdownManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ShowdownManagerTest.php" line="85" assertions="1" time="0.000253"/>
+        <testcase name="testFindOneWinner" class="App\Poker\ShowdownManagerTest" classname="App.Poker.ShowdownManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ShowdownManagerTest.php" line="93" assertions="2" time="0.000774">
           <system-out>lets seearray(3) {
   [0]=&gt;
   array(7) {
@@ -468,7 +595,7 @@ lets seearray(3) {
 multiplewinnerstring(0) ""
 </system-out>
         </testcase>
-        <testcase name="testFlushComparison" class="App\Poker\ShowdownManagerTest" classname="App.Poker.ShowdownManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ShowdownManagerTest.php" line="131" assertions="1" time="0.000553">
+        <testcase name="testFlushComparison" class="App\Poker\ShowdownManagerTest" classname="App.Poker.ShowdownManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ShowdownManagerTest.php" line="131" assertions="1" time="0.000571">
           <system-out>lets seearray(2) {
   [0]=&gt;
   array(7) {
@@ -553,7 +680,7 @@ Flush Cards 2: 14, 12, 10, 9, 2
 multiplewinnerstring(0) ""
 </system-out>
         </testcase>
-        <testcase name="testStraightsComparison" class="App\Poker\ShowdownManagerTest" classname="App.Poker.ShowdownManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ShowdownManagerTest.php" line="251" assertions="1" time="0.000559">
+        <testcase name="testStraightsComparison" class="App\Poker\ShowdownManagerTest" classname="App.Poker.ShowdownManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ShowdownManagerTest.php" line="251" assertions="1" time="0.000564">
           <system-out>lets seearray(3) {
   [0]=&gt;
   array(7) {
@@ -664,7 +791,7 @@ lets seearray(3) {
 multiplewinnerstring(0) ""
 </system-out>
         </testcase>
-        <testcase name="testHighCardsComparison" class="App\Poker\ShowdownManagerTest" classname="App.Poker.ShowdownManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ShowdownManagerTest.php" line="324" assertions="1" time="0.000413">
+        <testcase name="testHighCardsComparison" class="App\Poker\ShowdownManagerTest" classname="App.Poker.ShowdownManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ShowdownManagerTest.php" line="324" assertions="1" time="0.000448">
           <system-out>lets seearray(3) {
   [0]=&gt;
   array(2) {
@@ -715,7 +842,7 @@ lets seearray(3) {
 multiplewinnerstring(0) ""
 </system-out>
         </testcase>
-        <testcase name="testHighTwoPairComparison" class="App\Poker\ShowdownManagerTest" classname="App.Poker.ShowdownManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ShowdownManagerTest.php" line="338" assertions="1" time="0.000541">
+        <testcase name="testHighTwoPairComparison" class="App\Poker\ShowdownManagerTest" classname="App.Poker.ShowdownManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/ShowdownManagerTest.php" line="338" assertions="1" time="0.000546">
           <system-out>lets seearray(3) {
   [0]=&gt;
   array(7) {
@@ -827,22 +954,22 @@ multiplewinnerstring(0) ""
 </system-out>
         </testcase>
       </testsuite>
-      <testsuite name="App\Poker\StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" tests="6" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.001082">
-        <testcase name="testCreateStateManager" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="29" assertions="1" time="0.000168"/>
-        <testcase name="testGetActivePlayers" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="37" assertions="2" time="0.000193"/>
-        <testcase name="testFindWinner" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="56" assertions="1" time="0.000175"/>
-        <testcase name="testRemoveInactivePlayers" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="71" assertions="1" time="0.000186"/>
-        <testcase name="testHeroAlreadyMoved" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="86" assertions="3" time="0.000180"/>
-        <testcase name="testWonWithNoShowdown" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="105" assertions="2" time="0.000181">
+      <testsuite name="App\Poker\StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" tests="6" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.001109">
+        <testcase name="testCreateStateManager" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="29" assertions="1" time="0.000191"/>
+        <testcase name="testGetActivePlayers" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="37" assertions="2" time="0.000199"/>
+        <testcase name="testFindWinner" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="56" assertions="1" time="0.000179"/>
+        <testcase name="testRemoveInactivePlayers" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="71" assertions="1" time="0.000178"/>
+        <testcase name="testHeroAlreadyMoved" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="86" assertions="3" time="0.000179"/>
+        <testcase name="testWonWithNoShowdown" class="App\Poker\StateManagerTest" classname="App.Poker.StateManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StateManagerTest.php" line="105" assertions="2" time="0.000183">
           <system-out>WIN!</system-out>
         </testcase>
       </testsuite>
-      <testsuite name="App\Poker\StreetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StreetManagerTest.php" tests="2" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.000335">
-        <testcase name="testCreateStreetanager" class="App\Poker\StreetManagerTest" classname="App.Poker.StreetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StreetManagerTest.php" line="25" assertions="1" time="0.000146"/>
-        <testcase name="testSetNextStreet" class="App\Poker\StreetManagerTest" classname="App.Poker.StreetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StreetManagerTest.php" line="33" assertions="5" time="0.000189"/>
+      <testsuite name="App\Poker\StreetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StreetManagerTest.php" tests="2" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.000356">
+        <testcase name="testCreateStreetanager" class="App\Poker\StreetManagerTest" classname="App.Poker.StreetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StreetManagerTest.php" line="25" assertions="1" time="0.000160"/>
+        <testcase name="testSetNextStreet" class="App\Poker\StreetManagerTest" classname="App.Poker.StreetManagerTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Poker/StreetManagerTest.php" line="33" assertions="5" time="0.000195"/>
       </testsuite>
-      <testsuite name="App\Repository\BookRepositoryTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Repository/BookRepositoryTest.php" tests="1" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.015247">
-        <testcase name="testProcessBookFromRequest" class="App\Repository\BookRepositoryTest" classname="App.Repository.BookRepositoryTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Repository/BookRepositoryTest.php" line="18" assertions="6" time="0.015247"/>
+      <testsuite name="App\Repository\BookRepositoryTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Repository/BookRepositoryTest.php" tests="1" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.015453">
+        <testcase name="testProcessBookFromRequest" class="App\Repository\BookRepositoryTest" classname="App.Repository.BookRepositoryTest" file="/Users/erik/dbwebb-kurser/mvc/me/report/tests/Repository/BookRepositoryTest.php" line="18" assertions="6" time="0.015453"/>
       </testsuite>
     </testsuite>
   </testsuite>
