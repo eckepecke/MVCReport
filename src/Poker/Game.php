@@ -140,6 +140,8 @@ class Game
             "showdown" => $this->manager->access("streetManager")->getShowdown(),
             "winner" => $winnerName,
 
+            "game_over" => $this->gameOver,
+
             "allin" => $this->hero->isAllin(),
 
         ];
@@ -150,7 +152,6 @@ class Game
 
         $player1 = new Hero();
         $player1->setName("Hero");
-        var_dump($player1->getName());
         $this->hero = $player1;
         $player2 = new Opponent();
         $player2->setName("Isildur1");
@@ -224,15 +225,16 @@ class Game
             echo "NEW HAND STARTING";
 
             $this->manager->resetTable($this->players);
+            $this->manager->access("cardManager")->dealStartingHands($this->players);
+
             $allHandsPlayed = $this->manager->access("gameOverTracker")->allHandsPlayed();
             if (($this->hero->getStack() <= 0) || $allHandsPlayed) {
                 $this->gameOver = true;
-                var_dump($crash);
+                return;
             }
 
             $this->manager->access("potManager")->chargeBlinds($this->players);
 
-            $this->manager->access("cardManager")->dealStartingHands($this->players);
             $this->manager->updatePlayersCurrentHandStrength($this->getGameState());
             $this->manager->access("stateManager")->setNewHand(false);
             $this->manager->access("streetManager")->setShowdownFalse();

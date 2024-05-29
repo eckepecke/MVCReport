@@ -61,32 +61,33 @@ class PokerController extends AbstractController
         $game = $session->get("game");
 
         $game->prepare($action);
-        // $game->play("100");
 
 
         $data = $game->getTemplateData();
-        // if (!$data["hero_active"]) {
-        //     return $this->render('poker/observe.html.twig', $data);
-        // }
+        if ($data["game_over"]) {
+
+        return $this->render('poker/end.html.twig', $data);
+        }
+
         return $this->render('poker/play.html.twig', $data);
     }
 
 
-    #[Route("/api/poker", name: "api_poker", methods: ["POST", "GET"])]
-    public function apiPoject(
-        SessionInterface $session
-    ): Response {
-        $game = $session->get("game");
+    // #[Route("/api/poker", name: "api_poker", methods: ["POST", "GET"])]
+    // public function apiPoject(
+    //     SessionInterface $session
+    // ): Response {
+    //     $game = $session->get("game");
 
-        if (!$session->has("game")) {
-            throw new Exception("No game in session!");
-        }
-        $data = $game->getTemplateData();
+    //     if (!$session->has("game")) {
+    //         throw new Exception("No game in session!");
+    //     }
+    //     $data = $game->getTemplateData();
 
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
-    }
+    //     $response = new JsonResponse($data);
+    //     $response->setEncodingOptions(
+    //         $response->getEncodingOptions() | JSON_PRETTY_PRINT
+    //     );
+    //     return $response;
+    // }
 }

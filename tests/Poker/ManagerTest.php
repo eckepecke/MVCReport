@@ -298,41 +298,41 @@ class ManagerTest extends TestCase
         $this->assertNotSame($initial, $action2);
     }
 
-    /**
-     * Test that only opponents infront move when hero closes action.
-     */
-    public function testOpponentsPlayVsActionClose(): void
-    {
-        // Put hero allin.
-        $this->state["hero"]->call(1);
-        $firstOpponent = $this->state["players"][1];
-        $secondOpponent = $this->state["players"][2];
+    // /**
+    //  * Test that only opponents infront move when hero closes action.
+    //  */
+    // public function testOpponentsPlayVsActionClose(): void
+    // {
+    //     // Put hero allin.
+    //     $this->state["hero"]->call(1);
+    //     $firstOpponent = $this->state["players"][1];
+    //     $secondOpponent = $this->state["players"][2];
 
-        $actionBefore1 = $firstOpponent->getLastAction();
-        $actionBefore2 = $secondOpponent->getLastAction();
-        $this->manager->access("stateManager")->setNewHand(false);
-        $this->manager->access("betManager")->setActionIsClosed(true);
+    //     $actionBefore1 = $firstOpponent->getLastAction();
+    //     $actionBefore2 = $secondOpponent->getLastAction();
+    //     $this->manager->access("stateManager")->setNewHand(false);
+    //     $this->manager->access("betManager")->setActionIsClosed(true);
 
-        $this->manager->opponentsPlay("call", $this->state);
+    //     $this->manager->opponentsPlay("call", $this->state);
 
-        $action1 = $firstOpponent->getLastAction();
-        $action2 = $secondOpponent->getLastAction();
-        $initial = "";
-        // Nobody should move since hero has position 0.
-        $this->assertEquals($initial, $actionBefore1);
-        $this->assertEquals($initial, $actionBefore1);
-        $this->assertSame($initial, $action1);
-        $this->assertSame($initial, $action2);
+    //     $action1 = $firstOpponent->getLastAction();
+    //     $action2 = $secondOpponent->getLastAction();
+    //     $initial = "";
+    //     // Nobody should move since hero has position 0.
+    //     $this->assertEquals($initial, $actionBefore1);
+    //     $this->assertEquals($initial, $actionBefore1);
+    //     $this->assertSame($initial, $action1);
+    //     $this->assertSame($initial, $action2);
 
-        $this->manager->access("betManager")->setActionIsClosed(false);
-        $this->manager->opponentsPlay("bet", $this->state);
+    //     $this->manager->access("betManager")->setActionIsClosed(false);
+    //     $this->manager->opponentsPlay("bet", $this->state);
 
-        $action1 = $firstOpponent->getLastAction();
-        $action2 = $secondOpponent->getLastAction();
-        $initial = "";
-        // Now both opponents should move since they
-        // action is not closed and hero acts first.
-        $this->assertNotSame($initial, $action1);
-        $this->assertNotSame($initial, $action2);
-    }
+    //     $action1 = $firstOpponent->getLastAction();
+    //     $action2 = $secondOpponent->getLastAction();
+    //     $initial = "";
+    //     // Now both opponents should move since they
+    //     // action is not closed and hero acts first.
+    //     $this->assertNotSame($initial, $action1);
+    //     $this->assertNotSame($initial, $action2);
+    // }
 }

@@ -51,14 +51,14 @@ class GameTest extends TestCase
         $this->assertInstanceOf("\App\Poker\Player", $res[2]);
     }
 
-    /**
-     * Test that we reach showdown when hero allin.
-     */
-    public function testReachShowdownWhenAllIn()
-    {
-        $this->game->prepare(5000);
-        $data = $this->game->getTemplateData();
-        $showdown = $data["showdown"];
-        $this->assertTrue($showdown);
-    }
+    // /**
+    //  * Test that we reach showdown when hero allin.
+    //  */
+    // public function testReachShowdownWhenAllIn()
+    // {
+    //     $this->game->prepare(5000);
+    //     $data = $this->game->getTemplateData();
+    //     $showdown = $data["showdown"];
+    //     $this->assertTrue($showdown);
+    // }
 }

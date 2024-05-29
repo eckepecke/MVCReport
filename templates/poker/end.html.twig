@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Poker Challenge{% endblock %}
+
+
+{% block body %}
+                <h4>{{hero_stack}}</h4>
+            {% if hero_stack > 999 %}
+                <h4>You escaped kronofogden!</h4>
+            {% else %}
+                <h4>You die!</h4>
+            {% endif %}
+{% endblock %}
