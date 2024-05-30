@@ -132,8 +132,6 @@ class BetManager
         $playerLastAction = $player->getLastAction();
         $priceToPlay = $this->getPriceToPlay($state);
         $activePlayers = $state["active"];
-        var_dump(count($activePlayers));
-        var_dump($priceToPlay);
 
         $lastToAct = $this->lastToAct($state["players"]);
 

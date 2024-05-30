@@ -34,16 +34,9 @@ class Game
     private array $players;
     private object $manager;
     private bool $gameOver = false;
-
-
     private object $hero;
     private object $opponent1;
     private object $opponent2;
-
-
-
-
-
 
     public function addPlayers(array $players): void
     {
@@ -66,6 +59,11 @@ class Game
         return $this->players;
     }
 
+    /**
+     * Retrieves the current state of the game.
+     *
+     * @return array An array containing the current state of the game.
+     */
     public function getGameState(): array
     {
         return [
@@ -77,6 +75,11 @@ class Game
         ];
     }
 
+    /**
+     * Retrieves template data for rendering.
+     *
+     * @return array An array containing template data.
+     */
     public function getTemplateData(): array
     {
         $newHand = $this->manager->access("stateManager")->getNewHand();
@@ -140,7 +143,6 @@ class Game
             "opp_1_strength" => $opponent1Hand->getStrengthString(),
             "opp_2_strength" => $opponent2Hand->getStrengthString(),
 
-
             "board" => $boardImages,
             "price" => $price,
             "min_raise" => $minRaise,
@@ -148,17 +150,19 @@ class Game
             "new_hand" => $newHand,
             "showdown" => $this->manager->access("streetManager")->getShowdown(),
             "winner" => $winnerName,
-
             "game_over" => $this->gameOver,
-
             "allin" => $this->hero->isAllin(),
-
         ];
     }
-
+    /**
+     * Initializes the game.
+     *
+     * All classes that are necessary for the game are created here.
+     *
+     * @return void
+     */
     public function init(): void
     {
-
         $player1 = new Hero();
         $player1->setName("Bamse");
         $this->hero = $player1;
@@ -171,22 +175,6 @@ class Game
             $player2,
             $player3,
         ];
-
-
-        // Associate StatsTrackers with Players
-        // $statsTracker1 = new StatsTracker();
-        // $statsTracker2 = new StatsTracker();
-        // $statsTracker3 = new StatsTracker();
-
-
-        // $player1->setStatsTracker($statsTracker1);
-        // $player1->getTracker()->setPlayer($player1);
-
-        // $player2->setStatsTracker($statsTracker2);
-        // $player2->setStatsTracker($statsTracker2);
-
-
-
 
         $deck = new DeckOfCards();
         $manager = new Manager();
