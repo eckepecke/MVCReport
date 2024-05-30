@@ -104,7 +104,6 @@ class Game
         $potManager = $this->manager->access("potManager");
         $pot = $potManager->getPotSize($state);
 
-        $showdownManager = $this->manager->access("showdownManager");
         $winner = $this->manager->access("showdownManager")->getWinner();
         $winnerName = null;
         if($winner != null) {

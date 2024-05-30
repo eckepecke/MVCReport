@@ -130,7 +130,6 @@ class Manager
     {
         $hero = $state["hero"];
         $heroPos = $hero->getPosition();
-        $players = $state["players"];
         $players = $this->managers["positionManager"]->sortPlayersByPosition($state["players"]);
 
         foreach ($players as $player) {
@@ -156,7 +155,6 @@ class Manager
      */
     public function opponentsInFrontMove(array $state): void
     {
-        $players = $state["players"];
         $players = $this->managers["positionManager"]->sortPlayersByPosition($state["players"]);
         $hero = $state["hero"];
         $heroPos = $hero->getPosition();

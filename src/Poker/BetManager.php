@@ -142,7 +142,7 @@ class BetManager
             $playerClosedAction = true;
         }
 
-        if ($playerLastAction === "fold" && $priceToPlay === 0 && $player === $lastToAct) {
+        if ($playerLastAction === "fold" && $priceToPlay === 0) {
             $playerClosedAction = true;
         }
 

@@ -41,7 +41,6 @@ class SmartOpponent extends Player
     {
         $strength = $this->hand->getStrengthInt();
         if($strength > 1) {
-            $decision = "bet";
             $options = [
                 "check",
                 "bet",

@@ -81,7 +81,6 @@ class BetManagerTest extends TestCase
     {
         $players = $this->state["players"];
         $bettor1 = $players[0];
-        $bettor2 = $players[1];
         $bettor1->bet(1000);
 
         $res = $this->manager->getMinimumRaiseAllowed($this->state);

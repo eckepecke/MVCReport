@@ -3,7 +3,6 @@
 namespace App\Poker;
 
 use App\Cards\DeckOfCards;
-use App\Cards\CardHand;
 
 /**
  * Class Dealer

@@ -10,6 +10,8 @@ class PlayerBase
     protected ?object $hand;
     protected int $currentBet;
     protected string $lastAction;
+    protected bool $allIn;
+
 
     public function __construct()
     {
@@ -17,6 +19,7 @@ class PlayerBase
         $this->hand = null;
         $this->currentBet = 0;
         $this->lastAction = "";
+        $this->allIn = false;
     }
 
     public function addHand(CardHand $hand): void
@@ -110,4 +113,13 @@ class PlayerBase
     {
         $this->hand = null;
     }
+
+    public function isAllin(): bool
+    {
+        if ($this->stack <= 0) {
+            $this->allIn = true;
+        }
+        return $this->allIn;
+    }
+
 }

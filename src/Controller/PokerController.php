@@ -28,7 +28,6 @@ class PokerController extends AbstractController
 
     #[Route("/proj", name: "poker_init_post", methods: ['POST'])]
     public function initCallback(
-        Request $request,
         SessionInterface $session
     ): Response {
 

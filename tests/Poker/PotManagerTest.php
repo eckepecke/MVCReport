@@ -39,7 +39,6 @@ class PotManagerTest extends TestCase
         $players = $this->state["players"];
         $player1 = $players[0];
         $player2 = $players[1];
-        $player3 = $players[2];
 
         $player1->bet(1000);
         $player2->fold();

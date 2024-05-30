@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Poker;
+use Exception;
 
 /**
  * Class SameHandEvaluator
@@ -264,7 +265,6 @@ class SameHandEvaluator extends HandEvaluator
 
                 // Special case for wheel (A-2-3-4-5)
                 if ($ranks === [14,5,4,3,2]) {
-                    $isStraight = true;
                     $straightHighCard = 5;
                 }
 
@@ -292,16 +292,18 @@ class SameHandEvaluator extends HandEvaluator
         foreach ($handRanks as $index => $handRank) {
             $flushCardsList[] = $this->getFlushCards($handRank, $suitRanks[$index]);
         }
-
+    
         // Debug output
         foreach ($flushCardsList as $index => $flushCards) {
             echo "Flush Cards " . ($index + 1) . ": " . implode(", ", $flushCards) . PHP_EOL;
         }
-
+    
         // Compare flushes
+        $flushCount = count($flushCardsList);
         $bestIndex = 0;
-        for ($i = 1; $i < count($flushCardsList); $i++) {
-            for ($j = 0; $j < count($flushCardsList[$bestIndex]); $j++) {
+        for ($i = 1; $i < $flushCount; $i++) {
+            $currentFlushCount = count($flushCardsList[$bestIndex]);
+            for ($j = 0; $j < $currentFlushCount; $j++) {
                 if ($flushCardsList[$i][$j] > $flushCardsList[$bestIndex][$j]) {
                     $bestIndex = $i;
                     break;
@@ -310,7 +312,7 @@ class SameHandEvaluator extends HandEvaluator
                 }
             }
         }
-
+    
         return $bestIndex;
     }
 
