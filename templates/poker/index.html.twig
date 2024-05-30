@@ -5,19 +5,20 @@
 
 {% block body %}
     <div class="doc">
+        <h1>Bamse går till Casinot</h1>
 
-    <h1>Project</h1>
+        <p>Efter en god middag får du höra att Lilleskutt blivit kidnappad. Kidnapparna kräver en lösensumma på 50 000 kr, innan midnatt!.</p>
+        <p>Det är vinter och dunderhonungen är slut. Du tittar i spargrisen 10 000kr stirrar tillbaka på dig.</p>
+        <p>I stundens hetta bestämmer du dig för att din bästa chans att rädda din vän är att gå ner till Krösus Casino och satsa allt.</p>
+        <p>Casinot stänger om 15 minuter. Du sätter dig ner på första bästa pokerbord. Spelet är Texas Hold'em och dealern utropar att 10 händer återstår
+        innan Casinot stänger för kvällen. Må pokergudarna vara med dig..</p>
+        <img class="picture" src="{{ asset('build/images/snow1.jpg') }}" alt="me">
 
-    <div class="input-container">
-    <form method="post" action="">
-        <input class="num-input" type="number" name="num_hands" min="2" max="100" value="2" step="2">
-        <input class="init-button" type="submit" name="do_it" value="Start playing">
-    </form>
-    </div>
-
-
-    <h2><a href="{{ path('game_doc') }}">Click here for documentation</a></h2>
-
+        <div class="input-container">
+        <form method="post" action="">
+            <input class="init-button" type="submit" name="do_it" value="Start playing">
+        </form>
+        </div>
     </div>
 
 
