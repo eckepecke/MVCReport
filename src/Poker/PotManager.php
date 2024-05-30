@@ -14,14 +14,10 @@ class PotManager
 
     public function addChipsToPot(array $state): void
     {
-        echo"ADDINGBETSTO POT";
         $players = $state["players"];
-        var_dump(count($players));
 
         foreach ($players as $player) {
             $chips = $player->getCurrentBet();
-            var_dump($player->getName());
-            echo"Adding $chips";
             $this->pot += $chips;
         }
     }

@@ -78,7 +78,6 @@ class StateManager
     {
         $activePlayers = $this->getActivePlayers($state);
         if ($activePlayers < 2) {
-            echo"WIN!";
             $this->newHand = true;
         }
     }

@@ -322,9 +322,6 @@ class SameHandEvaluator extends HandEvaluator
         $maxSameSuitCount = max($suitsCount);
         $mostFrequentSuit = array_search($maxSameSuitCount, $suitsCount);
 
-        // Debug output
-        echo "Most Frequent Suit: " . $mostFrequentSuit . PHP_EOL;
-
         // Get all cards of the most frequent suit
         $flushCards = [];
         foreach ($suitRanks as $index => $suit) {

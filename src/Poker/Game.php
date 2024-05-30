@@ -23,6 +23,11 @@ use App\Poker\ShowdownManager;
 use App\Poker\HandEvaluator;
 use App\Poker\SameHandEvaluator;
 use App\Poker\GameOverTracker;
+// use App\Entity\StatsTracker;
+// use Doctrine\Persistence\ManagerRegistry;
+// use App\Repository\StatsTrackerRepository;
+// use Doctrine\ORM\EntityManagerInterface;
+
 
 class Game
 {
@@ -34,6 +39,8 @@ class Game
     private object $hero;
     private object $opponent1;
     private object $opponent2;
+
+
 
 
 
@@ -166,6 +173,20 @@ class Game
         ];
 
 
+        // Associate StatsTrackers with Players
+        // $statsTracker1 = new StatsTracker();
+        // $statsTracker2 = new StatsTracker();
+        // $statsTracker3 = new StatsTracker();
+
+
+        // $player1->setStatsTracker($statsTracker1);
+        // $player1->getTracker()->setPlayer($player1);
+
+        // $player2->setStatsTracker($statsTracker2);
+        // $player2->setStatsTracker($statsTracker2);
+
+
+
 
         $deck = new DeckOfCards();
         $manager = new Manager();
@@ -183,6 +204,9 @@ class Game
         $handEvaluator = new HandEvaluator();
         $sameHandEvaluator = new SameHandEvaluator();
         $gameOverTracker = new GameOverTracker(5);
+        // $statsTracker = new StatsTracker();
+
+
 
         $showdownManager->add($sameHandEvaluator);
 
@@ -210,53 +234,29 @@ class Game
         $this->addPlayers($pArray);
         $this->addManager($manager);
         //debug
-        $this->manager->access("positionManager")->updatePositions($this->players);
+        // $this->manager->access("positionManager")->updatePositions($this->players);
     }
 
     public function prepare($heroAction): void
     {
-
-
-
-
-
-
         if ($this->manager->access("stateManager")->getNewHand()) {
-
-
-            echo "NEW HAND STARTING";
-
             $this->manager->resetTable($this->players);
             $this->manager->access("cardManager")->dealStartingHands($this->players);
-
             $allHandsPlayed = $this->manager->access("gameOverTracker")->allHandsPlayed();
+
             if (($this->hero->getStack() <= 0) || $allHandsPlayed) {
                 $this->gameOver = true;
                 return;
             }
 
             $this->manager->access("potManager")->chargeBlinds($this->players);
-            // $this->manager->access("cardManager")->dealStartingHands($this->players);
-
             $this->manager->updatePlayersCurrentHandStrength($this->getGameState());
             $this->manager->access("stateManager")->setNewHand(false);
             $this->manager->access("streetManager")->setShowdownFalse();
             $this->manager->access("streetManager")->resetStreet();
             $this->manager->access("betManager")->setActionIsClosed(false);
-            var_dump($this->hero->isAllIn());
-
         }
-
-
-
-
-
-
-
-
-
         $this->play($heroAction);
-
     }
 
     public function resetNewHand(): void
@@ -266,8 +266,6 @@ class Game
 
     public function play($heroAction)
     {
-        echo"POSTFLOPSTART";
-
         $this->manager->heroMakesAPlay($heroAction, $this->getGameState());
         $this->manager->opponentsPlay($heroAction, $this->getGameState());
         $endBeforeSHowdown = $this->manager->access("stateManager")->getNewHand();
@@ -276,7 +274,6 @@ class Game
             $this->manager->givePotToWinner($this->getGameState());
             $this->manager->access("gameOverTracker")->incrementHands();
             $this->manager->access("stateManager")->setNewHand(true);
-
         }
 
         $activePlayers = $this->manager->access("stateManager")->removeInactive($this->players);
@@ -287,10 +284,17 @@ class Game
         }
 
         if ($this->manager->access("streetManager")->getShowdown()) {
-            echo "showdown!";
             $this->manager->showdown($this->getGameState());
             $this->manager->access("stateManager")->setNewHand(true);
             $this->manager->access("gameOverTracker")->incrementHands();
+            // $this->manager->access("gameOverTracker")->updateStats($this->hero);
         }
     }
+
+    // public function updateStats() {
+
+    //     $this->hero->getTracker()->incrementHands();
+    //     $this->entityManager->flush();
+
+    // }
 }

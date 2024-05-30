@@ -16,12 +16,6 @@ class StreetManager
      */
     private string $street = "preflop";
     private bool $showdown = false;
-    private bool $preflop = true;
-
-
-
-
-
 
     /**
      * Array containing all possible streets.

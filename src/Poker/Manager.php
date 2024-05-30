@@ -166,11 +166,6 @@ class Manager
 
         $actionIsClosed = $this->managers["betManager"]->getActionIsClosed();
         $newHand = $this->managers["stateManager"]->getNewHand();
-        echo"SOGE KING";
-        var_dump($actionIsClosed);
-        var_dump($newHand);
-
-
 
         // If action now is closed we deal first
         // and let opponents infront move.
@@ -212,5 +207,11 @@ class Manager
         $this->managers["CCManager"]->register($newCards);
     }
 
+    public function updateStats(): void
+    {
+        foreach ($players as $player) {
+            $players->updateStats();
+        }
+    }
 
 }

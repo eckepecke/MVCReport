@@ -12,23 +12,23 @@ class SmartOpponent extends Player
 
     public function responseToBet()
     {
-        echo"SMART";
-
         $strength = $this->hand->getStrengthInt();
         if($strength > 1) {
-            $decision = "raise";
-            echo"hehe";
-
+            $options = [
+                "call",
+                "raise"
+            ];
+    
+            $decision = $options[rand(0, 1)];
             return $decision;
         }
 
-
         $options = [
+            "fold",
+            "fold",
             "fold",
             "call",
             "call",
-            "call",
-            "raise",
             "raise"
         ];
 
@@ -39,8 +39,6 @@ class SmartOpponent extends Player
 
     public function actionVsCheck()
     {
-        echo"SMART";
-
         $strength = $this->hand->getStrengthInt();
         if($strength > 1) {
             $decision = "bet";
@@ -51,7 +49,6 @@ class SmartOpponent extends Player
                 "bet",
             ];
             $decision = $options[rand(0, 3)];
-            echo"hehe";
             return $decision;
         }
 
@@ -72,11 +69,9 @@ class SmartOpponent extends Player
 
     public function actionVsShove(): string
     {
-        echo"SMART";
         $strength = $this->hand->getStrengthInt();
         if($strength > 1) {
             $decision = "call";
-            echo"hehe";
             return $decision;
         }
         $options = [

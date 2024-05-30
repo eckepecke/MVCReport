@@ -145,17 +145,9 @@ class HandEvaluator
         }
 
         if (count($set) === 5) {
-            //echo "Found a straight with " . implode(',', $set) . "\n";
             $this->strengthArray['Straight'] = true;
         }
     }
-
-    // public function checkForStraightFlush(): void
-    // {
-    //     if (($this->strengthArray['Flush'] === true) && ($this->strengthArray['Straight'] === true)) {
-    //         $this->strengthArray['Straight flush'] = true;
-    //     }
-    // }
 
     /**
      * Checks if the hand contains a flush.

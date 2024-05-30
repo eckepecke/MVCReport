@@ -38,7 +38,6 @@ class GameOverTracker
     public function allHandsPlayed(): bool
     {
         if ($this->hand >= $this->handsToPlay) {
-            echo"2";
             $this->allHandsPlayed = true;
         }
         return $this->allHandsPlayed;

@@ -17,11 +17,7 @@ class HeroActionManager
      */
     public function heroMove(mixed $action, object $hero, int $priceToPlay): void
     {
-        echo "RRUUUUFFFFYYY";
-
         if ($action != null && $action != "next" && $action != "observe") {
-            echo "heroMove()";
-            var_dump($action);
             switch ($action) {
                 case "check":
                     $hero->check();
