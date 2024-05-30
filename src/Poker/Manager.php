@@ -8,17 +8,38 @@ namespace App\Poker;
 class Manager
 {
     private array $managers = [];
-
+    /**
+     * Adds a manager to the game.
+     *
+     * @param string $key The key to associate with the manager.
+     * @param object $manager The manager object to be added.
+     * 
+     * @return void
+     */
     public function addManager(string $key, object $manager): void
     {
         $this->managers[$key] = $manager;
     }
 
+    /**
+     * Retrieves a manager by its key.
+     *
+     * @param string $manager The key of the manager to retrieve.
+     * 
+     * @return object The manager object associated with the provided key.
+     */
     public function access(string $manager): object
     {
         return $this->managers[$manager];
     }
 
+    /**
+     * Distributes the pot to the winner of the game.
+     *
+     * @param array $state The current state of the game.
+     * 
+     * @return void
+     */
     public function givePotToWinner(array $state): void
     {
         $this->managers["potManager"]->addChipsToPot($state);
@@ -27,6 +48,13 @@ class Manager
         $winner->takePot($pot);
     }
 
+    /**
+     * Resets the game table for a new round.
+     *
+     * @param array $players An array containing the players participating in the game.
+     * 
+     * @return void
+     */
     public function resetTable(array $players): void
     {
         $this->managers["potManager"]->resetPot();
@@ -43,26 +71,43 @@ class Manager
         $this->managers["positionManager"]->updatePositions($players);
     }
 
+    /**
+     * Initiates the showdown phase of the game.
+     *
+     * @param array $state The current state of the game.
+     * 
+     * @return void
+     */
     public function showdown(array $state): void
     {
-
         $this->managers["cardManager"]->updateHandStrengths($state["players"], $state["board"]);
         $winner = $this->managers["showdownManager"]->findWinner($state["active"], $state["board"]);
         $pot = $this->managers["potManager"]->getPotSize();
         $winner->takePot($pot);
         $this->managers["streetManager"]->setShowdownTrue();
-
     }
 
+    /**
+     * Updates the current hand strength of each player based on the provided game state.
+     *
+     * @param array $state The current state of the game.
+     * 
+     * @return void
+     */
     public function updatePlayersCurrentHandStrength(array $state): void
     {
-        // $board = $this->managers["CCManager"]->getBoard();
         $this->managers["cardManager"]->updateHandStrengths($state["players"], $state["board"]);
     }
 
+    /**
+     * Prepares table for next street play.
+     *
+     * @param array $state The current state of the game.
+     * 
+     * @return void
+     */
     public function deal(array $state): void
     {
-
         $this->managers["streetManager"]->setNextStreet($state);
         $this->managers["potManager"]->addChipsToPot($state);
         $this->managers["betManager"]->resetPlayerBets($state["players"]);
@@ -74,6 +119,13 @@ class Manager
         $this->managers["CCManager"]->register($cards);
     }
 
+    /**
+     * Making all opponents in front of the hero move.
+     *
+     * @param array $state The current state of the game.
+     * 
+     * @return void
+     */
     public function opponentsBehindMove(array $state): void
     {
         $hero = $state["hero"];
@@ -90,15 +142,18 @@ class Manager
 
                 if ($this->managers["betManager"]->playerClosedAction($player, $state)) {
                     $this->managers["betManager"]->setActionIsClosed(true);
-                    // unnece
-                    return;
                 }
             }
         }
-        // Now everyone should have made a play
     }
 
-
+    /**
+     * Making all opponents behind of the hero move.
+     *
+     * @param array $state The current state of the game.
+     * 
+     * @return void
+     */
     public function opponentsInFrontMove(array $state): void
     {
         $players = $state["players"];
@@ -110,19 +165,25 @@ class Manager
             // Player will act if still in the hand has position before hero.
             if ($player->isActive() && $currentPosition < $heroPos) {
                 $heroPos = $state["hero"]->getPosition();
-
                 $chipData = $this->getDataBeforeaction($state);
                 $this->managers["opponentActionManager"]->move($player, $chipData, $hero);
-                // Return early if player closed the betting round.
                 if ($this->managers["betManager"]->playerClosedAction($player, $state)) {
                     $this->managers["betManager"]->setActionIsClosed(true);
-                    return;
                 }
             }
-
         }
     }
 
+    /**
+     * Retrieves the necessary data before a player's action in the game.
+     *
+     * This method gathers and returns relevant information from the current game state
+     * that is needed by a player before they make their action.
+     *
+     * @param array $state The current state of the game.
+     * 
+     * @return array An array containing the necessary data for a player's action.
+     */
     public function getDataBeforeAction(array $state): array
     {
         $priceToPlay = $this->managers["betManager"]->getPriceToPlay($state);
@@ -137,6 +198,16 @@ class Manager
         return $chipData;
     }
 
+    /**
+
+     * Initiates opponents actions. Directing the flow depending on Hero's action and 
+     * state of the game.
+     *
+     * @param mixed $heroAction The action taken by the hero player.
+     * @param array $state The current state of the game.
+     * 
+     * @return void
+     */
     public function opponentsPlay(mixed $heroAction, array $state): void
     {
         $actionIsClosed = $this->managers["betManager"]->getActionIsClosed();
@@ -205,13 +276,6 @@ class Manager
         $board = $this->managers["CCManager"]->getBoard();
         $newCards = $this->managers["cardManager"]->dealRemaining($board);
         $this->managers["CCManager"]->register($newCards);
-    }
-
-    public function updateStats(): void
-    {
-        foreach ($players as $player) {
-            $players->updateStats();
-        }
     }
 
 }

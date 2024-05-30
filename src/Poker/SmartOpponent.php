@@ -26,7 +26,7 @@ class SmartOpponent extends Player
         $options = [
             "fold",
             "fold",
-            "fold",
+            "call",
             "call",
             "call",
             "raise"
@@ -60,7 +60,6 @@ class SmartOpponent extends Player
         $decision = $options[rand(0, 1)];
         return $decision;
     }
-
 
     public function chooseBetSize($potSize): float
     {

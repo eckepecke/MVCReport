@@ -19,7 +19,7 @@
                         {% if opp_1_active %}
                             <div class="strength-box">
                                 {% if showdown %}
-                                    <h4> {{ opp_2_strength }}</h4>
+                                    <h4> {{ opp_1_strength }}</h4>
                                 {% endif %}
                             </div>
                             {% if not showdown %}
@@ -54,11 +54,14 @@
                 <h4 class="blind">{{opp_2_pos}}</h4>
 
                 <div class="card-box-small">
+                    {% if opp_2_active %}
                     <div class="strength-box">
                         {% if showdown %}
                             <h4> {{ opp_2_strength }}</h4>
                         {% endif %}
                     </div>
+                    {% endif %}
+
                 {% if opp_2_active %}
 
                     {% if not showdown %}

@@ -132,17 +132,25 @@ class BetManager
         $playerLastAction = $player->getLastAction();
         $priceToPlay = $this->getPriceToPlay($state);
         $activePlayers = $state["active"];
+        var_dump(count($activePlayers));
+        var_dump($priceToPlay);
+
         $lastToAct = $this->lastToAct($state["players"]);
 
         if ($playerLastAction === "check" && $player === $lastToAct) {
+            echo"fan1";
+
             $playerClosedAction = true;
         }
 
-        if ($playerLastAction === "call" && $priceToPlay === 0) {
+        if ($playerLastAction === "call" && $priceToPlay === 0 && $player === $lastToAct) {
+            echo"fan2";
             $playerClosedAction = true;
         }
 
-        if ($playerLastAction === "fold" && $priceToPlay === 0) {
+        if ($playerLastAction === "fold" && $priceToPlay === 0 && $player === $lastToAct) {
+            echo"fan3";
+
             $playerClosedAction = true;
         }
 

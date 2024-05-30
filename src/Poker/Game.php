@@ -250,7 +250,7 @@ class Game
             }
 
             $this->manager->access("potManager")->chargeBlinds($this->players);
-            $this->manager->updatePlayersCurrentHandStrength($this->getGameState());
+            // $this->manager->updatePlayersCurrentHandStrength($this->getGameState());
             $this->manager->access("stateManager")->setNewHand(false);
             $this->manager->access("streetManager")->setShowdownFalse();
             $this->manager->access("streetManager")->resetStreet();
