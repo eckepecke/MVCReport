@@ -92,6 +92,20 @@ class BetManager
     }
 
     /**
+     * Resets the current all in status back to false for each player in the given array.
+     *
+     * @param array $players An array of player objects with a resetCurrentBet method.
+     * @return void
+     */
+    public function resetPlayersAllIn(array $players): void
+    {
+        foreach ($players as $player) {
+            echo"hello";
+            $player->resetAllIn();
+        }
+    }
+
+    /**
      * Resets the last action for each player in the given array.
      *
      * @param array $players An array of player objects with a resetLastAction method.

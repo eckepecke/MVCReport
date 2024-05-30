@@ -2,6 +2,8 @@
 
 namespace App\Poker;
 
+use App\Poker\SmartOpponent;
+
 use App\Poker\Player;
 use App\Poker\Hero;
 
@@ -153,9 +155,9 @@ class Game
         $player1 = new Hero();
         $player1->setName("Bamse");
         $this->hero = $player1;
-        $player2 = new Opponent();
+        $player2 = new SmartOpponent();
         $player2->setName("Krösus");
-        $player3 = new Opponent();
+        $player3 = new SmartOpponent();
         $player3->setName("Vargen");
         $pArray = [
             $player1,
@@ -234,13 +236,14 @@ class Game
             }
 
             $this->manager->access("potManager")->chargeBlinds($this->players);
+            // $this->manager->access("cardManager")->dealStartingHands($this->players);
 
             $this->manager->updatePlayersCurrentHandStrength($this->getGameState());
             $this->manager->access("stateManager")->setNewHand(false);
             $this->manager->access("streetManager")->setShowdownFalse();
             $this->manager->access("streetManager")->resetStreet();
             $this->manager->access("betManager")->setActionIsClosed(false);
-
+            var_dump($this->hero->isAllIn());
 
         }
 

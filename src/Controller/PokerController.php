@@ -72,7 +72,7 @@ class PokerController extends AbstractController
         $data = $game->getTemplateData();
         if ($data["game_over"]) {
 
-        return $this->render('poker/end.html.twig', $data);
+            return $this->render('poker/end.html.twig', $data);
         }
 
         return $this->render('poker/play.html.twig', $data);

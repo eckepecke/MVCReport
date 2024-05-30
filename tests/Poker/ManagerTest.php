@@ -123,7 +123,7 @@ class ManagerTest extends TestCase
     public function testGivePotToWinner()
     {
         $initialStack = $this->players[2]->getStack();
-        $exp = 10000;
+        $exp = 50000;
         $this->assertEquals($exp, $initialStack);
         // Deactivate all but one player.
 
@@ -134,7 +134,7 @@ class ManagerTest extends TestCase
         $this->manager->givePotToWinner($state);
 
         $newStack = $this->players[2]->getStack();
-        $newExp = 11000;
+        $newExp = 51000;
         $this->assertNotEquals($newExp, $initialStack);
         $this->assertEquals($newExp, $newStack);
     }
@@ -145,7 +145,7 @@ class ManagerTest extends TestCase
     public function testShowdown(): void
     {
         $initialStack = $this->players[2]->getStack();
-        $exp = 10000;
+        $exp = 50000;
         $this->assertEquals($exp, $initialStack);
         $card1 = $this->createMock(CardGraphic::class);
         $card1->method('getValue')
@@ -179,7 +179,7 @@ class ManagerTest extends TestCase
         $this->manager->showdown($state);
 
         $resStack = $this->players[2]->getStack();
-        $expStack = 11000;
+        $expStack = 51000;
 
         $this->assertEquals($expStack, $resStack);
     }
@@ -298,41 +298,123 @@ class ManagerTest extends TestCase
         $this->assertNotSame($initial, $action2);
     }
 
-    // /**
-    //  * Test that only opponents infront move when hero closes action.
-    //  */
-    // public function testOpponentsPlayVsActionClose(): void
-    // {
-    //     // Put hero allin.
-    //     $this->state["hero"]->call(1);
-    //     $firstOpponent = $this->state["players"][1];
-    //     $secondOpponent = $this->state["players"][2];
+    /**
+     * Test that only opponents infront move when hero closes action.
+     */
+    public function testOpponentsInFrontPlayVsActionClose(): void
+    {
 
-    //     $actionBefore1 = $firstOpponent->getLastAction();
-    //     $actionBefore2 = $secondOpponent->getLastAction();
-    //     $this->manager->access("stateManager")->setNewHand(false);
-    //     $this->manager->access("betManager")->setActionIsClosed(true);
+        // $this->state["hero"]->call(1);
+        $copyOfState = $this->state;
+        $firstOpponent = $this->state["players"][1];
+        $secondOpponent = $this->state["players"][2];
 
-    //     $this->manager->opponentsPlay("call", $this->state);
+        $actionBefore1 = $firstOpponent->getLastAction();
+        $actionBefore2 = $secondOpponent->getLastAction();
+        $this->manager->access("stateManager")->setNewHand(false);
+        $this->manager->access("betManager")->setActionIsClosed(true);
 
-    //     $action1 = $firstOpponent->getLastAction();
-    //     $action2 = $secondOpponent->getLastAction();
-    //     $initial = "";
-    //     // Nobody should move since hero has position 0.
-    //     $this->assertEquals($initial, $actionBefore1);
-    //     $this->assertEquals($initial, $actionBefore1);
-    //     $this->assertSame($initial, $action1);
-    //     $this->assertSame($initial, $action2);
+        $this->manager->opponentsPlay("call", $this->state);
 
-    //     $this->manager->access("betManager")->setActionIsClosed(false);
-    //     $this->manager->opponentsPlay("bet", $this->state);
+        $action1 = $firstOpponent->getLastAction();
+        $action2 = $secondOpponent->getLastAction();
+        $initial = "";
+        // Nobody should move since hero has position 0.
+        $this->assertEquals($initial, $actionBefore1);
+        $this->assertEquals($initial, $actionBefore1);
+        $this->assertSame($initial, $action1);
+        $this->assertSame($initial, $action2);
 
-    //     $action1 = $firstOpponent->getLastAction();
-    //     $action2 = $secondOpponent->getLastAction();
-    //     $initial = "";
-    //     // Now both opponents should move since they
-    //     // action is not closed and hero acts first.
-    //     $this->assertNotSame($initial, $action1);
-    //     $this->assertNotSame($initial, $action2);
-    // }
+        $this->manager->access("betManager")->setActionIsClosed(false);
+        var_dump($this->manager->access("betManager")->getActionIsClosed());
+        $this->manager->opponentsPlay("500", $copyOfState);
+
+        $action1 = $firstOpponent->getLastAction();
+        $action2 = $secondOpponent->getLastAction();
+        $initial = "";
+        // Now both opponents should move since
+        // action is not closed and hero acts first.
+        $this->assertNotSame($initial, $action1);
+        $this->assertNotSame($initial, $action2);
+    }
+
+
+    /**
+     * Test that different hero actions register correctly.
+     */
+    public function testHeroMakesAPlay() {
+        $hero = $this->state["players"][0];
+
+        $this->manager->heroMakesAPlay("observe", $this->state);
+
+        $action = $hero->getLastAction();
+        $exp = "";
+        $this->assertSame($exp, $action);
+
+        $this->manager->heroMakesAPlay(null, $this->state);
+
+        $action = $hero->getLastAction();
+        $exp = "";
+        $this->assertSame($exp, $action);
+
+        $this->manager->heroMakesAPlay("1337", $this->state);
+
+        $action = $hero->getLastAction();
+        $exp = "bet";
+        $this->assertSame($exp, $action);
+
+        $this->manager->heroMakesAPlay("check", $this->state);
+
+        $action = $hero->getLastAction();
+        $exp = "check";
+        $this->assertSame($exp, $action);
+
+        $this->manager->heroMakesAPlay("fold", $this->state);
+
+        $action = $hero->getLastAction();
+        $exp = "fold";
+        $this->assertSame($exp, $action);
+    }
+
+    /**
+     * Test that all remaining cards are dealt when calling dealToShowDown.
+     */
+    public function testDealToShowDown() {
+
+        $board = $this->manager->access("CCManager")->getBoard();
+        $this->assertCount(0, $board);
+
+        $this->manager->dealToShowDown();
+        $board = $this->manager->access("CCManager")->getBoard();
+        $this->assertCount(5, $board);
+    }
+
+    /**
+     * Test that resetTable resets properties.
+     */
+    public function testResetTable() {
+        $this->manager->dealToShowDown();
+        foreach ($this->players as $player) {
+            $player->bet(1000);
+        }
+        $this->manager->access("potManager")->addChipsToPot($this->state);
+
+        $pot = $this->manager->access("potManager")->getPotSize();
+        $board = $this->manager->access("CCManager")->getBoard();
+
+        $expPot = 4000;
+        $this->assertSame($expPot, $pot);
+        $this->assertCount(5, $board);
+
+        $this->manager->resetTable($this->state["players"]);
+
+        $pot = $this->manager->access("potManager")->getPotSize();
+        $board = $this->manager->access("CCManager")->getBoard();
+
+        $expPot = 0;
+        $this->assertSame($expPot, $pot);
+        $this->assertEmpty($board);
+
+
+    }
 }

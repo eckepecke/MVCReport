@@ -26,16 +26,11 @@ class ShowdownManager extends HandEvaluator
         if(count($winners) > 1) {
             $strength = $this->getWinningStrength($winners);
             $winner = $this->compareSameHands($winners, $strength, $board);
-            echo"multiplewinner";
             $this->setShowdownWinner($winner);
-
-            var_dump($winner->getName());
             return $winner;
 
         }
         $this->setShowdownWinner($winners[0]);
-        echo"singleWinner";
-
         return $winners[0];
     }
 
@@ -96,8 +91,6 @@ class ShowdownManager extends HandEvaluator
             $playerHandRanks[] = $ranks;
             $playerHandSuits[] = $suits;
         }
-        echo"lets see";
-        var_dump($playerHandRanks);
 
         switch ($strength) {
             case "High card":
@@ -133,8 +126,6 @@ class ShowdownManager extends HandEvaluator
                 $winner = $players[$winnerIndex];
                 break;
             default:
-                var_dump($strength);
-                echo"ovan";
                 throw new Exception("No such Handstrength " . $strength);
                 break;
         }

@@ -34,6 +34,8 @@ class Manager
         $this->managers["cardManager"]->resetPlayerHands($players);
         $this->managers["betManager"]->resetPlayerBets($players);
         $this->managers["betManager"]->resetPlayerActions($players);
+        $this->managers["betManager"]->resetPlayersAllIn($players);
+
         $this->managers["showdownManager"]->nullShowdownWinner();
         $this->managers["streetManager"]->setShowdownFalse();
         $this->managers["streetManager"]->resetStreet();
@@ -164,6 +166,10 @@ class Manager
 
         $actionIsClosed = $this->managers["betManager"]->getActionIsClosed();
         $newHand = $this->managers["stateManager"]->getNewHand();
+        echo"SOGE KING";
+        var_dump($actionIsClosed);
+        var_dump($newHand);
+
 
 
         // If action now is closed we deal first
