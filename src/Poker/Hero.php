@@ -3,7 +3,7 @@
 namespace App\Poker;
 
 use App\Poker\CardHand;
-use App\Entity\StatsTracker;
+// use App\Entity\StatsTracker;
 
 /**
  * Class Hero
@@ -23,18 +23,18 @@ class Hero extends Player
         parent::__construct();
         $this->isHero = false;
         $this->stack = 2000;
-        $this->statsTracker = null;
+        // $this->statsTracker = null;
     }
 
-    public function getTracker(): ?StatsTracker
-    {
-        return $this->statsTracker;
-    }
+    // public function getTracker(): ?StatsTracker
+    // {
+    //     return $this->statsTracker;
+    // }
 
-    public function setStatsTracker(?StatsTracker $statsTracker): void
-    {
-        $this->statsTracker = $statsTracker;
-    }
+    // public function setStatsTracker(?StatsTracker $statsTracker): void
+    // {
+    //     $this->statsTracker = $statsTracker;
+    // }
 
     /**
      * Checks if the player is the hero.

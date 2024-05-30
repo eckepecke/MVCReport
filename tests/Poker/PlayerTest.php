@@ -48,7 +48,7 @@ class PlayerTest extends TestCase
         $hand->add(new CardGraphic());
         $hand->add(new CardGraphic());
 
-        $hand = $this->player->addHand($hand);
+        $this->player->addHand($hand);
         $hand = $this->player->getHand();
         $cards = $hand->getCardArray();
 

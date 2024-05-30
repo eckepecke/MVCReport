@@ -37,7 +37,6 @@ class StateManagerTest extends TestCase
     public function testGetActivePlayers()
     {
         $res = $this->manager->getActivePlayers($this->state);
-        $res = $this->manager->getActivePlayers($this->state);
 
         $exp = 3;
         $this->assertSame($exp, $res);
@@ -104,7 +103,7 @@ class StateManagerTest extends TestCase
      */
     public function testWonWithNoShowdown()
     {
-        $bool = $this->manager->setNewHand(false);
+        $this->manager->setNewHand(false);
         $bool = $this->manager->getNewHand();
         $this->assertFalse($bool);
 

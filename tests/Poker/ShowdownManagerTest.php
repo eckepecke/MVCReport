@@ -94,7 +94,6 @@ class ShowdownManagerTest extends TestCase
     {
         $expWinner = $this->state["players"][1];
         $this->helper->updateHandStrengths($this->state["players"], $this->board);
-        $winner = $this->manager->findWinner($this->state["players"], $this->board);
 
         $winner = $this->manager->findWinner($this->state["players"], $this->board);
         $this->assertSame($expWinner, $winner);
@@ -164,7 +163,6 @@ class ShowdownManagerTest extends TestCase
         $this->helper->updateHandStrengths($this->state["players"], $this->board);
         $winner = $this->manager->findWinner($this->state["players"], $this->board);
 
-        $winner = $this->manager->findWinner($this->state["players"], $this->board);
         $this->assertSame($expWinner, $winner);
 
         $this->manager->getWinner();
@@ -314,7 +312,6 @@ class ShowdownManagerTest extends TestCase
         $this->helper->updateHandStrengths($this->state["players"], $this->board);
         $winner = $this->manager->findWinner($this->state["players"], $this->board);
 
-        $winner = $this->manager->findWinner($this->state["players"], $this->board);
         $this->assertSame($expWinner, $winner);
     }
 
@@ -328,7 +325,6 @@ class ShowdownManagerTest extends TestCase
         $this->helper->updateHandStrengths($this->state["players"], $this->board);
         $winner = $this->manager->findWinner($this->state["players"], $this->board);
 
-        $winner = $this->manager->findWinner($this->state["players"], $this->board);
         $this->assertSame($expWinner, $winner);
     }
 
@@ -374,7 +370,6 @@ class ShowdownManagerTest extends TestCase
         $this->helper->updateHandStrengths($this->state["players"], $this->board);
         $winner = $this->manager->findWinner($this->state["players"], $this->board);
 
-        $winner = $this->manager->findWinner($this->state["players"], $this->board);
         $this->assertSame($expWinner, $winner);
 
 

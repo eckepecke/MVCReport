@@ -65,7 +65,6 @@ class ManagerTest extends TestCase
 
 
         $deck = new DeckOfCards();
-        $manager = new Manager();
         $cCManager = new CommunityCardManager();
         $potManager = new PotManager(1000);
         $positionManager = new PositionManager();

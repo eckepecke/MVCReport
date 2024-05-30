@@ -105,16 +105,17 @@ class BetManagerTest extends TestCase
         $this->manager->resetPlayerBets($players);
         $this->manager->resetPlayerActions($players);
 
+
         $expBet = 0;
         $expAction = "";
 
         foreach($players as $player) {
             $bet = $player->getCurrentBet();
             $action = $player->getLastAction();
-            $allIn = $player->isAllin();
 
             $this->assertSame($expBet, $bet);
             $this->assertSame($expAction, $action);
+
         }
     }
 
