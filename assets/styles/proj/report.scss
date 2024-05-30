@@ -1,0 +1,30 @@
+/* Container for the two columns */
+.two-col-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Align items to the start of the cross axis (top) */
+
+    a {
+        color: $font-color;
+    }
+
+    /* Style for the aside element */
+    .aside-left {
+        flex: 0 0 25%; /* Set aside width to 25% */
+        padding: $padding;
+        color: $font-color;
+    }
+
+    /* Style for the section elements */
+    .aside-right {
+        flex: 0 0 75%; /* Set section width to 75% */
+        padding: $padding;
+    }
+}
+
+/* Responsive styling for smaller screens */
+@media screen and (max-width: 768px) {
+    .aside-left, .aside-right {
+        flex: 0 0 100%; /* Set both columns to full width */
+    }
+}

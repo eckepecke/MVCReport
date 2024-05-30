@@ -24,13 +24,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PokerController extends AbstractController
 {
-    #[Route("/poker", name: "poker_init_get", methods: ['GET'])]
+    #[Route("/proj", name: "poker_init_get", methods: ['GET'])]
     public function init(): Response
     {
         return $this->render('poker/index.html.twig');
     }
 
-    #[Route("/poker", name: "poker_init_post", methods: ['POST'])]
+    #[Route("/proj", name: "poker_init_post", methods: ['POST'])]
     public function initCallback(
         Request $request,
         SessionInterface $session

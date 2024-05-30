@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="{{ asset('img/clubs_ace.svg') }}">
-        <link rel="stylesheet" href="{{ asset('app.css') }}">
+        <link rel="stylesheet" href="{{ asset('proj.css') }}">
 
         {# {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -24,13 +24,6 @@
             <nav>
                 <li><a href="{{ path('me') }}">Me</a></li>
                 <li><a href="{{ path('about') }}">About</a></li>
-                <li><a href="{{ path('report') }}">Report</a></li>
-                <li><a href="{{ path('lucky_card') }}">Lucky</a></li>
-                <li><a href="{{ path('api') }}">API routes</a></li>
-                <li><a href="{{ path('card') }}">Card</a></li>
-                <li><a href="{{ path('game_init_get') }}">Game</a></li>
-                <li><a href="{{ path('library') }}">Library</a></li>
-                <li><a href="{{ path('metrics') }}">Metrics</a></li>
                 <li><a href="{{ path('poker_init_get') }}">Project</a></li>
 
 

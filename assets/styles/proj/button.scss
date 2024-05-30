@@ -1,0 +1,26 @@
+.button {
+    color: #333;
+    background-color: #BEF5FA;
+    background-image: linear-gradient(#fff, #BEF5FA);
+    text-decoration: none;
+    box-sizing: border-box;
+    display: inline-block;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.4rem;
+    padding: 0.4rem 1rem;
+    text-align: center;
+    border-radius: $border-radius;
+    line-height: 1.4;
+}
+
+.button:hover {
+    background-color: #f4fdff;
+    background-image: none;
+}
+
+.small-button {
+    font-size: 1rem;
+    padding: 0.3rem 0.8rem;
+    line-height: 1.2;
+    max-width: 40px;
+}

@@ -1,0 +1,28 @@
+﻿
+//@import 'base';
+
+// body {
+//     background-image: 
+//     linear-gradient(to top right, rgb(18, 18, 18), rgba(146, 146, 146, 0)),
+//     url("../../assets/images/varns2.jpg");
+//     background-size: cover;
+//     background-position: center;
+//     background-repeat: repeat-y;
+// }
+
+@import 'proj/variables';
+@import 'proj/header';
+@import 'proj/footer';
+@import 'proj/base';
+@import 'proj/mobile-menu';
+@import 'proj/about';
+@import 'proj/cards';
+@import 'proj/report';
+@import 'proj/button';
+@import 'proj/api';
+// @import 'proj/flash';
+// @import 'proj/card_landing';
+// @import 'proj/poker_table';
+@import 'proj/poker_table_small';
+@import 'proj/game_doc';
+

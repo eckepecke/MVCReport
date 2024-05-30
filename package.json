@@ -17,7 +17,8 @@
         "dev-server": "encore dev-server",
         "dev": "encore dev",
         "style": "sass assets/styles/app.scss style.min.css --no-source-map",
-        "style-min": "sass assets/styles/app.scss public/test.css  --no-source-map --style compressed"
+        "style-min": "sass assets/styles/app.scss public/app.css  --no-source-map --style compressed",
+        "style-min-proj": "sass assets/styles/proj.scss public/proj.css  --no-source-map --style compressed"
     },
     "dependencies": {
         "file-loader": "^6.2.0"

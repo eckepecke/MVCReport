@@ -1,0 +1,35 @@
+footer {
+    background-color: $background-alternative-color;
+    padding: 20px;
+
+    .footer-content {
+        margin: 0 auto;
+        text-align: center;
+        color: $font-color;
+
+            h2 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            a {
+                color: $font-color;
+                font-size: 20px;
+                //padding-right: 1em;
+                text-decoration: none;
+                margin-right: 1em;
+
+            }
+        
+            li {
+                list-style: none;
+                color: $accent-color;
+                padding-bottom: 0.6em;
+            }
+        
+            a:hover {
+                color: $accent-color;
+                text-decoration: underline;
+            }
+}
+}
