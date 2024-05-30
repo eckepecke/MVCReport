@@ -40,9 +40,9 @@ class PotManager
     public function chargeBlinds(array $players): void
     {
         $blindArray = [
-            0 => 10,
-            1 => 20,
-            2 => 40
+            0 => 100,
+            1 => 200,
+            2 => 400
         ];
         foreach ($players as $player) {
             $pos = $player->getPosition();

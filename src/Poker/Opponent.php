@@ -7,7 +7,7 @@ class Opponent extends Player
     public function __construct()
     {
         parent::__construct();
-        $this->stack = 10000;
+        $this->stack = 50000;
     }
 
     public function responseToBet()

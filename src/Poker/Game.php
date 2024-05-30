@@ -151,12 +151,12 @@ class Game
     {
 
         $player1 = new Hero();
-        $player1->setName("Hero");
+        $player1->setName("Bamse");
         $this->hero = $player1;
         $player2 = new Opponent();
-        $player2->setName("Isildur1");
+        $player2->setName("Krösus");
         $player3 = new Opponent();
-        $player3->setName("Phil");
+        $player3->setName("Vargen");
         $pArray = [
             $player1,
             $player2,
@@ -180,7 +180,7 @@ class Game
 
         $handEvaluator = new HandEvaluator();
         $sameHandEvaluator = new SameHandEvaluator();
-        $gameOverTracker = new GameOverTracker(1);
+        $gameOverTracker = new GameOverTracker(5);
 
         $showdownManager->add($sameHandEvaluator);
 
