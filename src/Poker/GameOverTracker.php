@@ -27,7 +27,6 @@ class GameOverTracker
         $this->handsToPlay = $hands;
         $this->hand = 0;
         $this->heroIsBroke = false;
-        $this->gameOver = false;
     }
 
     /**

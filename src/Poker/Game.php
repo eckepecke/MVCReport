@@ -247,11 +247,6 @@ class Game
         $this->play($heroAction);
     }
 
-    public function resetNewHand(): void
-    {
-        $this->newHand = true;
-    }
-
     public function play($heroAction)
     {
         $this->manager->heroMakesAPlay($heroAction, $this->getGameState());

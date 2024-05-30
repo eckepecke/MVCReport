@@ -129,6 +129,7 @@ class ManagerTest extends TestCase
 
         $this->players[1]->deactivate();
         $this->players[0]->deactivate();
+        $state = [];
         $state["players"] = $this->players;
 
         $this->manager->givePotToWinner($state);
@@ -171,7 +172,7 @@ class ManagerTest extends TestCase
         $this->players[2]->addHand($winningHand);
 
         $board = [];
-
+        $state = [];
         $state["players"] = $this->players;
         $state["board"] = $board;
         $state["active"] = $this->players;

@@ -51,7 +51,10 @@ class SameHandEvaluator extends HandEvaluator
                 break;
             }
         }
-        return $winningIndex;
+        if ($winningIndex !== null) {
+            return $winningIndex;
+        }
+        throw new Exception("Unable to determine winning index.");
     }
 
     /**
@@ -239,9 +242,11 @@ class SameHandEvaluator extends HandEvaluator
      */
     public function compareStraights(array $handRanks): int
     {
+        $bestHandIndex = -1;
+        $highestStraightRank = -1;
         foreach ($handRanks as $index => $hand) {
-            $bestHandIndex = -1;
-            $highestStraightRank = -1;
+            // $bestHandIndex = -1;
+            // $highestStraightRank = -1;
 
             foreach ($handRanks as $index => $hand) {
                 // Sort hand in descending order and remove duplicates
