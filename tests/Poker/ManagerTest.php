@@ -217,7 +217,7 @@ class ManagerTest extends TestCase
     /**
      * Test that opponents move in correct order.
      */
-    public function testOpponentsMove(): void
+    public function testOpponentsBehindMove(): void
     {
         $heroPos = $this->state["hero"]->getPosition();
         $this->assertEquals(0,$heroPos);
@@ -247,6 +247,10 @@ class ManagerTest extends TestCase
         $this->assertNotSame($initial, $action1);
         $this->assertNotSame($initial, $action2);
 
+    }
+
+    public function opponentsInfrontMove() {
+
         $this->manager->access("positionManager")->updatePositions($this->state["players"]);
         $this->manager->access("betManager")->resetPlayerActions($this->state["players"]);
 
@@ -268,12 +272,19 @@ class ManagerTest extends TestCase
         $this->assertEquals($initial, $actionBefore2);
         $this->assertEquals($initial, $action1);
         $this->assertEquals($initial, $action2);
+        var_dump($action2);
 
         $this->manager->opponentsInFrontMove($this->state);
 
         // Now opponents should have updated moves.
         $action1 = $firstOpponent->getLastAction();
         $action2 = $secondOpponent->getLastAction();
+        var_dump($firstOpponent->getPosition());       
+        var_dump($secondOpponent->getPosition());
+        var_dump($action1);
+        var_dump($action2);
+        echo"AAaAAAAAAA";
+
         $this->assertNotSame($initial, $action1);
         $this->assertNotSame($initial, $action2);
     }
