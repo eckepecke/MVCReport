@@ -31,7 +31,7 @@ class PokerJsonController extends AbstractController
         return $response;
     }
 
-    #[Route('/api/update_hero_name{name}', name: 'update_name', methods: ["POST", "GET"])]
+    #[Route('/api/update_hero_name/{name}', name: 'update_name', methods: ["POST", "GET"])]
     public function updateHeroName(
         SessionInterface $session,
         string $name
@@ -58,10 +58,13 @@ class PokerJsonController extends AbstractController
             throw new Exception("No game in session!");
         }
         $data = $game->getTemplateData();
-        $heroName = $data["hero_name"];
 
         $heroData = [
-            'name' => $heroName,
+            'name' => $data["hero_name"],
+            'stack' => $data["hero_stack"],
+            'position' => $data["hero_pos"],
+            'hero_hand' => $data["hero_hand"],
+            'current_bet' => $data["heroBet"],
         ];
 
         $response = new JsonResponse($heroData);
@@ -71,7 +74,7 @@ class PokerJsonController extends AbstractController
         return $response;
     }
 
-    #[Route("/api/o1_data", name: "hero_data")]
+    #[Route("/api/peek", name: "peek_cards")]
     public function apiOpponent1(
         SessionInterface $session
     ): Response {
@@ -81,13 +84,52 @@ class PokerJsonController extends AbstractController
             throw new Exception("No game in session!");
         }
         $data = $game->getTemplateData();
-        $opponentName = $data["opp_1_name"];
+        $opponent1Name = $data["opp_1_name"];
+        $opponent1Hand = $data["opponent1Hand"];
+
+        $opponent2Name = $data["opp_2_name"];
+        $opponent2Hand = $data["opponent1Hand"];
 
         $opponentData = [
-            'name' => $opponentName,
+            'name_one' => $opponent1Name,
+            'hand_one' => $opponent1Hand,
+            'name_two' => $opponent2Name,
+            'hand_two' => $opponent2Hand,
         ];
 
         $response = new JsonResponse($opponentData);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
+
+    #[Route("/api/progress", name: "progress")]
+    public function progress(
+        SessionInterface $session
+    ): Response {
+        $game = $session->get("game");
+
+        if (!$session->has("game")) {
+            throw new Exception("No game in session!");
+        }
+        $data = $game->getTemplateData();
+        $heroStack = $data["hero_stack"];
+        $handsPlayed = $data["hands_played"];
+
+        $target = 10000;
+        $missing = $target - $heroStack;
+
+        $toBePlayed = 10;
+        $remaining = $toBePlayed - $handsPlayed;
+
+
+        $json = [
+            'money_missing' => $missing,
+            'remaining_hands' => $remaining,
+        ];
+
+        $response = new JsonResponse($json);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );

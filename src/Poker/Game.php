@@ -151,6 +151,7 @@ class Game
             "winner" => $winnerName,
             "game_over" => $this->gameOver,
             "allin" => $this->hero->isAllin(),
+            "hands_played" => $this->manager->access("gameOverTracker")->getHandsPlayed(),
         ];
     }
     /**

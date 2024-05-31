@@ -26,6 +26,12 @@ class PokerController extends AbstractController
         return $this->render('poker/about.html.twig');
     }
 
+    #[Route("/proj/api", name: "api_proj", methods: ['GET'])]
+    public function api(): Response
+    {
+        return $this->render('poker/api.html.twig');
+    }
+
     #[Route("/proj", name: "poker_init_post", methods: ['POST'])]
     public function initCallback(
         SessionInterface $session

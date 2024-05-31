@@ -53,12 +53,12 @@ class GameOverTracker
     }
 
     /**
-     * Checks if the hero player is broke.
+     * Returns hands played.
      *
-     * @return bool True if the hero player is broke, false otherwise.
+     * @return int The amount of hands played.
      */
-    public function getHeroIsBroke(): bool
+    public function getHandsPlayed(): int
     {
-        return $this->heroIsBroke;
+        return $this->hand;
     }
 }

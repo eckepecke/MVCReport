@@ -11,6 +11,7 @@ class PlayerBase
     protected int $currentBet;
     protected string $lastAction;
     protected bool $allIn;
+    protected bool $active;
 
 
     public function __construct()
@@ -20,6 +21,7 @@ class PlayerBase
         $this->currentBet = 0;
         $this->lastAction = "";
         $this->allIn = false;
+        $this->active = true;
     }
 
     public function addHand(CardHand $hand): void

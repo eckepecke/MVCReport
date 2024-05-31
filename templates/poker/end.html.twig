@@ -4,11 +4,14 @@
 
 
 {% block body %}
-                <h4>{{players}}</h4>
                 <h4>{{hero_stack}}</h4>
             {% if hero_stack > 10000 %}
                 <h4>Lilleskutt räddad!</h4>
+                <img class="picture" src="{{ asset('build/images/happy_skutt.jpg') }}" alt="result pic">
+
             {% else %}
                 <h4>Lilleskutt är död!</h4>
+                <img class="picture" src="{{ asset('build/images/sad_skutt.jpg') }}" alt="result pic">
+
             {% endif %}
 {% endblock %}
