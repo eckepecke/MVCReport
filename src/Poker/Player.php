@@ -3,7 +3,13 @@
 namespace App\Poker;
 
 use App\Poker\CardHand;
-
+/**
+ * Class Player
+ *
+ * This class represents a player in a poker game, extending the PlayerBase class.
+ * It includes properties for the player's position, all-in status, active status, and name.
+ *
+ */
 class Player extends PlayerBase
 {
     protected int $position;

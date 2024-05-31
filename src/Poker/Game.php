@@ -23,12 +23,12 @@ use App\Poker\ShowdownManager;
 use App\Poker\HandEvaluator;
 use App\Poker\SameHandEvaluator;
 use App\Poker\GameOverTracker;
-// use App\Entity\StatsTracker;
-// use Doctrine\Persistence\ManagerRegistry;
-// use App\Repository\StatsTrackerRepository;
-// use Doctrine\ORM\EntityManagerInterface;
 
-
+/**
+ * Class Game
+ *
+ * A poker game between one user and two bots.
+ */
 class Game
 {
     private array $players;
@@ -154,6 +154,7 @@ class Game
             "hands_played" => $this->manager->access("gameOverTracker")->getHandsPlayed(),
         ];
     }
+
     /**
      * Initializes the game.
      *
@@ -168,7 +169,7 @@ class Game
         $this->hero = $player1;
         $player2 = new SmartOpponent();
         $player2->setName("Krösus");
-        $player3 = new SmartOpponent();
+        $player3 = new Opponent();
         $player3->setName("Vargen");
         $pArray = [
             $player1,
@@ -225,6 +226,14 @@ class Game
         // $this->manager->access("positionManager")->updatePositions($this->players);
     }
 
+    /**
+     * Checking game status, if a new hand is starting the necessary steps are taken
+     * to clean up and start over. If game has ended flow is returned early, otherwise
+     * call the play method.
+     *
+     *
+     * @return void
+     */
     public function prepare($heroAction): void
     {
         if ($this->manager->access("stateManager")->getNewHand()) {
@@ -247,6 +256,12 @@ class Game
         $this->play($heroAction);
     }
 
+    /**
+     * Initiates player actions and then directs the flow accordingly
+     * depending on what actions were taken.
+     *
+     * @return void
+     */
     public function play($heroAction)
     {
         $this->manager->heroMakesAPlay($heroAction, $this->getGameState());
@@ -270,14 +285,6 @@ class Game
             $this->manager->showdown($this->getGameState());
             $this->manager->access("stateManager")->setNewHand(true);
             $this->manager->access("gameOverTracker")->incrementHands();
-            // $this->manager->access("gameOverTracker")->updateStats($this->hero);
         }
     }
-
-    // public function updateStats() {
-
-    //     $this->hero->getTracker()->incrementHands();
-    //     $this->entityManager->flush();
-
-    // }
 }

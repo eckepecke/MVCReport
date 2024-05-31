@@ -81,7 +81,7 @@ class PlayerBase
     {
         // $this->currentBet = 0;
         $this->active = false;
-        $this->currentStrength = "";
+        // $this->currentStrength = "";
         $this->lastAction = "fold";
     }
 

@@ -2,6 +2,12 @@
 
 namespace App\Poker;
 
+/**
+ * Class Opponent
+ *
+ * This class represents an opponent in a poker game. It inherits from the Player class.
+ *
+ */
 class Opponent extends Player
 {
     public function __construct()
@@ -40,6 +46,9 @@ class Opponent extends Player
 
     public function chooseBetSize($potSize): float
     {
+        if ($potSize === 0) {
+            return 500;
+        }
         return 0.75 * $potSize;
     }
 

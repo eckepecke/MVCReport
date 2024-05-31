@@ -381,6 +381,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-PokerController.html#method_about"
         },                {
+            "fqsen": "\\App\\Controller\\PokerController\u003A\u003Aapi\u0028\u0029",
+            "name": "api",
+            "summary": "",
+            "url": "classes/App-Controller-PokerController.html#method_api"
+        },                {
             "fqsen": "\\App\\Controller\\PokerController\u003A\u003AinitCallback\u0028\u0029",
             "name": "initCallback",
             "summary": "",
@@ -415,6 +420,11 @@ Search.appendIndex(
             "name": "apiOpponent1",
             "summary": "",
             "url": "classes/App-Controller-PokerJsonController.html#method_apiOpponent1"
+        },                {
+            "fqsen": "\\App\\Controller\\PokerJsonController\u003A\u003Aprogress\u0028\u0029",
+            "name": "progress",
+            "summary": "",
+            "url": "classes/App-Controller-PokerJsonController.html#method_progress"
         },                {
             "fqsen": "\\App\\Dice\\Dice",
             "name": "Dice",
@@ -1823,7 +1833,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Poker\\Game",
             "name": "Game",
-            "summary": "",
+            "summary": "Class\u0020Game",
             "url": "classes/App-Poker-Game.html"
         },                {
             "fqsen": "\\App\\Poker\\Game\u003A\u003AaddPlayers\u0028\u0029",
@@ -1858,17 +1868,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Poker\\Game\u003A\u003Aprepare\u0028\u0029",
             "name": "prepare",
-            "summary": "",
+            "summary": "Checking\u0020game\u0020status,\u0020if\u0020a\u0020new\u0020hand\u0020is\u0020starting\u0020the\u0020necessary\u0020steps\u0020are\u0020taken\nto\u0020clean\u0020up\u0020and\u0020start\u0020over.\u0020If\u0020game\u0020has\u0020ended\u0020flow\u0020is\u0020returned\u0020early,\u0020otherwise\ncall\u0020the\u0020play\u0020method.",
             "url": "classes/App-Poker-Game.html#method_prepare"
-        },                {
-            "fqsen": "\\App\\Poker\\Game\u003A\u003AresetNewHand\u0028\u0029",
-            "name": "resetNewHand",
-            "summary": "",
-            "url": "classes/App-Poker-Game.html#method_resetNewHand"
         },                {
             "fqsen": "\\App\\Poker\\Game\u003A\u003Aplay\u0028\u0029",
             "name": "play",
-            "summary": "",
+            "summary": "Initiates\u0020player\u0020actions\u0020and\u0020then\u0020directs\u0020the\u0020flow\u0020accordingly\ndepending\u0020on\u0020what\u0020actions\u0020were\u0020taken.",
             "url": "classes/App-Poker-Game.html#method_play"
         },                {
             "fqsen": "\\App\\Poker\\Game\u003A\u003A\u0024players",
@@ -1921,10 +1926,10 @@ Search.appendIndex(
             "summary": "Increments\u0020the\u0020current\u0020hand\u0020being\u0020played.",
             "url": "classes/App-Poker-GameOverTracker.html#method_incrementHands"
         },                {
-            "fqsen": "\\App\\Poker\\GameOverTracker\u003A\u003AgetHeroIsBroke\u0028\u0029",
-            "name": "getHeroIsBroke",
-            "summary": "Checks\u0020if\u0020the\u0020hero\u0020player\u0020is\u0020broke.",
-            "url": "classes/App-Poker-GameOverTracker.html#method_getHeroIsBroke"
+            "fqsen": "\\App\\Poker\\GameOverTracker\u003A\u003AgetHandsPlayed\u0028\u0029",
+            "name": "getHandsPlayed",
+            "summary": "Returns\u0020hands\u0020played.",
+            "url": "classes/App-Poker-GameOverTracker.html#method_getHandsPlayed"
         },                {
             "fqsen": "\\App\\Poker\\GameOverTracker\u003A\u003A\u0024handsToPlay",
             "name": "handsToPlay",
@@ -2036,16 +2041,6 @@ Search.appendIndex(
             "summary": "Constructor\u0020for\u0020the\u0020Hero\u0020class.",
             "url": "classes/App-Poker-Hero.html#method___construct"
         },                {
-            "fqsen": "\\App\\Poker\\Hero\u003A\u003AgetTracker\u0028\u0029",
-            "name": "getTracker",
-            "summary": "",
-            "url": "classes/App-Poker-Hero.html#method_getTracker"
-        },                {
-            "fqsen": "\\App\\Poker\\Hero\u003A\u003AsetStatsTracker\u0028\u0029",
-            "name": "setStatsTracker",
-            "summary": "",
-            "url": "classes/App-Poker-Hero.html#method_setStatsTracker"
-        },                {
             "fqsen": "\\App\\Poker\\Hero\u003A\u003A\u0024isHero",
             "name": "isHero",
             "summary": "",
@@ -2143,7 +2138,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Poker\\Opponent",
             "name": "Opponent",
-            "summary": "",
+            "summary": "Class\u0020Opponent",
             "url": "classes/App-Poker-Opponent.html"
         },                {
             "fqsen": "\\App\\Poker\\Opponent\u003A\u003A__construct\u0028\u0029",
@@ -2198,7 +2193,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Poker\\Player",
             "name": "Player",
-            "summary": "",
+            "summary": "Class\u0020Player",
             "url": "classes/App-Poker-Player.html"
         },                {
             "fqsen": "\\App\\Poker\\Player\u003A\u003A__construct\u0028\u0029",
@@ -2361,6 +2356,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Poker-PlayerBase.html#method_resetHand"
         },                {
+            "fqsen": "\\App\\Poker\\PlayerBase\u003A\u003AisAllin\u0028\u0029",
+            "name": "isAllin",
+            "summary": "",
+            "url": "classes/App-Poker-PlayerBase.html#method_isAllin"
+        },                {
             "fqsen": "\\App\\Poker\\PlayerBase\u003A\u003A\u0024stack",
             "name": "stack",
             "summary": "",
@@ -2380,6 +2380,16 @@ Search.appendIndex(
             "name": "lastAction",
             "summary": "",
             "url": "classes/App-Poker-PlayerBase.html#property_lastAction"
+        },                {
+            "fqsen": "\\App\\Poker\\PlayerBase\u003A\u003A\u0024allIn",
+            "name": "allIn",
+            "summary": "",
+            "url": "classes/App-Poker-PlayerBase.html#property_allIn"
+        },                {
+            "fqsen": "\\App\\Poker\\PlayerBase\u003A\u003A\u0024active",
+            "name": "active",
+            "summary": "",
+            "url": "classes/App-Poker-PlayerBase.html#property_active"
         },                {
             "fqsen": "\\App\\Poker\\PositionManager",
             "name": "PositionManager",
@@ -2413,32 +2423,32 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Poker\\PotManager",
             "name": "PotManager",
-            "summary": "",
+            "summary": "Class\u0020PotManager",
             "url": "classes/App-Poker-PotManager.html"
         },                {
             "fqsen": "\\App\\Poker\\PotManager\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "PotManager\u0020constructor.",
             "url": "classes/App-Poker-PotManager.html#method___construct"
         },                {
             "fqsen": "\\App\\Poker\\PotManager\u003A\u003AaddChipsToPot\u0028\u0029",
             "name": "addChipsToPot",
-            "summary": "",
+            "summary": "Adds\u0020chips\u0020to\u0020the\u0020pot\u0020from\u0020each\u0020player\u0027s\u0020current\u0020bet.",
             "url": "classes/App-Poker-PotManager.html#method_addChipsToPot"
         },                {
             "fqsen": "\\App\\Poker\\PotManager\u003A\u003AgetPotSize\u0028\u0029",
             "name": "getPotSize",
-            "summary": "",
+            "summary": "Gets\u0020the\u0020current\u0020size\u0020of\u0020the\u0020pot.",
             "url": "classes/App-Poker-PotManager.html#method_getPotSize"
         },                {
             "fqsen": "\\App\\Poker\\PotManager\u003A\u003AresetPot\u0028\u0029",
             "name": "resetPot",
-            "summary": "",
+            "summary": "Resets\u0020the\u0020pot\u0020size\u0020to\u0020zero.",
             "url": "classes/App-Poker-PotManager.html#method_resetPot"
         },                {
             "fqsen": "\\App\\Poker\\PotManager\u003A\u003AchargeBlinds\u0028\u0029",
             "name": "chargeBlinds",
-            "summary": "",
+            "summary": "Charges\u0020blinds\u0020to\u0020players\u0020based\u0020on\u0020their\u0020position.",
             "url": "classes/App-Poker-PotManager.html#method_chargeBlinds"
         },                {
             "fqsen": "\\App\\Poker\\PotManager\u003A\u003A\u0024pot",
@@ -2553,32 +2563,32 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Poker\\SmartOpponent",
             "name": "SmartOpponent",
-            "summary": "",
+            "summary": "Class\u0020SmartOpponent",
             "url": "classes/App-Poker-SmartOpponent.html"
         },                {
             "fqsen": "\\App\\Poker\\SmartOpponent\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "SmartOpponent\u0020constructor.",
             "url": "classes/App-Poker-SmartOpponent.html#method___construct"
         },                {
             "fqsen": "\\App\\Poker\\SmartOpponent\u003A\u003AresponseToBet\u0028\u0029",
             "name": "responseToBet",
-            "summary": "",
+            "summary": "Response\u0020to\u0020a\u0020bet\u0020made\u0020by\u0020another\u0020player.",
             "url": "classes/App-Poker-SmartOpponent.html#method_responseToBet"
         },                {
             "fqsen": "\\App\\Poker\\SmartOpponent\u003A\u003AactionVsCheck\u0028\u0029",
             "name": "actionVsCheck",
-            "summary": "",
+            "summary": "Action\u0020to\u0020take\u0020when\u0020an\u0020opponent\u0020checks.",
             "url": "classes/App-Poker-SmartOpponent.html#method_actionVsCheck"
         },                {
             "fqsen": "\\App\\Poker\\SmartOpponent\u003A\u003AchooseBetSize\u0028\u0029",
             "name": "chooseBetSize",
-            "summary": "",
+            "summary": "Choose\u0020the\u0020bet\u0020size\u0020based\u0020on\u0020the\u0020pot\u0020size.",
             "url": "classes/App-Poker-SmartOpponent.html#method_chooseBetSize"
         },                {
             "fqsen": "\\App\\Poker\\SmartOpponent\u003A\u003AactionVsShove\u0028\u0029",
             "name": "actionVsShove",
-            "summary": "",
+            "summary": "Action\u0020to\u0020take\u0020when\u0020an\u0020opponent\u0020shoves\u0020\u0028goes\u0020all\u002Din\u0029.",
             "url": "classes/App-Poker-SmartOpponent.html#method_actionVsShove"
         },                {
             "fqsen": "\\App\\Poker\\StateManager",
@@ -2688,12 +2698,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Poker\\TexasHandTrait\u003A\u003AresetStrengthArray\u0028\u0029",
             "name": "resetStrengthArray",
-            "summary": "",
+            "summary": "Resets\u0020the\u0020strength\u0020array\u0020to\u0020its\u0020initial\u0020state.",
             "url": "classes/App-Poker-TexasHandTrait.html#method_resetStrengthArray"
         },                {
             "fqsen": "\\App\\Poker\\TexasHandTrait\u003A\u003AgetCurrentStrength\u0028\u0029",
             "name": "getCurrentStrength",
-            "summary": "",
+            "summary": "Gets\u0020the\u0020current\u0020hand\u0020strength.",
             "url": "classes/App-Poker-TexasHandTrait.html#method_getCurrentStrength"
         },                {
             "fqsen": "\\App\\Poker\\TexasHandTrait\u003A\u003A\u0024strengthArray",

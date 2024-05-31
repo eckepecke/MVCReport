@@ -260,7 +260,7 @@ class ManagerTest extends TestCase
         // when behind players move (there are none).
         $initial = "";
         $this->assertEquals($initial, $actionBefore1);
-        $this->assertEquals($initial, $actionBefore1);
+        $this->assertEquals($initial, $actionBefore2);
         $this->assertEquals($initial, $action1);
         $this->assertEquals($initial, $action2);
 
@@ -293,7 +293,7 @@ class ManagerTest extends TestCase
         $initial = "";
         // Both players should have made a move.
         $this->assertEquals($initial, $actionBefore1);
-        $this->assertEquals($initial, $actionBefore1);
+        $this->assertEquals($initial, $actionBefore2);
         $this->assertNotSame($initial, $action1);
         $this->assertNotSame($initial, $action2);
     }

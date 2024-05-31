@@ -7,6 +7,16 @@
         padding-right: $padding;
     }
 
+    a {
+        color: $font-alternative-color;
+    }
+
+    h2 {
+        color: $font-alternative-color;
+        text-decoration: underline;
+        text-align: left;
+    }
+
     .picture {
         max-width: 50%;
         height: auto;

@@ -42,6 +42,23 @@ class BetManager
         return $biggestAmount - $smallestAmount;
     }
 
+    public function getPriceToPlayTest(object $player, array $state): int
+    {
+        $players = $state["players"];
+        $activeBetsArray = [];
+        foreach ($players as $player) {
+
+            if ($player->isActive()) {
+                $activeBetsArray[] = $player->getCurrentBet();
+            }
+        }
+
+        $biggestAmount = max($activeBetsArray);
+        $currentPlayerBet = $player->getCurrentBet();
+
+        return $biggestAmount - $smallestAmount;
+    }
+
     /**
      * Gets the biggest current bet.
      *
@@ -135,14 +152,19 @@ class BetManager
         $lastToAct = $this->lastToAct($state["players"]);
 
         if ($playerLastAction === "check" && $player === $lastToAct) {
+            echo"fan1";
             $playerClosedAction = true;
         }
 
         if ($playerLastAction === "call" && $priceToPlay === 0 && $player === $lastToAct) {
+            echo"fan2";
+            
             $playerClosedAction = true;
         }
 
         if ($playerLastAction === "fold" && $priceToPlay === 0) {
+            echo"fan3";
+
             $playerClosedAction = true;
         }
 

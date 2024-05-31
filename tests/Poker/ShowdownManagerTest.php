@@ -118,7 +118,6 @@ class ShowdownManagerTest extends TestCase
         $this->helper->updateHandStrengths($this->state["players"], $this->board);
         $winner = $this->manager->findWinner($this->state["players"], $this->board);
 
-        $winner = $this->manager->findWinner($this->state["players"], $this->board);
         $this->assertSame($newWinner, $winner);
 
         $this->manager->getWinner();
