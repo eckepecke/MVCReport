@@ -39,6 +39,11 @@ class PlayerBase
         return $this->currentBet;
     }
 
+    public function setCurrentBet($bet): void
+    {
+        $this->currentBet = $bet;
+    }
+
     public function resetCurrentBet(): void
     {
         $this->currentBet = 0;

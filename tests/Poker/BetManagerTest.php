@@ -126,6 +126,10 @@ class BetManagerTest extends TestCase
     public function testPlayerClosedAction(): void
     {
         $this->state["active"] = 3;
+        $this->state["street"] = "flop";
+        $this->state["pot"] = 1000;
+
+
         $players = $this->state["players"];
         $player1 = $players[0];
         $player2 = $players[1];

@@ -45,4 +45,20 @@ class Hero extends Player
     {
         return $this->isHero;
     }
+
+    public function raise(int $bet): void
+    {
+        $minRaise = $bet * 2;
+        $allChipsPlayerHas = $this->stack + $this->currentBet;
+        $raise = min($minRaise, $allChipsPlayerHas);
+
+        $this->stack -= $raise - $this->currentBet;
+        $this->currentBet = $raise;
+        $this->lastAction = "raise";
+
+        if ($this->stack <= 0) {
+            ///
+            $this->allIn = true;
+        }
+    }
 }

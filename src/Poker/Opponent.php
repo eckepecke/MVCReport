@@ -43,14 +43,37 @@ class Opponent extends Player
         return $decision;
     }
 
-
     public function chooseBetSize($potSize): float
     {
         if ($potSize === 0) {
-            return 500;
+            return 800;
         }
         return 0.75 * $potSize;
     }
+
+    // public function chooseBetSize($potSize, $heroStack): float
+    // {
+    //     if ($potSize === 0) {
+    //         return min(800, $heroStack);
+    //     }
+    //     return min(0.75 * $potSize, $heroStack);
+    // }
+
+    // public function raise($bet, $heroStack): void
+    // {
+    //     $minRaise = $bet * 2;
+    //     $allChipsPlayerHas = $this->stack + $this->currentBet;
+    //     $raise = min($minRaise, min($allChipsPlayerHas, $heroStack));
+
+    //     $this->stack -= $raise - $this->currentBet;
+    //     $this->currentBet = $raise;
+    //     $this->lastAction = "raise";
+
+    //     if ($this->stack <= 0) {
+    //         ///
+    //         $this->allIn = true;
+    //     }
+    // }
 
     public function actionVsShove(): string
     {

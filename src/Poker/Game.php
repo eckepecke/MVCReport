@@ -71,7 +71,11 @@ class Game
             "players" => $this->getPlayers(),
             "active" => $this->manager->access("stateManager")->removeInactive($this->players),
             "game_over" => $this->gameOver,
-            "board" => $this->manager->access("CCManager")->getBoard()
+            "board" => $this->manager->access("CCManager")->getBoard(),
+            "street" => $this->manager->access("streetManager")->getStreet(),
+            "pot" => $this->manager->access("potManager")->getPotSize(),
+
+
         ];
     }
 
@@ -192,7 +196,7 @@ class Game
 
         $handEvaluator = new HandEvaluator();
         $sameHandEvaluator = new SameHandEvaluator();
-        $gameOverTracker = new GameOverTracker(5);
+        $gameOverTracker = new GameOverTracker(10);
         // $statsTracker = new StatsTracker();
 
 
@@ -236,6 +240,7 @@ class Game
      */
     public function prepare($heroAction): void
     {
+        echo "prepare";
         if ($this->manager->access("stateManager")->getNewHand()) {
             $this->manager->resetTable($this->players);
             $this->manager->access("cardManager")->dealStartingHands($this->players);
@@ -264,6 +269,8 @@ class Game
      */
     public function play($heroAction)
     {
+        echo "play";
+
         $this->manager->heroMakesAPlay($heroAction, $this->getGameState());
         $this->manager->opponentsPlay($heroAction, $this->getGameState());
         $endBeforeSHowdown = $this->manager->access("stateManager")->getNewHand();
@@ -282,6 +289,7 @@ class Game
         }
 
         if ($this->manager->access("streetManager")->getShowdown()) {
+            echo "showdown";
             $this->manager->showdown($this->getGameState());
             $this->manager->access("stateManager")->setNewHand(true);
             $this->manager->access("gameOverTracker")->incrementHands();

@@ -103,6 +103,9 @@ class ManagerTest extends TestCase
             "active" => $this->manager->access("stateManager")->removeInactive($this->players),
             "board" => $this->manager->access("CCManager")->getBoard(),
             "hero" => $player1,
+            "street" => "flop",
+            "pot" => 1000,
+
             ];
     
     }
@@ -130,6 +133,8 @@ class ManagerTest extends TestCase
         $this->players[0]->deactivate();
         $state = [];
         $state["players"] = $this->players;
+        $state["hero"] = $this->players[0];
+
 
         $this->manager->givePotToWinner($state);
 

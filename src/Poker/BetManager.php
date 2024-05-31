@@ -42,21 +42,28 @@ class BetManager
         return $biggestAmount - $smallestAmount;
     }
 
-    public function getPriceToPlayTest(object $player, array $state): int
+    public function getPriceToPlayTest(object $actor, array $state): int
     {
-        $players = $state["players"];
-        $activeBetsArray = [];
-        foreach ($players as $player) {
+        echo("getPricetest");
+        // $players = $state["players"];
+        // $activeBetsArray = [];
+        $currentPlayerBet = $actor->getCurrentBet();
+        $biggestBet =$this->getBiggestBet($state);
 
-            if ($player->isActive()) {
-                $activeBetsArray[] = $player->getCurrentBet();
-            }
-        }
+        // foreach ($players as $player) {
 
-        $biggestAmount = max($activeBetsArray);
-        $currentPlayerBet = $player->getCurrentBet();
+        //     if ($player->isActive()) {
+        //         var_dump($player->getCurrentBet());
+        //         $activeBetsArray[] = $player->getCurrentBet();
+        //     }
+        // }
 
-        return $biggestAmount - $smallestAmount;
+        // $biggestAmount = max($activeBetsArray);
+
+        echo"DIFF:";
+        var_dump($biggestBet - $currentPlayerBet);
+
+        return $biggestBet - $currentPlayerBet;
     }
 
     /**
@@ -144,10 +151,25 @@ class BetManager
      */
     public function playerClosedAction(object $player, array $state): bool
     {
+        echo("actionclose()");
+
         $playerClosedAction = false;
+        $street = $state["street"];
+        $pot = $state["pot"];
+
 
         $playerLastAction = $player->getLastAction();
+        $playerBet = $player->getCurrentBet();
+
         $priceToPlay = $this->getPriceToPlay($state);
+        $allIn = $player->isAllIn();
+        var_dump($priceToPlay);
+        var_dump($allIn);
+        var_dump($street);
+        var_dump($playerBet);
+
+
+
 
         $lastToAct = $this->lastToAct($state["players"]);
 
@@ -155,15 +177,31 @@ class BetManager
             echo"fan1";
             $playerClosedAction = true;
         }
-
-        if ($playerLastAction === "call" && $priceToPlay === 0 && $player === $lastToAct) {
+        //This is for preflop
+        if ($playerLastAction === "call" && $priceToPlay === 0 && $street === "preflop"  && $playerBet > 400) {
             echo"fan2";
+            
+            $playerClosedAction = true;
+        }
+        // this is for postflop
+        if ($playerLastAction === "call" && $priceToPlay === 0 && $street != "preflop") {
+            echo"fanYatta";
             
             $playerClosedAction = true;
         }
 
         if ($playerLastAction === "fold" && $priceToPlay === 0) {
             echo"fan3";
+
+            $playerClosedAction = true;
+            if ($street === "preflop" && $playerBet === 200) {
+                echo"Ruffyyyyyyyy";
+                $playerClosedAction = false;
+            }
+        }
+
+        if ($playerLastAction === "call" && $allIn) {
+            echo"fan4";
 
             $playerClosedAction = true;
         }

@@ -54,7 +54,7 @@ class OpponentActionManager
                 break;
 
             default:
-                $player->raise($bet, $player);
+                $player->raise($bet);
                 break;
         }
 

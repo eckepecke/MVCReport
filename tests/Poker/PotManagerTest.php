@@ -20,6 +20,7 @@ class PotManagerTest extends TestCase
         $this->manager = new PotManager(0);
         $this->state = ["players" => [new Player(), new Player(), new Player()]];
         
+        
     }
 
     /**
@@ -43,7 +44,7 @@ class PotManagerTest extends TestCase
         $player1->bet(1000);
         $player2->fold();
         $player2->call(1000);
-
+        $this->state["hero"] = $player1;
         $this->manager->addChipsToPot($this->state);
 
         $res = $this->manager->getPotSize();

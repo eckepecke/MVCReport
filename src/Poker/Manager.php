@@ -128,9 +128,15 @@ class Manager
      */
     public function opponentsBehindMove(array $state): void
     {
+        echo "OBM";
         $hero = $state["hero"];
         $heroPos = $hero->getPosition();
         $players = $this->managers["positionManager"]->sortPlayersByPosition($state["players"]);
+        if($this->managers["betManager"]->getActionIsClosed()) {
+            echo "OBM Quit";
+
+            return;
+        }
 
         foreach ($players as $player) {
             $currentPosition = $player->getPosition();
@@ -155,6 +161,12 @@ class Manager
      */
     public function opponentsInFrontMove(array $state): void
     {
+
+        echo "OIM";
+        if($this->managers["betManager"]->getActionIsClosed()) {
+            echo "OIM Quit";
+            return;
+        }
         $players = $this->managers["positionManager"]->sortPlayersByPosition($state["players"]);
         $hero = $state["hero"];
         $heroPos = $hero->getPosition();
@@ -212,11 +224,23 @@ class Manager
         $newHand = $this->managers["stateManager"]->getNewHand();
         $heroMoved = $this->managers["stateManager"]->heroAlreadyMoved($heroAction);
 
+        if ($state["hero"]->isAllIn() && $actionIsClosed) {
+            echo"HERO ALLIN";
+            return;
+            // $this->opponentsBehindMove($state);
+            // $this->opponentsInFrontMove($state);
+            // return;
+        }
+
         if ($state["hero"]->isAllIn()) {
+            echo"HERO ALLIN2";
+
             $this->opponentsBehindMove($state);
             $this->opponentsInFrontMove($state);
             return;
         }
+
+        
         // If hero closed hte action we deal and let
         // opponents in front move, return since action is
         // now back on hero.
