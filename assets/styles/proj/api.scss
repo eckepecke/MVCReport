@@ -1,7 +1,9 @@
 .api-wrapper {
     padding-top: 10px;
     background-color: $background-color;
-    border: $icy-border;
+    border: $big-border;
+    border-radius: $border-radius-big;
+
     display: flex;
     flex-direction: column;
     justify-content: center;

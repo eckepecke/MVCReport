@@ -56,4 +56,29 @@ class PlayerTest extends TestCase
         $this->assertInstanceOf("\App\Cards\CardGraphic", $cards[0]);
         $this->assertInstanceOf("\App\Cards\CardGraphic", $cards[1]);
     }
+
+    /**
+     * Test getPositionString method.
+     */
+    public function testGetPositionString()
+    {
+        $this->player->setPosition(0);
+        $this->assertEquals("SB", $this->player->getPositionString());
+
+        $this->player->setPosition(1);
+        $this->assertEquals("BB", $this->player->getPositionString());
+
+        $this->player->setPosition(2);
+        $this->assertEquals("BTN", $this->player->getPositionString());
+    }
+
+    /**
+     * Test getName method.
+     */
+    public function testGetName()
+    {
+        $name = "John Doe";
+        $this->player->setName($name);
+        $this->assertEquals($name, $this->player->getName());
+    }
 }

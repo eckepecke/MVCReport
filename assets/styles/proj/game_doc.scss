@@ -1,7 +1,8 @@
 .doc {
     padding-top: 10px;
     background-color: $background-color;
-    border: $icy-border;
+    border: $big-border;
+    border-radius: $border-radius-big;
 
     p {
         padding-right: $padding;
@@ -22,6 +23,10 @@
         width: 100%;
         padding-left: $padding;
         padding-right: $padding;
+    }
+
+    .input-container {
+        margin-bottom: $small-padding;
     }
 }
 

@@ -128,7 +128,6 @@ class BetManager
     {
         $playerClosedAction = false;
         $street = $state["street"];
-        $pot = $state["pot"];
         $playerLastAction = $player->getLastAction();
         $playerBet = $player->getCurrentBet();
         $priceToPlay = $this->getPriceToPlay($state);

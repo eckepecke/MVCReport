@@ -50,6 +50,8 @@ class PotManager
                     $player->takePot($diff);
                 }
                 $chips = $player->getCurrentBet();
+                echo"Ruffy";
+                var_dump($chips);
                 $this->pot += $chips;
             }
             return;
