@@ -31,11 +31,13 @@ class PokerJsonController extends AbstractController
         return $response;
     }
 
-    #[Route('/api/update_hero_name/{name}', name: 'update_name', methods: ["POST", "GET"])]
+    #[Route('/api/update_hero_name', name: 'update_name', methods: ["POST", "GET"])]
     public function updateHeroName(
         SessionInterface $session,
-        string $name
+        Request $request
     ): Response {
+
+        $name = $request->request->get('name');
         $game = $session->get("game");
 
         if (!$session->has("game")) {

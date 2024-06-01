@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 class OpponentActionManagerTest extends TestCase
 {
     private OpponentActionManager $manager;
-    private Opponent $hero;
+    private Opponent $opponent;
     
     /**
      * Set up.

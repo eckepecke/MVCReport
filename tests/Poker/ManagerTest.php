@@ -235,7 +235,7 @@ class ManagerTest extends TestCase
         // Since hero has position zero we expect action not to update.
         $initial = "";
         $this->assertEquals($initial, $actionBefore1);
-        $this->assertEquals($initial, $actionBefore1);
+        $this->assertEquals($initial, $actionBefore2);
         $this->assertEquals($initial, $action1);
         $this->assertEquals($initial, $action2);
 
@@ -246,7 +246,6 @@ class ManagerTest extends TestCase
         $action2 = $secondOpponent->getLastAction();
         $this->assertNotSame($initial, $action1);
         $this->assertNotSame($initial, $action2);
-
     }
 
     public function opponentsInfrontMove() {
@@ -272,18 +271,13 @@ class ManagerTest extends TestCase
         $this->assertEquals($initial, $actionBefore2);
         $this->assertEquals($initial, $action1);
         $this->assertEquals($initial, $action2);
-        var_dump($action2);
+
 
         $this->manager->opponentsInFrontMove($this->state);
 
         // Now opponents should have updated moves.
         $action1 = $firstOpponent->getLastAction();
         $action2 = $secondOpponent->getLastAction();
-        var_dump($firstOpponent->getPosition());       
-        var_dump($secondOpponent->getPosition());
-        var_dump($action1);
-        var_dump($action2);
-        echo"AAaAAAAAAA";
 
         $this->assertNotSame($initial, $action1);
         $this->assertNotSame($initial, $action2);

@@ -10,14 +10,20 @@
 
     <h2><a href="{{ path('api_poker') }}">api/poker_data</a></h2>
     <p>Get all data about the current game.</p>
-    <h2>/api/update_hero_name/:name</a></h2>
-    <p>Replace :name with your name to change the Hero name.</p>
     <h2><a href="{{ path('hero_data') }}">/api/hero_data</a></h2>
     <p>Get current data on the hero player.</p>
     <h2><a href="{{ path('peek_cards') }}">/api/peek</a></h2>
     <p>Cheat by looking at the opponents cards.</p>
     <h2><a href="{{ path('progress') }}">/api/progress</a></h2>
     <p>See how many hands are left to play and how much more moeny tou need to save Lilleskutt.</p>
+    <h3>Update Hero Name</h3>
+    <p>Enter your name to change the Hero name.</p>
+    <div class="form-box">
+    <form action="{{ path('update_name') }}" method="post">
+        <input type="text" id="heroName" name="name" required>
+        <button type="submit">Submit</button>
+    </form>
+    </div>
 </div>
 
 
