@@ -257,6 +257,10 @@ class ManagerTest extends TestCase
         $heroPos = $this->state["hero"]->getPosition();
         $this->assertEquals(2,$heroPos);
 
+        $firstOpponent = $this->state["players"][1];
+        $secondOpponent = $this->state["players"][2];
+
+
         $actionBefore1 = $firstOpponent->getLastAction();
         $actionBefore2 = $secondOpponent->getLastAction();
 
