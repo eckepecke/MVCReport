@@ -3,10 +3,8 @@
 namespace App\Poker;
 
 use App\Poker\SmartOpponent;
-
 use App\Poker\Player;
 use App\Poker\Hero;
-
 use App\Cards\DeckOfCards;
 use App\Poker\CardHand;
 use App\Poker\Manager;
@@ -74,8 +72,6 @@ class Game
             "board" => $this->manager->access("CCManager")->getBoard(),
             "street" => $this->manager->access("streetManager")->getStreet(),
             "pot" => $this->manager->access("potManager")->getPotSize(),
-
-
         ];
     }
 

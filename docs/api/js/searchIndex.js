@@ -2046,6 +2046,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Poker-Hero.html#property_isHero"
         },                {
+            "fqsen": "\\App\\Poker\\Hero\u003A\u003Araise\u0028\u0029",
+            "name": "raise",
+            "summary": "",
+            "url": "classes/App-Poker-Hero.html#method_raise"
+        },                {
             "fqsen": "\\App\\Poker\\HeroActionManager",
             "name": "HeroActionManager",
             "summary": "A\u0020class\u0020managing\u0020user\u0020input.",
@@ -2305,6 +2310,11 @@ Search.appendIndex(
             "name": "getCurrentBet",
             "summary": "",
             "url": "classes/App-Poker-PlayerBase.html#method_getCurrentBet"
+        },                {
+            "fqsen": "\\App\\Poker\\PlayerBase\u003A\u003AsetCurrentBet\u0028\u0029",
+            "name": "setCurrentBet",
+            "summary": "",
+            "url": "classes/App-Poker-PlayerBase.html#method_setCurrentBet"
         },                {
             "fqsen": "\\App\\Poker\\PlayerBase\u003A\u003AresetCurrentBet\u0028\u0029",
             "name": "resetCurrentBet",
