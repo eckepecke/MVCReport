@@ -35,31 +35,23 @@ class PotManager
      */
     public function addChipsToPot(array $state): void
     {
-        echo"addChips()";
         $players = $state["players"];
         $hero = $state["hero"];
         $heroBet = $hero->getCurrentBet();
 
-
-
         if ($hero->isAllin()) {
-            echo"hero is in";
             foreach ($players as $player) {
                 if($player->isActive()) {
                     $actual = $player->getCurrentBet();
 
-                    var_dump($heroBet);
                     $player->setCurrentBet($heroBet);
                     $diff = $actual - $heroBet;
-                    var_dump($diff);
 
                     $player->takePot($diff);
                 }
                 $chips = $player->getCurrentBet();
                 $this->pot += $chips;
-
             }
-
             return;
         }
 

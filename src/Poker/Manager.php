@@ -128,19 +128,16 @@ class Manager
      */
     public function opponentsBehindMove(array $state): void
     {
-        echo "OBM";
-        $hero = $state["hero"];
-        $heroPos = $hero->getPosition();
-        $players = $this->managers["positionManager"]->sortPlayersByPosition($state["players"]);
         if($this->managers["betManager"]->getActionIsClosed()) {
-            echo "OBM Quit";
-
             return;
         }
 
+        $hero = $state["hero"];
+        $heroPos = $hero->getPosition();
+        $players = $this->managers["positionManager"]->sortPlayersByPosition($state["players"]);
+
         foreach ($players as $player) {
             $currentPosition = $player->getPosition();
-            // Player will act if still in the hand has position after hero.
             if ($player->isActive() && $currentPosition > $heroPos) {
                 $chipData = $this->getDataBeforeaction($state);
                 $this->managers["opponentActionManager"]->move($player, $chipData, $hero);
@@ -161,18 +158,15 @@ class Manager
      */
     public function opponentsInFrontMove(array $state): void
     {
-
-        echo "OIM";
         if($this->managers["betManager"]->getActionIsClosed()) {
-            echo "OIM Quit";
             return;
         }
         $players = $this->managers["positionManager"]->sortPlayersByPosition($state["players"]);
         $hero = $state["hero"];
         $heroPos = $hero->getPosition();
+
         foreach ($players as $player) {
             $currentPosition = $player->getPosition();
-            // Player will act if still in the hand has position before hero.
             if ($player->isActive() && $currentPosition < $heroPos) {
                 $heroPos = $state["hero"]->getPosition();
                 $chipData = $this->getDataBeforeaction($state);
@@ -225,16 +219,10 @@ class Manager
         $heroMoved = $this->managers["stateManager"]->heroAlreadyMoved($heroAction);
 
         if ($state["hero"]->isAllIn() && $actionIsClosed) {
-            echo"HERO ALLIN";
             return;
-            // $this->opponentsBehindMove($state);
-            // $this->opponentsInFrontMove($state);
-            // return;
         }
 
         if ($state["hero"]->isAllIn()) {
-            echo"HERO ALLIN2";
-
             $this->opponentsBehindMove($state);
             $this->opponentsInFrontMove($state);
             return;

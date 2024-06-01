@@ -102,35 +102,6 @@ class SmartOpponent extends Player
         return 0.75 * $potSize;
     }
 
-    // public function chooseBetSize($potSize, $heroStack): float
-    // {
-    //     if ($potSize === 0) {
-    //         return min(800, $heroStack);
-    //     }
-    //     return min(0.75 * $potSize, $heroStack);
-    // }
-
-    //     /**
-    //  * Choose the bet size based on the pot size.
-    //  *
-    //  * @param float $potSize The current size of the pot.
-    //  * @return float The bet size, which is 75% of the pot size.
-    //  */
-    // public function raise($bet, $heroStack): void
-    // {
-    //     $minRaise = $bet * 2;
-    //     $allChipsPlayerHas = $this->stack + $this->currentBet;
-    //     $raise = min($minRaise, min($allChipsPlayerHas, $heroStack));
-
-    //     $this->stack -= $raise - $this->currentBet;
-    //     $this->currentBet = $raise;
-    //     $this->lastAction = "raise";
-
-    //     if ($this->stack <= 0) {
-    //         ///
-    //         $this->allIn = true;
-    //     }
-    // }
     /**
      * Action to take when an opponent shoves (goes all-in).
      *

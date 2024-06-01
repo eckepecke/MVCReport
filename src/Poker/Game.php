@@ -240,7 +240,6 @@ class Game
      */
     public function prepare($heroAction): void
     {
-        echo "prepare";
         if ($this->manager->access("stateManager")->getNewHand()) {
             $this->manager->resetTable($this->players);
             $this->manager->access("cardManager")->dealStartingHands($this->players);
@@ -252,7 +251,6 @@ class Game
             }
 
             $this->manager->access("potManager")->chargeBlinds($this->players);
-            // $this->manager->updatePlayersCurrentHandStrength($this->getGameState());
             $this->manager->access("stateManager")->setNewHand(false);
             $this->manager->access("streetManager")->setShowdownFalse();
             $this->manager->access("streetManager")->resetStreet();
@@ -269,8 +267,6 @@ class Game
      */
     public function play($heroAction)
     {
-        echo "play";
-
         $this->manager->heroMakesAPlay($heroAction, $this->getGameState());
         $this->manager->opponentsPlay($heroAction, $this->getGameState());
         $endBeforeSHowdown = $this->manager->access("stateManager")->getNewHand();
@@ -289,7 +285,6 @@ class Game
         }
 
         if ($this->manager->access("streetManager")->getShowdown()) {
-            echo "showdown";
             $this->manager->showdown($this->getGameState());
             $this->manager->access("stateManager")->setNewHand(true);
             $this->manager->access("gameOverTracker")->incrementHands();
