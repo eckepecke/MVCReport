@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-
 class PokerJsonController extends AbstractController
 {
     #[Route("/api/poker_data", name: "api_poker", methods: ["POST", "GET"])]

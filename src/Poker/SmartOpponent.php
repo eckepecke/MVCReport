@@ -38,7 +38,7 @@ class SmartOpponent extends Player
                 "call",
                 "raise"
             ];
-    
+
             $decision = $options[rand(0, 1)];
             return $decision;
         }

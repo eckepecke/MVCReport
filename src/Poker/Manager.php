@@ -13,7 +13,7 @@ class Manager
      *
      * @param string $key The key to associate with the manager.
      * @param object $manager The manager object to be added.
-     * 
+     *
      * @return void
      */
     public function addManager(string $key, object $manager): void
@@ -25,7 +25,7 @@ class Manager
      * Retrieves a manager by its key.
      *
      * @param string $manager The key of the manager to retrieve.
-     * 
+     *
      * @return object The manager object associated with the provided key.
      */
     public function access(string $manager): object
@@ -37,7 +37,7 @@ class Manager
      * Distributes the pot to the winner of the game.
      *
      * @param array $state The current state of the game.
-     * 
+     *
      * @return void
      */
     public function givePotToWinner(array $state): void
@@ -52,7 +52,7 @@ class Manager
      * Resets the game table for a new round.
      *
      * @param array $players An array containing the players participating in the game.
-     * 
+     *
      * @return void
      */
     public function resetTable(array $players): void
@@ -75,7 +75,7 @@ class Manager
      * Initiates the showdown phase of the game.
      *
      * @param array $state The current state of the game.
-     * 
+     *
      * @return void
      */
     public function showdown(array $state): void
@@ -91,7 +91,7 @@ class Manager
      * Updates the current hand strength of each player based on the provided game state.
      *
      * @param array $state The current state of the game.
-     * 
+     *
      * @return void
      */
     public function updatePlayersCurrentHandStrength(array $state): void
@@ -103,7 +103,7 @@ class Manager
      * Prepares table for next street play.
      *
      * @param array $state The current state of the game.
-     * 
+     *
      * @return void
      */
     public function deal(array $state): void
@@ -123,7 +123,7 @@ class Manager
      * Making all opponents in front of the hero move.
      *
      * @param array $state The current state of the game.
-     * 
+     *
      * @return void
      */
     public function opponentsBehindMove(array $state): void
@@ -153,7 +153,7 @@ class Manager
      * Making all opponents behind of the hero move.
      *
      * @param array $state The current state of the game.
-     * 
+     *
      * @return void
      */
     public function opponentsInFrontMove(array $state): void
@@ -185,7 +185,7 @@ class Manager
      * that is needed by a player before they make their action.
      *
      * @param array $state The current state of the game.
-     * 
+     *
      * @return array An array containing the necessary data for a player's action.
      */
     public function getDataBeforeAction(array $state): array
@@ -204,12 +204,12 @@ class Manager
 
     /**
 
-     * Initiates opponents actions. Directing the flow depending on Hero's action and 
+     * Initiates opponents actions. Directing the flow depending on Hero's action and
      * state of the game.
      *
      * @param mixed $heroAction The action taken by the hero player.
      * @param array $state The current state of the game.
-     * 
+     *
      * @return void
      */
     public function opponentsPlay(mixed $heroAction, array $state): void
@@ -228,7 +228,7 @@ class Manager
             return;
         }
 
-        
+
         // If hero closed hte action we deal and let
         // opponents in front move, return since action is
         // now back on hero.

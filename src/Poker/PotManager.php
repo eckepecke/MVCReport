@@ -5,7 +5,7 @@ namespace App\Poker;
 /**
  * Class PotManager
  *
- * This class manages the pot in a poker game, handling the addition of chips, 
+ * This class manages the pot in a poker game, handling the addition of chips,
  * resetting the pot, and charging blinds.
  */
 class PotManager
@@ -83,7 +83,7 @@ class PotManager
         $this->pot = 0;
     }
 
-        /**
+    /**
      * Charges blinds to players based on their position.
      *
      * The blind amounts are set in an array where the key represents the position

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Poker;
+
 use Exception;
 
 /**
@@ -292,12 +293,12 @@ class SameHandEvaluator extends HandEvaluator
         foreach ($handRanks as $index => $handRank) {
             $flushCardsList[] = $this->getFlushCards($handRank, $suitRanks[$index]);
         }
-    
+
         // Debug output
         // foreach ($flushCardsList as $index => $flushCards) {
         //     echo "Flush Cards " . ($index + 1) . ": " . implode(", ", $flushCards) . PHP_EOL;
         // }
-    
+
         // Compare flushes
         $flushCount = count($flushCardsList);
         $bestIndex = 0;
@@ -312,7 +313,7 @@ class SameHandEvaluator extends HandEvaluator
                 }
             }
         }
-    
+
         return $bestIndex;
     }
 
