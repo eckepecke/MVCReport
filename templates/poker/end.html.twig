@@ -5,6 +5,9 @@
 
 {% block body %}
             <div class="end-box">
+            {% if hands_played > 9 %}
+                <h2>Casinot är stängt!</h2>
+            {% endif %}
                 <h2>Pengar: {{hero_stack}} kr</h2>
             {% if hero_stack > 10000 %}
                 <h4>Lilleskutt räddad!</h4>
